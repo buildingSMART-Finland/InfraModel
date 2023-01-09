@@ -56,8 +56,17 @@ Naming syntax:
 
 Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the name attribute of the 
 
-This special naming is handled by "xtabulateX" moustache commands to produce fully typed element tables of landxml elements, and is removed by toolchain when actual verification schema is formed by the toolchain. 
+This special naming is handled by "xtabulateX" moustache commands to produce fully typed element tables of landxml elements, and is removed by toolchain when actual verification schema is formed by the github CI actions. 
 
+## How to contribute
 
+### Found an error or need some new functionality?
+Feel free to submit your issue via the github issues tab.
+
+### Propose a change to documentation, schema or add a new example file set
+Create your own fork of this repository, make your changes and/or additions to your fork repository, and send pull request. Be aware that you are publishing under "The Unlicense", so all of the rights of your content are given to public domain. 
+
+### Wan't to get involved more?
+Join us at buildingsmart.fi
 
 
