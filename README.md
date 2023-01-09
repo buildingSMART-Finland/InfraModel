@@ -1,7 +1,9 @@
 ![InfraModel logo](/figures/inframodel-cover.jpg "InfraModel logo")
 
 # InfraModel
-This repository contains a development versions of the Finnish InfraModel landxml-subset schema(s) and the documentation. Official publications are available under an open license at www.buildingsmart.fi website.
+This repository contains a development versions of the Finnish InfraModel landxml-subset schema(s),documentation and the example files. 
+
+Official Inframodel publications are available under an open license at www.buildingsmart.fi website.
 
 Documents artefacts are built automatically from this repository by github CI actions when content is updated. The artefacts for publification can be found from github repositorys actions tab. 
 
