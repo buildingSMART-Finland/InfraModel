@@ -5,7 +5,7 @@ This repository contains a development versions of the Finnish InfraModel landxm
 
 Official Inframodel publications are available under an open license at www.buildingsmart.fi website.
 
-Documents artefacts are built automatically from this repository by github CI actions when content is updated. The artefacts for publification can be found from github repositorys actions tab. 
+Document artefacts are built automatically from this repository by github CI actions when content is updated. The artefacts for publification can be found from github repositorys actions tab. 
 
 ## Folder structure:
 
