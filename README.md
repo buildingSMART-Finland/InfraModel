@@ -14,7 +14,8 @@ CI folder contains the build tools and templates for the document generation, us
 Figures folder contains all figures used by the documentation.
 
 ### markdown
-Markdown folder contains the editable parts of documentation as markdown(.md) documents. In addition to markdown syntax, the document generation toolchain allows use of specific "moustache syntax commands" to extend the functionality:
+Markdown folder contains the editable parts of documentation as markdown(.md) documents. In addition to markdown syntax, the document generation toolchain allows use of specific "moustache syntax commands" to extend the functionality of markdown.
+
 Command syntax
 
 {{*command* [*args*]}}
