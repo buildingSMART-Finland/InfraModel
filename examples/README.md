@@ -18,10 +18,6 @@ Example:
     
 `xxx-image-1.png` is the first illustrative image of xxx worksite or file.
     
-`xxx-codelist-1.json` is the first codelist file.
-    
-`xxx-coordsys-1.json` is the first coordinate system file 
-
 - Commit and push your additions
 
 - Submit a pull request to the main repository.
