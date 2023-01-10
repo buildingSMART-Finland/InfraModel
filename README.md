@@ -71,7 +71,7 @@ Example data is regognized by "Example:" keyword, in example:
 		<xs:documentation>Example:2021-08-20</xs:documentation>
 	</xs:annotation>
 </xs:attribute>
-.```
+```
 
 ## How to contribute
 
