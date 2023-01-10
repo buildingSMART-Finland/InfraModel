@@ -70,7 +70,7 @@ For transformation between source geographic coordinate system sourceCRS and tar
 {{xtabulate IM_coordTransformation--ltFeature--gt}
 
 
-See {{refto IMExtensions}} for detailed information about "IM_coordTransformation" \<Feature> extension.
+See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformation" \<Feature> extension.
 
 
 ### Local coordinate transformation parameters
