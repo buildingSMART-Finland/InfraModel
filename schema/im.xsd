@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 4.0.4 Release -->
+<!-- Date Posted: 01/04/2020 -->
+<xs:schema xmlns:im="http://buildingsmart.fi/im/404" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/im/404" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0.4">
+	<xs:element name="PileGroups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PileGroup" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TopBoundary">
+								<xs:annotation>
+									<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points (6 values).</xs:documentation>
+								</xs:annotation>
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
+NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+												<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+													<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+												</xs:sequence>
+												<xs:attribute name="name" type="xs:string" use="optional"/>
+												<xs:attribute name="code" type="xs:string"/>
+												<xs:attribute name="source" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="surfaceRef" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BottomBoundary">
+								<xs:annotation>
+									<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points (6 values).</xs:documentation>
+								</xs:annotation>
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
+NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+												<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+													<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+												</xs:sequence>
+												<xs:attribute name="name" type="xs:string" use="optional"/>
+												<xs:attribute name="code" type="xs:string"/>
+												<xs:attribute name="source" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="surfaceRef" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:choice minOccurs="0">
+								<xs:element name="CircPile">
+									<xs:complexType>
+										<xs:attribute name="diameter" type="xs:string" use="required"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="SquarePile">
+									<xs:complexType>
+										<xs:attribute name="width" type="xs:string" use="required"/>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+							<xs:element name="Pile" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="GroutLayer" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Pile grout layers</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="startLevel" type="xs:string">
+													<xs:annotation>
+														<xs:documentation>start level of grout layer in elevationUnits</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="endLevel" type="xs:string">
+													<xs:annotation>
+														<xs:documentation>end level of grout layer in elevationUnits</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="groutIntensity" type="xs:string">
+													<xs:annotation>
+														<xs:documentation>grout intensity of piles in this pile group, as measure of weight by volume (kg/m3)</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="oID" type="xs:string" use="required">
+										<xs:annotation>
+											<xs:documentation>Pile ID</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="status" type="xs:string" use="required">
+										<xs:annotation>
+											<xs:documentation>Pile status (started, finished, under construction, …)</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="topPoint" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>top centre point of pile</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="bottomPoint" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>bottom centre point of pile</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="horizontalDirection" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Pile horizontal direction. Unit deg.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="slope" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Pile slope. Unit deg.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
+NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+									<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+										<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+									</xs:sequence>
+									<xs:attribute name="name" type="xs:string" use="optional"/>
+									<xs:attribute name="code" type="xs:string"/>
+									<xs:attribute name="source" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="oID" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Pile ID</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="name" type="xs:string"/>
+						<xs:attribute name="desc" type="xs:string"/>
+						<xs:attribute name="targetShearResistance" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Pile target shear resistance. Unit Kpa.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="groutType" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Pile grout type</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="groutIntensity" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Pile grout intensity. Unit kg/m3.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="withdrawalRate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Pile withdrawal augering rate. Unit mm/r.
+</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="minRotationRate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Minimum rotation rate. Unit r/min.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="maxRotationRate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Maximum rotation rate. Unit r/min.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="minInjectionPressure" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>Minimum grout injection pressure. Unit bar.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="maxInjectionPressure" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>Maximum grout injection pressure. Unit bar.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="airInjectionRate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Air injection pressure. Unit l/min.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="pileSpacing" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Pile spacing (center to center). Unit m.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
+NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+						<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="optional"/>
+						<xs:attribute name="code" type="xs:string"/>
+						<xs:attribute name="source" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="desc" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LocalCoordinateTransformation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SourceCRS">
+					<xs:annotation>
+						<xs:documentation>SourceCRS describes the source geographic coordinate system</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Ellipsoid">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"/>
+									<xs:attribute name="semiMajorAxis" type="xs:double"/>
+									<xs:attribute name="inverseFlattening" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PrimeMeridian">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"/>
+									<xs:attribute name="value" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="epsg" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TargetCRS">
+					<xs:annotation>
+						<xs:documentation>TargetCRS describes parameters for the target geographic coordinate system.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Ellipsoid">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"/>
+									<xs:attribute name="semiMajorAxis" type="xs:double"/>
+									<xs:attribute name="inverseFlattening" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PrimeMeridian">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"/>
+									<xs:attribute name="value" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DatumTransformation">
+					<xs:annotation>
+						<xs:documentation>Datum transformation from Source to Target datum.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Helmert3D">
+								<xs:complexType>
+									<xs:attribute name="rotationX" type="xs:double"/>
+									<xs:attribute name="rotationY" type="xs:double"/>
+									<xs:attribute name="rotationZ" type="xs:double"/>
+									<xs:attribute name="translationX" type="xs:double"/>
+									<xs:attribute name="translationY" type="xs:double"/>
+									<xs:attribute name="translationZ" type="xs:double"/>
+									<xs:attribute name="scale" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Projection">
+					<xs:annotation>
+						<xs:documentation>Which projection to use for projecting the geographical coordinates to a plane and its parameters. TransverseMercator is the example here, but there could be other projections defined too.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TransverseMercator">
+								<xs:complexType>
+									<xs:attribute name="falseEasting" type="xs:double"/>
+									<xs:attribute name="falseNorthing" type="xs:double"/>
+									<xs:attribute name="longitude0" type="xs:double"/>
+									<xs:attribute name="latitude0" type="xs:double"/>
+									<xs:attribute name="scale0" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="LocalTransformation">
+					<xs:annotation>
+						<xs:documentation>Transformation from the projected coordinates to the final
+             local coordinates. This consists of first a 2D transformation for
+ the plane coordinates and then a transformation for the height (using a fitted plane).
+
+ The plane can be skipped and one can use a real geoid model instead, using the existing markup (verticalCoordinateSystemName).</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Helmert2D">
+								<xs:complexType>
+									<xs:attribute name="rotation" type="xs:double" use="required"/>
+									<xs:attribute name="scale" type="xs:double" use="required"/>
+									<xs:attribute name="dn" type="xs:double" use="required"/>
+									<xs:attribute name="de" type="xs:double" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="FittedPlane" minOccurs="0">
+								<xs:complexType>
+									<xs:attribute name="a" type="xs:double"/>
+									<xs:attribute name="b" type="xs:double"/>
+									<xs:attribute name="c" type="xs:double"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Property">
+		<xs:annotation>
+			<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema. Each Property element defines one piece of data.</xs:documentation>
+			<xs:documentation>The "label" attribute defines the name of the value held in the "value" attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" use="required"/>
+			<xs:attribute name="value" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DocFileRef">
+		<xs:annotation>
+			<xs:documentation>A reference to any external document file containing related information for the associated element.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" use="required"/>
+			<xs:attribute name="location" type="xs:anyURI" use="required"/>
+			<xs:attribute name="fileType" type="xs:string"/>
+			<xs:attribute name="fileFormat" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Feature">
+		<xs:annotation>
+			<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
+NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="code" type="xs:string"/>
+			<xs:attribute name="source" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Metadata not included in version 4.0.3 - be be introduced in next version
+	<xs:element name="Metadata">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Description of the data set</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CreatedBy">
+					<xs:annotation>
+						<xs:documentation>Vendor who created the XML message</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Company" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Company name</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Company WWW URL</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ContactInformation" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Contact information within company</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Firstname" type="xs:string"/>
+										<xs:element name="Lastname" type="xs:string"/>
+										<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="Email" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DataOwner" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Organisation who owns the data</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Company" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Company name</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Company WWW URL</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ContactInformation" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Contact information within company</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Firstname" type="xs:string"/>
+										<xs:element name="Lastname" type="xs:string"/>
+										<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="Email" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="History" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CreateTimestamp">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Company" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Company name</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Company WWW URL</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ContactInformation" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Contact information within company</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Firstname" type="xs:string"/>
+													<xs:element name="Lastname" type="xs:string"/>
+													<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element name="Email" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TimeStamp" type="xs:dateTime"/>
+										<xs:element name="Description" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ModifiedTimestamp" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Company" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Company name</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Company WWW URL</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ContactInformation" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Contact information within company</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Firstname" type="xs:string"/>
+													<xs:element name="Lastname" type="xs:string"/>
+													<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element name="Email" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TimeStamp" type="xs:dateTime"/>
+										<xs:element name="Description" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DataQuality" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Group of attributes which describe the quality from data collection point of view</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Accuracy" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Free text describing the data accuracy</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Source">
+								<xs:annotation>
+									<xs:documentation>When and Where is data originated from </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Date" type="xs:date"/>
+										<xs:element name="Type" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CreateMethod" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Free text describing how data was created from the Source (with the described Accuracy)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Status" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Data status</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="final"/>
+							<xs:enumeration value="draft"/>
+							<xs:enumeration value="other"/>
+							<xs:enumeration value="unknown"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Language" type="xs:string" minOccurs="0"/>
+				<xs:element name="MetadataURL" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>URL www-sivulle, josta aineiston metatiedot ovat 
+luettavissa ”selkokielisenä”. Esim: 
+http://www.paikkatietoikkuna.fi/web/fi/paikkatietoaineisto?inspireMetadat
+aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="InformationProductURL" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>URL, josta saadaan aineistoon liittyvän tietotuotteen 
+tiedot</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PlanningStatus" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Planning status</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="modelStatus" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>This field identifes the status of process phase for this document. This is used to determine processing of the record.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="label">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="preliminary plan"/>
+									<xs:enumeration value="general plan"/>
+									<xs:enumeration value="plan"/>
+									<xs:enumeration value="construction plan"/>
+									<xs:enumeration value="construction"/>
+									<xs:enumeration value="maintenance"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="desc" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+ -->
+	<!-- BoundingBox not included in version 4.0.3	
+	<xs:element name="BBox">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Envelope">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LowerLeftCorner" type="xs:string"/>
+							<xs:element name="UpperRightCorner" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+-->
+</xs:schema>

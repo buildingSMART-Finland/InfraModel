@@ -27,6 +27,8 @@ Command syntax:
 
 Supported commands:
   
+  {{refto ID}}          		 - insert a reference to a annex
+
   {{refsec section-id}}          - insert a reference to a (sub)section
   
   {{include FILE}}               - recursively include a file (or, if FILE=="annexes", all the annexes in letter order)
@@ -40,6 +42,8 @@ Supported commands:
   {{xtabulate3 TYPE SCHEMAFILE}} - same as xtabulate, but more chatty
   
   {{xtabulate4 TYPE SCHEMAFILE}} - same as xtabulate, but with xml code example
+
+  {{xtabulate4 TYPE SCHEMAFILE}} - same as xtabulate, but with expanded xml code example (up to 5 levels)
   
   {{xmlsnippet TYPE SCHEMAFILE}} - produce example code from xml schema
   
