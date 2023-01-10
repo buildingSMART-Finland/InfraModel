@@ -47,13 +47,15 @@ Supported commands:
   {{figref ID}}                  - insert a reference to a figure
   
 ### schema
-Schema folder contains the editable InfraModel XML schemas, one containing the elemnts, and another one for the enumerations used by the main schema. 
+Schema folder contains the editable InfraModel XML schemas, one containing the elements, and another one for the enumerations used by the main schema. 
 
 These schemas use specific naming syntax to represent InfraModel \<Feature> extensions and \<Property> elements under most elements specified on schema. 
 
-\<Feature> / \<Property> naming syntax:
+\<Property> / \<Feature> naming syntax:
 
 **IM_xxxx_yyyy--ltProperty--gt**
+
+Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the fixed name attribute of the property element(ie surfaceCoding). 
 
 Example:
 
@@ -80,6 +82,7 @@ Example:
 ```
 
 **IM_xxxx--ltFeature--gt**
+Where xxxx is the name of feature extension (ie IM_Codings)
 
 Example:
 
@@ -105,7 +108,7 @@ Example:
 </xs:element>
 ```
 
-Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the fixed name attribute of the property element 
+
 
 This special naming is handled by "xtabulateX" moustache commands to produce fully typed tables of landxml elements, and is removed by toolchain when actual verification schema is formed by the github CI actions.
 
