@@ -9,13 +9,16 @@ Document artefacts are built automatically from this repository by github CI act
 
 ## Folder structure:
 
-### CI
+### /CI
 CI folder contains the build tools and templates for the document generation, used by github actions. The toolchain processes and combines the raw markdown documents to one, and then uses pandoc to convert markdwn to publisheable documents (word,pdf,html). Toolchain also processes the schemas and produces verification schema and enumeration excel document.
 
-### figures
+### /examples
+Examples folder contains documented example files/filesets following this specification. Example documentation shall follow the template available at /examples/sample-data-template.md. See /examples/README.md for more details
+
+### /figures
 Figures folder contains all figures used by the documentation.
 
-### markdown
+### /markdown
 Markdown folder contains the editable parts of documentation as markdown(.md) documents. In addition to markdown syntax, the document generation toolchain allows use of specific "moustache syntax commands" to extend the functionality of markdown.
 
 Command syntax:
@@ -46,7 +49,7 @@ Supported commands:
   
   {{figref ID}}                  - insert a reference to a figure
   
-### schema
+### /schema
 Schema folder contains the editable InfraModel XML schemas, one containing the elements, and another one for the enumerations used by the main schema. 
 
 These schemas use specific naming syntax to represent InfraModel \<Feature> extensions and \<Property> elements under most elements specified on schema. 
