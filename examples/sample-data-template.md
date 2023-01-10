@@ -6,15 +6,15 @@
 
 ### Content
 
-This sample data set covers the following ISO15143-4 subset of LandXML plan types:
+This sample data set covers the following Inframodel plan types:
 - *list plan types covered (ie. road, rail, waerway, areal, pipenetwork)*
 
-This sample data set covers the following ISO15143-4 subset of LandXML element types:
+This sample data set covers the following Inframodel LandXML element types:
 - *list LandXML elements specifically addressed*
 
 ### Illustrative image(s) of sample data set
 
-![Image-1](.\image-1.png)
+![Image-1](/image-1.png)
 
 ### Files
 
