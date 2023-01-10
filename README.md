@@ -18,11 +18,11 @@ Figures folder contains all figures used by the documentation.
 ### markdown
 Markdown folder contains the editable parts of documentation as markdown(.md) documents. In addition to markdown syntax, the document generation toolchain allows use of specific "moustache syntax commands" to extend the functionality of markdown.
 
-Command syntax
+Command syntax:
 
 {{*command* [*args*]}}
 
-Supported "moustache commands":
+Supported commands:
   
   {{refsec section-id}}          - insert a reference to a (sub)section
   
