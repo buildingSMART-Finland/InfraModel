@@ -32,7 +32,7 @@ Example:
 
 - Add and/or amend content.
 
-- If adding files, add an entry to the files table in the `readme.md` of the unit test.
+- If adding files, add an entry to the files table in the `readme.md`
 
 - Commit and push your additions
 
