@@ -14,7 +14,7 @@ This sample data set covers the following Inframodel LandXML element types:
 
 ### Illustrative image(s) of sample data set
 
-![Image-1](/image-1.png)
+![Image-1](./image-1.png)
 
 ### Files
 
