@@ -52,9 +52,57 @@ Schema folder contains the editable InfraModel XML schemas, one containing the e
 These schemas use specific naming syntax to represent InfraModel \<Feature> extensions and \<Property> elements under most elements specified on schema. 
 Naming syntax:
 
+**IM_xxxx_yyyy--ltProperty--gt**
+
+Example:
+
+```xml
+<xs:element name="IM_Codings_surfaceCoding--ltProperty--gt">
+	<xs:annotation>
+		<xs:documentation>--ltProperty--gt element holding surface/category code</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCoding">
+			<xs:annotation>
+				<xs:documentation>Fixed value:"surfaceCoding"</xs:documentation>
+				<xs:documentation>Example:surfaceCoding</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="value" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Place for surface/category code</xs:documentation>
+				<xs:documentation>Example:--code--</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:element>
+```xml
+
 **IM_xxxx--ltFeature--gt**
 
-**IM_xxxx_yyyy--ltProperty--gt**
+Example:
+
+```xml
+<xs:element name="IM_Codings--ltFeature--gt">
+	<xs:annotation>
+		<xs:documentation>IM_Codings --ltFeature--gt extension.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:attribute name="code" type="xs:string" use="required" fixed="IM_Codings">
+			<xs:annotation>
+				<xs:documentation>Fixed value:IM_Codings</xs:documentation>
+				<xs:documentation>Example:IM_Codings</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="character_string_id" use="optional">
+			<xs:annotation>
+				<xs:documentation>Unique id of feature</xs:documentation>
+				<xs:documentation>Example:--uid--</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:element>
+```xml
 
 Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the fixed name attribute of the property element 
 
