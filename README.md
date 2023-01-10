@@ -1,7 +1,7 @@
 ![InfraModel logo](/figures/inframodel-cover.jpg "InfraModel logo")
 
 # InfraModel
-This repository contains development versions of the Finnish InfraModel landxml 1.2 subset schema(s),documentation and the example files. 
+This repository contains development versions of the Finnish InfraModel landxml 1.2 subset schema(s), InfraModel documentation and InfraModel sample filesets. 
 
 Official Inframodel publications are available under an open license at www.buildingsmart.fi website.
 
@@ -138,7 +138,7 @@ Example data is regognized by "Example:" keyword, in example:
 Feel free to submit your issue via the github issues tab.
 
 ### Propose a change to documentation, schema or add a new example file set
-Create your own fork of this repository, make your changes and/or additions to your fork repository, and send pull request. Be aware that you are publishing under "The Unlicense", so all of the rights of your content are given to public domain. 
+Create your own fork of this repository, make your changes and/or additions to your fork repository, and send pull request. Be aware that you are publishing under "CC-BY 4.0" licence, so all of the rights of your submitted content are given to public domain. Check LICENCE file for details
 
 ### Wan't to get involved?
 Join us at buildingsmart.fi
