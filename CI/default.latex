@@ -1,0 +1,7 @@
+% Add a watermark while we are generating draft docs:
+%`\usepackage{draftwatermark}
+%
+% Move our tables to the left:
+\usepackage{longtable}\setlength{\LTleft}{0em}
+% Allow our tables to wrap on underscores
+\usepackage{underscore}

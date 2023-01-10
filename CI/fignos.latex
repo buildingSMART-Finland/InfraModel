@@ -1,0 +1,45 @@
+%% pandoc-fignos: environment to disable figure caption prefixes
+\makeatletter
+\newcounter{figno}
+\newenvironment{fignos:no-prefix-figure-caption}{
+  \caption@ifcompatibility{}{
+    \let\oldthefigure\thefigure
+    \let\oldtheHfigure\theHfigure
+    \renewcommand{\thefigure}{figno:\thefigno}
+    \renewcommand{\theHfigure}{figno:\thefigno}
+    \stepcounter{figno}
+    \captionsetup{labelformat=empty}
+  }
+}{
+  \caption@ifcompatibility{}{
+    \captionsetup{labelformat=default}
+    \let\thefigure\oldthefigure
+    \let\theHfigure\oldtheHfigure
+    \addtocounter{figure}{-1}
+  }
+}
+\makeatother
+\numberwithin{figure}{section}
+
+%% pandoc-tablenos: environment to disable table caption prefixes
+ \makeatletter
+ \newcounter{tableno}
+ \newenvironment{tablenos:no-prefix-table-caption}{
+   \caption@ifcompatibility{}{
+     \let\oldthetable\thetable
+     \let\oldtheHtable\theHtable
+     \renewcommand{\thetable}{tableno:\thetableno}
+     \renewcommand{\theHtable}{tableno:\thetableno}
+     \stepcounter{tableno}
+     \captionsetup{labelformat=empty}
+   }
+ }{
+   \caption@ifcompatibility{}{
+     \captionsetup{labelformat=default}
+     \let\thetable\oldthetable
+     \let\theHtable\oldtheHtable
+     \addtocounter{table}{-1}
+   }
+ }
+ \makeatother
+ \numberwithin{table}{section}

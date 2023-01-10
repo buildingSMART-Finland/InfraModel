@@ -1,0 +1,12 @@
+Jinja2==3.0.1
+pandoc-eqnos==2.5.0
+pandoc-fignos==2.4.0
+pandoc-secnos==2.2.2
+pandoc-tablenos==2.3.0
+pandoc-xnos==2.5.0
+pandocfilters==1.4.3
+PyYAML==3.11
+simplejson==3.17.0
+sortedcontainers==2.4.0
+lxml
+
