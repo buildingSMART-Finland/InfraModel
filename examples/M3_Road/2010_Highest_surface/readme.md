@@ -29,7 +29,6 @@ Following files/subfolders belong to this sample data set:
 
 | Filename                          | Description                               |
 |-----------------------------------|-------------------------------------------|
-|[M3_Road-codelist-1.json](../M3_Road-codelist-1.json)|Finnish InfraBIM construction coding V2.32|
 |[M3_Highest_Comb_rev2_Highest_combination_of_surface.mm.xml](M3_Highest_Comb_rev2_Highest_combination_of_surface.mm.xml)|Main road M3 highest combination of surfaces with breaklines|
 |[Y10_Highest_Comb_rev2_Highest_combination_of_surface.mm.xml](Y10_Highest_Comb_rev2_Highest_combination_of_surface.mm.xml)|Intersecting road Y10 highest combination of surfaces with breaklines|
 |[Y11_Highest_Comb_rev2_Highest_combination_of_surface.mm.xml](Y11_Highest_Comb_rev2_Highest_combination_of_surface.mm.xml)|Intersecting road Y10 highest combination of surfaces with breaklines| 
