@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build-documentation:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Install required apt-packages
+        run: sudo apt-get update && sudo apt-get install -y $(cat $GITHUB_WORKSPACE/CI/apt-packages.txt)
+      
+      - name: Install required python-packages
+        run: sudo pip3 install -r $GITHUB_WORKSPACE/CI/py-packages.txt
+      #- name: test
+      #  run: cd $GITHUB_WORKSPACE/CI && ls
+      - name: Generate markdown
+        run: sudo python $GITHUB_WORKSPACE/CI/raw-parse.py
+        
+      - name: Generate PDF+DOCX
+        run: sudo python $GITHUB_WORKSPACE/CI/pandoc.py
+      - name: test
+        run: cd $GITHUB_WORKSPACE/artefact && ls  
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Inframodel (PDF)
+          path: ./artefact/Inframodel_DRAFT.pdf
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Inframodel (DOCX)
+          path: ./artefact/Inframodel_DRAFT.docx
