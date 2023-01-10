@@ -17,6 +17,7 @@ from utils import get_doc_version
   Moustache commands:
       {{ command [args]}}
   Currently:
+  {{refto ID}}                   - insert a reference to a annex
   {{refsec section-id}}          - insert a reference to a (sub)section
   {{include FILE}}               - recursively include a file (or, if FILE=="annexes", all the annexes in letter order)
   {{schemafile FILE}}            - set a default schema file
@@ -24,6 +25,7 @@ from utils import get_doc_version
   {{xtabulate2 TYPE SCHEMAFILE}} - same as xtabulate, without leading statement
   {{xtabulate3 TYPE SCHEMAFILE}} - same as xtabulate, but more chatty
   {{xtabulate4 TYPE SCHEMAFILE}} - same as xtabulate, but with xml code example
+  {{xtabulate5 TYPE SCHEMAFILE}} - same as xtabulate, but with expanded xml code example (up to 5 levels deep)
   {{xmlsnippet TYPE SCHEMAFILE}} - produce example code from xml schema
   {{figure IMAGE}}               - path to IMAGE, where IMAGE is a path relative to ./figures
   {{figst ID}}                   - apply default figure styles and set optional id (alphanum-_)+ for figure number referencing
@@ -40,9 +42,9 @@ next_annex.N = 0
 next_annex.letters = []
 
 # References to transform:
-#references = {
-#    
-#}
+references = {
+  "ImFeatureEXT"     : next_annex(),    
+}
 
 def mdForRef(ref): return references[ref].replace(" ", "") + ".md"
 
@@ -63,7 +65,9 @@ else:
 
 # Files to interpolate:
 interp = collections.OrderedDict()
-interp["./markdown/raw-inframodel.md"] = "Inframodel.md"
+interp["markdown/imextensions.md"] = mdForRef("ImFeatureEXT")
+interp["./markdown/main.md"] = "Inframodel.md"
+
 
 def demoustache_file(infile, ROOT):
     for l in infile:
