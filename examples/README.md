@@ -1,7 +1,7 @@
 
-# Instructions for submitting new ISO15143-4 sample data sets
+# Instructions for submitting new InfraModel sample data sets
 
-- Create your own branch of this repository
+- Create your own fork of this repository
 
 - Make a separate folder for your contributions named `xxx`, for example:
 
@@ -24,17 +24,19 @@ Example:
 
 - Commit and push your additions
 
-- Create a merge request to the main repository.
+- Submit a pull request to the main repository.
 
 ## Amend existing sample data sets
 
-- Create your own branch of repo
+- Create your own fork of repository
 
 - Add and/or amend content.
 
 - If adding files, add an entry to the files table in the `readme.md` of the unit test.
 
-- Create a merge request to the main repository.
+- Commit and push your additions
+
+- Submit a pull request to the main repository.
 
 
 
