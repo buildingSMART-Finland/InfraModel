@@ -1,7 +1,7 @@
 {{schemafile inframodel.xsd}}
 # File headers
 
-## LandXML transfer file
+## LandXML file container
 
 InfraModel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
 
@@ -42,10 +42,21 @@ Radians are used as default direction (directionUnit) and angular (angularUnit) 
 
 ## Coordinate and height systems
 
-The height and coordinate system information is defined in the element \<CoordinateSystem>. At least one coordinate system must be defined:
-Exactly one horizontal system shall defined using the European Petrol Survey Group (EPSG) naming system, or some other local system in current use; the Open Geospatial Consortium (OGC) naming system shall not be used in Inframodel from version 4.0 onward. The EPSG coordinate system is set in the attribute epsgCode as a valid code without prefix. If a local horizontal coordinate system is used instead of a EPSG system, it is set using the attribute horizontalCoordinateSystemName (and the desc attribute can provide informal information about the system used).
-Optionally, one vertical coordinate system can be specified in the attribute verticalCoordinateSystemName; this can be either using a EPSG namimg system (EPSG prefix and code, to be given here also when it is the same as for horizontal system), or a local vertical coordinate system (and the desc attribute can be used to provide informal information about the system used).
+The height and coordinate system information is defined in the element \<CoordinateSystem>. At least one coordinate system shall be defined.
+
+The Open Geospatial Consortium (OGC) naming system shall not be used in Inframodel from version 4.0 onward. 
+
+Exactly one horizontal system shall be defined using the European Petrol Survey Group (EPSG) naming system, or other local system in current use.
+
+The EPSG coordinate system is set in the attribute epsgCode as a valid code without prefix. 
+
+If a local horizontal coordinate system is used instead of a EPSG system, it is set using the attribute horizontalCoordinateSystemName and the optional desc attribute can provide informal information about the system used.
+
+Optionally, one vertical coordinate system can be specified in the attribute verticalCoordinateSystemName.
+This can be either using a EPSG namimg system (EPSG prefix and code, to be given here also when it is the same as for horizontal system), or a local vertical coordinate system (and the optional desc attribute can be used to provide informal information about the system used).
+
 It is also possible to set a rotationAngle for the coordinate system.
+
 The name attribute should not be used in Inframodel
 
 {{xtabulate4 CoordinateSystem}}
@@ -147,13 +158,16 @@ Information of the author of the file is recorded in the sub-element \<Applicati
 
 ## Feature dictionary
 
-The \<FeatureDictionary> identifies the specification source of extensions used in the file, and the point of access to their documentation. The contents of \<Feature> elements shall follow the source specification. LandXML-files in general may contain extensions from several different sources. In Inframodel file transfer, proper recognition and interpretation is required only for the extensions documented in this specification ( e.g. for the type coding systems used in an Inframodel file). The dictionary for Inframodel extensions shall be specified using \<FeatureDictionary> element as shown in the table below. The name shall be unique, and always 'inframodel' for the dictionary of Inframodel extensions, and exactly the same value shall be set in every Inframodel \<Feature> for attribute source (the \<Feature> attribute code being labeled with IM_ -prefix). The \<version> should match the version number of the Inframodel schema. Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ({{refto IMExtensions}} in the case of Inframodel feature dictionary).
+The \<FeatureDictionary> identifies the specification source of extensions used in the file, and the point of access to their documentation.
+
+The contents of \<Feature> elements shall follow the source specification. LandXML-files in general may contain extensions from several different sources. In Inframodel file transfer, proper recognition and interpretation is required only for the extensions documented in this specification ( e.g. for the type coding systems used in an Inframodel file).
+  
+The dictionary for Inframodel extensions shall be specified using \<FeatureDictionary> element as shown in the table below. 
+
+The name attribute shall be unique, and always 'inframodel' for the dictionary of Inframodel extensions, and exactly the same value shall be set in every Inframodel \<Feature> for attribute source (the \<Feature> attribute code being labeled with IM_ -prefix).
+
+The \<version> should match the version number of the Inframodel schema. 
+  
+Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ({{refto IMExtensions}} in the case of Inframodel feature dictionary).
 
 {{xtabulate4 FeatureDictionary}}
-
-
-
-
-
-
-
