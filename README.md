@@ -130,7 +130,7 @@ Feel free to submit your issue via the github issues tab.
 ### Propose a change to documentation, schema or add a new example file set
 Create your own fork of this repository, make your changes and/or additions to your fork repository, and send pull request. Be aware that you are publishing under "The Unlicense", so all of the rights of your content are given to public domain. 
 
-### Wan't to get involved more?
+### Wan't to get involved?
 Join us at buildingsmart.fi
 
 
