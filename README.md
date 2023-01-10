@@ -56,9 +56,22 @@ Naming syntax:
 
 **IM_xxxx_yyyy--ltProperty--gt**
 
-Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the name attribute of the 
+Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the fixed name attribute of the property element 
 
-This special naming is handled by "xtabulateX" moustache commands to produce fully typed element tables of landxml elements, and is removed by toolchain when actual verification schema is formed by the github CI actions. 
+This special naming is handled by "xtabulateX" moustache commands to produce fully typed tables of landxml elements, and is removed by toolchain when actual verification schema is formed by the github CI actions.
+
+Example xml code snippets are also formed from schema by the toolchain, each xml attribute (and optionally element, if element has contents) shall have example values on schema. Example values are parsed from <xs:documentation> element, each attribute(or element) definition shall have at least two instances of <xs:documentation>, one for human readable description and another with example data.
+
+Example data is regognized by "Example:" keyword, in example:
+
+```xml
+<xs:attribute name="date" type="xs:date" use="required">
+  <xs:annotation>
+		<xs:documentation>UTC date</xs:documentation>
+		<xs:documentation>Example:2021-08-20</xs:documentation>
+	</xs:annotation>
+</xs:attribute>
+.```
 
 ## How to contribute
 
