@@ -50,7 +50,8 @@ Supported "moustache commands":
 Schema folder contains the editable InfraModel XML schemas, one containing the elemnts, and another one for the enumerations used by the main schema. 
 
 These schemas use specific naming syntax to represent InfraModel \<Feature> extensions and \<Property> elements under most elements specified on schema. 
-Naming syntax:
+
+\<Feature> / \<Property> naming syntax:
 
 **IM_xxxx_yyyy--ltProperty--gt**
 
@@ -76,7 +77,7 @@ Example:
 		</xs:attribute>
 	</xs:complexType>
 </xs:element>
-```xml
+```
 
 **IM_xxxx--ltFeature--gt**
 
@@ -102,7 +103,7 @@ Example:
 		</xs:attribute>
 	</xs:complexType>
 </xs:element>
-```xml
+```
 
 Where xxxx is the name of feature extension (ie IM_Codings) and yyyy is the fixed name attribute of the property element 
 
