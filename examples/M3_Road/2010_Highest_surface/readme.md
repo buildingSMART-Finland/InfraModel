@@ -1,19 +1,19 @@
 
 ### Description
 
-Road construction example dataset M3_Road, real design data from western Finland
+Road construction example dataset M3_Road
 This sample dataset covers surfaces on "highest combination of surfaces" category
 
 ### Content
 
-This sample data set covers the following ISO15143-4 subset of LandXML plan types:
+This sample data set covers the following  plan types:
 - Route/Road
 
 
-This sample data set covers the following ISO15143-4 subset of LandXML element types:
+This sample data set covers the following InfraModel LandXML element types:
 - Surface
 - Surface->sourcedata->breaklines
-- ISO15143-4 taxonnomy extension
+- IM_Codings feature extension
 
 
 ### Illustrative image(s) of sample data set

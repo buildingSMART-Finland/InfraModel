@@ -18,9 +18,9 @@ Project WGS84 boundary:
 This sample data set covers the following plan types:
 - Route / road planning
 - Areal planning
-- Pipe network planning
+~~- Pipe network planning~~
 - Existing terrain
-- Background maps (2d+3d DXF)
+
 
 This sample data set covers the following Inframodel LandXML element types:
 - Alignment
@@ -47,8 +47,6 @@ Following files/subfolders belong to this sample data set:
 |[2010_Highest_surface](2010_Highest_surface)|Subfolder containing highest combination of surface|
 |[2012_Lowest_surface](2012_Lowest_surface)|Subfolder containing lowest combination of surface|
 |[3300_Lighting](3300_Lighting)|Subfolder containing light pole footings|
-|[9002_Backround_maps](9002_Backround_maps)|Subfolder containing DXF background maps|
-|[9003_Existing_object_avoidance](9003_Existing_object_avoidance)|Subfolder containing existing objects to avoid|
 |[9004_Terrain_models](9004_Terrain_models)|Subfolder containing terrain models|
 
 

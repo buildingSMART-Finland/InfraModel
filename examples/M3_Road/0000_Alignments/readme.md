@@ -1,18 +1,18 @@
 
 ### Description
 
-Road construction example dataset M3_Road, real design data from western Finland
+Road construction example dataset M3_Road
 This sample dataset covers road geometries
 
 ### Content
 
-This sample data set covers the following ISO15143-4 subset of LandXML plan types:
+This sample data set covers the following LandXML plan types:
 - Route/Road
 
 
-This sample data set covers the following ISO15143-4 subset of LandXML element types:
+This sample data set covers the following InfraModel LandXML element types:
 - Alignment(s)
-- ISO15143-4 taxonnomy extension
+- IM_Codings feature extension
 
 
 ### Illustrative image(s) of sample data set
@@ -28,7 +28,6 @@ Following files/subfolders belong to this sample data set:
 
 | Filename                          | Description                               |
 |-----------------------------------|-------------------------------------------|
-|[M3_Road-codelist-1.json](../M3_Road-codelist-1.json)|Finnish InfraBIM construction coding V2.32|
 |[M3_RS-CL.tg.xml](M3_RS-CL.tg.xml)|Main road M3 geometry|
 |[Y10_RS-CL.tg.xml](Y10_RS-CL.tg.xml)|Intersecting road Y10 geometry|
 |[Y11_RS-CL.tg.xml](Y11_RS-CL.tg.xml)|Intersecting road Y10 geometry| 

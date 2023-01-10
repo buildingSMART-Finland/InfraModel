@@ -1,14 +1,14 @@
 
 ### Description
 
-Road construction example dataset M3_Road, real design data from western Finland
+Road construction example dataset M3_Road
 This sample dataset covers light pole footing positions
 
 ### Content
 
-This sample data set covers the following ISO15143-4 subset of LandXML element types:
+This sample data set covers the following Inframodel LandXML element types:
 - Planfeature points
-- ISO15143-4 taxonomy extension
+- IM_Codings feature extension
 
 
 ### Illustrative image(s) of sample data set
@@ -23,6 +23,5 @@ Following files/subfolders belong to this sample data set:
 
 | Filename                          | Description                               |
 |-----------------------------------|-------------------------------------------|
-|[M3_Road-codelist-1.json](../M3_Road-codelist-1.json)|Finnish InfraBIM construction coding V2.32|
 |[LightingColumns.xy.xml](LightingColumns.xy.xml)|Light pole footing locations|
 

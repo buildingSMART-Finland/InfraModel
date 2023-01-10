@@ -1,19 +1,19 @@
 
 ### Description
 
-Road construction example dataset M3_Road, real design data from western Finland
+Road construction example dataset M3_Road
 This sample dataset covers surfaces on "lowest combination of surfaces" category
 
 ### Content
 
-This sample data set covers the following ISO15143-4 subset of LandXML plan types:
+This sample data set covers the following  plan types:
 - Route/Road
 
 
-This sample data set covers the following ISO15143-4 subset of LandXML element types:
+This sample data set covers the following InfraModel element types:
 - Surface
 - Surface->sourcedata->breaklines
-- ISO15143-4 taxonnomy extension
+- IM_Codings feature extension
 
 
 ### Illustrative image(s) of sample data set
@@ -29,7 +29,6 @@ Following files/subfolders belong to this sample data set:
 
 | Filename                          | Description                               |
 |-----------------------------------|-------------------------------------------|
-|[M3_Road-codelist-1.json](../M3_Road-codelist-1.json)|Finnish InfraBIM construction coding V2.32|
-|[M3_Lowest_Comb_Rev2_Lowest_combination_of_surface.mm.xml](M3_Lowest_Comb_Rev2_Lowest_combination_of_surface.mm.xml)|Main road M3 lowest combination of surfaces with breaklines|
-|[Y10_Lowest_Comb_rev2_Lowest_combination_of_surface.mm.xml](Y10_Lowest_Comb_rev2_Lowest_combination_of_surface.mm.xml)|Intersecting road Y10 lowest combination of surfaces with breaklines|
-|[Y11_Lowest_Comb_rev2_Lowest_combination_of_surface.mm.xml](Y11_Lowest_Comb_rev2_Lowest_combination_of_surface.mm.xml)|Intersecting road Y10 lowest combination of surfaces with breaklines| 
+|[M3_Lowest_Comb_Rev2_201200.mm.xml](M3_Lowest_Comb_Rev2_201200.mm.xml)|Main road M3 lowest combination of surfaces with breaklines|
+|[Y10_Lowest_Comb_rev2_201200.mm.xml](Y10_Lowest_Comb_rev2_201200.mm.xml)|Intersecting road Y10 lowest combination of surfaces with breaklines|
+|[Y11_Lowest_Comb_rev2_201200.mm.xml](Y11_Lowest_Comb_rev2_201200.mm.xml)|Intersecting road Y10 lowest combination of surfaces with breaklines| 
