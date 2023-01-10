@@ -542,7 +542,8 @@ def xsd_tabulate(schema_file,typename, chatty=False, leadingStatement=False, cod
             if(elem is not None):
                 handle_complextype(elem,fl,xsd)
             else:
-                raise ValueError("Type %s not found from %s!" % (typename,schema_file))
+                # raise ValueError("Type %s not found from %s!" % (typename,schema_file))
+                print("ERROR: Type %s not found from %s!" % (typename,schema_file));
                 return
     field_len = 5
     types_len = 3
