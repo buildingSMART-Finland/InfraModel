@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<LandXML xmlns="http://www.inframodel.fi/inframodel" xmlns:im="http://im.inframodel.fi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.inframodel.fi/inframodel https://buildingsmart.fi/infra/schema/4.0.3/inframodel.xsd http://im.inframodel.fi https://buildingsmart.fi/infra/schema/4.0.3/im.xsd" version="1.2" date="2020-09-11" time="19:03:35" language="finnish" readOnly="false">
+	<Units>
+		<Metric areaUnit="squareMeter" linearUnit="meter" volumeUnit="cubicMeter" temperatureUnit="celsius" pressureUnit="HPA" diameterUnit="meter" widthUnit="meter" heightUnit="meter" velocityUnit="kilometersPerHour" angularUnit="grads" directionUnit="grads" elevationUnit="meter"/>
+	</Units>
+	<CoordinateSystem name="GK21" epsgCode="3875" rotationAngle="0" verticalCoordinateSystemName="N2000"/>
+	<FeatureDictionary name="inframodel" version="4.0.3">
+		<DocFileRef name="Inframodel extensions" location="https://buildingsmart.fi/infra/inframodel/pages/extensions.html"/>
+	</FeatureDictionary>
+	<Project name="M3_site" desc="M3_site">
+		<Feature code="IM_codings" source="inframodel">
+			<Property label="terrainCoding" value="Infra"/>
+			<Property label="surfaceCoding" value="InfraBIM"/>
+			<Property label="infraCoding" value="InfraBIM"/>
+		</Feature>
+	</Project>
+	<Application name="3D-Win" manufacturer="Novatron Oy" version="6.6.4" manufacturerURL="https://3d-system.fi" timeStamp="2020-09-11T19:03:35+02:00">
+		<Author createdBy="Petteri Palviainen" createdByEmail="petteri.palviainen@novatron.fi" company="Novatron Oy" companyURL="www.novatron.fi"/>
+	</Application>
+	<Alignments name="M3_RS">
+		<Alignment name="M3_RS - CL" desc="M3_RS - CL" length="1266.246238" staStart="0.000000" state="proposed">
+			<CoordGeom>
+				<Line length="77.312302" staStart="0.000000" dir="372.175565">
+					<Start>6782560.556700 21530239.683600 0.000000</Start>
+					<End>6782630.601476 21530272.408535 0.000000</End>
+				</Line>
+				<Curve length="134.388671" staStart="77.312302" radius="250.000000" rot="cw" chord="132.776438" dirStart="372.175565" dirEnd="337.953770">
+					<Start>6782630.601476 21530272.408535 0.000000</Start>
+					<Center>6782524.780882 21530498.907987 0.000000</Center>
+					<End>6782731.653013 21530358.537330 0.000000</End>
+				</Curve>
+				<Line length="85.665904" staStart="211.700973" dir="337.953770">
+					<Start>6782731.653013 21530358.537330 0.000000</Start>
+					<End>6782779.752930 21530429.424883 0.000000</End>
+				</Line>
+				<Curve length="158.274699" staStart="297.366877" radius="500.000000" rot="ccw" chord="157.614706" dirStart="337.953770" dirEnd="358.105931">
+					<Start>6782779.752930 21530429.424883 0.000000</Start>
+					<Center>6783193.497192 21530148.683569 0.000000</Center>
+					<End>6782887.701483 21530544.270455 0.000000</End>
+				</Curve>
+				<Line length="54.559381" staStart="455.641577" dir="358.105931">
+					<Start>6782887.701483 21530544.270455 0.000000</Start>
+					<End>6782930.867434 21530577.638504 0.000000</End>
+				</Line>
+				<Curve length="164.319682" staStart="510.200957" radius="250.000000" rot="cw" chord="161.377755" dirStart="358.105931" dirEnd="316.262268">
+					<Start>6782930.867434 21530577.638504 0.000000</Start>
+					<Center>6782777.969580 21530775.431947 0.000000</Center>
+					<End>6783019.857184 21530712.262440 0.000000</End>
+				</Curve>
+				<Line length="102.873594" staStart="674.520639" dir="316.262268">
+					<Start>6783019.857184 21530712.262440 0.000000</Start>
+					<End>6783045.851082 21530811.797829 0.000000</End>
+				</Line>
+				<Curve length="62.739784" staStart="777.394233" radius="200.000000" rot="cw" chord="62.482849" dirStart="316.262268" dirEnd="296.291574">
+					<Start>6783045.851082 21530811.797829 0.000000</Start>
+					<Center>6782852.340998 21530862.333435 0.000000</Center>
+					<End>6783052.001766 21530873.977211 0.000000</End>
+				</Curve>
+				<Line length="1.753433" staStart="840.134018" dir="296.291574">
+					<Start>6783052.001766 21530873.977211 0.000000</Start>
+					<End>6783051.899683 21530875.727670 0.000000</End>
+				</Line>
+				<Curve length="92.411641" staStart="841.887451" radius="150.000000" rot="ccw" chord="90.957101" dirStart="296.291574" dirEnd="335.512293">
+					<Start>6783051.899683 21530875.727670 0.000000</Start>
+					<Center>6783201.645260 21530884.460502 0.000000</Center>
+					<End>6783074.384057 21530963.861926 0.000000</End>
+				</Curve>
+				<Line length="1.501238" staStart="934.299091" dir="335.512293">
+					<Start>6783074.384057 21530963.861926 0.000000</Start>
+					<End>6783075.178726 21530965.135589 0.000000</End>
+				</Line>
+				<Curve length="68.943977" staStart="935.800329" radius="200.000000" rot="cw" chord="68.603119" dirStart="335.512293" dirEnd="313.566743">
+					<Start>6783075.178726 21530965.135589 0.000000</Start>
+					<Center>6782905.497122 21531071.004155 0.000000</Center>
+					<End>6783100.972871 21531028.704843 0.000000</End>
+				</Curve>
+				<Line length="22.310265" staStart="1004.744306" dir="313.566743">
+					<Start>6783100.972871 21531028.704843 0.000000</Start>
+					<End>6783105.691415 21531050.510422 0.000000</End>
+				</Line>
+				<Curve length="182.647902" staStart="1027.054571" radius="400.000000" rot="cw" chord="181.065267" dirStart="313.566743" dirEnd="284.497427">
+					<Start>6783105.691415 21531050.510422 0.000000</Start>
+					<Center>6782714.739918 21531135.109046 0.000000</Center>
+					<End>6783102.938610 21531231.554762 0.000000</End>
+				</Curve>
+				<Line length="56.543764" staStart="1209.702474" dir="284.497427">
+					<Start>6783102.938610 21531231.554762 0.000000</Start>
+					<End>6783089.305100 21531286.430300 0.000000</End>
+				</Line>
+			</CoordGeom>
+			<Profile staStart="0.000000">
+				<ProfAlign name="M3_RS - CL">
+					<PVI>0.000000 16.881249</PVI>
+					<PVI>3.780491 16.933442</PVI>
+					<CircCurve length="48.653858" radius="1500.000000">77.651516 16.564087</CircCurve>
+					<CircCurve length="70.618005" radius="-2000.000000">143.344365 18.366885</CircCurve>
+					<CircCurve length="68.355931" radius="3000.000000">288.117726 17.227053</CircCurve>
+					<CircCurve length="59.686736" radius="-1700.000000">474.182208 20.001900</CircCurve>
+					<CircCurve length="85.982341" radius="1700.000000">619.151388 17.073474</CircCurve>
+					<CircCurve length="102.631152" radius="-1700.000000">738.613996 20.703896</CircCurve>
+					<CircCurve length="72.296340" radius="1700.000000">831.656325 17.912626</CircCurve>
+					<CircCurve length="71.303203" radius="-1700.000000">1029.343888 20.391017</CircCurve>
+					<CircCurve length="60.191445" radius="1700.000000">1099.903932 18.315473</CircCurve>
+					<PVI>1263.496534 19.297028</PVI>
+					<PVI>1266.246171 19.377000</PVI>
+				</ProfAlign>
+			</Profile>
+			<Feature code="IM_coding" source="inframodel">
+				<Property label="terrainCoding" value="101"/>
+				<Property label="terrainCodingDesc" value="Measuring line (alignment)"/>
+			</Feature>
+		</Alignment>
+	</Alignments>
+</LandXML>

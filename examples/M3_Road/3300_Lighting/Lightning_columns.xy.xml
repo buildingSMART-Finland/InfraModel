@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<LandXML xmlns="http://www.inframodel.fi/inframodel" xmlns:im="http://im.inframodel.fi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.inframodel.fi/inframodel https://buildingsmart.fi/infra/schema/4.0.3/inframodel.xsd http://im.inframodel.fi https://buildingsmart.fi/infra/schema/4.0.3/im.xsd" version="1.2" date="2020-09-17" time="07:54:38" language="finnish" readOnly="false">
+	<Units>
+		<Metric areaUnit="squareMeter" linearUnit="meter" volumeUnit="cubicMeter" temperatureUnit="celsius" pressureUnit="HPA" diameterUnit="meter" widthUnit="meter" heightUnit="meter" velocityUnit="kilometersPerHour" angularUnit="grads" directionUnit="grads" elevationUnit="meter"/>
+	</Units>
+	<CoordinateSystem name="GK21" epsgCode="3875" rotationAngle="0" verticalCoordinateSystemName="N2000"/>
+	<FeatureDictionary name="inframodel" version="4.0.3">
+		<DocFileRef name="Inframodel extensions" location="https://buildingsmart.fi/infra/inframodel/pages/extensions.html"/>
+	</FeatureDictionary>
+	<Project name="M3_site" desc="M3_site">
+		<Feature code="IM_codings" source="inframodel">
+			<Property label="terrainCoding" value="Infra"/>
+			<Property label="surfaceCoding" value="InfraBIM"/>
+			<Property label="infraCoding" value="InfraBIM"/>
+		</Feature>
+	</Project>
+	<Application name="3D-Win" manufacturer="Novatron Oy" version="6.6.4" manufacturerURL="https://3d-system.fi" timeStamp="2020-09-17T07:54:38+02:00">
+		<Author createdBy="Petteri Palviainen" createdByEmail="petteri.palviainen@novatron.fi" company="Novatron Oy" companyURL="www.novatron.fi"/>
+	</Application>
+	<CgPoints name="Lightning_columns" code="">
+		<CgPoints name="Lightning_columns_1" desc="Lightning columns" code="336100">
+			<CgPoints name="Lightning_columns_1_1" desc="Light pole, concrete" code="D2342">
+				<CgPoint name="3036" code="D2342" surveyOrder="1" timeStamp="2020-09-17T04:54:38Z">6783020.064000 21530666.426000 17.400000</CgPoint>
+				<CgPoint name="3037" code="D2342" surveyOrder="2" timeStamp="2020-09-17T04:54:38Z">6783005.388000 21530713.317000 17.696000</CgPoint>
+				<CgPoint name="3021" code="D2342" surveyOrder="3" timeStamp="2020-09-17T04:54:38Z">6783050.675000 21530809.097000 19.129000</CgPoint>
+				<CgPoint name="3022" code="D2342" surveyOrder="4" timeStamp="2020-09-17T04:54:38Z">6783056.907000 21530844.405000 18.203000</CgPoint>
+				<CgPoint name="3023" code="D2342" surveyOrder="5" timeStamp="2020-09-17T04:54:38Z">6783057.234000 21530876.148000 17.846000</CgPoint>
+				<CgPoint name="3024" code="D2342" surveyOrder="6" timeStamp="2020-09-17T04:54:38Z">6783058.200000 21530903.092000 17.999000</CgPoint>
+				<CgPoint name="3025" code="D2342" surveyOrder="7" timeStamp="2020-09-17T04:54:38Z">6783064.150000 21530929.390000 18.350000</CgPoint>
+				<CgPoint name="3026" code="D2342" surveyOrder="8" timeStamp="2020-09-17T04:54:38Z">6783074.877000 21530954.126000 18.700000</CgPoint>
+				<CgPoint name="3027" code="D2342" surveyOrder="9" timeStamp="2020-09-17T04:54:38Z">6783091.997000 21530985.059000 19.138000</CgPoint>
+				<CgPoint name="3028" code="D2342" surveyOrder="10" timeStamp="2020-09-17T04:54:38Z">6783104.112000 21531018.843000 19.575000</CgPoint>
+				<CgPoint name="3029" code="D2342" surveyOrder="11" timeStamp="2020-09-17T04:54:38Z">6783112.151000 21531055.277000 19.586000</CgPoint>
+				<CgPoint name="3030" code="D2342" surveyOrder="12" timeStamp="2020-09-17T04:54:38Z">6783117.826000 21531092.326000 18.809000</CgPoint>
+				<CgPoint name="3031" code="D2342" surveyOrder="13" timeStamp="2020-09-17T04:54:38Z">6783120.054000 21531129.741000 18.118000</CgPoint>
+				<CgPoint name="3032" code="D2342" surveyOrder="14" timeStamp="2020-09-17T04:54:38Z">6783118.817000 21531167.203000 18.183000</CgPoint>
+				<CgPoint name="3033" code="D2342" surveyOrder="15" timeStamp="2020-09-17T04:54:38Z">6783114.467000 21531202.391000 18.394000</CgPoint>
+				<CgPoint name="3034" code="D2342" surveyOrder="16" timeStamp="2020-09-17T04:54:38Z">6783107.095000 21531237.016000 18.604000</CgPoint>
+				<CgPoint name="3035" code="D2342" surveyOrder="17" timeStamp="2020-09-17T04:54:38Z">6783098.656000 21531270.983000 18.874000</CgPoint>
+				<CgPoint name="3019" code="D2342" surveyOrder="18" timeStamp="2020-09-17T04:54:38Z">6783030.461000 21530731.693000 18.990000</CgPoint>
+				<CgPoint name="3020" code="D2342" surveyOrder="19" timeStamp="2020-09-17T04:54:38Z">6783040.568000 21530770.395000 19.528000</CgPoint>
+				<CgPoint name="3017" code="D2342" surveyOrder="20" timeStamp="2020-09-17T04:54:38Z">6783005.222000 21530658.985000 17.225000</CgPoint>
+				<CgPoint name="3018" code="D2342" surveyOrder="21" timeStamp="2020-09-17T04:54:38Z">6783019.580000 21530692.801000 17.809000</CgPoint>
+				<CgPoint name="3008" code="D2342" surveyOrder="22" timeStamp="2020-09-17T04:54:38Z">6782776.675000 21530415.360000 17.014000</CgPoint>
+				<CgPoint name="3009" code="D2342" surveyOrder="23" timeStamp="2020-09-17T04:54:38Z">6782798.950000 21530447.031000 17.351000</CgPoint>
+				<CgPoint name="3010" code="D2342" surveyOrder="24" timeStamp="2020-09-17T04:54:38Z">6782823.397000 21530476.867000 17.934000</CgPoint>
+				<CgPoint name="3011" code="D2342" surveyOrder="25" timeStamp="2020-09-17T04:54:38Z">6782850.095000 21530504.708000 18.515000</CgPoint>
+				<CgPoint name="3012" code="D2342" surveyOrder="26" timeStamp="2020-09-17T04:54:38Z">6782878.881000 21530530.384000 19.097000</CgPoint>
+				<CgPoint name="3013" code="D2342" surveyOrder="27" timeStamp="2020-09-17T04:54:38Z">6782910.245000 21530554.935000 19.320000</CgPoint>
+				<CgPoint name="3014" code="D2342" surveyOrder="28" timeStamp="2020-09-17T04:54:38Z">6782937.989000 21530576.441000 18.781000</CgPoint>
+				<CgPoint name="3015" code="D2342" surveyOrder="29" timeStamp="2020-09-17T04:54:38Z">6782964.191000 21530600.717000 18.074000</CgPoint>
+				<CgPoint name="3016" code="D2342" surveyOrder="30" timeStamp="2020-09-17T04:54:38Z">6782986.749000 21530628.412000 17.391000</CgPoint>
+				<CgPoint name="3002" code="D2342" surveyOrder="31" timeStamp="2020-09-17T04:54:38Z">6782617.181000 21530260.234000 16.272000</CgPoint>
+				<CgPoint name="3003" code="D2342" surveyOrder="32" timeStamp="2020-09-17T04:54:38Z">6782649.841000 21530276.280000 16.683000</CgPoint>
+				<CgPoint name="3004" code="D2342" surveyOrder="33" timeStamp="2020-09-17T04:54:38Z">6782680.495000 21530296.530000 17.516000</CgPoint>
+				<CgPoint name="3005" code="D2342" surveyOrder="34" timeStamp="2020-09-17T04:54:38Z">6782707.925000 21530320.970000 17.748000</CgPoint>
+				<CgPoint name="3006" code="D2342" surveyOrder="35" timeStamp="2020-09-17T04:54:38Z">6782731.564000 21530349.094000 17.493000</CgPoint>
+				<CgPoint name="3007" code="D2342" surveyOrder="36" timeStamp="2020-09-17T04:54:38Z">6782754.215000 21530382.261000 17.179000</CgPoint>
+				<CgPoint name="3001" code="D2342" surveyOrder="37" timeStamp="2020-09-17T04:54:38Z">6782580.941000 21530243.302000 16.516000</CgPoint>
+				<Feature code="IM_coding" source="inframodel">
+					<Property label="infraCoding" value="D2342"/>
+					<Property label="infraCodingDesc" value="Light pole, concrete"/>
+				</Feature>
+				<Feature code="IM_cgpoints" source="inframodel">
+					<Property label="geometryType" value="pointGroup"/>
+				</Feature>
+			</CgPoints>
+		</CgPoints>
+	</CgPoints>
+</LandXML>

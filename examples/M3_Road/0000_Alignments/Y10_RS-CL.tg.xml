@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<LandXML xmlns="http://www.inframodel.fi/inframodel" xmlns:im="http://im.inframodel.fi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.inframodel.fi/inframodel https://buildingsmart.fi/infra/schema/4.0.3/inframodel.xsd http://im.inframodel.fi https://buildingsmart.fi/infra/schema/4.0.3/im.xsd" version="1.2" date="2020-09-11" time="19:05:07" language="finnish" readOnly="false">
+	<Units>
+		<Metric areaUnit="squareMeter" linearUnit="meter" volumeUnit="cubicMeter" temperatureUnit="celsius" pressureUnit="HPA" diameterUnit="meter" widthUnit="meter" heightUnit="meter" velocityUnit="kilometersPerHour" angularUnit="grads" directionUnit="grads" elevationUnit="meter"/>
+	</Units>
+	<CoordinateSystem name="GK21" epsgCode="3875" rotationAngle="0" verticalCoordinateSystemName="N2000"/>
+	<FeatureDictionary name="inframodel" version="4.0.3">
+		<DocFileRef name="Inframodel extensions" location="https://buildingsmart.fi/infra/inframodel/pages/extensions.html"/>
+	</FeatureDictionary>
+	<Project name="M3_site" desc="M3_site">
+		<Feature code="IM_codings" source="inframodel">
+			<Property label="terrainCoding" value="Infra"/>
+			<Property label="surfaceCoding" value="InfraBIM"/>
+			<Property label="infraCoding" value="InfraBIM"/>
+		</Feature>
+	</Project>
+	<Application name="3D-Win" manufacturer="Novatron Oy" version="6.6.4" manufacturerURL="https://3d-system.fi" timeStamp="2020-09-11T19:05:07+02:00">
+		<Author createdBy="Petteri Palviainen" createdByEmail="petteri.palviainen@novatron.fi" company="Novatron Oy" companyURL="www.novatron.fi"/>
+	</Application>
+	<Alignments name="Y10_RS">
+		<Alignment name="Y10_RS - CL" desc="Y10_RS - CL" length="37.339894" staStart="0.000000" state="proposed">
+			<CoordGeom>
+				<Line length="12.054697" staStart="0.000000" dir="27.869549">
+					<Start>6783004.396000 21530669.455100 0.000000</Start>
+					<End>6783015.313910 21530664.344821 0.000000</End>
+				</Line>
+				<Curve length="17.729458" staStart="12.054697" radius="25.000000" rot="ccw" chord="17.360256" dirStart="27.869549" dirEnd="73.017244">
+					<Start>6783015.313910 21530664.344821 0.000000</Start>
+					<Center>6783004.715803 21530641.702381 0.000000</Center>
+					<End>6783027.503670 21530651.984067 0.000000</End>
+				</Curve>
+				<Line length="7.555739" staStart="29.784155" dir="73.017244">
+					<Start>6783027.503670 21530651.984067 0.000000</Start>
+					<End>6783030.611100 21530645.096900 0.000000</End>
+				</Line>
+			</CoordGeom>
+			<Profile staStart="0.000000">
+				<ProfAlign name="Y10_RS - CL">
+					<PVI>0.000000 17.695830</PVI>
+					<CircCurve length="6.499997" radius="100.000000">7.247876 17.478129</CircCurve>
+					<CircCurve length="11.383712" radius="-750.000000">23.389279 18.042864</CircCurve>
+					<PVI>37.337764 18.318999</PVI>
+				</ProfAlign>
+			</Profile>
+			<Feature code="IM_coding" source="inframodel">
+				<Property label="terrainCoding" value="101"/>
+				<Property label="terrainCodingDesc" value="Measuring line (alignment)"/>
+			</Feature>
+		</Alignment>
+	</Alignments>
+</LandXML>
