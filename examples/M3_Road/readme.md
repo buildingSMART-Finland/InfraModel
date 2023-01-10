@@ -1,7 +1,7 @@
 
 ### Description
 
-Road construction dataset M3_Road, real design data from western Finland
+Road construction dataset M3_Road
 
 Project WGS84 boundary: 
 
@@ -22,11 +22,11 @@ This sample data set covers the following plan types:
 - Existing terrain
 - Background maps (2d+3d DXF)
 
-This sample data set covers the following ISO15143-4 subset of LandXML element types:
+This sample data set covers the following Inframodel LandXML element types:
 - Alignment
 - Surface
-- Planfeature
-- Pipenetworks
+~~- Planfeature~~
+~~- Pipenetworks~~
 
 
 ### Illustrative image(s) of sample data set
@@ -43,9 +43,6 @@ Following files/subfolders belong to this sample data set:
 
 | Filename                          | Description                               |
 |-----------------------------------|-------------------------------------------|
-|[M3_Road-codelist-1.json](M3_Road-codelist-1.json)|Worksite codelist, Finnish InfraBIM construction coding V2.32|
-|M3_Road-coordsys-1.json|TODO: Add coordinate system json (ETRS-GK21FIN)|
-|M3_Road-geoid-1.json|TODO: Add N2000 geoid json (ETRS-GK21FIN)|
 |[0000_Alignments](0000_Alignments)|Subfolder containing road geometries|
 |[2010_Highest_surface](2010_Highest_surface)|Subfolder containing highest combination of surface|
 |[2012_Lowest_surface](2012_Lowest_surface)|Subfolder containing lowest combination of surface|
