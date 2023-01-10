@@ -24,9 +24,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      #sudo apt-get update && 
       - name: Install required apt-packages
-        run: sudo apt-get update && sudo apt-get install -y $(cat $GITHUB_WORKSPACE/CI/apt-packages.txt)
+        run: sudo apt-get install -y $(cat $GITHUB_WORKSPACE/CI/apt-packages.txt)
       
       - name: Install required python-packages
         run: sudo pip3 install -r $GITHUB_WORKSPACE/CI/py-packages.txt
