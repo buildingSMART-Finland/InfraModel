@@ -12,9 +12,6 @@ Document artefacts are built automatically from this repository by github CI act
 ### /.github/workflows
 Workflows folder contains the github actions CI automation script(s).
 
-### /CI
-CI folder contains the build tools and templates for the document generation, used by github actions. The toolchain processes and combines the raw markdown documents to one, and then uses pandoc to convert markdwn to publisheable documents (word,pdf,html). Toolchain also processes the schemas and produces verification schema and enumeration excel document.
-
 ### /examples
 Examples folder contains documented example files/filesets following this specification. Example documentation shall follow the template available at /examples/sample-data-template.md. See /examples/README.md for more details
 
