@@ -1,5 +1,5 @@
 
-# Instructions for submitting new InfraModel sample data sets
+# Instructions for submitting new Inframodel sample data sets
 
 - Create your own fork of this repository
 
