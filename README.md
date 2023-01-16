@@ -22,7 +22,7 @@ Figures folder contains all figures used by the documentation.
 Markdown folder contains the editable parts of documentation as markdown(.md) documents. 
   
 ### /schema
-Schema folder contains the editable InfraModel XML schemas, one containing the elements, one containing the objects in "im" namespace, and another one for the enumerations used by the main schema. 
+Schema folder contains the editable InfraModel XML schemas, one containing the elements, and another containing the objects in "im" namespace. 
 
 ## How to contribute
 
