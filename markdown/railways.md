@@ -24,14 +24,7 @@ The KM-posting method in inframodel uses **\<StaEquation>** in a way that somewh
 
 Although the Finnish KM-posting system is nominally kilometre based, it cannot be used to define distances between points. The actual length of a track is therefore calculated along the centerline **\<Alignment>** of that track, resulting in continuous internal stationing in **staInternal** attribute values.
 
-The **\<StaEquation>** attributes:
--	**staAhead**	the "new" station value
-e.g. [2963.059]
--	**staBack**	distance to previous km-post station
-e.g. [979.720000]
--	**staInternal**	internal stationing
-e.g. [2963.059]
--	**desc** description	eg. [KM30]
+{{xtabulate StaEquation}}
 
 Todo kuva KM_paalutus
 
