@@ -105,24 +105,20 @@ A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End
 1. {{xtabulate5 Curve}}
 2. The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
 
-\<Start>*northing1 easting1*\</Start>
-
-\<Center>*northing2 easting2*\</Center>
-
-\<End>*northing3 easting3*\</End>
+{{xmlsnippet Start}}
+  
+{{xmlsnippet Center}}
+  
+{{xmlsnippet End}}
 
 #### Transition curve
 
 A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end tangents* **\<PI>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions), together with mandatory attribute *transition curve type* **spiType**. In addition, attributes **length**, *end radius* **radiusEnd**, *start radius* **radiusStart**, *direction of rotation* **rot**, the *transition curve parameter* **constant**, *end direction* **dirEnd** and *start direction* **dirStart** are mandatory. In Finnish route design the default *transition curve type* is an Euler spiral "clothoid"; bi-quadratic parabola "biquadraticParabola", or third-degree spiral "cubic" may be used under special circumstances e.g. in railway design.
 
-1. {{xtabulate5 Transition curve}}
-2. The **<Start>**, point on intersection of start and end tangents **<PI>** and **<End>** are defined as 2D coordinates separated by spaces.
+{{xtabulate5 Curve}}
 
-\<Start>*northing1 easting1*\</Start>
+The **<Start>**, point on intersection of start and end tangents **<PI>** and **<End>** are defined as 2D coordinates separated by spaces.
 
-\<PI>*northing2 easting2*\</PI>
-
-\<End>*northing3 easting3*\</End>
 
 ### Vertical geometry
 
@@ -133,11 +129,8 @@ The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** elemen
 
 Todo kuva Road\_PVI_CircCurve
 
-The *starting station* **staStart** is an optional attribute of the vertical **\<Profile>**.
-
 {{xtabulate5 Profile}}
 
-The **name** of the *vertical geometry* **<ProfAlign>** is a mandatory attribute:
 
 {{xtabulate5 ProfAlign}}
 
@@ -147,8 +140,6 @@ The first and last element of the *vertical profile* is always *a Point of Verti
 
 *A Point of Vertical Intersection* **\<PVI>** marks the ends of the line segments of a vertical geometry. *A Point of Vertical Intersection* is described by a **station** and an **elevation**. These are separated by a space.
 
-\<PVI>station elevation\</PVI>
-
 {{xtabulate5 PVI}}
 
 #### Vertical curve
@@ -156,10 +147,6 @@ The first and last element of the *vertical profile* is always *a Point of Verti
 Vertical circular arcs may be combined into S-curves or compound curves. The first and last element of a vertical *profile* is never a vertical circular arc **\<CircCurve>**.
 
 The location of the **\<CircCurve>** is defined by the *station* and *elevation*, separated by spaces.
-
-\<CircCurve length="length" radius="radius">station elevation\</CircCurve>
-
-The mandatory parameters of a verical circular arc are 3D *length* **length** and *radius* **radius**.
 
 {{xtabulate5 CircCurve}}
 
@@ -175,22 +162,7 @@ Todo Kuva Road_IrLine
 
 A *line string* has optional attributes and sub-elements to define its **\<Start>**, **\<End>** and the *intermediate points* either as **\<PntList2D>** or **\<PntList3D>**.
 
-1. {{xtabulate5 IrregularLine}}
-
-2. The **\<Start>** and **\<End>** points of an **\<IrregularLine>**: individual coordinates are separated by spaces.
-
-*\<Start>northing1 easting1 (elevation1)\</Start>*
-
-*\<End>northing2 easting2 (elevation2)\</End>*
-
-3. a The *2D point list* **\<PntList2D>**, consists of 2D coordinates of intermediate points and start and end points, separated by spaces.
-
-*\<PntList2D>northing1 easting1 northing3 easting3 northing4
-easting4...northing2 easting2\</PntList2D>*
-
-3. b The *3D point list* **\<PntList3D>**, consists of 3D coordinates of intermediate points and start and end points, separated by spaces.
-
-*\<PntList3D>northing1 easting1 elevation1 northing3 easting3 elevation3 northing4 easting4 elevation4...northing2 easting2 elevation2\</PntList3D>*
+{{xtabulate5 IrregularLine}}
 
 ## String line model
 
@@ -204,12 +176,12 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 
 1. The layer is assigned a unique **name**.
 2. The constituent line string alignments are selected by addressing the line strings by their name **\<Alignment>.name** going from the left to the right. The line names are separated by commas.
-4. The **centreline** may optionally be set.
-5. The **surfaceCoding** and **surfaceCodingDesc** may optionally be set.
+3. The **centreline** may optionally be set.
+4. The **surfaceCoding** and **surfaceCodingDesc** may optionally be set.
 
 A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
 
-{{xtabulate5 Feature}}
+{{xtabulate5 IM_stringLineLayers}}
 
 ## Terrain model
 
@@ -225,7 +197,7 @@ The route terrain model consists of:
 
 Todo kuva Surfaces_terrain
 
-{{xtabulate5 Surfaces}}
+{{xtabulate Surfaces}}
 
 ## Structural model
 
@@ -234,7 +206,7 @@ The structural model of a route contains the surface meshes of all structural la
 Todo kuva Surfaces_Rakennemalli
 Todo kuva Surfaces_kolmiomalli
 
-{{xtabulate5 Surfaces}}
+{{xtabulate Surfaces}}
 
 ## Cross-section parameters
 
