@@ -1,0 +1,243 @@
+# Route planning
+
+## Contents
+
+Routes encompass highways, local roads and private roads, waterways and railways. Each route has one continuous stationing reference alignment and a vertical alignment. In inframodel file transfer, a route plan consists of parametric route alignments, their stringline models and surface models as triangulated meshes.
+
+An *alignment group* \<Alignments> consists of *several alignments* \<Alignment>. Surfaces can be described in two ways:
+- Geometric alignment 
+- Line string 
+
+Geometric alignments describe parameters of the horizontal and vertical elements of an alignment. A line string is a description where consecutive points are connected by line segments. Geometric alignments are typically used to describe the reference line of a road as well as other important geometric descriptions such as road edges. Other route components are usually described as line strings.
+
+Todo kuva Road_Geometriakuvaus
+
+Once the alignments have been described, it is possible to assign them to a line string model, that contains a description of the layers of the route structure. Alternatively, a surface model of the route is a triangular mesh representation of the surface structure of the route. The structural model describes all the layers in a route structure as triangle mesh surfaces.
+
+Cross-sectional parameters, which are described in further detail in the sections covering each route type, complement the route description with parametric information of the cross-sections (without actual cross section geometry).
+
+### Route description
+
+Route description is driven by stationing reference line (principal alignment). Other geometry lines are given in the same *alignment collection* \<Alignments> each as separate *alignment* \<Alignment>. Geometry lines and stringlines are given in separate *alignment collections* \<Alignments>.
+
+Different routes, alignement options and stationing reference line discontinuities are placed in *separate* \<Alignments>.
+
+### Naming and Type coding
+
+*Alignment groups* and each individual *alignment* within a group must be assigned unique name. It is advisble to assign different names to *geometric alignments* and line strings in string line models. Assigning *type codes* to alignments is optional in Inframodel file transfers. An \<Alignment> may assigned a *type code* as explained in {{refsec Type coding}}. Layers of string line model of the route, described in optional "IM_stringLineLayers" extension may also have type codes.
+
+## Composing alignments
+
+The names *name* of *alignment groups* \<Alignments> are unique. The **state** attribute is optional. The *description* attribute **desc** is also optional and may be used to describe the *alignment group* \<Alignments> in further detail.
+
+{{xtabulate Alignments}}
+
+An **\<Alignment>** is an element that describes 
+1. a geometric alignment or 
+2. a line string
+  
+The alignments within a file do not have to be presented in any particular order. It is, however, advisable to first describe geometric alignments and then line strings. The **\<Alignment>** definition describes a **name**, **length**, *the stationing start* **staStart** and the **state** of the **\<Alignment>**. It is recommended that lines are named in an intuitive fashion. If the **state** is set for the entire alignment group **\<Alignments>** the **\<Alignment>** elements will inherit the **state** attribute from the parent element, hence is should not be set. When alternative alignments are being described by different *alignment groups* the differences between elements can be described briefly in the  atrribute **desc**. The optional *object identifying number* **oID** makes object management easier in applications.
+
+{{xtabulate5 alignment}}
+
+A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element. The purpose of the alignments is defined by a type code.
+
+### Plan information
+
+The *plan information* of an *alignment group* is described under the **\<Alignments>** element in the optional extension "IM\_plan". If the plan consists of subsets that progress at a different rate or there is some other reason to partition the project into smaller entities, these subsets should be sorted into separate *alignment groups*. The *plan information* contains information about the **planName**, the **planCode**, the **planState** and a description of the plan, **planDesc**. The state is described according to a system agreed on by the parties of the project. See sample in the table below. The *plan information* is also set when describing the surfaces of a route. These are set in the "IM_plan" extension of the **\<Surfaces>** element.
+
+{{xtabulate5 IM_plan}}
+
+### Type coding
+
+The type coding systems of an **\<Alignment>** are defined in the project information. The type coding is set for each **\<Alignment>** element, whose children inherit the values. The type code of an **\<Alignment>** is set in the extension "IM_coding" with the **infraCoding** and its description **infraCodingDesc**. This documentation discusses individually different route types: 
+1. roads and streets 
+2. railways 
+3. waterways
+
+The string line model is described in the extension "IM_stringLineLayers" (after the individual alignments); the description procedure is explained in further detail in {{refsec String line model}}. The *line strings* of the *string line model* are grouped into layers that are type coded using the *surface model type codes* **surfaceCoding** and its description **surfaceCodingDesc**.
+
+Inframodel exchange uses the [general InfraBIM type coding [InfraBIM]](https://buildingsmart.fi/infrabim/infrabim-nimikkeisto/) for both alignments and string line models.
+Alternative type coding systems can be set using e.g. name **proprietaryInfraCoding** and description **proprietaryInfraCodingDesc**.
+
+{{xtabulate5 Feature under an Alignment}}
+
+{{xtabulate5 Feature}}
+
+## Geometric alignments
+
+The geometric alignment contains the horizontal and vertical alignment information. The *horizontal alignment* information is described in the **\<CoordGeom>** and the corresponding (0 or 1) *vertical geometry* in the element **\<Profile>**.**\<ProfAlign>**. For the connection between horizontal and vertical geometry it is crucial that the geometric description is continuous from the beginning of the first element to the end of the last element. The *horizontal geometry* is described using a 2D coordinate representation, and the final elevation values along the element can only be produced once the vertical geometry is finished. The illustration below shows the horizontal and vertical geometry definition and their connection principal, the optional **staStart** attribute in **\<Line>**, **\<Curve>**, **\<Spiral>** and **\<Profile>** SHALL NOT be used for calculating horizontal or vertical geometry.
+
+Todo kuva Alignments\_Hor_Ver
+
+
+### Horizontal geometry
+
+The dimensioning components of horizontal alignments:
+
+- **\<Line>**
+- **\<Curve>**
+- **\<Spiral>**
+
+The horizontal alignment is a listing of consecutive dimensioning components, starting at the **staStart** of the parent **\<Alignment>**. The precise location of the elements is defined in terms of 2D coordinates.
+
+Todo kuva Road_Line-curve-spiral
+
+inframodel does not use attributes for the  **\<CoordGeom>** element.
+
+{{xtabulate CoordGeom}}
+
+#### Line
+
+A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction* **dir** and **length** are mandatory, but shall be used as additional information only.
+
+1. {{xtabulate5 Line}}
+2. The format for the **<Start>** and **<End>** coordinates of a \<Line>, the 2D coordinates are separated by spaces.
+
+\<Start>*northing1 easting1*\</Start>  
+
+\<End>*northing2 easting2\*\</End>
+
+#### Curve
+
+A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction of rotation* **rot**, **chord**, *end direction* **dirEnd**, *start direction* **dirStart**, **length** and **radius** are mandatory, but shall be used as additional information only.
+
+1. {{xtabulate5 Curve}}
+2. The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
+
+\<Start>*northing1 easting1*\</Start>
+
+\<Center>*northing2 easting2*\</Center>
+
+\<End>*northing3 easting3*\</End>
+
+#### Transition curve
+
+A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end tangents* **\<PI>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions), together with mandatory attribute *transition curve type* **spiType**. In addition, attributes **length**, *end radius* **radiusEnd**, *start radius* **radiusStart**, *direction of rotation* **rot**, the *transition curve parameter* **constant**, *end direction* **dirEnd** and *start direction* **dirStart** are mandatory. In Finnish route design the default *transition curve type* is an Euler spiral "clothoid"; bi-quadratic parabola "biquadraticParabola", or third-degree spiral "cubic" may be used under special circumstances e.g. in railway design.
+
+1. {{xtabulate5 Transition curve}}
+2. The **<Start>**, point on intersection of start and end tangents **<PI>** and **<End>** are defined as 2D coordinates separated by spaces.
+
+\<Start>*northing1 easting1*\</Start>
+
+\<PI>*northing2 easting2*\</PI>
+
+\<End>*northing3 easting3*\</End>
+
+### Vertical geometry
+
+The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** element in concert with the horizontal geometry. In Inframodel, each horizontal geometry can have only one (or 0) vertical geometry. The dimensioning components of the vertical geometry are:
+
+- Point of Vertical Intersection **\<PVI>**
+- Vertical circular arc **\<CircCurve>**
+
+Todo kuva Road\_PVI_CircCurve
+
+The *starting station* **staStart** is an optional attribute of the vertical **\<Profile>**.
+
+{{xtabulate5 Profile}}
+
+The **name** of the *vertical geometry* **<ProfAlign>** is a mandatory attribute:
+
+{{xtabulate5 ProfAlign}}
+
+#### Point of vertical intersection
+
+The first and last element of the *vertical profile* is always *a Point of Vertical Intersection* **\<PVI>**.
+
+*A Point of Vertical Intersection* **\<PVI>** marks the ends of the line segments of a vertical geometry. *A Point of Vertical Intersection* is described by a **station** and an **elevation**. These are separated by a space.
+
+\<PVI>station elevation\</PVI>
+
+{{xtabulate5 PVI}}
+
+#### Vertical curve
+
+Vertical circular arcs may be combined into S-curves or compound curves. The first and last element of a vertical *profile* is never a vertical circular arc **\<CircCurve>**.
+
+The location of the **\<CircCurve>** is defined by the *station* and *elevation*, separated by spaces.
+
+\<CircCurve length="length" radius="radius">station elevation\</CircCurve>
+
+The mandatory parameters of a verical circular arc are 3D *length* **length** and *radius* **radius**.
+
+{{xtabulate5 CircCurve}}
+
+## Line strings
+
+*Line strings* are defined in concert with the *horizontal geometry* **\<CoordGeom>**. *Line strings* are defined as a series of 2D points (when 2D representation is sufficient) or 3D points, hence it does not need a vertical **\<Profile>** element for 3D representation. The dimensioning element of a line string is:
+
+- **\<IrregularLine>**
+
+Todo Kuva Road_IrLine
+
+### Line string
+
+A *line string* has optional attributes and sub-elements to define its **\<Start>**, **\<End>** and the *intermediate points* either as **\<PntList2D>** or **\<PntList3D>**.
+
+1. {{xtabulate5 IrregularLine}}
+
+2. The **\<Start>** and **\<End>** points of an **\<IrregularLine>**: individual coordinates are separated by spaces.
+
+*\<Start>northing1 easting1 (elevation1)\</Start>*
+
+*\<End>northing2 easting2 (elevation2)\</End>*
+
+3. a The *2D point list* **\<PntList2D>**, consists of 2D coordinates of intermediate points and start and end points, separated by spaces.
+
+*\<PntList2D>northing1 easting1 northing3 easting3 northing4
+easting4...northing2 easting2\</PntList2D>*
+
+3. b The *3D point list* **\<PntList3D>**, consists of 3D coordinates of intermediate points and start and end points, separated by spaces.
+
+*\<PntList3D>northing1 easting1 elevation1 northing3 easting3 elevation3 northing4 easting4 elevation4...northing2 easting2 elevation2\</PntList3D>*
+
+## String line model
+
+An *alignment group* **\<Alignments>** is a collection of geometric alignments and line strings. The string line model of a route is composed of their descriptions in the file, ordered into layers. The order of *alignment* descriptions within the *alignment group* does not matter. The string line model used in Inframodel is based on the Leica RoadRunner software.
+
+Todo kuva Road\_stringline_model
+
+The string line model of a **\<Alignment>** is defined by the "IM\_stringlineLayers" extension. The string line model consists of individual line strings, whose locations are described layer by layer in the "IM_stringlineLayer" child element. The order of the **\<Alignment>** elements is irrelevant, because their unique names are used as alignment identifiers **\<Alignment>.name.** Each layer of the string line model is assigned a **unique name** and the **alignments** it contains. It is optional to define a **centerline** and set the *surface codes* **surfaceCoding**.
+
+The procedure for constructing a new layer in the string line model in the *"IM_stringlineLayers"* extension goes as follows:
+
+1. The layer is assigned a unique **name**.
+2. The constituent line string alignments are selected by addressing the line strings by their name **\<Alignment>.name** going from the left to the right. The line names are separated by commas.
+4. The **centreline** may optionally be set.
+5. The **surfaceCoding** and **surfaceCodingDesc** may optionally be set.
+
+A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
+
+{{xtabulate5 Feature}}
+
+## Terrain model
+
+The *route terrain model* **(\<Surfaces>)** contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec Source data}} Also, random points and breaklines of the surface can be described as explained in {{refsec Source data}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
+
+The route terrain model consists of:
+
+- Triangle vertices and
+- Faces,
+- Random points and
+- Breaklines,
+- Inframodel type coding.
+
+Todo kuva Surfaces_terrain
+
+{{xtabulate5 Surfaces}}
+
+## Structural model
+
+The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in in {{refsec Ground layer model}} .
+
+Todo kuva Surfaces_Rakennemalli
+Todo kuva Surfaces_kolmiomalli
+
+{{xtabulate5 Surfaces}}
+
+## Cross-section parameters
+
+Cross-section parameters refer to parametric information complementing the model represented as surface or stringline models. These include design parameters such as the widths and superelevations of roads.
+
+The relevant cross-section parameters for each route type are described in further detail in the corresponding section of each route type.
