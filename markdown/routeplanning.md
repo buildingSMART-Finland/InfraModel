@@ -10,7 +10,7 @@ An *alignment group* \<Alignments> consists of *several alignments* \<Alignment>
 
 Geometric alignments describe parameters of the horizontal and vertical elements of an alignment. A line string is a description where consecutive points are connected by line segments. Geometric alignments are typically used to describe the reference line of a road as well as other important geometric descriptions such as road edges. Other route components are usually described as line strings.
 
-{{figure IMAGE Road_Geometriakuvaus.png}}
+{{figure Road_Geometriakuvaus.png}}
 
 Once the alignments have been described, it is possible to assign them to a line string model, that contains a description of the layers of the route structure. Alternatively, a surface model of the route is a triangular mesh representation of the surface structure of the route. The structural model describes all the layers in a route structure as triangle mesh surfaces.
 
