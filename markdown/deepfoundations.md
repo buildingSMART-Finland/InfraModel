@@ -18,9 +18,10 @@ Collection of **pile groups** in a soil stabilization plan.
 
 Each individual pile group in a pile groups collection representing a stabilization plan is described under **\<im:PileGroup>** element. Each pile group shall have an inividual identifier **oID**, and may have a **name** and **description**. A number of other attributes may used to describe the material properties of the pilings; spacing between piles (center to center) in the grid can be spcified in **pileSpacing** attribute. The size of an individual pile can be specified in subelement **\<im:CircPile>** or **\<im:SquarePile>**, respectively (choice by the type of pile cross section).
 
-todo kuva pilegroup
+{{figure pilegroup.png}}
 
 1. Attributes of \<im:PileGroup>:
+
 {{xtabulate im:PileGroup}}
 
 2. The size of an individual pile in a pile group is set in \<im:CircPile>\ or \<im:SquarePile>\, respectively. All piles in a group are expetected to share the same shape and size.
