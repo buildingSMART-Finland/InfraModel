@@ -29,7 +29,7 @@ In both cases, horizontal tolerances can be coupled with vertical tolerance valu
 
 {{xtabulate5 IM_cgpoints}}
 
-todo kuva AsBuilt_plan
+{{figure AsBuilt_plan.png}}
 
 ## As-built survey
 
@@ -61,4 +61,4 @@ Within the survey points collection, another <CgPoints> element is used as a wra
 
 {{xtabulate IM_cgpoints}}
 
-todo kuva AsBuilt_survey
+{{figure AsBuilt_survey.png}}
