@@ -202,6 +202,7 @@ The route terrain model consists of:
 The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in in {{refsec Ground layer model}} .
 
 {{figure Todo Surfaces_Rakennemalli.png}}
+  
 {{figure Todo Surfaces_kolmiomalli.png}}
 
 {{xtabulate Surfaces}}
