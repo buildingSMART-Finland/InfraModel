@@ -120,7 +120,7 @@ Attributes of **\<PlanFeature>**:
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using **line strings** for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
-*\<Location>northing easting (elevation)\<Location>*
+{{xmlsnippet Location}}
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
