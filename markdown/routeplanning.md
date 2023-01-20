@@ -68,7 +68,7 @@ Alternative type coding systems can be set using e.g. name **proprietaryInfraCod
 
 The geometric alignment contains the horizontal and vertical alignment information. The *horizontal alignment* information is described in the **\<CoordGeom>** and the corresponding (0 or 1) *vertical geometry* in the element **\<Profile>**.**\<ProfAlign>**. For the connection between horizontal and vertical geometry it is crucial that the geometric description is continuous from the beginning of the first element to the end of the last element. The *horizontal geometry* is described using a 2D coordinate representation, and the final elevation values along the element can only be produced once the vertical geometry is finished. The illustration below shows the horizontal and vertical geometry definition and their connection principal, the optional **staStart** attribute in **\<Line>**, **\<Curve>**, **\<Spiral>** and **\<Profile>** **SHALL NOT** be used for calculating horizontal or vertical geometry.
 
-Todo kuva Alignments\_Hor_Ver
+{{figure Alignments_Hor_Ver.png}}
 
 
 ### Horizontal geometry
@@ -81,7 +81,7 @@ The dimensioning components of horizontal alignments:
 
 The horizontal alignment is a listing of consecutive dimensioning components, starting at the **staStart** of the parent **\<Alignment>**. The precise location of the elements is defined in terms of 2D coordinates.
 
-Todo kuva Road_Line-curve-spiral
+{{figure Road_Line-curve-spiral.png}}
 
 inframodel does not use attributes for the  **\<CoordGeom>** element.
 
@@ -119,7 +119,6 @@ A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end ta
 
 The **<Start>**, point on intersection of start and end tangents **<PI>** and **<End>** are defined as 2D coordinates separated by spaces.
 
-
 ### Vertical geometry
 
 The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** element in concert with the horizontal geometry. In Inframodel, each horizontal geometry can have only one (or 0) vertical geometry. The dimensioning components of the vertical geometry are:
@@ -127,10 +126,9 @@ The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** elemen
 - Point of Vertical Intersection **\<PVI>**
 - Vertical circular arc **\<CircCurve>**
 
-Todo kuva Road\_PVI_CircCurve
+{{figure Road_PVI_CircCurve.png}}
 
 {{xtabulate5 Profile}}
-
 
 {{xtabulate5 ProfAlign}}
 
@@ -156,7 +154,7 @@ The location of the **\<CircCurve>** is defined by the *station* and *elevation*
 
 - **\<IrregularLine>**
 
-Todo Kuva Road_IrLine
+{{figure Road_IrLine.png}}
 
 ### Line string
 
@@ -168,7 +166,7 @@ A *line string* has optional attributes and sub-elements to define its **\<Start
 
 An *alignment group* **\<Alignments>** is a collection of geometric alignments and line strings. The string line model of a route is composed of their descriptions in the file, ordered into layers. The order of *alignment* descriptions within the *alignment group* does not matter. The string line model used in Inframodel is based on the Leica RoadRunner software.
 
-Todo kuva Road\_stringline_model
+{{figure Road_stringline_model.png}}
 
 The string line model of a **\<Alignment>** is defined by the "IM\_stringlineLayers" extension. The string line model consists of individual line strings, whose locations are described layer by layer in the "IM_stringlineLayer" child element. The order of the **\<Alignment>** elements is irrelevant, because their unique names are used as alignment identifiers **\<Alignment>.name.** Each layer of the string line model is assigned a **unique name** and the **alignments** it contains. It is optional to define a **centerline** and set the *surface codes* **surfaceCoding**.
 
@@ -195,7 +193,7 @@ The route terrain model consists of:
 - Breaklines,
 - Inframodel type coding.
 
-Todo kuva Surfaces_terrain
+{{figure Surfaces_terrain.png}}
 
 {{xtabulate Surfaces}}
 
@@ -203,8 +201,8 @@ Todo kuva Surfaces_terrain
 
 The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in in {{refsec Ground layer model}} .
 
-Todo kuva Surfaces_Rakennemalli
-Todo kuva Surfaces_kolmiomalli
+{{figure Todo Surfaces_Rakennemalli.png}}
+{{figure Todo Surfaces_kolmiomalli.png}}
 
 {{xtabulate Surfaces}}
 
