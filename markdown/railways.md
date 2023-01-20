@@ -6,7 +6,7 @@ The methods used to describe a route in inframodel file transfer are described i
 
 ## Track geometry
 
-One **\<Alignments>** collection containing several **\<Alignment>** elements is used for describing a railway geometry. Only one of those **\<Alignment>** elements can be the centerline of reference track for KM-posting. Description a track centerline is always a geometric \<Alignment> (description hierarchy *1).
+One **\<Alignments>** collection containing several **\<Alignment>** elements is used for describing a railway geometry. Only one of those **\<Alignment>** elements can be the centerline of reference track for KM-posting. Description a track centerline is always a geometric **\<Alignment>**.
 
 The geometric alignment description is composed of elements in horizontal and vertical geometry, respectively (see section 3.3). The KM-posting reference track and additional track center lines have their own type codes in inframodel rail planning. Other lines than centerlines and the bottoms of the rails are described as line strings (description hierarchy \*2). Since the *string line model* of the track only uses line strings, the *line information* contained by the *geometry lines* is also described as an approximate *line string*. These may be presented in any order. The type coding of individual lines determines their purposes; the type code (terrainCoding) for the terrain model is set in a structural extension. The desired lines can be included in a *string line model*, according to the structural extension "IM\_stringlineLayers". In the stringline model the surfaces can be assigned surface codes (**surfaceCoding**). The *surface and structural models of a railway* can also be described as triangular meshes (TIN surfaces). The raiway *plan information* is defined in the optional "IM_plan" structural extension.
 
@@ -104,7 +104,7 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using line strings for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
-\<Location>northing easting (elevation)\<Location>
+{{xmlsnippet Location}}>
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
