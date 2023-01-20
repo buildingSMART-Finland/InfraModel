@@ -18,7 +18,7 @@ The order the individual **\<Alignment>** elements are described in under the **
 
 The cross-section parameters of an *alignment group* describe the values of cross-sectional parameters from a the given station onwards. The cross-section parameters are set in the extension "IM_crossSect". The extension is implemented in a fashion similar to road and street design. The parameters are *minimum* **depth** of the route, the *minimum* **width** and the dimensioning **waterLevel**. The dimensioning water level is situation-specific and might be e.g. average daily low or average daily mean water level. The described Cross-section parameters are valid from the set station onwards.
 
-Todo kuva Water_crossSects
+{{figure Water_crossSects.png}}
 
 The *cross-section parameters* are set for the *stationing reference alignment* cross-sections **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the "IM_crossSects" extension **\<Feature>**. The first cross-section of the alignment is defined by describing all parameters of the cross-section. The parameters of the following cross-sections are only described if a value begins or stops changing.
 
@@ -32,7 +32,7 @@ The string line model of an *alignment group* **\<Alignments>** is defined in th
 
 The *line string model* of routes is described in further detail in {{refsec String line model}} The constituent *line strings* **\<Alignment>** of the *string line model* adhere to the *terrain codes* (**terrainCoding**) defined for the line strings. The layers of the line string model are defined by assigning them a *surface code*.
 
-Todo kuva Water_stringlinemodel
+{{figure Water_stringlinemodel.png}}
 
 {{xmlsnippet stringline model}}
 
@@ -42,7 +42,7 @@ The structural model of a waterway is described in detail in {{refsec Structural
 
 It is possible to attach source data point and breakline information to surfaces. The process is described in further detail in {{refsec Source data}}.
 
-Todo kuva Water_structuremodel
+{{figure Water_structuremodel.png}}
 
 ## Waterway plan features
 
