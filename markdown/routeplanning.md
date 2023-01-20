@@ -94,9 +94,9 @@ A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates (3D defin
 1. {{xtabulate5 Line}}
 2. The format for the **<Start>** and **<End>** coordinates of a \<Line>, the 2D coordinates are separated by spaces.
 
-\<Start>*northing1 easting1*\</Start>  
+{{xmlsnippet Start}}
 
-\<End>*northing2 easting2\*\</End>
+{{xmlsnippet End}}
 
 #### Curve
 
