@@ -150,7 +150,7 @@ When exchanging a ground layer model as collection of Surfaces, the attribute <S
 
 {{figure Surfaces_Maaperamalli.png}}
  
-{{figures Surfaces_kolmiomalli.png}}
+{{figure Surfaces_kolmiomalli.png}}
 
 
 
