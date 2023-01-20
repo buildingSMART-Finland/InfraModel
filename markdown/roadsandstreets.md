@@ -39,8 +39,9 @@ Once the *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>**
 
 The detailed description of the construction process of line string model can be found in {{refsec Line string}}. The string line model employs the same **infraCoding** system for *line strings* as the **\<Alignment>**. The surface codes are set using the **surfaceCoding**.
 
-Todo kuva Road_stringlinemodel
-Todo kuva Street_stringlinemodel
+{{figure Road_stringline_model.png}}
+
+{{figure Street_stringlinemodel.png}}
 
 ## Cross-section parameters of roads and streets
 
@@ -48,7 +49,7 @@ The cross *section parameters* of an *alignment group* **\<Alignments>** expand 
 
 The cross-section parameters describe the situation at a given station, including the *cross-slopes* of the roadways, streets and sidewalks. The following elaborates on the process of description: the cross-section parameters are presented at a station where a value begins or stops changing. Cross-slopes are set for each lane starting from the left to the right. A positive superelevation indicates a superelevation where the edge located further from the centerline of two is above the inner one. Accordingly, a negative one indicates that the outer edge is below the inner one.
 
-Todo kuva Road\_crossSect_slope
+{{figure Road_crossSect_slope.png}}
 
 ### Cross-section parameters
 
@@ -71,10 +72,12 @@ Attributes for a single "IM_crossSect":
 
 The superelevation is defined at the transition points, when a transition in the superelevation either begins or end. The cross-slopes are defined along with the cross-section parameters. The following picture illustarates the process in a road design environment.
 
-Todo kuva Road_slope
+{{figure Road_slope.png}}
 
 {{xtabulate5 Feature}}
+
 {{xtabulate5 road plan}}
+
 {{xtabulate5 street plan}}
 
 ## Terrain model and structural model of road or street
@@ -85,8 +88,9 @@ It is also possible to attach source data point or breakline information to the 
 
 The example illustrations below demonstrate the composition of structural models in road and street design.
 
-Todo kuva Road_structuremodel
-Todo kuva Street_structuremodel
+{{figure Road_structuremodel.png}}
+
+{{figure Street_structuremodel.png}}
 
 ### Structural layers
 
