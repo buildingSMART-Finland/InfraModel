@@ -59,7 +59,7 @@ Source data consists of:
  - Source data points \<DataPoints> and
  - Breaklines \<BreakLines>
 
-TODO:figure Surfaces_Pinnat-perus.png
+{{figure Surfaces_Pinnat-perus.png}}
 
 ### Data points
 
@@ -95,7 +95,7 @@ A triangular mesh is defined in two steps:
 The surface points used as vertices are assigned unique identifiers id within the same surface definition \<Surface>.\<Definition> element. 
 The face definitions are done by referring to the id numbers id of the vertice points.
 
-TODO:figure Surfaces_kolmioverkko.png
+{{figure Surfaces_kolmioverkko.png}}
 
 {{xtabulate5 Definition}}
 
@@ -120,7 +120,7 @@ Each face is defined by referencing three vertex id numbers.
 
 {{xtabulate5 F}}
 
-TODO:figure Surfaces_kolmiokuvaus.png
+{{figure Surfaces_kolmiokuvaus.png}}
 
 ## Terrain model
 
@@ -137,7 +137,7 @@ When no information of individual ground layers is available, surface model may 
 
 {{xtabulate4 IM_Soil--ltFeature--gt}}
 
-TODO: figure Surfaces_terrain.png
+{{figure Surfaces_terrain.png}}
 
 ## Ground layer model
 
@@ -148,8 +148,9 @@ A "IM_coding" \<Feature> extension provides surface classifications.
 The technical properties of each soil layer between two surfaces may be given in "IM_soil" <Feature> extension described above. 
 When exchanging a ground layer model as collection of Surfaces, the attribute <Surfaces>.desc shall be set to "ground layer model". TODO:why
 
-TODO:Surfaces_Maaperamalli.png
-TODO:Surfaces_kolmiomalli.png
+{{figure Surfaces_Maaperamalli.png}}
+ 
+{{figures Surfaces_kolmiomalli.png}}
 
 
 
