@@ -34,10 +34,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Inframodel (PDF)
-          path: ./artefact/Inframodel_DRAFT.pdf
+          path: /artefact/Inframodel_DRAFT.pdf
       - name: collect docx artefact
         uses: actions/upload-artifact@v3
         with:
           name: Inframodel (DOCX)
-          path: ./artefact/Inframodel_DRAFT.docx
+          path: /artefact/Inframodel_DRAFT.docx
       
