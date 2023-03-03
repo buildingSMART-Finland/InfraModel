@@ -19,30 +19,25 @@ jobs:
   build-documentation:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - name: Install required apt-packages
-        run: sudo apt-get update && sudo apt-get install -y $(cat $GITHUB_WORKSPACE/CI/apt-packages.txt)
-      
-      - name: Install required python-packages
-        run: sudo pip3 install -r $GITHUB_WORKSPACE/CI/py-packages.txt
-      #- name: test
-      #  run: cd $GITHUB_WORKSPACE/CI && ls
-      - name: Generate markdown
-        run: sudo python $GITHUB_WORKSPACE/CI/raw-parse.py
-        
-      - name: Generate PDF+DOCX
-        run: sudo python $GITHUB_WORKSPACE/CI/pandoc.py
-      - name: test
-        run: cd $GITHUB_WORKSPACE/artefact && ls  
-      - uses: actions/upload-artifact@v3
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Run the build process with imbuilder docker
+        uses: addnab/docker-run-action@v3
+        with:
+          image: mvesanen/imbuilder:latest
+          options: -v ${{ github.workspace }}:/var/www
+          run: /docbuild/default-build.sh
+      - name: collect pdf artefat 
+        uses: actions/upload-artifact@v3
         with:
           name: Inframodel (PDF)
           path: ./artefact/Inframodel_DRAFT.pdf
-      - uses: actions/upload-artifact@v3
+      - name: collect docx artefact
+        uses: actions/upload-artifact@v3
         with:
           name: Inframodel (DOCX)
           path: ./artefact/Inframodel_DRAFT.docx
+      
