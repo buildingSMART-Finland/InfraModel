@@ -29,7 +29,7 @@ jobs:
         with:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}:/git
-          run: /docbuild/default-build.sh /docbuild/test.md
+          run: /docbuild/default-build.sh /git/markdown/main.md
       - name: collect pdf artefat 
         uses: actions/upload-artifact@v3
         with:
