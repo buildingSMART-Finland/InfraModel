@@ -28,7 +28,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
-          options: -v ${{ github.workspace }}:/var/www
+          options: -v ${{ github.workspace }}:/
           run: /docbuild/default-build.sh /docbuild/test.md
       - name: collect pdf artefat 
         uses: actions/upload-artifact@v3
