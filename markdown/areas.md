@@ -22,11 +22,11 @@ Optional surface information
  
 {{figure Surfaces_Pintamalli.png}}
 
-{{xmlsnippet Surface model}}
+{{xmlsnippet Surfacemodel}}
  
 {{figure Surfaces_Maaperamalli.png}}
  
-{{xmlsnippet Ground layer model}}	
+{{xmlsnippet Groundlayermodel}}	
  
 ## Noise barriers
 
@@ -45,11 +45,11 @@ Optional surface information
 
 {{figure Surfaces_Pintamalli.png}}
 
-{{xmlsnippet Surface model}}
+{{xmlsnippet Surfacemodel}}
 
 {{figure Surfaces_Maaperamalli.png}}
 
-{{xmlsnippet Ground layer model}}
+{{xmlsnippet Groundlayermodel}}
 
 ## Geostructures
 
@@ -69,8 +69,8 @@ Optional surface information
  
 {{figure Surfaces_Pintamalli.png}}
 
-{{xmlsnippet Surface model}}
+{{xmlsnippet Surfacemodel}}
 
 {{figure Surfaces_Maaperamalli.png}}
 
-{{xmlsnippet Ground layer model}}
+{{xmlsnippet Groundlayermodel}}

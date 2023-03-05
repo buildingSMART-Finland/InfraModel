@@ -35,7 +35,7 @@ The *line string model* of routes is described in further detail in {{refsec Str
 
 {{figure Water_stringlinemodel.png}}
 
-{{xmlsnippet stringline model}}
+{{xmlsnippet stringlinemodel}}
 
 ## Surface and structural model
 

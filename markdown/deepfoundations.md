@@ -35,7 +35,8 @@ Each individual pile group in a pile groups collection representing a stabilizat
 
 {{xmlsnippet im:BottomBoundary}}
 
-{{xtabulate im:TopBoundary and im:BottomBoundary}}
+{{xtabulate im:TopBoundary}}
+{{xtabulate im:BottomBoundary}}
 
 ## Pile
 
