@@ -1,4 +1,4 @@
-{{schemafile ../schema/inframodel.xsd}}
+{{schemafile ../schema/inframodel-raw.xsd}}
 # File headers
 
 ## LandXML file container

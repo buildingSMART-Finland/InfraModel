@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # Water supply and sewerage
 
 ## Contents

@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # Planimetric features
 
 ## Contents

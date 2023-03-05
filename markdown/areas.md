@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # Area structures
 
 ## Contents

@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design
 
 ## Contents
