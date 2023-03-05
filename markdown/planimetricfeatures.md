@@ -11,7 +11,7 @@ Planimetric features, such as *cables*, lightpole or signage *footings*, *railin
 
 The planimetric features not directly assigned to any particular route (road, street, rail or waterway) are grouped in *planimetric features collections* under \<PlanFeatures> consisting of several \<PlanFeature> elements. How the planimetric features are arranged into collections (e.g. by types) is subject to project guidelines or other usage agreements. Each collection shall have a unique **name**.
 
-{{stabulate5 PlanFeatures}}
+{{xtabulate5 PlanFeatures}}
 
 *Planimetric features collections* may be also be type coded in **\<Feature>** using 7. Type coding in "IM_coding" extension. In particular, this should be used when the collections contains surface structrure definition associated with the topmost surface of a plan: [InfraCoding] set to value [201000]
 
