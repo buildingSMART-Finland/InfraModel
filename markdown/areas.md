@@ -20,14 +20,14 @@ Optional surface information
 - random points <**DataPoints**>
 - breaklines <**BreakLines**>
  
-{{figure Surfaces_Pintamalli.png}}
+![Surface model]({{figure Surfaces_Pintamalli.png}} "Surface model"){{figst surfacemodel}}
 
 {{xmlsnippet Surfacemodel}}
  
-{{figure Surfaces_Maaperamalli.png}}
- 
-{{xmlsnippet Groundlayermodel}}	
- 
+![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
+
+{{xmlsnippet Groundlayermodel}} 
+
 ## Noise barriers
 
 Noise barriers are a central part of route planing. The process of describing the components is described in detail in {{refsec Terrain model}}. The The surface description consists of a triangle mesh, which may have random points or breaklines attached to it. Structural surfaces or cross-sections are usually not defined for noise barriers.
@@ -43,13 +43,6 @@ Optional surface information
 - random points <**DataPoints**>
 - breaklines <**BreakLines**>
 
-{{figure Surfaces_Pintamalli.png}}
-
-{{xmlsnippet Surfacemodel}}
-
-{{figure Surfaces_Maaperamalli.png}}
-
-{{xmlsnippet Groundlayermodel}}
 
 ## Geostructures
 
