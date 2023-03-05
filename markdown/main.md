@@ -21,4 +21,3 @@ xnos-number-by-section: True
 {{include planimetricfeatures.md}}
 {{include asbuilt.md}}
 {{include deepfoundations.md}}
-{{include annexes}}
