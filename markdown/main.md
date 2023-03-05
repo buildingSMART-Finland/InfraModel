@@ -8,7 +8,7 @@ xnos-number-by-section: True
 \clearpage
 
 # Finnish Inframodel LandXML v1.2 subset documentation
-**Version {{draft-version}}:{{date}}**
+**Version {{draft-version}}**
 
 {{include headers.md}}
 {{include basedata.md}}
