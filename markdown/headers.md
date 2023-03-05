@@ -77,7 +77,7 @@ See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformatio
 
 The exact parameters of a particular Local Coordinate Transformation are given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under <LandXML>. The xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
 
-{{xtabulate4 im:LocalCoordinateTransformation ../schema/im.xsd}}
+{{xtabulate4 im:LocalCoordinateTransformation}}
 
 Coordinate systems use a reference ellipsoid, defined by the semi-major and semi-minor axis, to approximate the shape of the Earth. The datum is then defined by the ellipsoid and its location and orientation, i.e. different datums can use the same ellipsoid but its position varies.
 
@@ -85,37 +85,37 @@ For example, the WGS84 system uses a reference ellipsoid with a semi-major axis 
 
 1. SourceCRS
 
-{{xtabulate im:SourceCRS ../schema/im.xsd}}
+{{xtabulate im:SourceCRS}}
 
 where
 
-{{xtabulate im:Ellipsoid im.xsd}}
+{{xtabulate im:Ellipsoid}}
 
-{{xtabulate im:PrimeMeridian ../schema/im.xsd}}
+{{xtabulate im:PrimeMeridian}}
 
 2. TargetCRS
 
-{{xtabulate im:TargetCRS im.xsd}}
+{{xtabulate im:TargetCRS}}
 
 3. DatumTransformation
 
 Helmert3D \<im:DatumTransformation>.\<im:Helmert3D> performs a coordinate transformation from one datum to another.
 
-{{xtabulate im:Helmert3D ../schema/im.xsd}}
+{{xtabulate im:Helmert3D}}
 
 4. Projection
 
 Transverse Mercator Map projection \<im:Projection>.\<im:TransverseMercator> transforms geographical coordinates (latitude, longitude, altitude) to a plane (x, ,y, z). The grid origin is taken on the central latitude and longitude, and false easting and northing is then applied to prevent negative coordinates west or south of the origin.
 
-{{xtabulate im:TransverseMercator ../schema/im.xsd}}
+{{xtabulate im:TransverseMercator}}
 
 5. Local transformation
 
 In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (x,y,z) is z_corrected = z + (a*x + b*y +c).
 
-{{xtabulate im:Helmert2D ../schema/im.xsd}}
+{{xtabulate im:Helmert2D}}
 
-{{xtabulate im:FittedPlane ../schema/im.xsd}}
+{{xtabulate im:FittedPlane}}
 
 ## Project
 
