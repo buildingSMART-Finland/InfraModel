@@ -60,7 +60,7 @@ Drainage and water supply utilizes the units set in the header. If the water sup
 
 It is possible to split the network description into several files if needed.
 
-{{xtabulate5 Pipe network units}}
+{{xtabulate5 Pipenetworkunits}}
 
 ## Structures
 
