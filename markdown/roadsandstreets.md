@@ -77,9 +77,9 @@ The superelevation is defined at the transition points, when a transition in the
 
 {{xtabulate5 Feature}}
 
-{{xtabulate5 road plan}}
+{{xtabulate5 roadplan}}
 
-{{xtabulate5 street plan}}
+{{xtabulate5 streetplan}}
 
 ## Terrain model and structural model of road or street
 
