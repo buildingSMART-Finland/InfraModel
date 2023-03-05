@@ -99,7 +99,7 @@ The material properties of a structural layer between two surfaces are assigned 
 
 Details of **\<Surface>** in "IM_structLayer" **\<Feature>**
 
-{{xtabulate Surface in Feature}}
+{{xtabulate SurfaceinFeature}}
 
 ## Road plan features
 
