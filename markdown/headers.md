@@ -67,7 +67,7 @@ The optional base point of the coordinate system is given using the element \<Co
 
 For transformation between source geographic coordinate system sourceCRS and target local system targetCRS, a set of control points may be given under "IM_coordTransformation" \<Feature> extension as "IM_controlPoint" \<Feature> extensions, where each point has latitude, longitude and altitude values in source system, and corresponding local system northing, easting and elevation values. 
 
-{{xtabulate IM_coordTransformation--ltFeature--gt}
+{{xtabulate IM_coordTransformation--ltFeature--gt}}
 
 
 See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformation" \<Feature> extension.
