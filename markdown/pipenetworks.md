@@ -1,4 +1,4 @@
-# Pipeworks {#sec:mvd-watersupplyandsewerage}
+# Pipenetworks {#sec:mvd-watersupplyandsewerage}
 
 ## Contents
 
@@ -66,6 +66,8 @@ It is possible to split the network description into several files if needed.
 
 The topological network consists of different kind of structures whose exact location is defined in the file. The different structures in the **\<PipeNetwork>** compose the *structure group* **\<Structs>**, that has no attributes.
 
+{{xtabulate Struct}}
+
 LandXML standard structure types:
 
 - Circular structures
@@ -77,31 +79,50 @@ LandXML standard structure types:
 
 Dividing the network is a special case that is described in further detail in the sections covering the element that describes pipe joints, extensions or points of intersection.
 
-{{xtabulate Struct}}
+{{xtabulate5 IM_struct}}
 
-**General data**
+### General data
 
-The general information contains the **name**, *elevation of the top surface of the rim* **elevRimp**, *elevation of the bottom at the water level of the lower invert* **elevSump** and the **state** of the structure. All elements are assigned unique names.
+The **name**, *rim elevation* **elevRim**, *sump elevation* **elevSump** and the **state** of the structure are mandatory attributes. 
+
+All structural elements in the file are assigned individual names.
 
 {{xtabulate5 Struct}}
 
-**Center**
+### Center
 
-The center of the cross-section at the bottom of the well or the sump is set by 2D coordinates, separated by spaces in the **\<Center>** element.
+***Circular and rectangular structures:*** The center of the cross-section at the bottom of the well or the sump is set by 3D coordinates, separated by spaces in the **\<Center>** element.
 
-{{xmlsnippet Center}}
+***Pipe inlets and outlets:*** The pipe end is defined by space-separated 32-coordinates in the **\<Center>** element.
+
+***Pipe connections:*** The **\<Center>** of a connection, joint or point of intersection at the mounting level is set using space-separated 32 coordinates.
+
+***Equipments:*** The **\<Center>** of a piece of equipment at the mounting level is set using space-separated 2D coordinates.
 
 {{xtabulate5 Center}}
 
-**Inverts**
+### Inverts
 
 The adjoining inlet and outlet inverts are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
 
 {{xtabulate5 Invert}}
 
-**Details**
+### Details
 
-It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**. The additional information for the rim encompasses the **rimType** and the rim load bearing class **rimLoad**. The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. The dates of different actions may also be defined, suct as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.
+It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**.
+
+The dates of different actions may also be defined, suct as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.
+
+The additional information for the rim encompasses the **rimType** and the rim load bearing class **rimLoad**.
+
+***Circular structures:***
+When describing a conical well the **diameter** describes the diameter of the bottom of the cone. The **rimDiameter** describes the *inner diameter* of the rim and the **rimCenter** defines the *3 coordinates of the rim center*. The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. 
+
+***Rectangular structure:***
+ The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. 
+
+***Equipment:***
+It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. The rim is defined by the *rim type* **rimType** and *rim load bearing class* **rimLoad**. 
 
 {{xtabulate5 IM_struct}}
 
@@ -117,9 +138,11 @@ Inspection wells of French drains are an example of a circular structure. Circul
 
 The figure below illustrates the representation of a drain well, including a sump. The sump is defined in the extension "IM_struct" by defining the sump height and volume.
 
+The *body* **diameter** at the bottom of the well, the *description* **desc**, the **material** and the **thickness** of the shell material. The well cone and sump are described in further detail in the extension "IM_struct"
+
 {{figure Pipenetwork_CircStruct}}
 
-{{xtabulate5 Struct}}
+{{xtabulate5 CircStruct}}
 
 ### Rectangular structures {#sec:mvd-rectangularstructures}
 
@@ -132,9 +155,11 @@ The illustration below describes the description method of a rectangular structu
 
 The illustration demonstrates the method of description of a rectangular well, including a sump as an example. The sump is defined by its depth and/or volume.
 
+The mandatory attributes of a rectangular structure are the **length** the direction of the long edge **lenghtDir**, the **width** of the short edge width, the **material** of the structure and the **thickness** of the surface structure.
+
 {{figure Pipenetwork_RectStruct}}
 
-{{xtabulate5 Struct}}
+{{xtabulate5 RectStruct}}
 
 ### Pipe inlets and outlets {#sec:mvd-pipeinletsandoutlets}
 
@@ -148,9 +173,11 @@ Pipe inlets and outlets are end of the pipe network pipes. The following illustr
 
 The illustration below demonstrates how pipe inlets and outlets are described. The example demonstrates an outlet.
 
+*Inlets* **\<InletStruct>** and *outlets* **\<OutletStruct>** have no attributes.
+
 {{figure Pipenetwork_InletOutletStruct}}
 
-{{xtabulate5 Struct}}
+{{xtabulate5 InletStruct}}
 
 ### Pipe connections {#sec:mvd-pipeconnection}
 
@@ -165,9 +192,13 @@ Pipe connections, joints and points of intersection are defined by the **\<Conne
 The illustration demonstrates the description method of a point of intersection.
 When using the element to delimit a pipe network, the terminal drainage well is connected to a pipe that terminates in a **\<Connection>** element. It is thus possible to also describe the connections of the outermost wells in the plan network. It is advisable to name the elements in a fashion that is clearly different from the rest of the plan, e.g. "Terminal1", "Terminal2".
 
+When the element describes a delimiting element, all attributes are not used. The name of the structure and the description desc are set to differ from the plan informatuion as much as possible e.g. by naming them "Terminal1", "Terminal2". The elevation of the rim elevRim, the elevation of the sump elevSump and the state of the structure are left undefined.
+
+Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
+
 {{figure Pipenetwork_Connection1}}
 
-{{xtabulate5 Struct}}
+{{xtabulate5 Connection}}
 
 ### Equipment {#sec:mvd-equipment}
 
@@ -183,7 +214,9 @@ The illustration demonstrates the mode of description of a valve:
 
 {{figure Pipenetwork_Connection2}}
 
-{{xtabulate5 Struct}}
+A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment is defined in the extension "IM_struct".
+
+{{xtabulate5 Connection}}
 
 #### Inverts {#sec:mvd-inverts}
 The adjoining inlet and outlet inverts are described using the element \<Invert>. The required attributes of invert are: the elevation \<elev> as the crown level for pressure pipes and the invert level for others, the flow direction \<flowDir> and the pipe reference \<refPipe>.
@@ -209,7 +242,7 @@ Using a pipe to delimit a pipe network is a special case that is described separ
 
 {{xtabulate Pipe}}
 
-**Pipe**
+### Pipe
 
 The **name**, end reference **refEnd**, start reference **refStart**, **slope** and **state** are mandatory attributes.
 Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
@@ -218,7 +251,7 @@ When using a pipe to delimit a pipe network the pipe is given a name that clearl
 
 {{xtabulate5 Pipe}}
 
-**Center**
+## Center
 
 The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
 
@@ -228,7 +261,7 @@ The pipe curvature is defined by space-separated 3D-coordinates in the \<Center>
 
 More details can be found from {{refsec mvd-pipedetails}}
 
-**Details**
+## Details
 
 It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
 
