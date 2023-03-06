@@ -1,5 +1,4 @@
-{{schemafile ../schema/inframodel-raw.xsd}}
-# Water supply and sewerage
+# Pipeworks {#sec:mvd-watersupplyandsewerage}
 
 ## Contents
 
@@ -22,11 +21,12 @@ The network topology is presented in the parent element **\<PipeNetworks>** whos
     - the exact length may be described in the extension "IM_pipe" as a length attribute or as the arithmetic distance between the end coordinates of the pipe.    
     - pressurized sewers: described in the inframodel extension "IM_pipe" in an attribute.
 
-Todo kuva Pipenetworks_general
+{{figure Pipenetworks_general}}
 
 The pipe network is, depending on the situation, usually described in its entirety. LandXML file transfers does not allow you to delimit the network without adhereing to the syntax. E.g. describing the inverts of the delimiting storm drain requires additional pipes and corresponding terminal structures. The process of delimiting the network is described in further detail in {{refsec Structures}} and {{refsec Pipes}}.
-      
-## Pipe networks
+   
+
+## Pipe networks {#sec:mvd-pipenetworks}
 
 A file may contain multiple *pipe network groups* **\<PipeNetworks>**. It is mandatory to define the **name** of the pipe network and optional to give a *description* **desc** and **state** of the plan.
 
@@ -40,7 +40,7 @@ The *plan information* of the drainage plan is set in the optional "IM_plan" ext
 
 {{xtabulate5 IM_plan}}
 
-## Pipe network
+## Pipe network {#sec:mvd-pipenetwork}
 
 Individual networks are defined by **\<PipeNetwork>** elements organized under their parent element **\<PipeNetworks>**, the *network group*. The number of *networks* in one *network group* is unlimited. The *pipe network* defines a topological model, the **name** and the *network type* **pipeNetType**. The state and *description* **desc** of the network are optional.
 
@@ -48,7 +48,7 @@ The elements in the pipe network are assigned unique names. The **pipeNetType** 
 
 {{xtabulate5 PipeNetwork}}
 
-### Pipe network type extensions
+### Pipe network type extensions <a name="831pipenetworktypeextensions"></a>
 
 When the *pipe network type* is other than one of those covered by the **pipeNetType** attribute of the **\<PipeNetwork>** element, the optional "IM_pipeNetworkType" extension shall be used (with the **pipeNetType** attribute set to "other").
 
@@ -62,7 +62,7 @@ It is possible to split the network description into several files if needed.
 
 {{xtabulate5 Pipenetworkunits}}
 
-## Structures
+## Structures <a name="85structures"></a>
 
 The topological network consists of different kind of structures whose exact location is defined in the file. The different structures in the **\<PipeNetwork>** compose the *structure group* **\<Structs>**, that has no attributes.
 
@@ -77,7 +77,35 @@ LandXML standard structure types:
 
 Dividing the network is a special case that is described in further detail in the sections covering the element that describes pipe joints, extensions or points of intersection.
 
-### Circular structures
+{{xtabulate Struct}}
+
+**General data**
+
+The general information contains the **name**, *elevation of the top surface of the rim* **elevRimp**, *elevation of the bottom at the water level of the lower invert* **elevSump** and the **state** of the structure. All elements are assigned unique names.
+
+{{xtabulate5 Struct}}
+
+**Center**
+
+The center of the cross-section at the bottom of the well or the sump is set by 2D coordinates, separated by spaces in the **\<Center>** element.
+
+{{xmlsnippet Center}}
+
+{{xtabulate5 Center}}
+
+**Inverts**
+
+The adjoining inlet and outlet inverts are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
+
+{{xtabulate5 Invert}}
+
+**Details**
+
+It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**. The additional information for the rim encompasses the **rimType** and the rim load bearing class **rimLoad**. The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. The dates of different actions may also be defined, suct as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.
+
+{{xtabulate5 IM_struct}}
+
+### Circular structures {#sec:mvd-circularstructure}
 
 Inspection wells of French drains are an example of a circular structure. Circular structures are defined using the structure element **\<Struct>** and its child elements.
 
@@ -89,41 +117,11 @@ Inspection wells of French drains are an example of a circular structure. Circul
 
 The figure below illustrates the representation of a drain well, including a sump. The sump is defined in the extension "IM_struct" by defining the sump height and volume.
 
-Todo kuva Pipenetwork_CircStruct
+{{figure Pipenetwork_CircStruct}}
 
 {{xtabulate5 Struct}}
 
-#### General data
-
-The **name** of the structure, the *rim top elevation* **elevRim**, *elevation of the* **elevSump** and *state* **state**. All structural elements in the file are assigned unique names.
-
-{{xtabulate5 Struct}}
-
-#### Center
-
-The center of the cross-section at the bottom of the well or the sump is set by 2D coordinates, separated by spaces in the **\<Center>** element.
-
-{{xtabulate5 Center}}
-
-#### Circular structure
-
-The *body* **diameter** at the bottom of the well, the *description* **desc**, the **material** and the **thickness** of the shell material. The well cone and sump are described in further detail in the extension "IM_struct"
-
-{{xtabulate5 CircStruct}}
-
-#### Inverts
-
-The adjoining inlet and outlet inverts are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
-
-{{xtabulate5 Invert}}
-
-#### Details
-
-It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**. The additional information for the rim encompasses the **rimType** and the rim load bearing class **rimLoad**. When describing a conical well the **diameter** describes the diameter of the bottom of the cone. The **rimDiameter** describes the *inner diameter* of the rim and the **rimCenter** defines the *2D coordinates of the rim center*. The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. The dates of different actions may also be defined, suct as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.
-
-{{xtabulate5 IM_struct}}
-
-### Rectangular structures
+### Rectangular structures {#sec:mvd-rectangularstructures}
 
 The illustration below describes the description method of a rectangular structure. The structure is defined using the **\<Struct>** element and its child elements:
 1. General data **\<Struct>**
@@ -134,43 +132,11 @@ The illustration below describes the description method of a rectangular structu
 
 The illustration demonstrates the method of description of a rectangular well, including a sump as an example. The sump is defined by its depth and/or volume.
 
-Todo kuva Pipenetwork_RectStruct
+{{figure Pipenetwork_RectStruct}}
 
 {{xtabulate5 Struct}}
 
-#### General data
-
-The general information contains the **name**, *elevation of the top surface of the rim* **elevRimp**, *elevation of the bottom at the water level of the lower invert* **elevSump** and the **state** of the structure. All elements are assigned unique names.
-
-{{xtabulate5 Struct}}
-
-#### Center
-
-The center of the cross-section at the bottom of the well or the sump is set by 2D coordinates, separated by spaces in the **\<Center>** element.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Rectangular structure
-
-The mandatory attributes of a rectangular structure are the **length** the direction of the long edge **lenghtDir**, the **width** of the short edge width, the **material** of the structure and the **thickness** of the surface structure.
-
-{{xtabulate5 RectStruct}}
-
-#### Inverts
-
-The adjoining inlet and outlet inverts are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
-
-{{xtabulate5 Invert}}
-
-#### Details
-
-It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**. The additional information for the rim encompasses the **rimType** and the rim load bearing class **rimLoad**. The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. The dates of different actions may also be defined, suct as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.
-
-{{xtabulate5 IM_struct}}
-
-### Pipe inlets and outlets
+### Pipe inlets and outlets {#sec:mvd-pipeinletsandoutlets}
 
 Pipe inlets and outlets are end of the pipe network pipes. The following illustration demonstrates the method of description. The virtual structures of the pipe ends are defined using the structure attribute **\<Struct>** and its child elements:
 
@@ -182,43 +148,11 @@ Pipe inlets and outlets are end of the pipe network pipes. The following illustr
 
 The illustration below demonstrates how pipe inlets and outlets are described. The example demonstrates an outlet.
 
-todo kuva Pipenetwork_InletOutletStruct
+{{figure Pipenetwork_InletOutletStruct}}
 
 {{xtabulate5 Struct}}
 
-#### General data
-
-The name, elevation of the rim **elevRim** elevation of the sump **elevSump** and the **state** of the structure are mandatory attributes of an inlet or outlet structure. All structural elements in the file are assigned unique names.
-
-{{xtabulate5 Struct}}
-
-#### Center
-
-The pipe end is defined by space-separated 2D-coordinates in the **\<Center>** element.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Inlet or outlet
-
-*Inlets* **\<InletStruct>** and *outlets* **\<OutletStruct>** have no attributes.
-
-{{xtabulate5 InletStruct}}
-
-#### Inverts
-
-The inlet or outlet of a virtual structural element is described with the element **\<Invert>**. The required attributes of an invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the *flow direction* **\<flowDir>** and the *pipe reference* **\<refPipe>**.
-
-{{xtabulate5 Invert}}
-
-#### Details
-
-It is optional to define details in the inframodel file transfer. The structure can be identified by a label **structLabel**. Procedures carried out on the structure are defined by the **constructionDate** and the **renewalDate**. These are typically given in years. It is also possible to include a description of the renewal procedure, such as the method used, using the attribute **renowalDesc**.
-
-{{xtabulate5 M_struct}}
-
-### Pipe connections
+### Pipe connections {#sec:mvd-pipeconnection}
 
 Pipe connections, joints and points of intersection are defined by the **\<Connection>** elements. The illustration bellow demonstrates the mode of description, which contains the attributes of the structure **\<Struct>** and its child elements:
 
@@ -231,45 +165,11 @@ Pipe connections, joints and points of intersection are defined by the **\<Conne
 The illustration demonstrates the description method of a point of intersection.
 When using the element to delimit a pipe network, the terminal drainage well is connected to a pipe that terminates in a **\<Connection>** element. It is thus possible to also describe the connections of the outermost wells in the plan network. It is advisable to name the elements in a fashion that is clearly different from the rest of the plan, e.g. "Terminal1", "Terminal2".
 
-todo kuva Pipenetwork_Connection1
+{{figure Pipenetwork_Connection1}}
 
 {{xtabulate5 Struct}}
 
-#### General data
-
-The **name**, *rim elevation* **elevRim**, *sump elevation* **elevSump** and the **state** of the structure are mandatory attributes. All structural elements in the file are assigned individual names.
-
-When the element describes a delimiting element, all attributes are not used. The **name** of the structure and the description **desc** are set to differ from the plan informatuion as much as possible e.g. by naming them "Terminal1", "Terminal2". The elevation of the rim **elevRim**, the elevation of the sump **elevSump** and the **state** of the structure are left undefined.
-
-{{xtabulate5 Struct}}
-
-#### Center
-
-The **\<Center>** of a connection, joint or point of intersection at the mounting level is set using space-separated 2D coordinates.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Connection
-
-Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
-
-{{xtabulate5 Connection}}
-
-#### Inverts
-
-The inlet or outlet of a structural element is described with the element **\<Invert>**. The required attributes of an invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
-
-{{xtabulate5 Invert}}
-
-#### Details
-
-It is optional to define details in the inframodel file transfer. The structure can be identified by a label. Procedures carried out on the structure are defined by the constructionDate and the renewalDate. These are typically given in years. It is also possible to include a description of the renewal procedure, such as the method used, using the attribute renowalDesc.
-
-{{xtabulate5 IM_struct}}
-
-### Equipment
+### Equipment {#sec:mvd-equipment}
 
 Equipment is defined using the **\<Connection>** element. The illustration bellow describes the mode of description of a *structure* **\<Struct>** and its child elements:
 
@@ -281,43 +181,17 @@ Equipment is defined using the **\<Connection>** element. The illustration bello
 
 The illustration demonstrates the mode of description of a valve:
 
-todo kuva Pipenetwork_Connection2
+{{figure Pipenetwork_Connection2}}
 
 {{xtabulate5 Struct}}
 
-#### General data
+#### Inverts {#sec:mvd-inverts}
+The adjoining inlet and outlet inverts are described using the element \<Invert>. The required attributes of invert are: the elevation \<elev> as the crown level for pressure pipes and the invert level for others, the flow direction \<flowDir> and the pipe reference \<refPipe>.
 
-The name, rim elevation elevRim, sump elevation elevSump and the state of the structure are mandatory attributes. All structural elements in the file are assigned individual names.
+{{xtabulate Invert}}
 
-{{xtabulate5 Struct}}
 
-#### Center
-
-The \<Center> of a piece of equipment at the mounting level is set using space-separated 2D coordinates.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Connection
-
-A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment is defined in the extension "IM_struct".
-
-{{xtabulate5 Connection}}
-
-#### Inverts
-
-The inlet or outlet of a structural element is described with the element \<Invert>. The required attributes of an invert are: the elevation \<elev> as the crown level for pressure pipes and the invert level for others, the flow direction \<flowDir> and the pipe reference \<refPipe>
-
-{{xtabulate5 Invert}}
-
-#### Details
-
-It is optional to define details in the inframodel file transfer. It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. The rim is defined by the *rim type* **rimType** and *rim load bearing class* **rimLoad**. Procedures carried out on the equipment are defined by the **constructionDate** and the **renewalDate**. These are typically given in years. It is also possible to include a description of the renewal procedure, such as the method used, using the attribute **renewalDesc**.
-
-{{xtabulate5 IM_Struct}}
-
-## Pipes
+## Pipes {#sec:mvd-pipes}
 
 The topological network consists of different kinds of structures, whose exact location is given. The pipes that compose the **\<PipeNetwork>** are described as a *structure collection* **\<Pipes>** that has no attributes. A **\<Pipe>** is defined between two structure nodes **\<Struct>** by refering to them in the start- and end-attributions.
 
@@ -333,20 +207,9 @@ Available pipe types in the LandXML standard:
 
 Using a pipe to delimit a pipe network is a special case that is described separately for each pipe type.
 
-### Circular pipes
+{{xtabulate Pipe}}
 
-The following illustation descibes the definition of a round pipe  The definition employs the element **\<Pipe>** and its child elements.
-
-1. Pipe **\<Pipe>**
-2. Circular pipe **\<CircPipe>**
-3. Center **\<Center>**
-4. Pipe details **\<Feature>** "IM_pipe" extension
-
-todo kuva Pipenetwork_CircPipe
-
-{{xtabulate5 Pipe}}
-
-#### Pipe
+**Pipe**
 
 The **name**, end reference **refEnd**, start reference **refStart**, **slope** and **state** are mandatory attributes.
 Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
@@ -355,15 +218,7 @@ When using a pipe to delimit a pipe network the pipe is given a name that clearl
 
 {{xtabulate5 Pipe}}
 
-#### Circular pipe
-
-The **diameter**, *type description* **desc**, **material** and wall **thickness** of the pipe are mandatory attributes.
-
-When defining a network-limiting pipe the **diameter** is the only defined attribute. Other attributes are not defined.
-
-{{xtabulate5 CircPipe}}
-
-#### Center
+**Center**
 
 The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
 
@@ -371,8 +226,9 @@ The pipe curvature is defined by space-separated 3D-coordinates in the \<Center>
 
 {{xtabulate5 Center}}
 
+More details can be found from {{refsec mvd-pipedetails}}
 
-#### Details
+**Details**
 
 It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
 
@@ -382,13 +238,37 @@ It is optional to define details in inframodel file transfers. The label of pipe
 
 The jointType sets the type of joints and connections used for the pipe. When the defined pipe is a pressurized sewer the pressureClass of the pipe is defined. Procedure details are defined with the constructionDate and renewalDate. It is also possible to define detailed information of the renewal using the renewal description renewalDesc, e.g. the method used to renew the pipe.
 
+***Rectangular and elliptic pipe:*** *When start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.*
+
+***Egg pipe:*** *When start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes, center being at the level where the cross section is the widest.*
+
 When the start and end coordinates are given with elevation values, elevation type shall be given as one of the enumerated elevTypes shown below.
 
-todo kuva Pipenetwork_elevType
+{{figure Pipenetwork_elevType}}
+
+***A="crown level", B="center level", C="invert level", D="bottom level"***
 
 {{xtabulate5 IM_pipe}}
 
-### Egg pipes
+#### Circular pipes {#sec:mvd-circularpipes}
+
+The following illustation descibes the definition of a round pipe  The definition employs the element **\<Pipe>** and its child elements.
+
+1. Pipe **\<Pipe>**
+2. Circular pipe **\<CircPipe>**
+3. Center **\<Center>**
+4. Pipe details **\<Feature>** "IM_pipe" extension
+
+{{figure Pipenetwork_CircPipe}}
+
+The **diameter**, *type description* **desc**, **material** and wall **thickness** of the pipe are mandatory attributes.
+
+When defining a network-limiting pipe the **diameter** is the only defined attribute. Other attributes are not defined.
+
+{{xtabulate5 CircPipe}}
+
+
+### Egg pipes {#sec:mvd-eggpipes}
 
 The following illustation descibes the definition of an egg-shaped pipe  The definition employs the element \<Pipe> and its child elements.
 
@@ -399,48 +279,13 @@ The following illustation descibes the definition of an egg-shaped pipe  The def
 
 Illustration of egg-shaped pipe represenation.
 
-todo kuva 
-
-{{xtabulate5 Pipe}}
-
-#### Pipe
-
-The name, end reference refEnd, start reference refStart, slope and state are mandatory attributes. Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
-
-When using a pipe to delimit a pipe network the pipe is given a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". The end reference refEnd start reference refStart are the only mandatory attributes. The other attributes are not set.
-
-{{xtabulate5 Pipe}}
-
-#### Egg pipe
-
 Mandatory attributes are *height* **height**, *width* **span**, *type description* **desc**, *material* **material** and pipe *thickness* **thickness**.
 
-When defininga  network-limiting pipe the *height* **height** and *width* **span** are set. Other attributes are not set.
+When defining a network-limiting pipe the *height* **height** and *width* **span** are set. Other attributes are not set.
 
 {{xtabulate5 EggPipe}}
 
-#### Center
-
-The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Details
-
-It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
-
-1. elevation type elevType 
-2. start coordinate pipeStart and the 
-3. end coordinate pipeEnd. 
-
-The jointType sets the type of joints and connections used for the pipe. When the defined pipe is a pressurized sewer the pressureClass of the pipe is defined. Procedure details are defined with the constructionDate and renewalDate. It is also possible to define detailed information of the renewal using the renewal description renewalDesc, e.g. the method used to renew the pipe.
-When start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes, center being at the level where the cross section is the widest.
-
-{{xtabulate5 IM_pipe}}
-
-### Elliptic pipes
+### Elliptic pipes {#sec:mvd-ellipticpipe}
 
 The following illustation descibes the definition of an elliptical pipe. The definition employs the element \<Pipe> and its child elements.
 
@@ -449,19 +294,7 @@ The following illustation descibes the definition of an elliptical pipe. The def
 3. Center **\<Center>**
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
-todo kuva Pipenetwork_ElliPipe
-
-{{xtabulate5 Pipe}}
-
-#### Pipe
-
-The name, end reference refEnd, start reference refStart, slope and state are mandatory attributes. Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
-
-When using a pipe to delimit a pipe network the pipe is given a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". The end reference refEnd start reference refStart are the only mandatory attributes. The other attributes are not set.
-
-{{xtabulate5 Pipe}}
-
-#### Elliptic pipe
+{{figure Pipenetwork_ElliPipe}}
 
 Mandatory attributes are pipe section *height* **height**, *width* **span**, pipe type *description* **desc**, *material* **material** and pipe *thickness* **thickness**.
 
@@ -469,28 +302,7 @@ When defining a network mandatory attributes are *height* **height** ja *width* 
 
 {{xtabulate5 ElliPipe}}
 
-#### Center
-
-The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Details
-
-It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
-
-1. elevation type elevType 
-2. start coordinate pipeStart and the 
-3. end coordinate pipeEnd. 
-
-The jointType sets the type of joints and connections used for the pipe. When the defined pipe is a pressurized sewer the pressureClass of the pipe is defined. Procedure details are defined with the constructionDate and renewalDate. It is also possible to define detailed information of the renewal using the renewal description renewalDesc, e.g. the method used to renew the pipe.
-When start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.
-
-{{xtabulate5 IM_pipe}}
-
-### Rectangular pipes
+### Rectangular pipes {#sec:mvd-rectangularpipe}
 
 The following illustation descibes the definition of a rectangular pipe.  The definition employs the element \<Pipe> and its child elements.
 
@@ -499,19 +311,7 @@ The following illustation descibes the definition of a rectangular pipe.  The de
 3. Center **\<Center>**
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
-todo kuva Pipenetwork_RectPipe
-
-{{xtabulate5 Pipe}}
-
-#### Pipe
-
-The name, end reference refEnd, start reference refStart, slope and state are mandatory attributes. Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
-
-When using a pipe to delimit a pipe network the pipe is given a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". The end reference refEnd start reference refStart are the only mandatory attributes. The other attributes are not set.
-
-{{xtabulate5 Pipe}}
-
-#### Rectangular pipe
+{{figure Pipenetwork_RectPipe}}
 
 The pipe *height* **height**, *width* **width**, *description* **desc**, **material** and pipe **thickness**.
 
@@ -519,22 +319,7 @@ When defining a network-limiting pipe the **height** and **width** are mandatory
 
 {{xtabulate5 RectPipe}}
 
-#### Center
-
-The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Details
-
-It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 1) elevation type elevType 2) start coordinate pipeStart and the 3) end coordinate pipeEnd. The jointType sets the type of joints and connections used for the pipe. When the defined pipe is a pressurized sewer the pressureClass of the pipe is defined. Procedure details are defined with the constructionDate and renewalDate. It is also possible to define detailed information of the renewal using the renewal description renewalDesc, e.g. the method used to renew the pipe.
-When start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.
-
-{{xtabulate5 IM_pipe}}
-
-### channel
+### Channels {#sec:mvd-channels}
 
 The following illustation descibes the definition of a channel pipe. The definition employs the element \<Pipe> and its child elements.
 
@@ -545,36 +330,10 @@ The following illustation descibes the definition of a channel pipe. The definit
 
 Illustration of channel description:
 
-todo kuva Pipenetwork_Channel
-
-{{xtabulate5 Pipe}}
-
-#### Pipe
-
-The name, end reference refEnd, start reference refStart, slope and state are mandatory attributes. Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
-
-When using a pipe to delimit a pipe network the pipe is given a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". The end reference refEnd start reference refStart are the only mandatory attributes. The other attributes are not set.
-
-{{xtabulate5 Pipe}}
-
-#### channel
+{{figure Pipenetwork_Channel}}
 
 Mandatory attributes are channel section *height* **height**, *top width* **widthTop**, *bottom width* **widthBottom**, pipe type *description* **desc**, *material* **material** and *thickness* **thickness**.
 
 When defining a network mandatory attributes are *height* **height**, *top width* **widthTop** and *bottom width* **widthBottom**. Other attributes are not set.
 
 {{xtabulate5 Channel}}
-
-#### Center
-
-The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
-
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
-
-#### Details
-
-It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 1) elevation type elevType 2) start coordinate pipeStart and the 3) end coordinate pipeEnd. The jointType sets the type of joints and connections used for the pipe. Procedure details are defined with the constructionDate and renewalDate. It is also possible to define detailed information of the renewal using the renewal description renewalDesc, e.g. the method used to renew the pipe.
-
-{{xtabulate5 IM_pipe}}
