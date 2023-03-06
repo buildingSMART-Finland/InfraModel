@@ -81,7 +81,7 @@ Dividing the network is a special case that is described in further detail in th
 
 {{xtabulate5 IM_struct}}
 
-### General data
+#### General data
 
 The **name**, *rim elevation* **elevRim**, *sump elevation* **elevSump** and the **state** of the structure are mandatory attributes. 
 
@@ -89,7 +89,7 @@ All structural elements in the file are assigned individual names.
 
 {{xtabulate5 Struct}}
 
-### Center
+#### Center
 
 ***Circular and rectangular structures:*** The center of the cross-section at the bottom of the well or the sump is set by 3D coordinates, separated by spaces in the **\<Center>** element.
 
@@ -101,13 +101,13 @@ All structural elements in the file are assigned individual names.
 
 {{xtabulate5 Center}}
 
-### Inverts
+#### Inverts
 
 The adjoining inlet and outlet inverts are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
 
 {{xtabulate5 Invert}}
 
-### Details
+#### Details
 
 It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**.
 
