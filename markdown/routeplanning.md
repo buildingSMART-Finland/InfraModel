@@ -212,11 +212,3 @@ The structural model of a route contains the surface meshes of all structural la
 Cross-section parameters refer to parametric information complementing the model represented as surface or stringline models. These include design parameters such as the widths and superelevations of roads.
 
 The relevant cross-section parameters for each route type are described in further detail in the corresponding section of each route type.
-
-## Road signs
-
-Traffic signs are described with the LandXML **/<RoadSign>** element. The data may contain one or more traffic signs. If there are several signs on top of each other in the same location, they are described in order from top to bottom.
-
-{{xtabulate RoadSign}}
-  
-{{figure RoadSign}}
