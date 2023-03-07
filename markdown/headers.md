@@ -171,3 +171,9 @@ The \<version> should match the version number of the Inframodel schema.
 Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ({{refto IMExtensions}} in the case of Inframodel feature dictionary).
 
 {{xtabulate4 FeatureDictionary}}
+
+## Metadata
+  
+Metadata is described with the **\<Metadata>** element. Metadata is optional and enables the following features shown below.
+  
+{{xtabulate IM-Metadata}}
