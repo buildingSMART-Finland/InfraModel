@@ -142,7 +142,7 @@ The recommended type coding system in Inframodel exchange:
 - For terrain is the Finnish Transport Infrastructure Agency type coding *Infra*]. 
 - For surface and infrastructure objects, the recommended type coding system is the general InfraBIM type coding *InfraBIM*.
 
-In addition to the main systems, it is also possible to define additional or alternative type coding systems, named as proprietaryInfraCoding (the name given here shall be used as prefix in later usage)
+In addition to the main systems, it is also possible to define additional or alternative type coding systems *(one or more e.g. InfraRAK2.3, Vesilaitos X, Kaupunki Y etc.)*, named as proprietaryInfraCoding (the name given here shall be used as prefix in later usage)
 
 ## Application
 
