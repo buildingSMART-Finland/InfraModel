@@ -1,5 +1,6 @@
 # Pipenetworks {#sec:mvd-watersupplyandsewerage}
 
+
 ## Contents
 
 The drainage plan can be described in the same LandXML file as the rest of the plan content. The units used in drainage planning are the metric units and coordinate systems defined in chapter 1 Headers. If the drainage system utilizes coordinate or unit systems that differ from the rest of the it should be described as a separate LandXML file.
@@ -44,7 +45,9 @@ The *plan information* of the drainage plan is set in the optional "IM_plan" ext
 
 Individual networks are defined by **\<PipeNetwork>** elements organized under their parent element **\<PipeNetworks>**, the *network group*. The number of *networks* in one *network group* is unlimited. The *pipe network* defines a topological model, the **name** and the *network type* **pipeNetType**. The state and *description* **desc** of the network are optional.
 
-The elements in the pipe network are assigned unique names. The **pipeNetType** defines the type of the network as 1) "sanitary" 2) "storm" 3) "water" 4) "other" (not specified, or specified in "IM_pipeNetworkType" extension). If the network contains components in different states, the **state** is not set.
+{{xtabulate pipeNetType}}
+
+The elements in the pipe network are assigned unique names. The **pipeNetType** defines the type of the network as 1) "sanitary" 2) "storm" 3) "water" 4) "cable" 5) spatialZone 6) "other" (not specified, or specified in "IM_pipeNetworkType" extension). If the network contains components in different states, the **state** is not set.
 
 {{xtabulate5 PipeNetwork}}
 
