@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 4.0.4 Release -->
-<!-- Date Posted: 01/04/2020 -->
-<xs:schema xmlns:im="http://buildingsmart.fi/im/404" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/im/404" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0.4">
+<!-- 4.1 Release Candidate WORKING DRAFT -->
+<!-- Date Posted: 01/04/2023 -->
+<xs:schema xmlns:im="http://buildingsmart.fi/im/410" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/im/410" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
 	<xs:element name="PileGroups">
 		<xs:complexType>
 			<xs:sequence>
@@ -398,7 +398,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:attribute name="source" use="optional"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Metadata not included in version 4.0.3 - be be introduced in next version
+	<!-- Metadata unpublished in version 4.0.3 -->
 	<xs:element name="Metadata">
 		<xs:complexType>
 			<xs:sequence>
@@ -625,21 +625,4 @@ tiedot</xs:documentation>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
- -->
-	<!-- BoundingBox not included in version 4.0.3	
-	<xs:element name="BBox">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="Envelope">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="LowerLeftCorner" type="xs:string"/>
-							<xs:element name="UpperRightCorner" type="xs:string"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
--->
 </xs:schema>

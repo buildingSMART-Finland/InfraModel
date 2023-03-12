@@ -119,13 +119,25 @@ In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> tran
 
 ## Project
 
-It is mandatory to define a name and a description desc for the \<Project>. The description can e.g. contain the project long name or code. The optional state attribute can be used to describe the state of the project and its content. Sub-elements of the file however may override the state value defined here by setting their own state attribute.
+\<Project> element defines base data of the project, including it's name description and classification system definitios. 
+
+The description can contain ie. the project long name or code. 
+
+The state attribute can be used to describe the state of the project and its content. Sub-elements of the file however may override the state value defined here by setting their own state attribute.
 
 {{xtabulate4 Project}}
 
-where
+where:
 
 {{xtabulate4 stateType}}
+
+{{xtabulate4 IM_codings-ltFeature--gt}}
+
+{{xtabulate4 IM_proprietaryCodings-ltFeature--gt}}
+
+{{xtabulate4 IM_userDefinedProperties-ltFeature--gt}}
+
+{{xmlsnippet Project}}
 
 ## Type coding systems
 
