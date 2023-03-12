@@ -131,11 +131,11 @@ where:
 
 {{xtabulate4 stateType}}
 
-{{xtabulate4 IM_codings-ltFeature--gt}}
+{{xtabulate4 IM_codings--ltFeature--gt}}
 
-{{xtabulate4 IM_proprietaryCodings-ltFeature--gt}}
+{{xtabulate4 IM_proprietaryCodings--ltFeature--gt}}
 
-{{xtabulate4 IM_userDefinedProperties-ltFeature--gt}}
+{{xtabulate4 IM_userDefinedProperties--ltFeature--gt}}
 
 {{xmlsnippet Project}}
 

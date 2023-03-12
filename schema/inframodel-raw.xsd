@@ -1630,9 +1630,9 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="IM_codings-ltFeature--gt"/>
-				<xs:element ref="IM_proprietaryCodings-ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="IM_userDefinedProperties-ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_codings--ltFeature--gt"/>
+				<xs:element ref="IM_proprietaryCodings--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
 			</xs:choice>
 			<xs:attribute name="name" type="xs:string" use="required">
@@ -5949,7 +5949,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="IM_codings-ltFeature--gt">
+	<xs:element name="IM_codings--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
 			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
@@ -5996,7 +5996,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="IM_proprietaryCodings-ltFeature--gt">
+	<xs:element name="IM_proprietaryCodings--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
 			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
@@ -6029,7 +6029,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="IM_userDefinedProperties-ltFeature--gt">
+	<xs:element name="IM_userDefinedProperties--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
 			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
