@@ -125,19 +125,19 @@ The description can contain ie. the project long name or code.
 
 The state attribute can be used to describe the state of the project and its content. Sub-elements of the file however may override the state value defined here by setting their own state attribute.
 
-{{xtabulate4 Project}}
+{{xtabulate Project}}
 
 where:
 
-{{xtabulate4 stateType}}
+{{xtabulate stateType}}
 
-{{xtabulate4 IM_codings--ltFeature--gt}}
+{{xtabulate IM_codings--ltFeature--gt}}
 
-{{xtabulate4 IM_proprietaryCodings--ltFeature--gt}}
+{{xtabulate IM_proprietaryCodings--ltFeature--gt}}
 
-{{xtabulate4 IM_userDefinedProperties--ltFeature--gt}}
+{{xtabulate IM_userDefinedProperties--ltFeature--gt}}
 
-{{xmlsnippet Project}}
+{{xmlsnippet2 Project}}
 
 ## Type coding systems
 
