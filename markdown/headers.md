@@ -119,11 +119,11 @@ In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> tran
 
 ## Project
 
-\<Project> element defines base data of the project, including it's name description and classification system definitios. 
+\<Project> element defines base data of the project, including it's name description and classification system definitions. 
 
-The description can contain ie. the project long name or code. 
+The description may contain ie. the project long name or code. 
 
-The state attribute can be used to describe the state of the project and its content. Sub-elements of the file however may override the state value defined here by setting their own state attribute.
+The state attribute may be used to describe the state of the project and its content. Sub-elements of the file however may override the state value defined here by setting their own state attribute.
 
 {{xtabulate5 Project}}
 

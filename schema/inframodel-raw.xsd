@@ -6003,10 +6003,10 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_codings">
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_proprietaryCodings">
 				<xs:annotation>
-					<xs:documentation>Fixed value, IM_codings</xs:documentation>
-					<xs:documentation>Example:IM_codings</xs:documentation>
+					<xs:documentation>Fixed value, IM_proprietaryCodings</xs:documentation>
+					<xs:documentation>Example:IM_proprietaryCodings</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
@@ -6034,10 +6034,10 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_codings">
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_userDefinedProperties">
 				<xs:annotation>
-					<xs:documentation>Fixed value, IM_codings</xs:documentation>
-					<xs:documentation>Example:IM_codings</xs:documentation>
+					<xs:documentation>Fixed value, IM_userDefinedProperties</xs:documentation>
+					<xs:documentation>Example:IM_userDefinedProperties</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
