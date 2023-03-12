@@ -5845,11 +5845,10 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:attribute name="speed" type="xs:double"/>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Feature deifinitions-->
+	<!--Typed Inframodel Feature definitions-->
 	<xs:element name="IM_coordTransformation--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel localization --ltFeature--gt extension</xs:documentation>
-			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -5882,7 +5881,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<xs:element name="IM_controlPoint--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel localization control point --ltFeature--gt extension</xs:documentation>
-			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -5952,7 +5950,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<xs:element name="IM_codings--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
-			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -5979,7 +5976,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:attribute name="name" type="xs:string" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
-					<xs:documentation>Example:--uuid--</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_codings">
@@ -5988,7 +5985,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 					<xs:documentation>Example:IM_codings</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="source" use="required" fixed="inframodel">
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
 				<xs:annotation>
 					<xs:documentation>Fixed value, inframodel</xs:documentation>
 					<xs:documentation>Example:inframodel</xs:documentation>
@@ -5999,7 +5996,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<xs:element name="IM_proprietaryCodings--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
-			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -6012,7 +6008,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:attribute name="name" type="xs:string" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
-					<xs:documentation>Example:--uuid--</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_codings">
@@ -6021,7 +6017,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 					<xs:documentation>Example:IM_codings</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="source" use="required" fixed="inframodel">
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
 				<xs:annotation>
 					<xs:documentation>Fixed value, inframodel</xs:documentation>
 					<xs:documentation>Example:inframodel</xs:documentation>
@@ -6032,7 +6028,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<xs:element name="IM_userDefinedProperties--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
-			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -6046,7 +6041,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:attribute name="name" type="xs:string" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
-					<xs:documentation>Example:--uuid--</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_codings">
@@ -6055,7 +6050,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 					<xs:documentation>Example:IM_codings</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="source" use="required" fixed="inframodel">
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
 				<xs:annotation>
 					<xs:documentation>Fixed value, inframodel</xs:documentation>
 					<xs:documentation>Example:inframodel</xs:documentation>
