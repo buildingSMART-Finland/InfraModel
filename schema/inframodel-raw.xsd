@@ -5852,8 +5852,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
 				<xs:element ref="sourceCRSname--ltProperty--gt"/>
 				<xs:element ref="sourceEPSGcode--ltProperty--gt"/>
 				<xs:element ref="IM_controlPoint--ltFeature--gt" minOccurs="5" maxOccurs="unbounded"/>
@@ -5884,8 +5882,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
 				<xs:element ref="useHorizontal--ltProperty--gt">
 					<xs:annotation>
 						<xs:documentation>Choose if the point should be used for calculation of horizontal transformation. </xs:documentation>
@@ -5953,8 +5949,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
 				<xs:element ref="terrainCoding--ltProperty--gt">
 					<xs:annotation>
 						<xs:documentation>Sets terrain coding system</xs:documentation>
@@ -5999,8 +5993,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
 				<xs:element ref="proprietaryInfraCoding--ltProperty--gt"/>
 				<xs:element ref="proprietaryInfraCodingDesc--ltProperty--gt"/>
 				<xs:element ref="proprietaryInfraCodingSourceRef--ltProperty--gt" minOccurs="0"/>
@@ -6031,8 +6023,6 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
 				<xs:element ref="propertyLabel--ltProperty--gt"/>
 				<xs:element ref="propertyValue--ltProperty--gt"/>
 				<xs:element ref="propertyDescription--ltProperty--gt" minOccurs="0"/>
