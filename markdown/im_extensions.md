@@ -36,7 +36,7 @@ It is possible to set the same system for several categories. It is also possibl
 
 4. Software or organization specific type coding systems (**proprietaryInfraCoding**) by defining one or more "IM_proprietaryCodings" \<Feature>
 
-{{xtabulate IM_codings--ltFeature--gt}
+{{xtabulate IM_codings--ltFeature--gt}}
 
 where:
 
@@ -58,7 +58,7 @@ where:
 
 {{xtabulate infraCodingSourceRef--ltProperty--gt}}
 
-Proprietary codelists may be defined using "IM_proprietaryCodings" \<Feature>
+Proprietary codelists are defined using "IM_proprietaryCodings" \<Feature>
 
 {{xtabulate IM_proprietaryCodings--ltFeature--gt}}
 
