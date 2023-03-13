@@ -1827,11 +1827,18 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Start" minOccurs="0"/>
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Start" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Represents the base point of coordinate system</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Note as a text content of element</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="IM_coordTransformation--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string">
 				<xs:annotation>

@@ -39,9 +39,7 @@ The root element (\<LandXML>) of the transfer file is used by software to check 
 
 The units used in the file are defined by the \<Units> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>.
 
-{{xtabulate Metric}}
-
-{{xtabulate5 Units}}
+{{xtabulate Units}}
 
 ## Coordinate and height systems
 
@@ -67,9 +65,10 @@ See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformatio
 
 ### Local coordinate transformation by transformation parameters
 
-The exact parameters of a particular local coordinate transformation may be given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under <LandXML>. The xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
+The exact parameters of a particular local coordinate transformation may be given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under \<LandXML>. 
+The im namespace xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
 
-{{xtabulate4 LocalCoordinateTransformation ../schema/im.xsd}}
+{{xtabulate LocalCoordinateTransformation ../schema/im.xsd}}
 
 Coordinate systems use a reference ellipsoid, defined by the semi-major and semi-minor axis, to approximate the shape of the Earth. The datum is then defined by the ellipsoid and its location and orientation, i.e. different datums can use the same ellipsoid but its position varies.
 
