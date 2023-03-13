@@ -5984,7 +5984,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_codings--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel type coding system definition  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -6028,7 +6028,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_proprietaryCodings--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel proprietary feature coding system definition  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -6058,7 +6058,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_userDefinedProperties--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel user defined properties  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel user defined custom properties  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
