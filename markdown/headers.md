@@ -41,6 +41,8 @@ The units used in the file are defined by the \<Units> element. Only certain met
 
 {{xtabulate Units}}
 
+{{xtabulate Metric}}
+
 ## Coordinate and height systems
 
 The height and coordinate system information is defined in the element \<CoordinateSystem>. 

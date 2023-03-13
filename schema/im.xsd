@@ -525,19 +525,8 @@ tiedot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Ellipsoid">
-					<xs:complexType>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="semiMajorAxis" type="xs:double"/>
-						<xs:attribute name="inverseFlattening" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="PrimeMeridian">
-					<xs:complexType>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="value" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:Ellipsoid"/>
+				<xs:element ref="im:PrimeMeridian"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="epsg" type="xs:string" use="required"/>
@@ -571,17 +560,7 @@ tiedot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Helmert3D">
-					<xs:complexType>
-						<xs:attribute name="rotationX" type="xs:double"/>
-						<xs:attribute name="rotationY" type="xs:double"/>
-						<xs:attribute name="rotationZ" type="xs:double"/>
-						<xs:attribute name="translationX" type="xs:double"/>
-						<xs:attribute name="translationY" type="xs:double"/>
-						<xs:attribute name="translationZ" type="xs:double"/>
-						<xs:attribute name="scale" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:Helmert3D"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -591,15 +570,7 @@ tiedot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="TransverseMercator">
-					<xs:complexType>
-						<xs:attribute name="falseEasting" type="xs:double"/>
-						<xs:attribute name="falseNorthing" type="xs:double"/>
-						<xs:attribute name="longitude0" type="xs:double"/>
-						<xs:attribute name="latitude0" type="xs:double"/>
-						<xs:attribute name="scale0" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:TransverseMercator"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -613,22 +584,57 @@ tiedot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Helmert2D">
-					<xs:complexType>
-						<xs:attribute name="rotation" type="xs:double" use="required"/>
-						<xs:attribute name="scale" type="xs:double" use="required"/>
-						<xs:attribute name="dn" type="xs:double" use="required"/>
-						<xs:attribute name="de" type="xs:double" use="required"/>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="FittedPlane" minOccurs="0">
-					<xs:complexType>
-						<xs:attribute name="a" type="xs:double"/>
-						<xs:attribute name="b" type="xs:double"/>
-						<xs:attribute name="c" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:Helmert2D"/>
+				<xs:element ref="im:FittedPlane" minOccurs="0"/>
 			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Ellipsoid">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="semiMajorAxis" type="xs:double"/>
+			<xs:attribute name="inverseFlattening" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PrimeMeridian">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="value" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Helmert3D">
+		<xs:complexType>
+			<xs:attribute name="rotationX" type="xs:double"/>
+			<xs:attribute name="rotationY" type="xs:double"/>
+			<xs:attribute name="rotationZ" type="xs:double"/>
+			<xs:attribute name="translationX" type="xs:double"/>
+			<xs:attribute name="translationY" type="xs:double"/>
+			<xs:attribute name="translationZ" type="xs:double"/>
+			<xs:attribute name="scale" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TransverseMercator">
+		<xs:complexType>
+			<xs:attribute name="falseEasting" type="xs:double"/>
+			<xs:attribute name="falseNorthing" type="xs:double"/>
+			<xs:attribute name="longitude0" type="xs:double"/>
+			<xs:attribute name="latitude0" type="xs:double"/>
+			<xs:attribute name="scale0" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Helmert2D">
+		<xs:complexType>
+			<xs:attribute name="rotation" type="xs:double" use="required"/>
+			<xs:attribute name="scale" type="xs:double" use="required"/>
+			<xs:attribute name="dn" type="xs:double" use="required"/>
+			<xs:attribute name="de" type="xs:double" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FittedPlane">
+		<xs:complexType>
+			<xs:attribute name="a" type="xs:double"/>
+			<xs:attribute name="b" type="xs:double"/>
+			<xs:attribute name="c" type="xs:double"/>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
