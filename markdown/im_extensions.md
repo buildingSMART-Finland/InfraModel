@@ -71,7 +71,7 @@ where:
 {{xtabulate proprietaryInfraCodingSourceRef--ltProperty--gt}} 
 
 TODO-MISSING FEATURE ITEM
-{{xtabulate IM_coding--ltFeature--gt}
+{{xtabulate IM_coding--ltFeature--gt}}
 
 
 More information can be found from {{refsec Typecodingsystems}} 
