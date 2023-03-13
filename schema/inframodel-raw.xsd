@@ -1822,23 +1822,16 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 			<xs:documentation>
 			    Simplified coordinate systems definitions to reuse work done by
 				EPSG (European Petroleum Survey Group)
-				EPSG Code: EPSG has reserved the integer range 0 to 32767 for use as codes for coordinate systems.
-                    Example: Represents Australian Map Grid Zone 52
-                     name="AGD66 - AMG Zone 52" , epsgCode="20252" 
-
-                    Example: Represents Colorado CS27 South Zone
-                     name="NAD27-Colorado South" , epsgCode="26755"
-
-Inframodel: JHS 153, 154
-				</xs:documentation>
+				Inframodel: JHS 153, 154
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Start" minOccurs="0"/>
 				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
 				<xs:element ref="IM_coordTransformation--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string">
 				<xs:annotation>
@@ -1871,7 +1864,6 @@ Inframodel: JHS 153, 154
 				</xs:annotation>
 			</xs:attribute>
 			<xs:anyAttribute namespace="##any"/>
-			<!--  The attributes below are provided for backward compatibility only and should no longer be used. -->
 		</xs:complexType>
 	</xs:element>
 	<!-- Application element -->
