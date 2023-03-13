@@ -15,9 +15,29 @@ Local coordinate system may be defined as set of control points sourceCRS-target
 Where:
 
 {{xtabulate sourceCRSname--ltProperty--gt}}
+
 {{xtabulate sourceEPSGcode--ltProperty--gt}}
+
 {{xtabulate IM_controlPoint--ltFeature--gt}}
- 
+
+where:
+
+{{xtabulate useHorizontal--ltProperty--gt}}
+
+{{xtabulate useVertical--ltProperty--gt}}
+
+{{xtabulate latitude--ltProperty--gt}}
+
+{{xtabulate longitude--ltProperty--gt}}
+
+{{xtabulate altitude--ltProperty--gt}}
+
+{{xtabulate northing--ltProperty--gt}}
+
+{{xtabulate easting--ltProperty--gt}}
+
+{{xtabulate elevation--ltProperty--gt}}
+
 
 ## Type coding systems
 
