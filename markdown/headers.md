@@ -6,78 +6,69 @@
 InfraModel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
 
 Example:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 ```
+
 The namespaces in Inframodel file shall be the following:
 
-- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall is set in the root element as xmlns="http://buildingsmart.fi/inframodel/404"
-- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall is set in the root element as
-xmlns:im="http://buildingsmart.fi/im/404"
-- The types in Inframodel enumerations schema inframodelEnumerations.xsd are included in the http://buildingsmart.fi/inframodel/404 namespace
+- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall is set in the root element.
+- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall is set in the root element
+- The types in Inframodel enumerations schema inframodelEnumerations.xsd are included in the default namespace
 
 **Note: The namespace URI is not meant to be used to look up information. Its sole purpose is to give the namespace a unique name.**
 
 
-The schema locations may be set in an Inframodel transfer file, in which case XML Schema Instance namespace shall be set in the root element: xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance
+The schema locations may be set in an Inframodel transfer file, in which case XML Schema Instance namespace shall be set in the root element: xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 The following schema locations can be set to access online:
 
-- The schema location for the default namespace can be set in the root element as xsi:schemaLocation="http://buildingsmart.fi/inframodel/404 https://buildingsmart.fi/infra/schema/4.0.4/inframodel.xsd"
-- Additionally, if elements from im namespace are used in the file, the schema location can be set in the root element as xsi:schemaLocation="http://buildingsmart.fi/inframodel/404 https://buildingsmart.fi/infra/schema/4.0.4/inframodel.xsd http://buildingsmart.fi/im/404 https://buildingsmart.fi/infra/schema/4.0.4/im.xsd"
-- The Inframodel enumerations schema inframodelEnumerations.xsd location is set automatically by being included in the default schema
+- The schema location for the default namespace
+- If elements from im namespace are used in the file, the "im.xsd" schema location
+
+The Inframodel enumerations schema inframodelEnumerations.xsd location is set automatically by being included by the default schema
 
 
-The root element (\<LandXML>) of the transfer file is used by software to check the validity of the file structure. Following table defines the required and optional fields.
+The root element (\<LandXML>) of the transfer file is used by software to check the validity of the file structure.
 
 {{xtabulate4 LandXML}}
 
 
 ## Units
 
-The units used in the file are defined by the \<Units> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>. The following table lists valid units.
-Radians are used as default direction (directionUnit) and angular (angularUnit) units. These are defined counter-clockwise from the base direction. In angular definitions the base direction is east, and in direction definitions it is north.
+The units used in the file are defined by the \<Units> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>.
 
-{{xtabulate4 Metric}}
+{{xtabulate Metric}}
+
+{{xtabulate5 Units}}
 
 ## Coordinate and height systems
 
-The height and coordinate system information is defined in the element \<CoordinateSystem>. At least one coordinate system shall be defined.
+The height and coordinate system information is defined in the element \<CoordinateSystem>. 
+Exactly one coordinate system shall be defined:
 
-The Open Geospatial Consortium (OGC) naming system shall not be used in Inframodel from version 4.0 onward. 
+- By defining the \<CoordinateSystem>.epsgCode using the European Petrol Survey Group (EPSG) naming system without a prefix.
+- Or by defining local system(s) with \<CoordinateSystem>.horizontalCoordinateSystemName (and optionally the \<CoordinateSystem>.verticalCoordinateSystemName)  
 
-Exactly one horizontal system shall be defined using the European Petrol Survey Group (EPSG) naming system, or other local system in current use.
-
-The EPSG coordinate system is set in the attribute epsgCode as a valid code without prefix. 
-
-If a local horizontal coordinate system is used instead of a EPSG system, it is set using the attribute horizontalCoordinateSystemName and the optional desc attribute can provide informal information about the system used.
-
-Optionally, one vertical coordinate system can be specified in the attribute verticalCoordinateSystemName.
-This can be either using a EPSG namimg system (EPSG prefix and code, to be given here also when it is the same as for horizontal system), or a local vertical coordinate system (and the optional desc attribute can be used to provide informal information about the system used).
+\<CoordinateSystem>.desc attribute may provide informal information about the system used).
 
 It is also possible to set a rotationAngle for the coordinate system.
 
-The name attribute should not be used in Inframodel
 
 {{xtabulate4 CoordinateSystem}}
 
-The optional base point of the coordinate system is given using the element \<CoordinateSystem>.\<Start>. The point is given as a 3D coordinate point, with three space delimited values.
-
-{{xmlsnippet Start}}
-
-For transformation between source geographic coordinate system sourceCRS and target local system targetCRS, a set of control points may be given under "IM_coordTransformation" \<Feature> extension as "IM_controlPoint" \<Feature> extensions, where each point has latitude, longitude and altitude values in source system, and corresponding local system northing, easting and elevation values. 
-
-{{xtabulate IM_coordTransformation--ltFeature--gt}}
 
 
-See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformation" \<Feature> extension.
+### Local coordinate transformation by point pairs
 
+Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension. See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformation" \<Feature> extension.
 
-### Local coordinate transformation parameters
+### Local coordinate transformation by transformation parameters
 
-The exact parameters of a particular Local Coordinate Transformation are given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under <LandXML>. The xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
+The exact parameters of a particular local coordinate transformation may be given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under <LandXML>. The xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
 
-{{xtabulate4 im:LocalCoordinateTransformation}}
+{{xtabulate4 im:LocalCoordinateTransformation ../schema/im.xsd}}
 
 Coordinate systems use a reference ellipsoid, defined by the semi-major and semi-minor axis, to approximate the shape of the Earth. The datum is then defined by the ellipsoid and its location and orientation, i.e. different datums can use the same ellipsoid but its position varies.
 
@@ -85,37 +76,37 @@ For example, the WGS84 system uses a reference ellipsoid with a semi-major axis 
 
 1. SourceCRS
 
-{{xtabulate im:SourceCRS}}
+{{xtabulate im:SourceCRS ../schema/im.xsd}}
 
 where
 
-{{xtabulate im:Ellipsoid}}
+{{xtabulate im:Ellipsoid ../schema/im.xsd}}
 
-{{xtabulate im:PrimeMeridian}}
+{{xtabulate im:PrimeMeridian ../schema/im.xsd}}
 
 2. TargetCRS
 
-{{xtabulate im:TargetCRS}}
+{{xtabulate im:TargetCRS ../schema/im.xsd}}
 
 3. DatumTransformation
 
 Helmert3D \<im:DatumTransformation>.\<im:Helmert3D> performs a coordinate transformation from one datum to another.
 
-{{xtabulate im:Helmert3D}}
+{{xtabulate im:Helmert3D ../schema/im.xsd}}
 
 4. Projection
 
 Transverse Mercator Map projection \<im:Projection>.\<im:TransverseMercator> transforms geographical coordinates (latitude, longitude, altitude) to a plane (x, ,y, z). The grid origin is taken on the central latitude and longitude, and false easting and northing is then applied to prevent negative coordinates west or south of the origin.
 
-{{xtabulate im:TransverseMercator}}
+{{xtabulate im:TransverseMercator ../schema/im.xsd}}
 
 5. Local transformation
 
 In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (x,y,z) is z_corrected = z + (a*x + b*y +c).
 
-{{xtabulate im:Helmert2D}}
+{{xtabulate im:Helmert2D ../schema/im.xsd}}
 
-{{xtabulate im:FittedPlane}}
+{{xtabulate im:FittedPlane ../schema/im.xsd}}
 
 ## Project
 

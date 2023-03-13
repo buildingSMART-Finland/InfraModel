@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2023 sp1 (x64) (http://www.altova.com) by Juha Hyvärinen (JHy Consulting) -->
+<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
 <!-- 4.1 Release Candidate WORKING DRAFT-->
 <!-- Date Posted: 01/04/2023 -->
 <xs:schema xmlns="http://buildingsmart.fi/inframodel/410" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/inframodel/410" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
@@ -848,34 +848,31 @@
 			<xs:documentation>List of materials in Inframodel Pipe Network Structs and Pipes (@material)</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="puu"/>
-			<xs:enumeration value="tiili"/>
-			<xs:enumeration value="kivi"/>
-			<xs:enumeration value="valurauta"/>
-			<xs:enumeration value="teras"/>
-			<xs:enumeration value="muovi"/>
-			<xs:enumeration value="betoni"/>
-			<xs:enumeration value="muuMateriaali"/>
-			<xs:enumeration value="alumiini"/>
-			<xs:enumeration value="kupari"/>
-			<xs:enumeration value="lyijy"/>
-			<xs:enumeration value="haponkestavaTeras"/>
-			<xs:enumeration value="ruostumatonTeras"/>
-			<xs:enumeration value="harmaavalurauta"/>
-			<xs:enumeration value="pallografiittivalurauta"/>
-			<xs:enumeration value="asbestisementti"/>
-			<xs:enumeration value="lasitettuSavi"/>
+			<xs:enumeration value="wood"/>
+			<xs:enumeration value="brick"/>
+			<xs:enumeration value="rock"/>
+			<xs:enumeration value="cement"/>
+			<xs:enumeration value="aluminium"/>
+			<xs:enumeration value="copper"/>
+			<xs:enumeration value="lead"/>
+			<xs:enumeration value="steel"/>
+			<xs:enumeration value="acidResistantSteel"/>
+			<xs:enumeration value="stainlessSteel"/>
+			<xs:enumeration value="castIron"/>
+			<xs:enumeration value="grayCastIron"/>
+			<xs:enumeration value="sphericalGraphiteCastIron"/>
+			<xs:enumeration value="asbestCement"/>
+			<xs:enumeration value="vitrifiedClay"/>
+			<xs:enumeration value="plastic"/>
+			<xs:enumeration value="PE"/>
 			<xs:enumeration value="PEH"/>
 			<xs:enumeration value="PEL"/>
 			<xs:enumeration value="PEM"/>
 			<xs:enumeration value="PP"/>
 			<xs:enumeration value="PVC"/>
-			<xs:enumeration value="lujitemuovi"/>
-			<xs:enumeration value="kumi"/>
-			<xs:enumeration value="bitumi"/>
-			<xs:enumeration value="PE"/>
-			<xs:enumeration value="unknown"/>
-			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="fiberComposite"/>
+			<xs:enumeration value="rubber"/>
+			<xs:enumeration value="bitum"/>
 			<xs:enumeration value="other"/>
 		</xs:restriction>
 	</xs:simpleType>

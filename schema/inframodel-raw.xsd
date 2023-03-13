@@ -6,7 +6,7 @@
 	<xs:include schemaLocation="inframodelEnumerations.xsd"/>
 	<xs:element name="LandXML">
 		<xs:annotation>
-			<xs:documentation>Inframodel version of LandXML schema.
+			<xs:documentation>Inframodel subset of LandXML schema.
 
 Each element which has Inframodel specific implementation has a text Inframodel in annotation text. This should make it easier to find out location where there is Inframodel specific definitions.
 </xs:documentation>
@@ -15,24 +15,14 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:choice maxOccurs="unbounded">
 				<xs:element ref="Units">
 					<xs:annotation>
-						<xs:documentation>Inframodel fixed metric units 
-						All angular and direction values default to radians unless otherwise noted. Angular values, expressed in the specified Units.angleUnit are measured counter-clockwise from east=0. Horizontal directions, expressed in the specified Units.directionUnit are measured counter-clockwise from 0 degrees = north</xs:documentation>
+						<xs:documentation>Units used on file, only certain fixed SI units are allowed by this specification.</xs:documentation>
+						<xs:documentation>Hint:InfraModel</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="CoordinateSystem">
 					<xs:annotation>
-						<xs:documentation>
-Inframodel coord system defintions with optional transfomation reference points	
-		    
-Simplified coordinate systems definitions to reuse work done by
-				EPSG (European Petroleum Survey Group)
-				EPSG Code: EPSG has reserved the integer range 0 to 32767 for use as codes for coordinate systems.
-                    Example: Represents Australian Map Grid Zone 52
-                     name="AGD66 - AMG Zone 52" , epsgCode="20252" 
-
-                    Example: Represents Colorado CS27 South Zone
-                     name="NAD27-Colorado South" , epsgCode="26755"
-				</xs:documentation>
+						<xs:documentation>Coordinate system defintion with optional transfomation reference points.   </xs:documentation>
+						<xs:documentation>Hint:Inframodel</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="Project"/>
@@ -89,13 +79,25 @@ Simplified coordinate systems definitions to reuse work done by
 					</xs:annotation>
 				</xs:any>
 			</xs:choice>
-			<xs:attribute name="date" type="xs:date" use="required"/>
-			<xs:attribute name="time" type="xs:time" use="required"/>
-			<xs:attribute name="version" type="xs:string" use="required"/>
-			<xs:attribute name="language" type="xs:string"/>
-			<xs:attribute name="readOnly" type="xs:boolean"/>
-			<xs:attribute name="LandXMLId" type="xs:int"/>
-			<xs:attribute name="crc" type="xs:integer"/>
+			<xs:attribute name="date" type="xs:date" use="required">
+				<xs:annotation>
+					<xs:documentation>UTC date of file</xs:documentation>
+					<xs:documentation>Example:2023-03-13Z</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="time" type="xs:time" use="required">
+				<xs:annotation>
+					<xs:documentation>UTC time of file</xs:documentation>
+					<xs:documentation>Example:09:00:00Z</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="version" type="xs:string" use="required" fixed="1.2">
+				<xs:annotation>
+					<xs:documentation>XML schema version, fixed value 1.2</xs:documentation>
+					<xs:documentation>Example:1.2</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 		<!-- All name-attributes must have unique value within Inframodel-file -->
 		<xs:unique name="uName">
@@ -1278,6 +1280,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Starting or beginning Point</xs:documentation>
 			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
+			<xs:documentation>Example:0.0 0.0 0.0</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="End" type="PointType">
@@ -1662,7 +1665,12 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice>
-				<xs:element ref="Metric"/>
+				<xs:element ref="Metric">
+					<xs:annotation>
+						<xs:documentation>Fixed metric units</xs:documentation>
+						<xs:documentation>Hint:Inframodel</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="Imperial" minOccurs="0" maxOccurs="0"/>
 			</xs:choice>
 		</xs:complexType>
@@ -1672,20 +1680,105 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:documentation/>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="areaUnit" type="metArea" use="required" fixed="squareMeter"/>
-			<xs:attribute name="linearUnit" type="metLinear" use="required" fixed="meter"/>
-			<xs:attribute name="volumeUnit" type="metVolume" use="required" fixed="cubicMeter"/>
-			<xs:attribute name="temperatureUnit" type="metTemperature" use="required" fixed="celsius"/>
-			<xs:attribute name="pressureUnit" type="metPressure" use="required" fixed="milliBars"/>
-			<xs:attribute name="diameterUnit" type="metDiameter" use="required" fixed="meter"/>
-			<xs:attribute name="widthUnit" type="metWidth" use="required" fixed="meter"/>
-			<xs:attribute name="heightUnit" type="metHeight" use="required" fixed="meter"/>
-			<xs:attribute name="elevationUnit" type="elevationType" use="required" fixed="meter"/>
-			<xs:attribute name="velocityUnit" type="metVelocity" use="required" fixed="kilometersPerHour"/>
-			<xs:attribute name="angularUnit" type="angularType" use="required" fixed="radians"/>
-			<xs:attribute name="directionUnit" type="angularType" use="required" fixed="radians"/>
-			<xs:attribute name="latLongAngularUnit" type="latLongAngularType" use="required" fixed="radians"/>
-			<xs:attribute name="flowUnit" type="metFlow" use="required" fixed="literPerSecond"/>
+			<xs:attribute name="areaUnit" type="metArea" use="required" fixed="squareMeter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, squareMeter</xs:documentation>
+					<xs:documentation>Example:squareMeter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="linearUnit" type="metLinear" use="required" fixed="meter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, meter</xs:documentation>
+					<xs:documentation>Example:meter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="volumeUnit" type="metVolume" use="required" fixed="cubicMeter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, cubicMeter</xs:documentation>
+					<xs:documentation>Example:cubicMeter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="temperatureUnit" type="metTemperature" use="required" fixed="celsius">
+				<xs:annotation>
+					<xs:documentation>Fixed value, celsius</xs:documentation>
+					<xs:documentation>Example:celsius</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="pressureUnit" type="metPressure" use="required" fixed="milliBars">
+				<xs:annotation>
+					<xs:documentation>Fixed value, milliBars</xs:documentation>
+					<xs:documentation>Example:milliBars</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="diameterUnit" type="metDiameter" use="required" fixed="meter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, meter</xs:documentation>
+					<xs:documentation>Example:meter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="widthUnit" type="metWidth" use="required" fixed="meter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, meter</xs:documentation>
+					<xs:documentation>Example:meter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="heightUnit" type="metHeight" use="required" fixed="meter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, meter</xs:documentation>
+					<xs:documentation>Example:meter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="elevationUnit" type="elevationType" use="required" fixed="meter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, meter</xs:documentation>
+					<xs:documentation>Example:meter</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="velocityUnit" type="metVelocity" use="required" fixed="kilometersPerHour">
+				<xs:annotation>
+					<xs:documentation>Fixed value, kilometersPerHour</xs:documentation>
+					<xs:documentation>Example:kilometersPerHour</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="angularUnit" type="angularType" use="required" fixed="radians">
+				<xs:annotation>
+					<xs:documentation>Fixed value, radians.  
+Angles are represented counter-clockwise from east=0.  </xs:documentation>
+					<xs:documentation>Example:radians</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="directionUnit" type="angularType" use="required" fixed="radians">
+				<xs:annotation>
+					<xs:documentation>Fixed value, radians. Directions are represented counter-clockwise from 0 degrees = north</xs:documentation>
+					<xs:documentation>Example:Radians</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="latLongAngularUnit" type="latLongAngularType" use="required" fixed="radians">
+				<xs:annotation>
+					<xs:documentation>Fixed value, radians. </xs:documentation>
+					<xs:documentation/>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="flowUnit" type="metFlow" use="required" fixed="literPerSecond">
+				<xs:annotation>
+					<xs:documentation>Fixed value, literPerSecond</xs:documentation>
+					<xs:documentation>Example:literPerSecond</xs:documentation>
+					<xs:documentation>Hint:Inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Imperial">
@@ -1743,95 +1836,41 @@ Inframodel: JHS 153, 154
 			<xs:sequence>
 				<xs:element ref="Start" minOccurs="0"/>
 				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelCoordinateSystemFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>Inframodel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>InfraModel</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:attribute name="label" type="InframodelCoordinateSystemFeatureFeatureCodesType" use="required">
-													<xs:annotation>
-														<xs:documentation>InfraModel</xs:documentation>
-													</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="value" type="xs:string" use="required"/>
-											</xs:complexType>
-										</xs:element>
-										<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-										<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-										<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-									</xs:sequence>
-									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="code" type="InframodelCoordinateSystemFeatureFeatureCodesType" use="required">
-										<xs:annotation>
-											<xs:documentation>Inframodel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="source"/>
-								</xs:complexType>
-							</xs:element>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelCoordinateSystemFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
 				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
+				<xs:element ref="IM_coordTransformation--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="epsgCode" type="xs:string">
+			<xs:attribute name="desc" type="xs:string">
 				<xs:annotation>
-					<xs:documentation>http://www.epsg-registry.org/</xs:documentation>
+					<xs:documentation>Optional coordinate system description</xs:documentation>
+					<xs:documentation>Example:ETRS-GK23FIN-LONG</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="ogcWktCode" use="prohibited"/>
-			<xs:attribute name="horizontalDatum" type="xs:string"/>
-			<xs:attribute name="verticalDatum" type="xs:string"/>
-			<xs:attribute name="ellipsoidName" type="xs:string"/>
-			<xs:attribute name="horizontalCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="geocentricCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="fileLocation" type="xs:anyURI"/>
-			<xs:attribute name="rotationAngle" type="angle" use="required"/>
-			<xs:attribute name="datum" type="xs:string"/>
-			<xs:attribute name="fittedCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="compoundCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="localCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="geographicCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="projectedCoordinateSystemName" type="xs:string"/>
-			<xs:attribute name="verticalCoordinateSystemName" type="xs:string"/>
+			<xs:attribute name="epsgCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>EPSG code of coordinate system</xs:documentation>
+					<xs:documentation>Example:3130</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="horizontalCoordinateSystemName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>User defined horizontal coordinate system name.</xs:documentation>
+					<xs:documentation>Example:mylocalsystem</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="verticalCoordinateSystemName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>User defined local vertical coordinate system name</xs:documentation>
+					<xs:documentation>Example:mylocalsystem</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rotationAngle" type="angle" use="optional">
+				<xs:annotation>
+					<xs:documentation>Rotation angle of the coordinate system</xs:documentation>
+					<xs:documentation>Example:0.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:anyAttribute namespace="##any"/>
 			<!--  The attributes below are provided for backward compatibility only and should no longer be used. -->
 		</xs:complexType>
 	</xs:element>
@@ -2054,7 +2093,8 @@ Inframodel: JHS 153, 154
 	<xs:element name="FieldNote">
 		<xs:annotation>
 			<xs:documentation>Place the note as a text value between the FieldNote element tags.
-			You may also place any valid XML structure inside this tag.</xs:documentation>
+You may also place any valid XML structure inside this tag.</xs:documentation>
+			<xs:documentation>Example:Mynote</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:choice maxOccurs="unbounded">
@@ -5854,7 +5894,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:sequence>
 				<xs:element ref="sourceCRSname--ltProperty--gt"/>
 				<xs:element ref="sourceEPSGcode--ltProperty--gt"/>
-				<xs:element ref="IM_controlPoint--ltFeature--gt" minOccurs="5" maxOccurs="unbounded"/>
+				<xs:element ref="IM_controlPoint--ltFeature--gt" minOccurs="3" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="optional">
 				<xs:annotation>
@@ -6019,7 +6059,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_userDefinedProperties--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel user defined properties  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
