@@ -63,7 +63,7 @@ It is also possible to set a rotationAngle for the coordinate system.
 ### Local coordinate transformation by point pairs
 
 Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension. 
-See {{refto ImFeatureEXT}} for detailed information about "IM_coordTransformation" \<Feature> extension.
+See {{refto IM_coordTransformation-feature}} for detailed information about "IM_coordTransformation" \<Feature> extension.
 
 ### Local coordinate transformation by transformation parameters
 
@@ -124,11 +124,11 @@ where:
 
 {{xtabulate stateType}}
 
-{{xtabulate IM_codings--ltFeature--gt}}
+Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDefinedProperties" \<Feature> extensions can be found from {{refto IMFeatureEXT}}
 
-{{xtabulate IM_proprietaryCodings--ltFeature--gt}}
-
-{{xtabulate IM_userDefinedProperties--ltFeature--gt}}
+- "IM_codings" \<Feature> extension,{{refto IM_codings-feature}}
+- "IM_proprietaryCodings" \<Feature> extension,{{refto IM_proprietaryCodings-feature}}
+- "IM_userDefinedProperties" \<Feature> extension,{{refto IM_userDefinedProperties-feature}}  
 
 
 ## Type coding systems

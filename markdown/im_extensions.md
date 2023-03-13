@@ -1,20 +1,23 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Inframodel extensions
+# Inframodel \<Feature> extensions
 
-Inframodel transfer files fully conform to the LandXML v1.2 schema, but some extensions have been made using the Feature-mechanism. This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
+Inframodel transfer files fully conform to the LandXML v1.2 schema, but some extensions have been made using the Feature-mechanism. 
+This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
 
 NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in chapters 1 to 11 of this document.
 
-1. Type coding systems
-2. Type coding
-3. Plan information
-4. Route string line model
-5. Cross-section parameters
-6. Water supply and sewerage - structure details
-7. Water supply and sewerage - pipe details
-8. Railway design - KM post coordinates
-9. Railway design - switches
-10. Plan features
+## Local coordinate transformation definition by point pairs
+
+Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension.
+
+{{xtabulate IM_coordTransformation--ltFeature--gt}}
+
+Where:
+
+{{xtabulate sourceCRSname--ltProperty--gt}}
+{{xtabulate sourceEPSGcode--ltProperty--gt}}
+{{xtabulate IM_controlPoint--ltFeature--gt}}
+ 
 
 ## Type coding systems
 
@@ -31,11 +34,66 @@ The main systems set in the project information are:
 
 It is possible to set the same system for several categories. It is also possible to set alternative or additional type coding systems (e.g. InfraRYL) for use within an organization or in a software used.
 
-4. Software or organization specific type coding systems (**proprietaryInfraCoding**)
+4. Software or organization specific type coding systems (**proprietaryInfraCoding**) by defining one or more "IM_proprietaryCodings" \<Feature>
 
-**Details:** 
+{{xtabulate IM_codings--ltFeature--gt}
 
-{{refsec Type coding systems}}
+where:
+
+{{xtabulate terrainCoding--ltProperty--gt}}
+
+{{xtabulate terrainCodingDesc--ltProperty--gt}}
+
+{{xtabulate terrainCodingSourceRef--ltProperty--gt}}
+
+{{xtabulate surfaceCoding--ltProperty--gt}}
+
+{{xtabulate surfaceCodingDesc--ltProperty--gt}}
+
+{{xtabulate surfaceCodingSourceRef--ltProperty--gt}}
+
+{{xtabulate infraCoding--ltProperty--gt}}
+
+{{xtabulate infraCodingDesc--ltProperty--gt}}
+
+{{xtabulate infraCodingSourceRef--ltProperty--gt}}
+
+Proprietary codelists may be defined using "IM_proprietaryCodings" \<Feature>
+
+{{xtabulate IM_proprietaryCodings--ltFeature--gt}}
+
+where:
+
+{{xtabulate proprietaryInfraCoding--ltProperty--gt}}
+
+{{xtabulate proprietaryInfraCodingDesc--ltProperty--gt}}
+
+{{xtabulate proprietaryInfraCodingSourceRef--ltProperty--gt}} 
+
+TODO-MISSING FEATURE ITEM
+{{xtabulate IM_coding--ltFeature--gt}
+
+
+More information can be found from {{refsec Typecodingsystems}} 
+
+## User defined properties
+
+Custom properties may be defined by using "IM_userDefinedProperties" \<Feature>
+
+{{xtabulate IM_userDefinedProperties--ltFeature--gt}}
+
+where:
+
+{{xtabulate propertyLabel--ltProperty--gt}}
+
+{{xtabulate propertyValue--ltProperty--gt}}
+
+{{xtabulate propertyDescription--ltProperty--gt}}
+
+{{xtabulate propertySource--ltProperty--gt}}
+
+
+ 
 
 ## Type coding
 
@@ -52,15 +110,15 @@ Individual type codes are set in the individual element, or in the parent elemen
 
 **Details:**
 
-{{refsec Base data Type coding}}
+{{refsec BasedataTypecoding}}
 
-{{refsec Route planning Type coding}}
+{{refsec RouteplanningTypecoding}}
 
 {{refsec Structures}}
 
 {{refsec Pipes}}
 
-{{refsec Planimetric features Type coding}}
+{{refsec PlanimetricfeaturesTypecoding}}
 
 ## Plan information
 
@@ -74,11 +132,11 @@ If the project consists of sub-projects that have different rates of progress, t
 
 **Details:**  
 
-{{refsec Base data Plan information}}
+{{refsec BasedataPlaninformation}}
 
-{{refsec Route planning Plan information}}
+{{refsec RouteplanningPlaninformation}}
 
-{{refsec Water supply and sewerage Plan information}}
+{{refsec WatersupplyandseweragePlaninformation}}
 
 ## String line model
 
@@ -88,7 +146,7 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 **Details:**
 
-{{refsec String line model}}
+{{refsec Stringlinemodel}}
 
 ## Cross-section parameters
 
@@ -115,11 +173,11 @@ The described parameters vary by route type:
 
 **Details:**
 
-{{refsec Cross sect parameters}}
+{{refsec Crosssectparameters}}
 
-{{refsec Cross sections and track information}}
+{{refsec Crosssectionsandtrackinformation}}
 
-{{refsec Cross section parameters}}
+{{refsec Crosssectionparameters}}
 
 ## Water supply and sewerage - structure details
 
@@ -142,13 +200,13 @@ It is possible to describe additional details for the water supply and sewerage 
 
 **Details:**
 
-{{refsec Circular structures}}
+{{refsec Circularstructures}}
 
-{{refsec Rectangular structures}}
+{{refsec Rectangularstructures}}
 
-{{refsec Pipe inlets and outlets}}
+{{refsec Pipeinletsandoutlets}}
 
-{{refsec Pipe connections}}
+{{refsec Pipeconnections}}
 
 {{refsec Equipment}}
 
@@ -170,13 +228,13 @@ Describing pipe details is optional in inframodel file transfers. It is possible
 
 **Details:**
 
-{{refsec Circular pipes}}
+{{refsec Circularpipes}}
 
-{{refsec Egg pipes}}
+{{refsec Eggpipes}}
 
-{{refsec Elliptic pipes}}
+{{refsec Ellipticpipes}}
 
-{{refsec Rectangular pipes}}
+{{refsec Rectangularpipes}}
 
 {{refsec Channels}}
 
@@ -202,7 +260,7 @@ Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, t
 
 **Details:**
 
-{{refsec Switch information}}
+{{refsec Switchinformation}}
 
 ## Plan features
 
@@ -216,10 +274,10 @@ Planimetric features belonging to a particular route design are described in **\
 
 **Details:**
 
-{{refsec Road plan features}}
+{{refsec Roadplanfeatures}}
 
-{{refsec Rail plan features}}
+{{refsec Railplanfeatures}}
 
-{{refsec Waterway plan features}}
+{{refsec Waterwayplanfeatures}}
 
-{{refsec Planimetric features}}
+{{refsec Planimetricfeatures}}
