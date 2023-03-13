@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 4.0.4 Release -->
-<!-- Date Posted: 01/04/2020 -->
-<xs:schema xmlns:im="http://buildingsmart.fi/im/404" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/im/404" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0.4">
+<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
+<!-- 4.1 Release Candidate WORKING DRAFT -->
+<!-- Date Posted: 01/04/2023 -->
+<xs:schema xmlns:im="http://buildingsmart.fi/im/410" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/im/410" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
 	<xs:element name="PileGroups">
 		<xs:complexType>
 			<xs:sequence>
@@ -241,120 +242,16 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="LocalCoordinateTransformation">
+		<xs:annotation>
+			<xs:documentation>Local coordinate transform with parameters</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="SourceCRS">
-					<xs:annotation>
-						<xs:documentation>SourceCRS describes the source geographic coordinate system</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Ellipsoid">
-								<xs:complexType>
-									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="semiMajorAxis" type="xs:double"/>
-									<xs:attribute name="inverseFlattening" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="PrimeMeridian">
-								<xs:complexType>
-									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="value" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string" use="required"/>
-						<xs:attribute name="epsg" type="xs:string" use="required"/>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="TargetCRS">
-					<xs:annotation>
-						<xs:documentation>TargetCRS describes parameters for the target geographic coordinate system.</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Ellipsoid">
-								<xs:complexType>
-									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="semiMajorAxis" type="xs:double"/>
-									<xs:attribute name="inverseFlattening" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="PrimeMeridian">
-								<xs:complexType>
-									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="value" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="DatumTransformation">
-					<xs:annotation>
-						<xs:documentation>Datum transformation from Source to Target datum.</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Helmert3D">
-								<xs:complexType>
-									<xs:attribute name="rotationX" type="xs:double"/>
-									<xs:attribute name="rotationY" type="xs:double"/>
-									<xs:attribute name="rotationZ" type="xs:double"/>
-									<xs:attribute name="translationX" type="xs:double"/>
-									<xs:attribute name="translationY" type="xs:double"/>
-									<xs:attribute name="translationZ" type="xs:double"/>
-									<xs:attribute name="scale" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Projection">
-					<xs:annotation>
-						<xs:documentation>Which projection to use for projecting the geographical coordinates to a plane and its parameters. TransverseMercator is the example here, but there could be other projections defined too.</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="TransverseMercator">
-								<xs:complexType>
-									<xs:attribute name="falseEasting" type="xs:double"/>
-									<xs:attribute name="falseNorthing" type="xs:double"/>
-									<xs:attribute name="longitude0" type="xs:double"/>
-									<xs:attribute name="latitude0" type="xs:double"/>
-									<xs:attribute name="scale0" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="LocalTransformation">
-					<xs:annotation>
-						<xs:documentation>Transformation from the projected coordinates to the final
-             local coordinates. This consists of first a 2D transformation for
- the plane coordinates and then a transformation for the height (using a fitted plane).
-
- The plane can be skipped and one can use a real geoid model instead, using the existing markup (verticalCoordinateSystemName).</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Helmert2D">
-								<xs:complexType>
-									<xs:attribute name="rotation" type="xs:double" use="required"/>
-									<xs:attribute name="scale" type="xs:double" use="required"/>
-									<xs:attribute name="dn" type="xs:double" use="required"/>
-									<xs:attribute name="de" type="xs:double" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="FittedPlane" minOccurs="0">
-								<xs:complexType>
-									<xs:attribute name="a" type="xs:double"/>
-									<xs:attribute name="b" type="xs:double"/>
-									<xs:attribute name="c" type="xs:double"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:SourceCRS"/>
+				<xs:element ref="im:TargetCRS"/>
+				<xs:element ref="im:DatumTransformation"/>
+				<xs:element ref="im:Projection"/>
+				<xs:element ref="im:LocalTransformation"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -398,7 +295,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:attribute name="source" use="optional"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Metadata not included in version 4.0.3 - be be introduced in next version
+	<!-- Metadata unpublished in version 4.0.3 -->
 	<xs:element name="Metadata">
 		<xs:complexType>
 			<xs:sequence>
@@ -625,21 +522,140 @@ tiedot</xs:documentation>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
- -->
-	<!-- BoundingBox not included in version 4.0.3	
-	<xs:element name="BBox">
+	<xs:element name="SourceCRS">
+		<xs:annotation>
+			<xs:documentation>SourceCRS describes the source geographic coordinate system</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Envelope">
+				<xs:element ref="im:Ellipsoid"/>
+				<xs:element ref="im:PrimeMeridian"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="epsg" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TargetCRS">
+		<xs:annotation>
+			<xs:documentation>TargetCRS describes parameters for the target geographic coordinate system.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Ellipsoid">
 					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="LowerLeftCorner" type="xs:string"/>
-							<xs:element name="UpperRightCorner" type="xs:string"/>
-						</xs:sequence>
+						<xs:attribute name="name" type="xs:string"/>
+						<xs:attribute name="semiMajorAxis" type="xs:double"/>
+						<xs:attribute name="inverseFlattening" type="xs:double"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PrimeMeridian">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string"/>
+						<xs:attribute name="value" type="xs:double"/>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
--->
+	<xs:element name="DatumTransformation">
+		<xs:annotation>
+			<xs:documentation>Datum transformation from Source to Target datum.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:Helmert3D"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Projection">
+		<xs:annotation>
+			<xs:documentation>Which projection to use for projecting the geographical coordinates to a plane and its parameters. TransverseMercator is the example here, but there could be other projections defined too.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:TransverseMercator"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LocalTransformation">
+		<xs:annotation>
+			<xs:documentation>Transformation from the projected coordinates to the final
+             local coordinates. This consists of first a 2D transformation for
+ the plane coordinates and then a transformation for the height (using a fitted plane).
+
+ The plane can be skipped and one can use a real geoid model instead, using the existing markup (verticalCoordinateSystemName).</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:Helmert2D"/>
+				<xs:element ref="im:FittedPlane" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Ellipsoid">
+		<xs:annotation>
+			<xs:documentation>Ellipsoid definition</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="semiMajorAxis" type="xs:double"/>
+			<xs:attribute name="inverseFlattening" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PrimeMeridian">
+		<xs:annotation>
+			<xs:documentation>Prime meridian definition</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="value" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Helmert3D">
+		<xs:annotation>
+			<xs:documentation>3D helmert transformation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="rotationX" type="xs:double"/>
+			<xs:attribute name="rotationY" type="xs:double"/>
+			<xs:attribute name="rotationZ" type="xs:double"/>
+			<xs:attribute name="translationX" type="xs:double"/>
+			<xs:attribute name="translationY" type="xs:double"/>
+			<xs:attribute name="translationZ" type="xs:double"/>
+			<xs:attribute name="scale" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TransverseMercator">
+		<xs:annotation>
+			<xs:documentation>Transverse mercator projection</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="falseEasting" type="xs:double"/>
+			<xs:attribute name="falseNorthing" type="xs:double"/>
+			<xs:attribute name="longitude0" type="xs:double"/>
+			<xs:attribute name="latitude0" type="xs:double"/>
+			<xs:attribute name="scale0" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Helmert2D">
+		<xs:annotation>
+			<xs:documentation>2D helmert transformation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="rotation" type="xs:double" use="required"/>
+			<xs:attribute name="scale" type="xs:double" use="required"/>
+			<xs:attribute name="dn" type="xs:double" use="required"/>
+			<xs:attribute name="de" type="xs:double" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FittedPlane">
+		<xs:annotation>
+			<xs:documentation>Vertical height adjustment with sloping plane</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="a" type="xs:double"/>
+			<xs:attribute name="b" type="xs:double"/>
+			<xs:attribute name="c" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

@@ -1,46 +1,507 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2020 (x64) (http://www.altova.com) by Juha Hyvärinen (JHy Consulting) -->
-<!-- 4.0.4 Release -->
-<!-- Date Posted: 01/04/2020 -->
-<xs:schema xmlns="http://buildingsmart.fi/inframodel/404" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/inframodel/404" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0.4">
-	<xs:simpleType name="InframodelFeatureCodesType">
+<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
+<!-- 4.1 Release Candidate WORKING DRAFT-->
+<!-- Date Posted: 01/04/2023 -->
+<xs:schema xmlns="http://buildingsmart.fi/inframodel/410" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/inframodel/410" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
+	<!--
+		List of allowed values for different Inframodel featurecodes per LandXML element 
+-->
+	<xs:simpleType name="InframodelCoordinateSystemFeatureCodesType">
 		<xs:annotation>
-			<xs:documentation>Inframodel: List of allowed values for different featurecodes</xs:documentation>
+			<xs:documentation>Inframodel: List of allowed values for CoordinateSystem Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_coordTransformation"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCoordinateSystemFeatureFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for CoordinateSystem 2nd level Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_controlPoint"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelProjectFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Project Feature codes</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="IM_codings"/>
-			<xs:enumeration value="IM_coding"/>
-			<xs:enumeration value="IM_kmPostCoords"/>
-			<xs:enumeration value="IM_switch"/>
-			<xs:enumeration value="IM_plan"/>
-			<xs:enumeration value="IM_stringlineLayers"/>
-			<xs:enumeration value="IM_stringlineLayer"/>
-			<xs:enumeration value="IM_crossSect"/>
-			<xs:enumeration value="IM_struct"/>
-			<xs:enumeration value="IM_pipe"/>
-			<xs:enumeration value="IM_planfeature"/>
-			<xs:enumeration value="IM_referencePoint"/>
-			<xs:enumeration value="IM_proprietary"/>
-			<xs:enumeration value="IM_cgpoints"/>
-			<xs:enumeration value="IM_survey"/>
-			<xs:enumeration value="IM_surface"/>
-			<xs:enumeration value="IM_structLayer"/>
-			<xs:enumeration value="IM_soil"/>
-			<xs:enumeration value="IM_footing"/>
-			<xs:enumeration value="IM_fence"/>
-			<xs:enumeration value="IM_railing"/>
-			<xs:enumeration value="IM_cable"/>
-			<xs:enumeration value="IM_coordTransformation"/>
-			<xs:enumeration value="IM_controlPoint"/>
-			<xs:enumeration value="IM_pipeNetworkType"/>
-			<xs:enumeration value="IM_surfaceStructure"/>
-			<!-- Metadata not included in version 4.0.3 - be be introduced in next version
- 			<xs:enumeration value="IM_metadata"/> -->
+			<xs:enumeration value="IM_proprietaryCodings"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelCodingsLabelType">
+	<xs:simpleType name="InframodelAlignmentsFeatureCodesType">
 		<xs:annotation>
-			<xs:documentation>Codings label</xs:documentation>
+			<xs:documentation>Inframodel: List of allowed values for Alignments Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_stringlineLayers"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelAlignmentsFeatureFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Alignments 2nd level Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_stringlineLayer"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelAlignmentFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Alignment Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCoordGeomFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Line Feature codes in CoordGeom</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_switch"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelStaEquationFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for StaEquation Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_kmPostCoords"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCrossSectFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for CrossSect Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_crossSect"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCgPointsFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for CgPoints Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_cgpoints"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPlanFeaturesFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for PlanFeatures Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPlanFeatureFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for PlanFeature Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_cable"/>
+			<xs:enumeration value="IM_footing"/>
+			<xs:enumeration value="IM_railing"/>
+			<xs:enumeration value="IM_fence"/>
+			<xs:enumeration value="IM_surfaceStructure"/>
+			<xs:enumeration value="IM_planfeature"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+			<xs:enumeration value="IM_spatialZone"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPipeNetworksFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for PipeNetworks Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPipeNetworkFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for PipeNetwork Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_pipeNetworkType"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelStructFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Struct Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_struct"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+			<xs:enumeration value="IM_spatialZone"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPipeFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Pipe Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_pipe"/>
+			<xs:enumeration value="IM_cable"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+			<xs:enumeration value="IM_spatialZone"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurfacesFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Surfaces Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurfaceFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Surface Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_soil"/>
+			<xs:enumeration value="IM_structLayer"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+			<xs:enumeration value="IM_quantity"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurfaceBoundaryFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Surface Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_soil"/>
+			<xs:enumeration value="IM_structLayer"/>
+			<xs:enumeration value="IM_surfaceStructure"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+			<xs:enumeration value="IM_quantity"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelBreaklineFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Breakline Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelDataPointsFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for DataPoints Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurveyCorrectionsFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Corrections Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_survey"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelRoadwaysFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Roadways Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelRoadwayFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Roadway Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelRoadSignFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Roadway Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_roadSign"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelParcelsFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Parcels Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_plan"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelParcelFeatureCodesType">
+		<xs:annotation>
+			<xs:documentation>Inframodel: List of allowed values for Parcel Feature codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IM_surfaceStructure"/>
+			<xs:enumeration value="IM_coding"/>
+			<xs:enumeration value="IM_proprietaryCoding"/>
+			<xs:enumeration value="IM_userDefinedProperties"/>
+			<xs:enumeration value="IM_spatialZone"/>
+			<xs:enumeration value="IM_quantity"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+		Inframodel Feature Property labels selection per parent LandXML element 
+-->
+	<xs:simpleType name="InframodelProjectFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Project label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_codingsLabelType IM_proprietaryCodingsLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelAlignmentsFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Alignments label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelAlignmentsFeatureFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Alignments label union for 2nd level Feature</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_stringlineLayerLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelAlignmentFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Alignment label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCoordGeomFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>CoordGeom label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_switchLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelStaEquationFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>StaEquation label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_kmPostCoordsLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCrossSectFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>CrossSect label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_crossSectLabelType IM_userDefinedPropertiesLabelType IM_codingLabelType IM_proprietaryCodingLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCgpointsFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Cgpoints label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_cgpointsLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurveyCorrectionsFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>SurveyCorrections label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_surveyLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelRoadwaysFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Roadways label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelRoadwayFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Roadway label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelRoadSignFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>RoadSign label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_roadSignLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPlanFeaturesFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>PlanFeatures label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_proprietaryCodingLabelType IM_codingLabelType IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPlanFeatureFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>PlanFeature label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_cableLabelType IM_footingLabelType IM_railingLabelType IM_fenceLabelType IM_surfaceStructureLabelType IM_planfeatureLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType IM_spatialZoneLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelParcelsFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Parcels label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelParcelFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Parcel label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_surfaceStructureLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_quantityLabelType IM_userDefinedPropertiesLabelType IM_spatialZoneLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPipeNetworksFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>PipeNetworks label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPipeNetworkFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>PipeNetwork label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_pipeNetworkTypeLabelType IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelStructFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Struct label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_structLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType IM_spatialZoneLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelPipeFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Pipe label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_pipeLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_userDefinedPropertiesLabelType IM_cableLabelType IM_spatialZoneLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurfacesFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Surfaces label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_planLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurfaceFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Surface label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_structLayerLabelType IM_soilLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_quantityLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelSurfaceBoundaryFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>SurfaceBoundary label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_structLayerLabelType IM_soilLabelType IM_surfaceStructureLabelType IM_proprietaryCodingLabelType IM_codingLabelType IM_quantityLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCoordinateSystemFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>CoordinateSystem label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_coordTransformationLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelCoordinateSystemFeatureFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>CoordinateSystem label union for 2nd level Feature</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_controlPointLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelBreaklineFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>Breakline label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_codingLabelType IM_proprietaryCodingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<xs:simpleType name="InframodelDataPointsFeatureLabelUnionType">
+		<xs:annotation>
+			<xs:documentation>DataPoints label union</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IM_codingLabelType IM_proprietaryCodingLabelType IM_userDefinedPropertiesLabelType"/>
+	</xs:simpleType>
+	<!-- 
+		Property labels per Inframodel Feature  
+-->
+	<xs:simpleType name="IM_userDefinedPropertiesLabelType">
+		<xs:annotation>
+			<xs:documentation>UserDefined property labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="propertyLabel"/>
+			<xs:enumeration value="propertyValue"/>
+			<xs:enumeration value="propertyDescription"/>
+			<xs:enumeration value="propertySource"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_codingsLabelType">
+		<xs:annotation>
+			<xs:documentation>Codings labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="terrainCoding"/>
+			<xs:enumeration value="terrainCodingSourceDesc"/>
+			<xs:enumeration value="terrainCodingSourceRef"/>
+			<xs:enumeration value="surfaceCoding"/>
+			<xs:enumeration value="surfaceCodingSourceDesc"/>
+			<xs:enumeration value="surfaceCodingSourceRef"/>
+			<xs:enumeration value="infraCoding"/>
+			<xs:enumeration value="infraCodingSourceDesc"/>
+			<xs:enumeration value="infraCodingSourceRef"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_proprietaryCodingsLabelType">
+		<xs:annotation>
+			<xs:documentation>Proprietary Codings labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="proprietaryInfraCoding"/>
+			<xs:enumeration value="proprietaryInfraCodingSourceDesc"/>
+			<xs:enumeration value="proprietaryInfraCodingSourceRef"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_codingLabelType">
+		<xs:annotation>
+			<xs:documentation>Coding labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="surfaceCoding"/>
@@ -49,22 +510,19 @@
 			<xs:enumeration value="terrainCodingDesc"/>
 			<xs:enumeration value="infraCoding"/>
 			<xs:enumeration value="infraCodingDesc"/>
-			<xs:enumeration value="terrainCodingSourceRef"/>
-			<xs:enumeration value="surfaceCodingSourceRef"/>
-			<xs:enumeration value="InfraCodingSourceRef"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelProprietaryType">
+	<xs:simpleType name="IM_proprietaryCodingLabelType">
 		<xs:annotation>
-			<xs:documentation>Proprietary type</xs:documentation>
+			<xs:documentation>Proprietary Coding labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="proprietaryInfraCoding"/>
 			<xs:enumeration value="proprietaryInfraCodingDesc"/>
-			<xs:enumeration value="proprietaryInfraCodingSourceRef"/>
+			<xs:enumeration value="proprietaryInfraCodingSource"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelPlanLabelsType">
+	<xs:simpleType name="IM_planLabelType">
 		<xs:annotation>
 			<xs:documentation>Plan labels</xs:documentation>
 		</xs:annotation>
@@ -76,34 +534,33 @@
 			<xs:enumeration value="planType"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelProjectLabelType">
+	<xs:simpleType name="IM_coordTransformationLabelType">
 		<xs:annotation>
-			<xs:documentation>Project label</xs:documentation>
+			<xs:documentation>CoordTransformation labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="surfaceCoding"/>
-			<xs:enumeration value="terrainCoding"/>
-			<xs:enumeration value="infraCoding"/>
-			<xs:enumeration value="proprietaryInfraCoding"/>
+			<xs:enumeration value="sourceCRSname"/>
+			<xs:enumeration value="sourceEPSGcode"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelAlignmentsFeatureLabelType">
+	<xs:simpleType name="IM_controlPointLabelType">
 		<xs:annotation>
-			<xs:documentation>Alignments feature label</xs:documentation>
+			<xs:documentation>ControlPoint labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="name"/>
-			<xs:enumeration value="alignments"/>
-			<xs:enumeration value="centreLine"/>
+			<xs:enumeration value="useHorizontal"/>
+			<xs:enumeration value="useVertical"/>
+			<xs:enumeration value="latitude"/>
+			<xs:enumeration value="longitude"/>
+			<xs:enumeration value="altitude"/>
+			<xs:enumeration value="northing"/>
+			<xs:enumeration value="easting"/>
+			<xs:enumeration value="easting"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelAlignmentsFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelAlignmentsFeatureLabelType InframodelProprietaryType InframodelPlanLabelsType InframodelCodingsLabelType"/>
-		<!--InframodelMetadataType-->
-	</xs:simpleType>
-	<xs:simpleType name="InframodelCrossSectLabelType">
+	<xs:simpleType name="IM_crossSectLabelType">
 		<xs:annotation>
-			<xs:documentation>Cross sect label</xs:documentation>
+			<xs:documentation>Cross sect labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="pavementClass"/>
@@ -118,18 +575,28 @@
 			<xs:enumeration value="waterLevel"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelStaEquationLabelType">
+	<xs:simpleType name="IM_kmPostCoordsLabelType">
 		<xs:annotation>
-			<xs:documentation>StaEquation label</xs:documentation>
+			<xs:documentation>kmPostCoords labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="kmPostN"/>
 			<xs:enumeration value="kmPostE"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelCoordGeomLineLabelType">
+	<xs:simpleType name="IM_stringlineLayerLabelType">
 		<xs:annotation>
-			<xs:documentation>Coord geom line label</xs:documentation>
+			<xs:documentation>StringlineLayer labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="name"/>
+			<xs:enumeration value="alignments"/>
+			<xs:enumeration value="centreLine"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_switchLabelType">
+		<xs:annotation>
+			<xs:documentation>Switch labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="switchType"/>
@@ -137,9 +604,9 @@
 			<xs:enumeration value="switchJoint"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelCgpointsLabelType">
+	<xs:simpleType name="IM_cgpointsLabelType">
 		<xs:annotation>
-			<xs:documentation>Toteuma Type</xs:documentation>
+			<xs:documentation>As-built cgpoints labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="dirA"/>
@@ -159,21 +626,18 @@
 			<xs:enumeration value="alignmentRef"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelCgpointsFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelCgpointsLabelType InframodelProprietaryType InframodelCodingsLabelType"/>
-	</xs:simpleType>
-	<xs:simpleType name="InframodelSurveyCorrectionsFeatureLabelType">
+	<xs:simpleType name="IM_surveyLabelType">
 		<xs:annotation>
-			<xs:documentation>Coord geom line label</xs:documentation>
+			<xs:documentation>Survey Corrections labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="accuracyType"/>
 			<xs:enumeration value="accuracyDescription"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelPlanFeatureLabelType">
+	<xs:simpleType name="IM_cableLabelType">
 		<xs:annotation>
-			<xs:documentation>Plan feature label</xs:documentation>
+			<xs:documentation>Cable feature labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="label"/>
@@ -185,12 +649,29 @@
 			<xs:enumeration value="heightAbove"/>
 			<xs:enumeration value="widthLeft"/>
 			<xs:enumeration value="heightBelow"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_footingLabelType">
+		<xs:annotation>
+			<xs:documentation>Footing feature labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="label"/>
 			<xs:enumeration value="footingHeight"/>
 			<xs:enumeration value="footingMaterial"/>
 			<xs:enumeration value="foundationType"/>
+			<xs:enumeration value="radiusAround"/>
 			<xs:enumeration value="length"/>
 			<xs:enumeration value="lengthDir"/>
 			<xs:enumeration value="width"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_railingLabelType">
+		<xs:annotation>
+			<xs:documentation>Railing labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="label"/>
 			<xs:enumeration value="railingType"/>
 			<xs:enumeration value="purpose"/>
 			<xs:enumeration value="shockResistaceClass"/>
@@ -201,38 +682,71 @@
 			<xs:enumeration value="railingMaterial"/>
 			<xs:enumeration value="startType"/>
 			<xs:enumeration value="endType"/>
+			<xs:enumeration value="postSpacing"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_fenceLabelType">
+		<xs:annotation>
+			<xs:documentation>Fence labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="label"/>
 			<xs:enumeration value="fenceType"/>
 			<xs:enumeration value="fenceHeight"/>
 			<xs:enumeration value="postMaterial"/>
 			<xs:enumeration value="postShape"/>
+			<xs:enumeration value="postSpacing"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_surfaceStructureLabelType">
+		<xs:annotation>
+			<xs:documentation>SurfaceStructure labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
 			<xs:enumeration value="material"/>
 			<xs:enumeration value="thickness"/>
 			<xs:enumeration value="surfaceRef"/>
-			<xs:enumeration value="type"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelPlanFeaturesFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelPlanFeatureLabelType InframodelProprietaryType InframodelCodingsLabelType InframodelPlanLabelsType"/>
-		<!--InframodelMetadataType-->
-	</xs:simpleType>
-	<xs:simpleType name="InframodelCodingsUnionType">
-		<xs:union memberTypes="InframodelCodingsLabelType InframodelProprietaryType"/>
-		<!--InframodelMetadataType-->
-	</xs:simpleType>
-	<xs:simpleType name="InframodelPipeNetworkLabelType">
+	<xs:simpleType name="IM_planfeatureLabelType">
 		<xs:annotation>
-			<xs:documentation>Pipe Network Type</xs:documentation>
+			<xs:documentation>Generic plan feature labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="type"/>
+			<xs:enumeration value="material"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_roadSignLabelType">
+		<xs:annotation>
+			<xs:documentation>Road sign labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="signName"/>
+			<xs:enumeration value="description"/>
+			<xs:enumeration value="signCode"/>
+			<xs:enumeration value="sizeDesignation"/>
+			<xs:enumeration value="mountType"/>
+			<xs:enumeration value="material"/>
+			<xs:enumeration value="reflection"/>
+			<xs:enumeration value="shape"/>
+			<xs:enumeration value="background"/>
+			<xs:enumeration value="state"/>
+			<xs:enumeration value="note"/>
+			<xs:enumeration value="location"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_pipeNetworkTypeLabelType">
+		<xs:annotation>
+			<xs:documentation>Pipe Network Type labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="pipeNetworkType"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelPipeNetworkFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelPipeNetworkLabelType InframodelPlanLabelsType"/>
-	</xs:simpleType>
-	<xs:simpleType name="InframodelStructLabelType">
+	<xs:simpleType name="IM_structLabelType">
 		<xs:annotation>
-			<xs:documentation>Struct label</xs:documentation>
+			<xs:documentation>Struct labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="structLabel"/>
@@ -241,6 +755,7 @@
 			<xs:enumeration value="rimMaterial"/>
 			<xs:enumeration value="rimDiameter"/>
 			<xs:enumeration value="rimCenter"/>
+			<xs:enumeration value="bottomThickness"/>
 			<xs:enumeration value="heightDeposit"/>
 			<xs:enumeration value="volumeDeposit"/>
 			<xs:enumeration value="constructionDate"/>
@@ -251,13 +766,9 @@
 			<xs:enumeration value="equipmentDesc"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelStructFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelStructLabelType InframodelProprietaryType InframodelCodingsLabelType InframodelPlanLabelsType"/>
-		<!--InframodelMetadataType-->
-	</xs:simpleType>
-	<xs:simpleType name="InframodelPipeLabelType">
+	<xs:simpleType name="IM_pipeLabelType">
 		<xs:annotation>
-			<xs:documentation>Pipe label</xs:documentation>
+			<xs:documentation>Pipe labels </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="pipeLabel"/>
@@ -266,30 +777,17 @@
 			<xs:enumeration value="pipeEnd"/>
 			<xs:enumeration value="jointType"/>
 			<xs:enumeration value="pressureClass"/>
+			<xs:enumeration value="strengthClass"/>
 			<xs:enumeration value="constructionDate"/>
 			<xs:enumeration value="renewalDate"/>
 			<xs:enumeration value="renewalDesc"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelPipeFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelPipeLabelType InframodelProprietaryType InframodelCodingsLabelType InframodelPlanLabelsType"/>
-		<!--InframodelMetadataType-->
-	</xs:simpleType>
-	<xs:simpleType name="InframodelSurfaceLabelType">
+	<xs:simpleType name="IM_soilLabelType">
 		<xs:annotation>
-			<xs:documentation>surfaceLabelType</xs:documentation>
+			<xs:documentation>Soil labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="pavementType"/>
-			<xs:enumeration value="grainSizeMax"/>
-			<xs:enumeration value="grainSizeMin"/>
-			<xs:enumeration value="surfacingMethod"/>
-			<xs:enumeration value="stoneStructureType"/>
-			<xs:enumeration value="stoneType"/>
-			<xs:enumeration value="stabilizationMethod"/>
-			<xs:enumeration value="material"/>
-			<xs:enumeration value="lightweightFillMaterial"/>
-			<xs:enumeration value="lightweightFillMaterialProperty"/>
 			<xs:enumeration value="soilTypeGEO"/>
 			<xs:enumeration value="soilTypeISO"/>
 			<xs:enumeration value="qualificationClass"/>
@@ -297,116 +795,85 @@
 			<xs:enumeration value="frostSwellingFactorWet"/>
 			<xs:enumeration value="elasticModulusDry"/>
 			<xs:enumeration value="elasticModulusWet"/>
-			<xs:enumeration value="nominalThickness"/>
-			<xs:enumeration value="strength"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelSurfaceFeatureLabelUnionType">
-		<xs:union memberTypes="InframodelSurfaceLabelType InframodelProprietaryType InframodelCodingsLabelType InframodelPlanLabelsType"/>
-		<!--InframodelMetadataType-->
-	</xs:simpleType>
-	<xs:simpleType name="InframodelPipeNetworkMaterialType">
+	<xs:simpleType name="IM_structLayerLabelType">
 		<xs:annotation>
-			<xs:documentation>Pipe Network material</xs:documentation>
+			<xs:documentation>StructLayer labels</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="puu"/>
-			<xs:enumeration value="tiili"/>
-			<xs:enumeration value="kivi"/>
-			<xs:enumeration value="valurauta"/>
-			<xs:enumeration value="teras"/>
-			<xs:enumeration value="muovi"/>
-			<xs:enumeration value="betoni"/>
-			<xs:enumeration value="muuMateriaali"/>
-			<xs:enumeration value="alumiini"/>
-			<xs:enumeration value="kupari"/>
-			<xs:enumeration value="lyijy"/>
-			<xs:enumeration value="haponkestavaTeras"/>
-			<xs:enumeration value="ruostumatonTeras"/>
-			<xs:enumeration value="harmaavalurauta"/>
-			<xs:enumeration value="pallografiittivalurauta"/>
-			<xs:enumeration value="asbestisementti"/>
-			<xs:enumeration value="lasitettuSavi"/>
+			<xs:enumeration value="material"/>
+			<xs:enumeration value="grainSizeMin"/>
+			<xs:enumeration value="grainSizeMax"/>
+			<xs:enumeration value="nominalThickness"/>
+			<xs:enumeration value="strength"/>
+			<xs:enumeration value="E-module"/>
+			<xs:enumeration value="loadCapacity"/>
+			<xs:enumeration value="pavementType"/>
+			<xs:enumeration value="surfacingMethod"/>
+			<xs:enumeration value="stoneStructureType"/>
+			<xs:enumeration value="stoneType"/>
+			<xs:enumeration value="stabilizationMethod"/>
+			<xs:enumeration value="lightweightFillMaterial"/>
+			<xs:enumeration value="lightweightFillMaterialProperty"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_quantityLabelType">
+		<xs:annotation>
+			<xs:documentation>Quantity labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="areaQuantity"/>
+			<xs:enumeration value="volumeQuantity"/>
+			<xs:enumeration value="quantityCoding"/>
+			<xs:enumeration value="quantityCodingDescription"/>
+			<xs:enumeration value="quantityCodingSource"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IM_spatialZoneLabelType">
+		<xs:annotation>
+			<xs:documentation>Spatial zone labels</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="spatialAllocation"/>
+			<xs:enumeration value="spatialAvoidance"/>
+			<xs:enumeration value="description"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--
+		Value lists to be used in Inframodel per attribute of LandXML element 
+-->
+	<xs:simpleType name="InframodelPipeNetworkMaterialType">
+		<xs:annotation>
+			<xs:documentation>List of materials in Inframodel Pipe Network Structs and Pipes (@material)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="wood"/>
+			<xs:enumeration value="brick"/>
+			<xs:enumeration value="rock"/>
+			<xs:enumeration value="cement"/>
+			<xs:enumeration value="aluminium"/>
+			<xs:enumeration value="copper"/>
+			<xs:enumeration value="lead"/>
+			<xs:enumeration value="steel"/>
+			<xs:enumeration value="acidResistantSteel"/>
+			<xs:enumeration value="stainlessSteel"/>
+			<xs:enumeration value="castIron"/>
+			<xs:enumeration value="grayCastIron"/>
+			<xs:enumeration value="sphericalGraphiteCastIron"/>
+			<xs:enumeration value="asbestCement"/>
+			<xs:enumeration value="vitrifiedClay"/>
+			<xs:enumeration value="plastic"/>
+			<xs:enumeration value="PE"/>
 			<xs:enumeration value="PEH"/>
 			<xs:enumeration value="PEL"/>
 			<xs:enumeration value="PEM"/>
 			<xs:enumeration value="PP"/>
 			<xs:enumeration value="PVC"/>
-			<xs:enumeration value="lujitemuovi"/>
-			<xs:enumeration value="kumi"/>
-			<xs:enumeration value="bitumi"/>
-			<xs:enumeration value="PE"/>
-			<xs:enumeration value="unknown"/>
-			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="fiberComposite"/>
+			<xs:enumeration value="rubber"/>
+			<xs:enumeration value="bitum"/>
 			<xs:enumeration value="other"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="InframodelCoordTransformationLabelType">
-		<xs:annotation>
-			<xs:documentation>coordTransformationLabelTyp</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="sourceCRSname"/>
-			<xs:enumeration value="sourceEPSGcode"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="InframodelControlPointLabelType">
-		<xs:annotation>
-			<xs:documentation>controlPointLabelType</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="useHorizontal"/>
-			<xs:enumeration value="useVertical"/>
-			<xs:enumeration value="latitude"/>
-			<xs:enumeration value="longitude"/>
-			<xs:enumeration value="altitude"/>
-			<xs:enumeration value="northing"/>
-			<xs:enumeration value="easting"/>
-			<xs:enumeration value="easting"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!-- Metadata not included in version 4.0.3 - be be introduced in next version
-	<xs:simpleType name="InframodelMetadataType">
-		<xs:annotation>
-			<xs:documentation>Metadata</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="historyCreateTimestampCompany"/>
-			<xs:enumeration value="historyCreateTimestampCompanyURL"/>
-			<xs:enumeration value="historyCreateTimestampContactInformationSurname"/>
-			<xs:enumeration value="historyCreateTimestampContactInformationLastname"/>
-			<xs:enumeration value="historyCreateTimestampContactInformationPhone"/>
-			<xs:enumeration value="historyCreateTimestampContactInformationEmail"/>
-			<xs:enumeration value="historyCreateTimestampTimeStamp"/>
-			<xs:enumeration value="historyCreateTimestampDescription"/>
-			<xs:enumeration value="historyModifiedTimestampCompany"/>
-			<xs:enumeration value="historyModifiedTimestampCompanyURL"/>
-			<xs:enumeration value="historyModifiedTimestampContactInformationSurname"/>
-			<xs:enumeration value="historyModifiedTimestampContactInformationLastname"/>
-			<xs:enumeration value="historyModifiedTimestampContactInformationPhone"/>
-			<xs:enumeration value="historyModifiedTimestampContactInformationEmail"/>
-			<xs:enumeration value="historyModifiedTimestampTimeStamp"/>
-			<xs:enumeration value="historyModifiedTimestampDescription"/>
-			<xs:enumeration value="historyDeleteTimestampCompany"/>
-			<xs:enumeration value="historyDeleteTimestampCompanyURL"/>
-			<xs:enumeration value="historyDeleteTimestampContactInformationSurname"/>
-			<xs:enumeration value="historyDeleteTimestampContactInformationLastname"/>
-			<xs:enumeration value="historyDeleteTimestampContactInformationPhone"/>
-			<xs:enumeration value="historyDeleteTimestampContactInformationEmail"/>
-			<xs:enumeration value="historyDeleteTimestampTimeStamp"/>
-			<xs:enumeration value="historyDeleteTimestampDescription"/>
-			<xs:enumeration value="dataOwnerCompany"/>
-			<xs:enumeration value="dataOwnerCompanyURL"/>
-			<xs:enumeration value="dataOwnerContactInformationSurname"/>
-			<xs:enumeration value="dataOwnerContactInformationLastname"/>
-			<xs:enumeration value="dataOwnerContactInformationPhone"/>
-			<xs:enumeration value="dataOwnerContactInformationEmail"/>
-			<xs:enumeration value="dataQualityAccuracy"/>
-			<xs:enumeration value="dataQualitySourceDate"/>
-			<xs:enumeration value="dataQualitySourceDescription"/>
-			<xs:enumeration value="dataQualityCreateMethod"/>
-			<xs:enumeration value="additionalDetailsURL"/>
-		</xs:restriction>
-	</xs:simpleType>
-	-->
 </xs:schema>
