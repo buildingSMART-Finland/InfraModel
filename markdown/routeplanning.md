@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # Route planning
 
 ## Contents
@@ -60,7 +61,6 @@ The string line model is described in the extension "IM_stringLineLayers" (after
 Inframodel exchange uses the [general InfraBIM type coding [InfraBIM]](https://buildingsmart.fi/infrabim/infrabim-nimikkeisto/) for both alignments and string line models.
 Alternative type coding systems can be set using e.g. name **proprietaryInfraCoding** and description **proprietaryInfraCodingDesc**.
 
-{{xtabulate5 Feature under an Alignment}}
 
 {{xtabulate5 Feature}}
 

@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design
 
 ## Contents
@@ -76,9 +77,9 @@ The superelevation is defined at the transition points, when a transition in the
 
 {{xtabulate5 Feature}}
 
-{{xtabulate5 road plan}}
+{{xtabulate5 roadplan}}
 
-{{xtabulate5 street plan}}
+{{xtabulate5 streetplan}}
 
 ## Terrain model and structural model of road or street
 
@@ -98,7 +99,7 @@ The material properties of a structural layer between two surfaces are assigned 
 
 Details of **\<Surface>** in "IM_structLayer" **\<Feature>**
 
-{{xtabulate Surface in Feature}}
+{{xtabulate SurfaceinFeature}}
 
 ## Road plan features
 

@@ -1,3 +1,4 @@
+{{schemafile ../schema/inframodel-raw.xsd}}
 # AsBuilt data
 ## Contents
 
@@ -45,7 +46,7 @@ Under each **\<Survey>** element, an **\<Equipment>** element (no attributes) sh
 
 {{xtabulate InstrumentDetails}}
 
-{{xtabulate5 InstrumentDetails and Corrections in "IM_survey Feature}}
+{{xtabulate5 InstrumentDetailsandCorrectionsinIM_surveyFeature}}
 
 The **Finnish RAK survey code list** is recommended to be used for accuracyType and corresponding accuracyDescription in Inframodel transfer.
 

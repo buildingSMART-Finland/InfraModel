@@ -30,9 +30,9 @@ Schema folder contains the editable InfraModel XML schemas, one containing the e
 Feel free to submit your issue via the github issues tab.
 
 ### Propose a change to documentation, schema or add a new example file set
-Create your own fork of this repository, make your changes and/or additions to your fork repository, and send pull request. Be aware that you are publishing under "CC-BY 4.0" licence, so all of the rights of your submitted content are given to public domain. Check LICENCE file for details
+Create your own fork of this repository, make your changes and/or additions to your fork repository, and open a pull request. Be aware that you are publishing under "CC-BY 4.0" licence, so all of the rights of your submitted content are given to public domain. Check [LICENCE file](./LICENCE) for details.
 
-### Wan't to get involved?
+### Want to get involved?
 Join us at buildingsmart.fi
 
 
