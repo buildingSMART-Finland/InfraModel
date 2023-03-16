@@ -104,7 +104,7 @@ Details of **\<Surface>** in "IM_structLayer" **\<Feature>**
 
 ## Road signs and plan features
 
-The road signs planimetric features such as fences, guard rails, lightpole or signage footings that are assigned to a particular road or street are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeature>** elements, as well as **\<Roadside>** elements with **\<RoadSign>** elements.
+The road signs and planimetric features such as fences, guard rails, lightpole or signage footings that are assigned to a particular road or street are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeature>** elements, as well as **\<Roadside>** elements with **\<RoadSign>** elements.
 
 Attributes of the *roadways collection* **\<Roadways>** are not used in inframodel.
 
