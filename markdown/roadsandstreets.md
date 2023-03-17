@@ -146,6 +146,6 @@ Attributes of **\<RoadSign>**:
 
 Details in "IM_roadSign" extension:
 
-{{xtabulate5 Feature}}
+{{xtabulate5 IM_roadSign}}
 
 {{figure RoadSign.png}}
