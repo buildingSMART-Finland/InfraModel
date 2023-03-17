@@ -44,17 +44,17 @@ where:
 Type coding systems define the purpose of geometric elemnents (points, lines and surfaces) as well as other types of elements (such as plan features, pipes and structures in pipe networks, etc).) in Inframodel file transfers. 
 
 The information is set in two phases: 
-1. The type coding systems are declared in the project information **\<Project>** using **"IM\_codings"** feature extension and 
-2. individual type codes and their descriptions are set under each element using ("IM_coding" feature extension).
+1. The type coding systems are declared in the project information **\<Project>** using "IM_codings" and/or "IM_proprietaryCodings" feature extension and 
+2. individual type codes and their descriptions are set under each element using "IM_coding" and/or "IM_proprietaryCoding" feature extension.
 
-The main systems set in the project information are:
+The main systems set in the project information using "IM_codings" are:
 1. The terrain coding system (**terrainCoding**) usually existing breaklines and points of interest on visible surfaces
 2. The surface coding system (**surfaceCoding**) usually individual existing or planned surfaces
 3. Infra object type coding system (**infraCoding**) usually individual planned objects and features, not modelled as surfaces.
 
 It is possible to set the same system for several categories. It is also possible to set alternative or additional type coding systems (e.g. InfraRYL) for use within an organization or in a software used.
 
-4. Software or organization specific type coding systems (**proprietaryInfraCoding**) by defining one or more "IM_proprietaryCodings" \<Feature>
+4. Optional, alternative or additional type coding systems (individually named **proprietaryInfraCoding**) by defining one or more "IM_proprietaryCodings" \<Feature>
 
 {{xtabulate IM_codings--ltFeature--gt}}
 
@@ -126,7 +126,7 @@ Individual type codes are set for the following elements in inframodel file tran
 - string line layers, in the **"IM_stringlineLayers"** **\<Feature>** element
 - other infrastructures in appropriate elements, such as **\<PlanFeature>**, **\<Pipe>** or **\<Struct>**
 
-Individual type codes are set in the individual element, or in the parent element, whose children inherit the values. Type codes are set using the **"IM_Coding"** feature extension, either as *terrain codes* **terrainCoding**, *surface codes* **surfaceCoding** or *object/feature codes* **infraCoding**. Alternative or additional type coding systems are set with assigned name as *proprietary codes* **proprietaryInfraCoding**.
+Individual type codes are set in the individual element, or in the parent element, whose children inherit the values. Type codes are set using the "IM_Coding" feature extension, either as *terrain codes* **terrainCoding**, *surface codes* **surfaceCoding** or *object/feature codes* **infraCoding**. Alternative or additional type codes are set using the "IM_proprietaryCoding", where the proprietary code is in **proprietaryInfraCoding** and the name of the coding system in **proprietaryInfraCodingSource** (as declared in **proprietaryInfraCoding** in "IM_proprietaryCodings").
 
 **Details:**
 
@@ -209,6 +209,7 @@ It is possible to describe additional details for the water supply and sewerage 
 - **rimLoad class**
 - inner diameter of the drain rim **rimDiameter**
 - 2D coordinate of the rim center **rimCenter**
+- thickness of the structure (sump) bottom **bottomThickness**
 - height of the sump **heightDeposit**
 - volume of the sump **volumeDeposit**
 - construction date **constructionDate**
