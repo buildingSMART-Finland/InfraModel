@@ -3,84 +3,83 @@
 
 ## Contents
 
-The drainage plan can be described in the same LandXML file as the rest of the plan content. The units used in drainage planning are the metric units and coordinate systems defined in chapter 1 Headers. If the drainage system utilizes coordinate or unit systems that differ from the rest of the it should be described as a separate LandXML file.
+The **\<PipeNetworks>** in Inframodel covers diffrent drainage and utility network types: storm drain, combined sewer, sewer, French drain, culvert, water pipe, district heating, district cooling, gas, waste disposal and cable networks.
 
-The drainage network in the LandXML standard is a topological one. The drain wells are nodes and the pipes are edges that connect these nodes. The model provides limited tools to design drainage, sewerage and water supply networks. Inframodel file transfers have mandatory, optional and optional description elements. The following network types are implemented in the standard: storm drain, combined sewer, sewer, French drain, culvert, water pipe and "other", allowing the use of "IM_pipeNetworkType" extension for other types of networks, currently district heating, district cooling, gas and waste disposal.
+A network model can be transferred in a separate file or (e.g. in case of route drainage plan) in the same file as other (route) plan content. The metric units used in network plan and the coordinate system are defined in chapter 1 Headers.
 
-Structures, such as different kind of drain wells are nodes. Pipes are defined as situated between two nodes. The ends of the pipes are modelled as virtual structures, of which there are two types, inlets and outlets. the LandXML standard supports a limited number of different structure and pipe types. Elements of Finnish design standards have been implemented in inframodel file transfers by adding extensions that expand on the LandXML element definitions.
+The definition of a utility network in LandXML is a topological one. The structures (manholes, drain wells etc.) are nodes and the pipes (or cables) are links that connect these nodes. As the pipes are always defined between two nodes, the free ends of pipes are modelled as virtual structures, of which there are two types, inlets and outlets.
 
-The network topology is presented in the parent element **\<PipeNetworks>** whose child elements are individual **\<PipeNetwork>** elements. A **\<PipeNetwork>** consists of structures and pipes.
+The networks are presented in the parent element **\<PipeNetworks>** whose child elements are individual **\<PipeNetwork>** elements. A **\<PipeNetwork>** consists of structures and pipes.
 
 - Structures **\<Structs>**
-    - types: round and rectangular wells, virtual structures, equipment and pipe joints, extensions and inflexions. (see description hierarchy *1)
-    - are given an exact location
-    - the pipe inlet is an **\<Invert>**
+    - types: circular and rectangular wells, virtual (inlet/outlet) structures, equipment and pipe joints, extensions and inflexions (virtual joints).
+    - are given an explicit location (northing, easting, elevation)
+    - pipe inlet/outlet in a structure is an **\<Invert>**
 - Pipes **\<Pipes>**
-    - types: Circular pipe, elliptic pipe, egg-shaped pipe, rectangular pipe and through (*see description hierarchy *2*) 
-    - are given a relative location - the ending and starting structures are named    
-    - the definition length is given as the distance between the centers of the terminal structures in the elevation of the inverts.    
-    - the exact length may be described in the extension "IM_pipe" as a length attribute or as the arithmetic distance between the end coordinates of the pipe.    
-    - pressurized sewers: described in the inframodel extension "IM_pipe" in an attribute.
+    - types: circular pipe, elliptic pipe, egg-shaped pipe, rectangular pipe and open channel.
+    - have a relative location by the named ending and starting structure  
+    - the length is given as the distance between the centers of the terminal structures at the elevation of the inverts.    
+    - the exact length may be calculated as the distance between the coordinates of the pipe start and end given in the extension "IM_pipe".    
+    - pressurized pipes can be described in Inframodel extension "IM_pipe" using the property "pressureClass".
 
 {{figure Pipenetworks_general}}
 
-The pipe network is, depending on the situation, usually described in its entirety. LandXML file transfers does not allow you to delimit the network without adhereing to the syntax. E.g. describing the inverts of the delimiting storm drain requires additional pipes and corresponding terminal structures. The process of delimiting the network is described in further detail in {{refsec Structures}} and {{refsec Pipes}}.
+The pipe network is, depending on the situation, usually described in its entirety. LandXML schema exposes some limitations on how a network can be delimited. E.g. describing the inverts of a delimiting storm drain requires additional pipes and corresponding terminal structures to be in the model. The process of delimiting the network is described in further detail in {{refsec Structures}} and {{refsec Pipes}}.
    
 
 ## Pipe networks {#sec:mvd-pipenetworks}
 
-A file may contain multiple *pipe network groups* **\<PipeNetworks>**. It is mandatory to define the **name** of the pipe network and optional to give a *description* **desc** and **state** of the plan.
+A file may contain multiple *utility network groups* **\<PipeNetworks>**. It is mandatory to give a **name** and optional to give a *description* **desc** and **state**.
 
-The *pipe network groups* are assigned unique names. If the *network group* contains networks with several different states, the **state** is not set.
+The names of *utility network groups* are unique within the file. If a *network group* contains networks with different states, the **state** shall not be set for the group.
 
 {{xtabulate5 PipeNetworks}}
 
 ### Plan information
 
-The *plan information* of the drainage plan is set in the optional "IM_plan" extension of the **\<PipeNetworks>** element. If the project consists of several sub-entities, which progress at a different rate, the plan content should be divided into several *network group* **\<PipeNetworks>** elements according to those divisions. The plan information contains the **planName** the **planCode**, the **planState**, and the *plan description* **planDesc**. The *plan state* is set according to a scale agreed on by the parties. An example is presented in the tabel below.
+The *plan information* of a *network group* is set in the optional "IM_plan" extension under **\<PipeNetworks>** element. If the project consists of several sub-divisions, which progress at different rate, the plan content can be divided into several *network group* **\<PipeNetworks>** elements according to those divisions, or alternatively *plan information* may be set for each *network* in separate "IM_plan" under **\<PipeNetwork>** elements. The plan information contains the **planName** the **planCode**, the **planState**, and the *plan description* **planDesc**. The *plan state* is set according to a scale agreed on by the parties. An example is presented in the tabel below.
 
 {{xtabulate5 IM_plan}}
 
 ## Pipe network {#sec:mvd-pipenetwork}
 
-Individual networks are defined by **\<PipeNetwork>** elements organized under their parent element **\<PipeNetworks>**, the *network group*. The number of *networks* in one *network group* is unlimited. The *pipe network* defines a topological model, the **name** and the *network type* **pipeNetType**. The state and *description* **desc** of the network are optional.
+Individual networks are described in **\<PipeNetwork>** elements, organized under their parent element **\<PipeNetworks>**, the *network group*. The number of *networks* in one *network group* is unlimited. The *pipe network* defines a topological model, with mandatory **name** and **pipeNetType**. The **state** and *description* **desc** are optional.
 
 {{xtabulate pipeNetType}}
 
-The elements in the pipe network are assigned unique names. The **pipeNetType** defines the type of the network as 1) "sanitary" 2) "storm" 3) "water" 4) "cable" 5) spatialZone 6) "other" (not specified, or specified in "IM_pipeNetworkType" extension). If the network contains components in different states, the **state** is not set.
+The **pipeNetType** defines the type of the network as 1) "sanitary" 2) "storm" 3) "water" 4) "other" (not specified, or specified in "IM_pipeNetworkType" extension).
 
 {{xtabulate5 PipeNetwork}}
 
-### Pipe network type extensions <a name="831pipenetworktypeextensions"></a>
+### Pipe network type extensions
 
-When the *pipe network type* is other than one of those covered by the **pipeNetType** attribute of the **\<PipeNetwork>** element, the optional "IM_pipeNetworkType" extension shall be used (with the **pipeNetType** attribute set to "other").
+When the *network type* is not one of those covered by the **pipeNetType** (attribute set to "other"), the "IM_pipeNetworkType" extension can be used to specify the type.
 
 {{xtabulate IM_pipeNetworkType}}
 
 ## Units
 
-Drainage and water supply utilizes the units set in the header. If the water supply system utilizes a different coordinate system or units from the rest of the project, it must be stored as a separate LandXML file.
-
-It is possible to split the network description into several files if needed.
+In Inframodel, the same metric units (as specified in the header-section) shall always be used. The LandXML capability to assing separate units for structures and pipes in networks shall not be used in Inframodel.
 
 {{xtabulate5 Pipenetworkunits}}
 
-## Structures <a name="85structures"></a>
+## Structures
 
-The topological network consists of different kind of structures whose exact location is defined in the file. The different structures in the **\<PipeNetwork>** compose the *structure group* **\<Structs>**, that has no attributes.
+The topological network consists of different kinds of structures whose exact location is defined in the file. The different structures in the **\<PipeNetwork>** compose the *structure group* **\<Structs>**, that has no attributes.
 
 {{xtabulate Struct}}
 
 LandXML standard structure types:
 
-- Circular structures
-- Rectangular structures
-- Pipe inlets
-- Pipe outlet
-- Pipe joints, extensions or points of intersection
-- Equipment (description utilizes inframodel extensions)
+- Circular structure
+- Rectangular structure
+- Inlet structure (free intake end of pipe)
+- Outlet structure (free exhaust end of pipe)
+- Conncection 
+- - Pipe joints, extensions and inflexions
+- - Equipment (as specified in Inframodel extension)
 
-Dividing the network is a special case that is described in further detail in the sections covering the element that describes pipe joints, extensions or points of intersection.
+Delimiting the network is a special case of using connection, described in further detail in the section covering the **\<Connection>** element.
 
 {{xtabulate5 IM_struct}}
 
@@ -94,38 +93,38 @@ All structural elements in the file are assigned individual names.
 
 #### Center
 
-***Circular and rectangular structures:*** The center of the cross-section at the bottom of the well or the sump is set by 3D coordinates, separated by spaces in the **\<Center>** element.
+***Circular and rectangular structures:*** The center of the cross-section at the inside bottom level of the structure is set by space-separated 3D-coordinates in the **\<Center>** element.
 
-***Pipe inlets and outlets:*** The pipe end is defined by space-separated 32-coordinates in the **\<Center>** element.
+***Pipe inlets and outlets:*** The pipe end is defined by space-separated 3D-coordinates in the **\<Center>** element.
 
-***Pipe connections:*** The **\<Center>** of a connection, joint or point of intersection at the mounting level is set using space-separated 32 coordinates.
+***Pipe connections:*** The **\<Center>** of a connection, joint or point of intersection at the mounting level is set using space-separated 3D coordinates.
 
-***Equipments:*** The **\<Center>** of a piece of equipment at the mounting level is set using space-separated 2D coordinates.
+***Equipments:*** The **\<Center>** of a piece of equipment at the mounting level is set using space-separated 3D coordinates.
 
 {{xtabulate5 Center}}
 
 #### Inverts
 
-The adjoining inlet and outlet inverts are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>** as the crown level for pressure pipes and the invert level for others, the flow direction **\<flowDir>** and the pipe reference **\<refPipe>**.
+The inlets and outlets in a structure for adjoining pipes are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>**, the flow direction **\<flowDir>** and the reference to the adjoining pipe **\<refPipe>**. The elevation is given according to "elevType" set for the adjoining pipe in "IM_pipe" extension (crown level for pressure pipes and the invert level for others).
 
 {{xtabulate5 Invert}}
 
 #### Details
 
-It is optional to present additional information of the inframodel file transfer. the structure may be labeled by a **structLabel**.
+It is possible to set additional properties for structures in "IM_struct" extension. 
 
-The dates of different actions may also be defined, suct as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.
+Common properties applicable to all types of structures are **structLabel** and the dates of different actions, such as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.- 
 
-The additional information for the rim encompasses the **rimType** and the rim load bearing class **rimLoad**.
+Additionally, common to the three structure types below are **rimType** and the rim load bearing class **rimLoad**, as well as **bottomThickness**.
 
 ***Circular structures:***
-When describing a conical well the **diameter** describes the diameter of the bottom of the cone. The **rimDiameter** describes the *inner diameter* of the rim and the **rimCenter** defines the *3 coordinates of the rim center*. The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. 
+When describing a conical well the **diameter** attribute describes the inner diameter at the bottom level. The **rimDiameter** describes the inner diameter of the rim and the **rimCenter** defines the 3D coordinates of the rim center. The parameters of the sump are its depth **heightDeposit** and its volume **volumeDeposit**. 
 
 ***Rectangular structure:***
- The description of the sump contains a description of the *depth of the sump* **heightDeposit** and the *volume of the sump*, **volumeDeposit**. 
+ The parameters of the sump are its depth **heightDeposit** and its volume **volumeDeposit**. 
 
 ***Equipment:***
-It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. The rim is defined by the *rim type* **rimType** and *rim load bearing class* **rimLoad**. 
+It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. 
 
 {{xtabulate5 IM_struct}}
 
@@ -241,7 +240,6 @@ Available pipe types in the LandXML standard:
 - Rectangular pipe
 - Channel
 
-Using a pipe to delimit a pipe network is a special case that is described separately for each pipe type.
 
 {{xtabulate Pipe}}
 
@@ -250,7 +248,7 @@ Using a pipe to delimit a pipe network is a special case that is described separ
 The **name**, end reference **refEnd**, start reference **refStart**, **slope** and **state** are mandatory attributes.
 Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
 
-When using a pipe to delimit a pipe network the pipe is given a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". The **name**, end reference **refEnd** and start reference **refStart** are the only mandatory attributes. The other attributes are not set.
+When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Conncetion> with a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". 
 
 {{xtabulate5 Pipe}}
 
