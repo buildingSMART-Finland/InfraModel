@@ -128,6 +128,10 @@ It is possible to define more detailed type information of a piece of equipment 
 
 {{xtabulate5 IM_struct}}
 
+#### Spatial allocation and avoidance
+
+Related to structure geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the structure geometry definition as a radius around the vertical line defined by structure \<Center> 3D coordinates at the bottom level and @elevRim.
+
 ### Circular structures {#sec:mvd-circularstructure}
 
 Inspection wells of French drains are an example of a circular structure. Circular structures are defined using the structure element **\<Struct>** and its child elements.
@@ -284,6 +288,10 @@ When the start and end coordinates are given with elevation values, elevation ty
 
 {{xtabulate5 IM_pipe}}
 
+#### Spatial allocation and avoidance
+
+Related to pipe geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the pipe geometry definition as a radius around the pipe path defined by start and end structure \<Center> coordinates and their **\<Invert>** elevation values .    
+    
 #### Circular pipes {#sec:mvd-circularpipes}
 
 The following illustation descibes the definition of a round pipe  The definition employs the element **\<Pipe>** and its child elements.
