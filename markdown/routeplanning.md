@@ -3,29 +3,33 @@
 
 ## Contents
 
-Routes encompass highways, local roads and private roads, waterways and railways. Each route has one continuous stationing reference alignment and a vertical alignment. In inframodel file transfer, a route plan consists of parametric route alignments, their stringline models and surface models as triangulated meshes.
+Routes encompass highways, local roads and private roads, waterways and railways. Each route has one continuous stationing reference alignment and a vertical alignment. In inframodel file transfer, a route plan may consist of route geometric alignments, their stringline models and surface or structural models as triangulated meshes.
 
-An *alignment group* \<Alignments> consists of *several alignments* \<Alignment>. Surfaces can be described in two ways:
+An *alignment group* \<Alignments> consists of one or several alignments \<Alignment>. Their geometry can be described in two ways:
 - Geometric alignment 
 - Line string 
 
-Geometric alignments describe parameters of the horizontal and vertical elements of an alignment. A line string is a description where consecutive points are connected by line segments. Geometric alignments are typically used to describe the reference line of a road as well as other important geometric descriptions such as road edges. Other route components are usually described as line strings.
+Geometric alignments describe parameters of the horizontal and optional vertical elements of an alignment. A line string is a description where consecutive points are connected by line segments (in 2D or 3D). Geometric alignments are typically used to describe the stationing reference line of a road as well as other important geometric descriptions such as road edges. Other route components are usually described as line strings.
 
 {{figure Road_Geometriakuvaus.png}}
 
-Once the alignments have been described, it is possible to assign them to a line string model, that contains a description of the layers of the route structure. Alternatively, a surface model of the route is a triangular mesh representation of the surface structure of the route. The structural model describes all the layers in a route structure as triangle mesh surfaces.
+Once the alignments have been described, it is possible to assign them to a string line model, that contains a description of the layers of the route structure, as described in {{refsec String line model}}. Alternatively, a triangulated surface mesh model can be used to represent the top surface of a route, or its structural model can composed by describing all its layers as triangulated mesh surfaces.
 
-Cross-sectional parameters, which are described in further detail in the sections covering each route type, complement the route description with parametric information of the cross-sections (without actual cross section geometry).
+Cross-section parameters, which are described in further detail in the sections covering each route type, complement the route description with design parameter information of the cross-sections (without actual cross section geometry).
 
 ### Route description
 
-Route description is driven by stationing reference line (principal alignment). Other geometry lines are given in the same *alignment collection* \<Alignments> each as separate *alignment* \<Alignment>. Geometry lines and stringlines are given in separate *alignment collections* \<Alignments>.
+Route description is driven by stationing reference line (principal alignment). Other geometry lines are given in the same *alignment collection* \<Alignments> each as separate *alignment* \<Alignment>. Geometry lines and string lines are given in separate *alignment collections* \<Alignments>.
 
 Different routes, alignement options and stationing reference line discontinuities are placed in *separate* \<Alignments>.
 
 ### Naming and Type coding
 
-*Alignment groups* and each individual *alignment* within a group must be assigned unique name. It is advisble to assign different names to *geometric alignments* and line strings in string line models. Assigning *type codes* to alignments is optional in Inframodel file transfers. An \<Alignment> may assigned a *type code* as explained in {{refsec Type coding}}. Layers of string line model of the route, described in optional "IM_stringLineLayers" extension may also have type codes.
+*Alignment groups* and each individual *alignment* within a group must be assigned unique name. It is advisble to use different naming convention for *geometric alignments* and line strings in string line models. 
+
+Assigning *type codes* to alignments is optional in Inframodel file transfers. The type coding systems to be used for an **\<Alignment>** shall be defined in the project information. The type code can then be set for each **\<Alignment>** element (whose children inherit the applied coding) in the extension "IM_coding" with the **infraCoding** and its description **infraCodingDesc**. Alternative or additional type coding systems can used (if defined in the project information) and each such type code is set for **\<Alignment>** element using "IM_proprietaryCoding" with **proprietaryInfraCoding**, reference to the coding system (defined in the project information) by **proprietaryInfraCodingSource** and description **proprietaryInfraCodingDesc**.
+
+Layers of a string line model, described in optional "IM_stringLineLayers" extension may also have type codes, as well as the triangulated meshes surfaces in surface or structural models, using "IM_coding" with **surfaceCoding** and its description **surfaceCodingDesc**, or also as "IM_proprietaryCoding".
 
 ## Composing alignments
 
@@ -41,7 +45,7 @@ The alignments within a file do not have to be presented in any particular order
 
 {{xtabulate5 alignment}}
 
-A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element. The purpose of the alignments is defined by a type code.
+A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element.
 
 ### Plan information
 
@@ -49,20 +53,6 @@ The *plan information* of an *alignment group* is described under the **\<Alignm
 
 {{xtabulate5 IM_plan}}
 
-### Type coding
-
-The type coding systems of an **\<Alignment>** are defined in the project information. The type coding is set for each **\<Alignment>** element, whose children inherit the values. The type code of an **\<Alignment>** is set in the extension "IM_coding" with the **infraCoding** and its description **infraCodingDesc**. This documentation discusses individually different route types: 
-1. roads and streets 
-2. railways 
-3. waterways
-
-The string line model is described in the extension "IM_stringLineLayers" (after the individual alignments); the description procedure is explained in further detail in {{refsec String line model}}. The *line strings* of the *string line model* are grouped into layers that are type coded using the *surface model type codes* **surfaceCoding** and its description **surfaceCodingDesc**.
-
-Inframodel exchange uses the [general InfraBIM type coding [InfraBIM]](https://buildingsmart.fi/infrabim/infrabim-nimikkeisto/) for both alignments and string line models.
-Alternative type coding systems can be set using e.g. name **proprietaryInfraCoding** and description **proprietaryInfraCodingDesc**.
-
-
-{{xtabulate5 Feature}}
 
 ## Geometric alignments
 
@@ -92,7 +82,7 @@ inframodel does not use attributes for the  **\<CoordGeom>** element.
 A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction* **dir** and **length** are mandatory, but shall be used as additional information only.
 
 1. {{xtabulate5 Line}}
-2. The format for the **<Start>** and **<End>** coordinates of a \<Line>, the 2D coordinates are separated by spaces.
+2. The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the 2D coordinates are separated by spaces.
 
 {{xmlsnippet Start}}
 
@@ -117,7 +107,7 @@ A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end ta
 
 {{xtabulate5 Curve}}
 
-The **<Start>**, point on intersection of start and end tangents **<PI>** and **<End>** are defined as 2D coordinates separated by spaces.
+The **\<Start>**, point on intersection of start and end tangents **\<PI>** and **\<End>** are defined as 2D coordinates separated by spaces.
 
 ### Vertical geometry
 
@@ -183,7 +173,7 @@ A line string may belong to several different layers. It is recommended to descr
 
 ## Terrain model
 
-The *route terrain model* **(\<Surfaces>)** contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec Source data}} Also, random points and breaklines of the surface can be described as explained in {{refsec Source data}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
+The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec Source data}} Also, random points and breaklines of the surface can be described as explained in {{refsec Source data}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
 
 The route terrain model consists of:
 
@@ -199,7 +189,7 @@ The route terrain model consists of:
 
 ## Structural model
 
-The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in in {{refsec Ground layer model}} .
+The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in {{refsec Ground layer model}} .
 
 {{figure Todo Surfaces_Rakennemalli.png}}
   
