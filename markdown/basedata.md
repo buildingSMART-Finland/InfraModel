@@ -36,10 +36,11 @@ The type coding systems used in Inframodel file transfers are set in the header 
 
 - In the element <DataPoints> for source data points
 - In the element <BreakLine> for breaklines
+- In the element <Boundary> for part of surface
 - In the element <Surface> for surface
 - In the element <Surfaces> for surface group
 
-Type coding is set by adding "IM_Coding" \<Feature> extension under a parent element.
+Type coding is set by "IM_Coding" \<Feature> extension under a parent element.
 
 {{xtabulate5 IM_Coding--ltFeature--gt}}
 
@@ -48,9 +49,16 @@ Terrain points and breaklines are type coded using the **terrainCoding** and a c
 It is optional to set a **surfaceCoding** and a surface coding description **surfaceCodingDesc** for terrain points and breaklines.
 Surfaces are given a **surfaceCoding** and a surface coding description **surfaceCodingDesc**, and optionally **terrainCoding** and a coding description **terrainCodingDesc**.
 These both may be given an **infraCoding** and its description **infraCodingDesc**. 
-Alternative type codings can be given using **proprietaryInfraCoding** and their descriptions **proprietaryInfraCodingDesc** where they both have prefix per proprietary coding systems named under \<Project> element.
+ 
+Alternative type codings can be given using "IM_proprietaryCoding" with **proprietaryInfraCoding** and their descriptions **proprietaryInfraCodingDesc**, and with **proprietaryInfraCodingSource* where they both have prefix per proprietary coding systems named under \<Project> element.
 Type coding set by the parent element is also inherited by the child elements, ie. \<Surfaces> element may also set the type coding of its child elements.
 
+### Quantity information
+
+Calculated area or volume quantities may be assinged to entire \<Surface>, or part of it in source data \<Boundary>, using "IM_quantity" extension:
+ 
+{{xtabulate5 IM_quantity}}
+ 
 ## Source data
 
 The source data is described by the element \<SourceData>. This element has no attributes.
@@ -77,11 +85,19 @@ Source *breakline group* is described by the element \<BreakLines>, where each \
 
 ### Boundaries
 
-Additionally, it is also possible to define boundaries of the source data in the boundary group \<Boundaries>, where each \<Boundary> is presented in its own element. 
+Additionally, it is also possible to define boundaries of the source data in the boundary group \<Boundaries>, where each \<Boundary> is presented in its own element. Each boundary may have properties of the area as "IM_surfaceStructure", "IM_structLayer" or "IM_soil", as well as calculated area or volume quantities as "IM_quantity". 
 
 {{xtabulate4 Boundaries}}
 
 {{xtabulate5 Boundary}}
+ 
+{{xtabulate5 IM_surfaceStructure}}
+ 
+ {{xtabulate5 IM_structLayer}}
+ 
+ {{xtabulate5 IM_soil}}
+ 
+ {{xtabulate5 IM_quantity}}
 
 ## Triangular mesh surface
 
