@@ -1,9 +1,9 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # File headers
 
-## LandXML file container
+## XML file header
 
-InfraModel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
+Inframodel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
 
 Example:
 
@@ -11,10 +11,15 @@ Example:
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
+NB: even if it is possible to use scandic characters in Inframodel XML files, they should not be used in **name**-attribute values, e.g. "väylä 2" should be spelled "vayla 2".
+
+
+## LandXML container
+
 The namespaces in Inframodel file shall be the following:
 
-- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall is set in the root element.
-- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall is set in the root element
+- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall be set in the root element.
+- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall be set in the root element
 - The types in Inframodel enumerations schema inframodelEnumerations.xsd are included in the default namespace
 
 **Note: The namespace URI is not meant to be used to look up information. Its sole purpose is to give the namespace a unique name.**
