@@ -26,22 +26,27 @@ The individual planimetric features are each described under **\<PlanFeature>**,
 
 {{xmlsnippet Location}}
   
- Related to their *geometry* planimetric features may have an area or a volume for spatial allocation or avoidance defined as "IM_spatialZone" extension. Both **spatialAllocation** and **spatialAvoidance** are given as single metric value (in file length units), interpreted according to the type of geometry definition:
+ Related to their *geometry* planimetric features may have an area or a volume for spatial allocation or avoidance defined as "IM_spatialZone" extension. Both **spatialAllocation** and **spatialAvoidance** are given as single metric value (in file length units), interpreted according to the type of the plan feature geometry definition:
 
 - Point geometry as \<Location>: 
-   2D : radius around the point in XY-plane
+
+   2D : radius around the point in northing easting -plane
+   
    3D : sphere around the point
 
 todo kuva SpatialZonePoint
    
 - Line or Polyline as \<CoorGeom>:
-   2D : perpendicular distance in XY-plane on both sides of the line
+
+   2D : perpendicular distance in northing easting -plane on both sides of the line
+   
    3D : radius around the line (producing a cylinder, possibly curved or segmented)
 
 todo kuva SpatialZoneLine
 
 - Closed polyline area as \<CoorGeom>: 
-   2D or 3D : perpendicular distance in XY-plane from the boundary on the outside of the area 
+
+   2D or 3D : perpendicular distance in northing easting -plane from the boundary on the outside of the area 
 
 todo kuva SpatialZoneArea
 
