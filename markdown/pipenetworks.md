@@ -224,11 +224,6 @@ A *piece of equipment* is defined using the element **\<Connection>**, that has 
 
 {{xtabulate5 Connection}}
 
-#### Inverts {#sec:mvd-inverts}
-The adjoining inlet and outlet inverts are described using the element \<Invert>. The required attributes of invert are: the elevation \<elev> as the crown level for pressure pipes and the invert level for others, the flow direction \<flowDir> and the pipe reference \<refPipe>.
-
-{{xtabulate Invert}}
-
 
 ## Pipes {#sec:mvd-pipes}
 
@@ -268,7 +263,7 @@ More details can be found from {{refsec mvd-pipedetails}}
 
 ## Details
 
-It is optional to define details in inframodel file transfers. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
+It is optional to define details in inframodel file transfers using "IM_pipe" extension. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
 
 1. elevation type elevType 
 2. start coordinate pipeStart and the 
@@ -284,9 +279,11 @@ When the start and end coordinates are given with elevation values, elevation ty
 
 {{figure Pipenetwork_elevType}}
 
-***A="crown level", B="center level", C="invert level", D="bottom level"***
-
 {{xtabulate5 IM_pipe}}
+    
+***Cable:*** *When the \<Pipe> represents a cable, start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.* Also, cable-specific properties in separate "IM_cable" extension:
+    
+ {{xtabulate5 IM_cable}}
 
 #### Spatial allocation and avoidance
 
