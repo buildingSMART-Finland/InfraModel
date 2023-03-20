@@ -105,6 +105,8 @@ A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End
 
 A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end tangents* **\<PI>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions), together with mandatory attribute *transition curve type* **spiType**. In addition, attributes **length**, *end radius* **radiusEnd**, *start radius* **radiusStart**, *direction of rotation* **rot**, the *transition curve parameter* **constant**, *end direction* **dirEnd** and *start direction* **dirStart** are mandatory. In Finnish route design the default *transition curve type* is an Euler spiral "clothoid"; bi-quadratic parabola "biquadraticParabola", or third-degree spiral "cubic" may be used under special circumstances e.g. in railway design.
 
+NOTE: since attribute **spiType** is mandatory, but has no meaning for "biquadraticParabola" or "cubic", it shall have value set to "NaN" in these cases.
+
 {{xtabulate5 Curve}}
 
 The **\<Start>**, point on intersection of start and end tangents **\<PI>** and **\<End>** are defined as 2D coordinates separated by spaces.
