@@ -248,6 +248,8 @@ The **name**, end reference **refEnd**, start reference **refStart**, **slope** 
 Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
 
 When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Conncetion> with a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". 
+    
+When a pipe has several segments, with \<Conncetion> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique *name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment.
 
 {{xtabulate5 Pipe}}
 
@@ -281,7 +283,7 @@ When the start and end coordinates are given with elevation values, elevation ty
 
 {{xtabulate5 IM_pipe}}
     
-***Cable:*** *When the \<Pipe> represents a cable, start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.* Also, cable-specific properties in separate "IM_cable" extension:
+***Cable:*** *When the \<Pipe> represents a cable, and its start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.* Also, cable-specific properties in separate "IM_cable" extension:
     
  {{xtabulate5 IM_cable}}
 
