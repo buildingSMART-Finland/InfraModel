@@ -187,7 +187,7 @@ The illustration below demonstrates how pipe inlets and outlets are described. T
 
 ### Pipe connections {#sec:mvd-pipeconnection}
 
-Pipe connections, joints and points of intersection are defined by the **\<Connection>** elements. The illustration bellow demonstrates the mode of description, which contains the attributes of the structure **\<Struct>** and its child elements:
+Pipe connections, joints and points of intersection are defined by the **\<Connection>** elements. The illustration below demonstrates the mode of description, which contains the attributes of the structure **\<Struct>** and its child elements:
 
 1. General data **\<Struct>**
 2. Center **\<Center>**
@@ -198,7 +198,9 @@ Pipe connections, joints and points of intersection are defined by the **\<Conne
 The illustration demonstrates the description method of a point of intersection.
 When using the element to delimit a pipe network, the terminal drainage well is connected to a pipe that terminates in a **\<Connection>** element. It is thus possible to also describe the connections of the outermost wells in the plan network. It is advisable to name the elements in a fashion that is clearly different from the rest of the plan, e.g. "Terminal1", "Terminal2".
 
-When the element describes a delimiting element, all attributes are not used. The name of the structure and the description desc are set to differ from the plan informatuion as much as possible e.g. by naming them "Terminal1", "Terminal2". The elevation of the rim elevRim, the elevation of the sump elevSump and the state of the structure are left undefined.
+When the element describes a delimiting element, all attributes are not used. The name of the structure and the description desc are set to differ from the plan information as much as possible e.g. by naming them "Terminal1", "Terminal2". The elevation of the rim elevRim, the elevation of the sump elevSump and the state of the structure are left undefined (given value "NaN").
+    
+When a **\<Connection>** is used for modeling a bend (inflexion) of a flexible pipe of cable (being actually continuous), its name and description desc should indicate that it is not a physical conncection.  
 
 Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
 
@@ -249,7 +251,7 @@ Setting the exact length of a pipe is optional. All pipe elements are assigned u
 
 When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Conncetion> with a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". 
     
-When a pipe has several segments, with \<Conncetion> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique *name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment.
+When a pipe has several segments, with \<Conncetion> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique *name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment. In particular, this should be provided for continuous flexible pipes or cables having inflexions modeled as virtual connections.
 
 {{xtabulate5 Pipe}}
 
