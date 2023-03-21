@@ -1,10 +1,12 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Inframodel \<Feature> extensions
 
-Inframodel transfer files fully conform to the LandXML v1.2 schema, but some extensions have been made using the Feature-mechanism. 
+Inframodel transfer files fully conform to the LandXML v1.2 schema (with one exeption\*), but some extensions have been made using the Feature-mechanism. 
 This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
 
-NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in chapters 1 to 11 of this document.
+NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in chapters 1 to 11 of this document. Also, further extensions have been specified in separate schema (im.xsd) for 1) Local Coordinate Transformation (section 1.6) 2) Metadata (section 1.10) and 3) Deep Foundations (section 11).
+
+\* LandXML v1.2 \<choice> declaration in \<Roadways> collection has been changed to \<sequence> in Inframodel v4.1.0, whereby both \<Roadway> elements and feature extensions may appear in the same \<Roadways> collection. 
 
 ## Local coordinate transformation definition by point pairs
 
@@ -44,17 +46,17 @@ where:
 Type coding systems define the purpose of geometric elemnents (points, lines and surfaces) as well as other types of elements (such as plan features, pipes and structures in pipe networks, etc).) in Inframodel file transfers. 
 
 The information is set in two phases: 
-1. The type coding systems are declared in the project information **\<Project>** using **"IM\_codings"** feature extension and 
-2. individual type codes and their descriptions are set under each element using ("IM_coding" feature extension).
+1. The type coding systems are declared in the project information **\<Project>** using "IM_codings" and/or "IM_proprietaryCodings" feature extension and 
+2. individual type codes and their descriptions are set under each element using "IM_coding" and/or "IM_proprietaryCoding" feature extension.
 
-The main systems set in the project information are:
+The main systems set in the project information using "IM_codings" are:
 1. The terrain coding system (**terrainCoding**) usually existing breaklines and points of interest on visible surfaces
 2. The surface coding system (**surfaceCoding**) usually individual existing or planned surfaces
 3. Infra object type coding system (**infraCoding**) usually individual planned objects and features, not modelled as surfaces.
 
 It is possible to set the same system for several categories. It is also possible to set alternative or additional type coding systems (e.g. InfraRYL) for use within an organization or in a software used.
 
-4. Software or organization specific type coding systems (**proprietaryInfraCoding**) by defining one or more "IM_proprietaryCodings" \<Feature>
+4. Optional, alternative or additional type coding systems (individually named **proprietaryInfraCoding**) set by defining one or more "IM_proprietaryCodings" \<Feature>.
 
 {{xtabulate IM_codings--ltFeature--gt}}
 
@@ -96,6 +98,33 @@ TODO-MISSING FEATURE ITEM
 
 More information can be found from {{refsec Typecodingsystems}} 
 
+
+## Type coding
+
+Individual type codes are set for the following elements in inframodel file transfers:
+
+- data point groups, in the **\<DataPoints>** element
+- breaklines in the **\<BreakLine>** element
+- surfaces, in the **\<Surface>** element
+- alignments, in the **\<Alignment>** element
+- string line layers, in the **"IM_stringlineLayers"** **\<Feature>** element
+- other infrastructures in appropriate elements, such as **\<PlanFeature>**, **\<Pipe>** or **\<Struct>**
+
+Individual type codes are set in the individual element, or in the parent element, whose children inherit the values. Type codes are set using the "IM_coding" feature extension, either as *terrain codes* **terrainCoding**, *surface codes* **surfaceCoding** or *object/feature codes* **infraCoding**. Alternative or additional type codes are set using the "IM_proprietaryCoding", where the proprietary code is in **proprietaryInfraCoding** and the name of the coding system in **proprietaryInfraCodingSource** (as declared in **proprietaryInfraCoding** in "IM_proprietaryCodings").
+
+**Details:**
+
+{{refsec BasedataTypecoding}}
+
+{{refsec RouteplanningTypecoding}}
+
+{{refsec Structures}}
+
+{{refsec Pipes}}
+
+{{refsec PlanimetricfeaturesTypecoding}}
+
+
 ## User defined properties
 
 Custom properties may be defined by using "IM_userDefinedProperties" \<Feature>
@@ -112,33 +141,6 @@ where:
 
 {{xtabulate propertySource--ltProperty--gt}}
 
-
- 
-
-## Type coding
-
-Individual type codes are set for the following elements in inframodel file transfers:
-
-- data point groups, in the **\<DataPoints>** element
-- breaklines in the **\<BreakLine>** element
-- surfaces, in the **\<Surface>** element
-- alignments, in the **\<Alignment>** element
-- string line layers, in the **"IM_stringlineLayers"** **\<Feature>** element
-- other infrastructures in appropriate elements, such as **\<PlanFeature>**, **\<Pipe>** or **\<Struct>**
-
-Individual type codes are set in the individual element, or in the parent element, whose children inherit the values. Type codes are set using the **"IM_Coding"** feature extension, either as *terrain codes* **terrainCoding**, *surface codes* **surfaceCoding** or *object/feature codes* **infraCoding**. Alternative or additional type coding systems are set with assigned name as *proprietary codes* **proprietaryInfraCoding**.
-
-**Details:**
-
-{{refsec BasedataTypecoding}}
-
-{{refsec RouteplanningTypecoding}}
-
-{{refsec Structures}}
-
-{{refsec Pipes}}
-
-{{refsec PlanimetricfeaturesTypecoding}}
 
 ## Plan information
 
@@ -157,6 +159,23 @@ If the project consists of sub-projects that have different rates of progress, t
 {{refsec RouteplanningPlaninformation}}
 
 {{refsec WatersupplyandseweragePlaninformation}}
+
+## Quantity information
+
+Calculated area of a surface (**\<Surface>**) or the volume below (between two surfaces) can be transferred using "IM_quantity" extension. These quanties may also be assingned to a part of a surface (**\<Surface>**.**\<SourceData>**.**\<Boundaries>**.**\<Boundary>**) or an area defined as a **\<Parcel>**.
+
+{{xtabulate5 IM_quantity}}
+
+
+## Soil properties
+
+Soil properties of terrain model or ground layer model are captured in "IM_soil" feature extension.
+
+**Details:**  
+
+{{refsec BasedataTerrainmodel}}
+
+{{refsec BasedataGroundlayernmodel}}
 
 ## String line model
 
@@ -199,69 +218,25 @@ The described parameters vary by route type:
 
 {{refsec Crosssectionparameters}}
 
-## Water supply and sewerage - structure details
+## Strcutural layer properties
 
-It is possible to describe additional details for the water supply and sewerage network structures described in inframodel file transfers. The parameters are:
+Material properties of layers in road, street or railway structual model are captured in "IM_structLayer" feature extension.
 
-- structure code **structCode**
-- **rimType**
-- **rimMaterial**
-- **rimLoad class**
-- inner diameter of the drain rim **rimDiameter**
-- 2D coordinate of the rim center **rimCenter**
-- height of the sump **heightDeposit**
-- volume of the sump **volumeDeposit**
-- construction date **constructionDate**
-- renewal date **renowalDate**
-- renewal description **renowalDesc**
-- equipment type **equipmentType**
-- equipment code **equipmentCode**
-- equipment description **equipmentDesc**
+**Details:**  
 
-**Details:**
+{{refsec RoadandstreetdesignStructurallayers}}
 
-{{refsec Circularstructures}}
+{{refsec RailwaydesignStructurallayers}}
 
-{{refsec Rectangularstructures}}
+## Road and street design - Road signs
 
-{{refsec Pipeinletsandoutlets}}
+Road signs belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<Roadside>**.**\<RoadSign>**, with detailed properties captured in "IM_roadSign" feature extension:
 
-{{refsec Pipeconnections}}
-
-{{refsec Equipment}}
-
-## Water supply and sewerage - pipe details
-
-Describing pipe details is optional in inframodel file transfers. It is possible to set the following attributes:
-
-
-- pipe code **pipeCode**
-- pipe start and end point coordinates (3D)
-    - elevation type **elevType**
-    - start coordinates **pipeStart**
-    - end  coordinates **pipeEnd**
-- joint type **jointType**
-- pressure class **pressureClass**
-- construction date **constructionDate**
-- renewal date **renowalDate**
-- renewal description **renowalDesc**
-
-**Details:**
-
-{{refsec Circularpipes}}
-
-{{refsec Eggpipes}}
-
-{{refsec Ellipticpipes}}
-
-{{refsec Rectangularpipes}}
-
-{{refsec Channels}}
-
+{{xtabulate5 IM_roadSign}}
 
 ## Railway design - KM post coordinates
 
-To assing northing and easting coordinates to railway **\<Alignment>**.**\<StationEquation>**, the parameters are:
+To assign northing and easting coordinates to railway **\<Alignment>**.**\<StationEquation>**, the parameters are:
 
 - northing coordinate **northing**
 - easting coordinate **easting**
@@ -282,15 +257,72 @@ Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, t
 
 {{refsec Switchinformation}}
 
+## Utility networks - network type
+
+When the attribute pipeNetType in \>PipeNetwork> element is set to 'other', the type of utility network may be speficied in "IM_pipeNetworkType" extension:
+
+- districtheating
+- districtcooling
+- gas
+- waste transport piping
+- cable
+
+## Utility networks - structure details
+
+It is possible to describe additional details of network structures described in inframodel file transfers. The parameters in "IM_struct" are:
+
+{{xtabulate5 IM_struct}}
+
+**Details:**
+
+{{refsec Circularstructures}}
+
+{{refsec Rectangularstructures}}
+
+{{refsec Pipeinletsandoutlets}}
+
+{{refsec Pipeconnections}}
+
+{{refsec Equipment}}
+
+## Utility networks - pipe details
+
+It is possible to describe additional details of pipes of a network described in inframodel file transfers. The parameters in "IM_pipe" are:
+
+{{xtabulate5 IM_pipe}}
+
+**Details:**
+
+{{refsec Circularpipes}}
+
+{{refsec Eggpipes}}
+
+{{refsec Ellipticpipes}}
+
+{{refsec Rectangularpipes}}
+
+{{refsec Channels}}
+
+## Utility networks - cable details
+
+It is possible to describe additional details of cables of a network described in inframodel file transfers. The parameters in "IM_cable" are:
+
+{{xtabulate5 IM_cable}}
+
+**Details:**
+
+{{refsec Cables}}
+
 ## Plan features
 
-Planimetric features belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<PlanFeature>**, or in other cases in **\<PlanFeatures>**.**\<PlanFeature>**, by following data:
+Planimetric features belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<PlanFeature>**, or in other cases in **\<PlanFeatures>**.**\<PlanFeature>**. In addition of capability of being classified using "IM_coding" extension (and/or "IM_proprietaryCoding") and having custom properties using "IM_userDefinedProperties", detailed propeties may be assigned by the type of plan feature:
 
-- type **type**
-- optional material **material**
-- type code **Infracoding** in embedded Type coding
-
-
+- cable properties in **"IM_cable"**
+- footing properties in **"IM_footing"**
+- railing properties in **"IM_railing"**
+- fence properties in **"IM_fence"**
+- surface structure properties in **"IM_surfaceStruct"**
+- generic (none of the above) properties in **"IM_planFeature"**
 
 **Details:**
 
@@ -301,3 +333,27 @@ Planimetric features belonging to a particular route design are described in **\
 {{refsec Waterwayplanfeatures}}
 
 {{refsec Planimetricfeatures}}
+
+## As-built survey points
+
+Inframodel enables transfering both planned control points with tolerances (**\<Cgpoints>** as top-level collection), and the measured values (**\<Survey>**.**\<Cgpoints>**), both having detailed properties assign to the collection as "IM_cgpoints":
+
+{{xtabulate IM_cgpoints}}
+
+**Details:**
+
+{{refsec Controlpoints}}
+{{refsec As-builtsurvey}}
+
+## Spatial allocation and spatial avoidance
+
+An area or a space allocated for some specific use, or a perimeter around an object to be avoided can be defined using "IM_spatialZone" extension, applicable to  **\<PlanFeature>**, **\<Parcel>**, **\<Pipe>** or **\<Struct>**.
+
+{{xtabulate IM_spatialZone}}
+
+**Details:**
+
+{{refsec Planimetricfeatures}}
+{{refsec Parcels}}
+{{refsec Structures}}
+{{refsec Pipes}}

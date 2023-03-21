@@ -3,7 +3,7 @@
 
 ## Contents
 
-*Area structures* encompass descriptions of surfaces that complement routes. Such surfaces are e.g. landscaping, noise barriers and geostructures. The file in which these structures are described contains the header information presented in chapter 1. Area structures are described as *surfaces* **\<Surface>** in inframodel compliant file transfers. These surfaces consist of triangular meshes. It is also possible to attach random points **\<DataPoints>** and breaklines **\<BreakLines>** to the surfaces. Area structures are described in the same file as the route they are built in conjunction with, e.g. a noise barrier is in the same file as the railway it is built for.
+*Area structures* encompass descriptions of surfaces and boundaries that complement routes. Such descriptions are for e.g. landscaping, noise barriers and geostructures. The file in which these structures are described contains the header information presented in chapter 1. Area structures are described as *defined areas*  **\<Parcel>** with **\<CoordGeom>**, or as  *surfaces* **\<Surface>**. The surface description consist of triangular meshes as explained in {{refsec Basedata}}, where it is also possible to attach random points **\<DataPoints>** and breaklines **\<BreakLines>** to the surfaces. 
 
 ## Landscaping
 
@@ -46,7 +46,7 @@ Optional surface information
 
 ## Geostructures
 
-*Geostructures* in inframodel compliant file transfers refers to area-like structures that can be easily described in terms of surfaces. Examples include stacking of excess mass and subgrade reinforcement, which are possible to describe as surfaces such as described in {{refsec Ground layer model}}.
+*Geostructures* refer to area-like structures that can be easily described in terms of surfaces. Examples include stacking of excess mass and subgrade reinforcement, which are possible to describe as surfaces such as described in {{refsec Ground layer model}}.
 
 The process of describing the components is described in detail in {{refsec Terrain model}}. The The surface description consists of a triangle mesh, which may have random points or breaklines attached to it. Structural surfaces or cross-sections are usually not defined for geostructures.
 
@@ -67,3 +67,21 @@ Optional surface information
 {{figure Surfaces_Maaperamalli.png}}
 
 {{xmlsnippet Groundlayermodel}}
+ 
+ ## Surface structures
+
+*Surface structures* potentially span across multiple routes (such as urban street surface plans), or need not be associated with any route plan. These structures are described as *defined areas* under **\<Parcels>** collection, having one or several **\<Parcel>** elements. Optional *plan information* is defined in the extension "IM_plan" for **\<Parcels>** collection, which may also be given a unique **name**. Each **\<Parcel>** shall have a unique **name**, and either its location as **\<Center>** or its boundaries as **\<CoordGeom>**. 
+ 
+ The properties of *surface structure* are defined in "IM_surfaceStructure":
+ 
+ {{xtabulate5 IM_surfaceStructure}}
+ 
+  *Surface structure* may also have calculated area or volume quantities assinged as "IM_quantity" extension:
+ 
+  {{xtabulate5 IM_quantity}}
+ 
+ An area defined as a **\<Parcel>** may have an adjoining area spatial allocation or spatial avoidance (or both). These can be described using "IM_spatialZone" extension:
+ 
+ {{xtabulate5 IM_spatialZone}}
+ 
+ todo figure SpatialZoneArea

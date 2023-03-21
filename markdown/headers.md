@@ -1,9 +1,9 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # File headers
 
-## LandXML file container
+## XML file header
 
-InfraModel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
+Inframodel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
 
 Example:
 
@@ -11,10 +11,15 @@ Example:
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
+NB: even if it is possible to use scandic characters in Inframodel XML files, they should not be used in **name**-attribute values, e.g. "väylä 2" should be spelled "vayla 2".
+
+
+## LandXML container
+
 The namespaces in Inframodel file shall be the following:
 
-- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall is set in the root element.
-- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall is set in the root element
+- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall be set in the root element.
+- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall be set in the root element
 - The types in Inframodel enumerations schema inframodelEnumerations.xsd are included in the default namespace
 
 **Note: The namespace URI is not meant to be used to look up information. Its sole purpose is to give the namespace a unique name.**
@@ -133,21 +138,17 @@ Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDef
 
 ## Type coding systems
 
-The meaning (semantic) of the points, lines and surfaces is defined in the file. The parties of the project agree on a type coding systems that are used in the data transfer and they are set in the "IM_codings" extension using \<Feature> element under \<Project> defining:
+The meaning (semantic) of the points, lines and surfaces is defined in the file. The parties of a project agree on type coding systems that are used in the data transfer.
+
+The main coding systems are set in the "IM_codings" extension *(exactly one in each file)* using \<Feature> element under \<Project>, defining:
 
 1. The terrain description coding system (source data points and breaklines)(*terrainCoding*)
 2. The surface/category description coding system (*surfaceCoding*)
 3. The coding system for infrastructure objects (including alignments and breaklines, pipe netweorks, plan features) (*infraCoding*)
-4. Additional or alternative type coding systems used in the project (*proprietaryInfraCoding*)
 
 The existing terrain description contains source data points and breaklines. The surface description consists of the individual surfaces of the base data (terrain and ground layers) or the planned route or areal structures as TIN surface model or string line model. In addtion to surfaces, planned objects may be described as alignment geometry, line strings or points. It is possible to set the same type coding system for more than one of these.
 
-The recommended type coding system in Inframodel exchange: 
-- For terrain is the Finnish Transport Infrastructure Agency type coding *Infra*]. 
-- For surface and infrastructure objects, the recommended type coding system is the general InfraBIM type coding *InfraBIM*.
-
-
-In addition to the main systems, it is also possible to define additional or alternative type coding systems *(one or more e.g. InfraRAK2.3, Vesilaitos X, Kaupunki Y etc.)*, named as proprietaryInfraCoding (the name given here shall be used as prefix in later usage)
+In addition to the main coding systems, it is also possible to define additional or alternative type coding systems *(none, one or more e.g. InfraRAK2.3, Vesilaitos X, Kaupunki Y etc.)*, using "IM_proprietaryCodings" extension (one instance per coding system) under \<Project>. When a code from a proprietary system is used for an element, each "IM_proprietaryCoding" \<Feature> instance placed under the element being coded shall identify the coding system by its property proprietaryInfraCodingSource, having the same value as the system name set in "IM_proprietaryCodings" property proprietaryInfraCoding.
 
 
 ## Application
@@ -178,8 +179,12 @@ Optional \<DocFileRef> element can be used to provide the URI link to named exte
 
 {{xtabulate4 FeatureDictionary}}
 
+Proprietary extensions can be included in addition to Inframodel extensions, as "IM_userDefinedProperties" (generic extension specified in Inframodel feature dictionary), with mandatory propertyLabel (name of the property from proprietary source) and propertyValue (value set for the property in this instance), and optional propertyDescription (description or definition of the property from proprietary source) and propertySource (identification of or reference to the property definition source).
+
 ## Metadata
   
-Metadata is described with the **\<Metadata>** element. Metadata is optional and enables the following features shown below.
+Metadata is described with the **\<im:Metadata>** element (specified im-extension schema) as **\<any>** element under **\<LandXML>**. The im namespace xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
+
+Metadata is optional and enables the following features shown below.
   
 {{xtabulate IM-Metadata}}

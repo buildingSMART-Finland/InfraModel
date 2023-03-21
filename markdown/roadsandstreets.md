@@ -13,7 +13,8 @@ A road or street design in inframodel contains:
 - line string model (line string alignments)
 - a terrain model (the visible surface)
 - a structural model (the visible surface and the structural layers of the road or street)
-- Cross-section parameters
+- cross-section parameters
+- road signs and planimetric features
 
 The plan information may optionally contain the following:
 
@@ -101,9 +102,9 @@ Details of **\<Surface>** in "IM_structLayer" **\<Feature>**
 
 {{xtabulate SurfaceinFeature}}
 
-## Road plan features
+## Road signs and plan features
 
-The road planimetric features such as fences, guard rails, lightpole or signage footings that are assigned to a particular road or street are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeatures>**.
+The road signs and planimetric features such as fences, guard rails, lightpole or signage footings that are assigned to a particular road or street are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeature>** elements, as well as **\<Roadside>** elements with **\<RoadSign>** elements.
 
 Attributes of the *roadways collection* **\<Roadways>** are not used in inframodel.
 
@@ -134,3 +135,17 @@ Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined
 6. {{refsec Generic plan feature}} in "IM_planfeature" extension
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec Type coding}} in "IM_coding" extension.
+
+### Road signs
+
+The individual *road signs* are each described under **\<RoadSign>** (placed under **\<RoadSide>**, having no attributes). Mandatory attributes of **\<RoadSign>** in Inframodel are **width** and **height**, defining the bounding rectangle around the *road sign*, the actual shape and other properties can be specified "IM_roadSign" extension.
+
+Attributes of **\<RoadSign>**:
+
+{{xtabulate RoadSign}}
+
+Details in "IM_roadSign" extension:
+
+{{xtabulate5 IM_roadSign}}
+
+{{figure RoadSign.png}}
