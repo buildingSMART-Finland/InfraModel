@@ -95,6 +95,16 @@ Tie ja ratahankkeiden maastitiedot, mittausohje (liikennevirasto 18/2011), koodi
 - Lähtötietoaineisto eli maastomallin ja maaperämallin kohteet ja pinnat
     - terrainCoding = Infra
     - surfaceCoding = Infra
+- InfraBIM- nimikkeistö - Suunniteltujen kohteiden luokitus
+    - infraCoding = InfraBIM
+- Infra2006-rakennusosanimikkeistö
+    - Rakennusosanimikkeistön paatoson nimike tai InfraBIM-nimike
+- Lähdejärjestelmän lajiluokitus (vapaaehtoinen)
+    - proprietaryCoding = lähdejärjestelmä / muu koodaus
+        - esim. \<Proprietary label = "proprietaryInfraCoding" value="Tekla"\>
+    - Suositellaan käytettäväksi tarvittaessa lisäinformaationa esimerkiksi vain silloin, kun em. luokitukset eivät ole riittäviä kyseisessä kohteessa.    
+        
+Muiden nimikkeistöjen tai luokitusten käytöstä pitää sopia erikseen hankekohtaisesti.
 
 #### Q&A
 
