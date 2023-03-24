@@ -12,9 +12,7 @@ Inframodel skeema ja dokumentaatio sisältävät tietoa sovelluskehittäjille ja
 
 Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja InfraBIM-nimikkeistöjärjstelmään.  
 
-"Pyhä kolminaisuus"
-
-{{figure holytrinity}}
+{{figure Kolminaisuus}}
 
 - Yleiset inframallivaatimukset *(ohje ja vaatimus: mitä ja miten mallinnetaan, laadunvarmistus, lopputuotteen määrittely, mallinnusprosessi jne.)*
 - InfraBIM nimikkeistö *(miten nimetään ja luokitellaan)*
@@ -71,10 +69,6 @@ Hankkeissa tulee noudattaa selkeää jaottelua loogisiin osakokonaisuuksiin tai 
 - Varusteet ja laitteet kokonaisuutena tai tekniikkalajeittain
 
 Näiden lisäksi voi tulla tarpeeseen jakaa aineistoa myös paaluväleittäin selkeyttämään suunnittelurajoja tai mallinnusositusta. Vaikka tietomalli säsältää tiedon aineiston käyttötarkoituksesta, nimeämisessä olisi hyvä muistaa käyttää loogisia jaotteluita. Aineiston jakamisesta sopiviin osiin on hyvä sopia ennen hankkeen alkua, koska hankevaihe tai -muoto vaikuttaa myös aineiston jakamisen tarpeisiin. Esim. varhaisen suunnitteluvaiheen aineistoa voi olla helpompi jakaa isompina kokonaisuuksina, jopa yhtenä projektitietona.
-
-{{figure kuva tiedostojaottelusta}}
-
-*Kuva. Esimerkki aineistojaottelusta*
 
 Käytännössä tiedonsiirron tarpeet ovat monenlaisia ja kokonaisuudet on sovittava hankkeen alussa selkeästi. Esimerkiksi kun suunnittelija toimittaa malleja koneohjaukseen, voidaan toimia väylärakenteiden toteutusmalliohjeen mukaisesti (Väylärakenteen toteutusmallin vaatimukset ja -ohjeet) Tai kun maastomallin eri mittausaineistot (likimalli, tarkka maastomalli, täydennysmittaukset) halutaan selkeästi erottaa omina tiedostoina toisistaan.
 
