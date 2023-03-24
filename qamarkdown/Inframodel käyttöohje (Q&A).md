@@ -90,21 +90,28 @@ Linkki dokumentaatioon {{refsec Headers}}
 Linkki dokumentaatioon {{refsec Codings}}
 
 ##### Lajiluokitukset ja nimikkeistöt
-Tie ja ratahankkeiden maastitiedot, mittausohje (liikennevirasto 18/2011), koodiluettelo
+Inframodel tiedonsiirrossa aineiston laatimisessa käytetty luokittelu ja nimikkeistö esitetään Codings elementillä.
 
-- Lähtötietoaineisto eli maastomallin ja maaperämallin kohteet ja pinnat
-    - terrainCoding = Infra
-    - surfaceCoding = Infra
-- InfraBIM- nimikkeistö - Suunniteltujen kohteiden luokitus
-    - infraCoding = InfraBIM
-- Infra2006-rakennusosanimikkeistö
-    - Rakennusosanimikkeistön paatoson nimike tai InfraBIM-nimike
-- Lähdejärjestelmän lajiluokitus (vapaaehtoinen)
-    - proprietaryCoding = lähdejärjestelmä / muu koodaus
+Yleisesesti koodaukseen on sovittu seuraavat arvot ja käyttötarkoitus:
+
+Lähtötietoaineisto: maastomallin ja maaperämallin kohteet
+- **\<terrainCoding>** = Infra*
+Lähtötietoaineisto: maastomallin ja maaperämallin pinnat
+- **\<surfaceCoding>** = Infra*
+Suunniteltujen kohteiden (pinnat, alueet, pisteet, verkostot jne.) luokitus
+- **\<infraCoding>** = InfraBIM**
+
+\* *Tie ja ratahankkeiden maastotiedot, mittausohje (liikennevirasto 18/2017), koodiluettelo*
+
+\** *InfraBIM-nimikkeistö*
+
+Lisäksi on mahdollista sisällyttää yksi tai useampi muu tarkentava koodaus. Esimerkiksi ohjelmiston oma lajiluokitus, organisaation oma luokitus, vesilaitoksen luokitus jne.
+
+- \<proprietaryCoding> = käyttäjän asettama arvo***
+    - Lähdejärjestelmän lajiluokitus (vapaaehtoinen)
         - esim. \<Proprietary label = "proprietaryInfraCoding" value="Tekla"\>
-    - Suositellaan käytettäväksi tarvittaessa lisäinformaationa esimerkiksi vain silloin, kun em. luokitukset eivät ole riittäviä kyseisessä kohteessa.    
-        
-Muiden nimikkeistöjen tai luokitusten käytöstä pitää sopia erikseen hankekohtaisesti.
+
+\*** *Suositellaan käytettäväksi tarvittaessa lisäinformaationa esimerkiksi silloin, kun em. luokitukset eivät ole riittäviä kyseisessä kohteessa. Tämän soveltamisesta pitää sopia erikseen hankekohtaisesti.*
 
 #### Q&A
 
