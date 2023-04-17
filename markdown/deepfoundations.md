@@ -3,7 +3,7 @@
 
 ## Contents {#sec:deppfoundationcontents}
 
-An Inframodel file of any plan contains the header information described in {{refsec Headers}}.
+An Inframodel file of any plan contains the header information described in {{refsec headers}}.
 
 This section describes deep foundations (such as pile groups) transferred using **\<any>** element under **\<LandXML>**. The xml schema (im.xsd) for these extensions is available at Inframodel schema page.
 

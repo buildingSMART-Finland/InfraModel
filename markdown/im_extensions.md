@@ -96,7 +96,7 @@ TODO-MISSING FEATURE ITEM
 {{xtabulate IM_coding--ltFeature--gt}}
 
 
-More information can be found from {{refsec Typecodingsystems}} 
+More information can be found from {{refsec typecodingsystems}} 
 
 
 ## Type coding {#sec:typecodingext}
@@ -114,15 +114,15 @@ Individual type codes are set in the individual element, or in the parent elemen
 
 **Details:**
 
-{{refsec BasedataTypecoding}}
+{{refsec typecoding}}
 
-{{refsec RouteplanningTypecoding}}
+{{refsec routeplanningtypecoding}}
 
-{{refsec Structures}}
+{{refsec structures}}
 
-{{refsec Pipes}}
+{{refsec pipes}}
 
-{{refsec PlanimetricfeaturesTypecoding}}
+{{refsec planimetricfeaturestypecoding}}
 
 
 ## User defined properties {#sec:userdefinedpropertiesext}
@@ -154,11 +154,11 @@ If the project consists of sub-projects that have different rates of progress, t
 
 **Details:**  
 
-{{refsec BasedataPlaninformation}}
+{{refsec planinformation}}
 
-{{refsec RouteplanningPlaninformation}}
+{{refsec routeplanningplaninformation}}
 
-{{refsec WatersupplyandseweragePlaninformation}}
+{{refsec watersupplyandsewerageplaninformation}}
 
 ## Quantity information {#sec:qauntityinformationext}
 
@@ -255,7 +255,7 @@ Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, t
 
 **Details:**
 
-{{refsec switch}
+{{refsec switch}}
 
 ## Utility networks - network type {#sec:networktypeext}
 
