@@ -39,5 +39,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Inframodel (md)
-          path: ${{ github.workspace }}/staging/main.md
+          path: ${{ github.workspace }}/artefact/inframodel.md
       
