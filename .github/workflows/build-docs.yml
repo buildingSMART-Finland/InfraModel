@@ -35,9 +35,9 @@ jobs:
         with:
           name: Inframodel (PDF)
           path: ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
-      - name: collect docx artefact
+      - name: collect md artefact
         uses: actions/upload-artifact@v3
         with:
-          name: Inframodel (DOCX)
-          path: ${{ github.workspace }}/artefact/Inframodel_DRAFT.docx
+          name: Inframodel (md)
+          path: ${{ github.workspace }}/staging/main.md
       
