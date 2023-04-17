@@ -1,4 +1,4 @@
-# Pipenetworks {#sec:mvd-watersupplyandsewerage}
+# Pipenetworks {#sec:pipenetworks}
 
 
 ## Contents
@@ -24,10 +24,10 @@ The networks are presented in the parent element **\<PipeNetworks>** whose child
 
 {{figure Pipenetworks_general}}
 
-The pipe network is, depending on the situation, usually described in its entirety. LandXML schema exposes some limitations on how a network can be delimited. E.g. describing the inverts of a delimiting storm drain requires additional pipes and corresponding terminal structures to be in the model. The process of delimiting the network is described in further detail in {{refsec Structures}} and {{refsec Pipes}}.
+The pipe network is, depending on the situation, usually described in its entirety. LandXML schema exposes some limitations on how a network can be delimited. E.g. describing the inverts of a delimiting storm drain requires additional pipes and corresponding terminal structures to be in the model. The process of delimiting the network is described in further detail in {{refsec structures}} and {{refsec pipes}}.
    
 
-## Pipe networks {#sec:mvd-pipenetworks}
+## Pipe networks 
 
 A file may contain multiple *utility network groups* **\<PipeNetworks>**. It is mandatory to give a **name** and optional to give a *description* **desc** and **state**.
 
@@ -41,7 +41,7 @@ The *plan information* of a *network group* is set in the optional "IM_plan" ext
 
 {{xtabulate5 IM_plan}}
 
-## Pipe network {#sec:mvd-pipenetwork}
+## Pipe network {#sec:pipenetwork}
 
 Individual networks are described in **\<PipeNetwork>** elements, organized under their parent element **\<PipeNetworks>**, the *network group*. The number of *networks* in one *network group* is unlimited. The *pipe network* defines a topological model, with mandatory **name** and **pipeNetType**. The **state** and *description* **desc** are optional.
 
@@ -132,7 +132,7 @@ It is possible to define more detailed type information of a piece of equipment 
 
 Related to structure geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the structure geometry definition as a radius around the vertical line defined by structure \<Center> 3D coordinates at the bottom level and @elevRim.
 
-### Circular structures {#sec:mvd-circularstructure}
+### Circular structures {#sec:circularstructures}
 
 Inspection wells of French drains are an example of a circular structure. Circular structures are defined using the structure element **\<Struct>** and its child elements.
 
@@ -150,7 +150,7 @@ The *body* **diameter** at the bottom of the well, the *description* **desc**, t
 
 {{xtabulate5 CircStruct}}
 
-### Rectangular structures {#sec:mvd-rectangularstructures}
+### Rectangular structures {#sec:rectangularstructures}
 
 The illustration below describes the description method of a rectangular structure. The structure is defined using the **\<Struct>** element and its child elements:
 1. General data **\<Struct>**
@@ -167,7 +167,7 @@ The mandatory attributes of a rectangular structure are the **length** the direc
 
 {{xtabulate5 RectStruct}}
 
-### Pipe inlets and outlets {#sec:mvd-pipeinletsandoutlets}
+### Pipe inlets and outlets {#sec:pipeinletsandoutlets}
 
 Pipe inlets and outlets are end of the pipe network pipes. The following illustration demonstrates the method of description. The virtual structures of the pipe ends are defined using the structure attribute **\<Struct>** and its child elements:
 
@@ -185,7 +185,7 @@ The illustration below demonstrates how pipe inlets and outlets are described. T
 
 {{xtabulate5 InletStruct}}
 
-### Pipe connections {#sec:mvd-pipeconnection}
+### Pipe connections {#sec:pipeconnection}
 
 Pipe connections, joints and points of intersection are defined by the **\<Connection>** elements. The illustration below demonstrates the mode of description, which contains the attributes of the structure **\<Struct>** and its child elements:
 
@@ -208,7 +208,7 @@ Connections, joints or points of intersection are defined using the **\<Connecti
 
 {{xtabulate5 Connection}}
 
-### Equipment {#sec:mvd-equipment}
+### Equipment {#sec:equipment}
 
 Equipment is defined using the **\<Connection>** element. The illustration bellow describes the mode of description of a *structure* **\<Struct>** and its child elements:
 
@@ -227,7 +227,7 @@ A *piece of equipment* is defined using the element **\<Connection>**, that has 
 {{xtabulate5 Connection}}
 
 
-## Pipes {#sec:mvd-pipes}
+## Pipes {#sec:pipes}
 
 The topological network consists of different kinds of structures, whose exact location is given. The pipes that compose the **\<PipeNetwork>** are described as a *structure collection* **\<Pipes>** that has no attributes. A **\<Pipe>** is defined between two structure nodes **\<Struct>** by refering to them in the start- and end-attributions.
 
@@ -263,7 +263,7 @@ The pipe curvature is defined by space-separated 3D-coordinates in the \<Center>
 
 {{xtabulate5 Center}}
 
-More details can be found from {{refsec mvd-pipedetails}}
+More details can be found from {{refsec pipedetails}}
 
 ## Details
 
@@ -293,7 +293,7 @@ When the start and end coordinates are given with elevation values, elevation ty
 
 Related to pipe geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the pipe geometry definition as a radius around the pipe path defined by start and end structure \<Center> coordinates and their **\<Invert>** elevation values .    
     
-#### Circular pipes {#sec:mvd-circularpipes}
+#### Circular pipes {#sec:circularpipes}
 
 The following illustation descibes the definition of a round pipe  The definition employs the element **\<Pipe>** and its child elements.
 
@@ -311,7 +311,7 @@ When defining a network-limiting pipe the **diameter** is the only defined attri
 {{xtabulate5 CircPipe}}
 
 
-### Egg pipes {#sec:mvd-eggpipes}
+### Egg pipes {#sec:eggpipes}
 
 The following illustation descibes the definition of an egg-shaped pipe  The definition employs the element \<Pipe> and its child elements.
 
@@ -328,7 +328,7 @@ When defining a network-limiting pipe the *height* **height** and *width* **span
 
 {{xtabulate5 EggPipe}}
 
-### Elliptic pipes {#sec:mvd-ellipticpipe}
+### Elliptic pipes {#sec:ellipticpipe}
 
 The following illustation descibes the definition of an elliptical pipe. The definition employs the element \<Pipe> and its child elements.
 
@@ -345,7 +345,7 @@ When defining a network mandatory attributes are *height* **height** ja *width* 
 
 {{xtabulate5 ElliPipe}}
 
-### Rectangular pipes {#sec:mvd-rectangularpipe}
+### Rectangular pipes {#sec:rectangularpipe}
 
 The following illustation descibes the definition of a rectangular pipe.  The definition employs the element \<Pipe> and its child elements.
 
@@ -362,7 +362,7 @@ When defining a network-limiting pipe the **height** and **width** are mandatory
 
 {{xtabulate5 RectPipe}}
 
-### Channels {#sec:mvd-channels}
+### Channels {#sec:channels}
 
 The following illustation descibes the definition of a channel pipe. The definition employs the element \<Pipe> and its child elements.
 

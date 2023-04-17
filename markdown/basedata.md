@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Base data
+# Base data {#sec:basedata}
 
-## Contents
+## Contents {#sec:basedatacontents}
 The base data contains the data points and breaklines of the source data, as well as the triangulated representation of mesh surfaces.
 The surface description contains the points used to form the surface (as vertices of the triangles in TIN)).
 Breaklines are not used to form surfaces, but if transferred under \<Surface> as source data they shall coincide with the triangulation defining the surface, i.e. each pair of consecutive breakline points given in 3D coordinates, must match the coordinates of two vertices of a triangle (exactly, within the numeric precision of the exchange file).
@@ -15,7 +15,7 @@ Surfaces and source data is described as surface groups \<Surfaces>, which are m
 
 {{xtabulate5 Surface}}
 
-### Plan information
+### Plan information {#sec:planinformation}
 
 For the surface description the project is divided into surface groups \<Surfaces> with optional "IM_plan" \<Feature> extension.
 If the project consists of sub-projects that have different rates of progress, the plan contents of the file are divided into sub-projects according to the same division.
@@ -23,14 +23,14 @@ Note:The plan state is described according to a scheme agreed on by the parties 
 
 {{xtabulate5 IM_plan--ltFeature--gt}}
 
-### Current and planned surfaces
+### Current and planned surfaces {#sec:currentandplannedsurfaces}
 
 An existing surface is defined by setting the state of the \<Surfaces> or \<Surface> element to "existing". 
 
 If all the surfaces within a surface group have the same state, it is possible to set the state on a higher level in the surface group \<Surfaces>. 
 However, \<Surface> element (or its sourcedata element(s)) may override the parent state by defining its own state. 
 
-### Type coding
+### Type coding {#sec:typecoding}
 
 The type coding systems used in Inframodel file transfers are set in the header information. Type codes can be set for individual plan elements:
 
@@ -53,13 +53,13 @@ These both may be given an **infraCoding** and its description **infraCodingDesc
 Alternative type codings can be given using "IM_proprietaryCoding" with **proprietaryInfraCoding** and their descriptions **proprietaryInfraCodingDesc**, and with **proprietaryInfraCodingSource* where they both have prefix per proprietary coding systems named under \<Project> element.
 Type coding set by the parent element is also inherited by the child elements, ie. \<Surfaces> element may also set the type coding of its child elements.
 
-### Quantity information
+### Quantity information {#sec:quantityinformation}
 
 Calculated area or volume quantities may be assinged to entire \<Surface>, or part of it in source data \<Boundary>, using "IM_quantity" extension:
  
 {{xtabulate5 IM_quantity}}
  
-## Source data
+## Source data {#sec:sourcedata}
 
 The source data is described by the element \<SourceData>. This element has no attributes.
 Source data consists of:
@@ -69,13 +69,13 @@ Source data consists of:
 
 {{figure Surfaces_Pinnat-perus.png}}
 
-### Data points
+### Data points {#sec:datapoints}
 
 Source *data points* are described by the element \<DataPoints>, sorting every point group into individual elements. 
 
 {{xtabulate5 DataPoints}}
 
-### Breaklines
+### Breaklines {#sec:breaklines}
 
 Source *breakline group* is described by the element \<BreakLines>, where each \<BreakLine> presents single continous line. 
 
@@ -83,7 +83,7 @@ Source *breakline group* is described by the element \<BreakLines>, where each \
 
 {{xtabulate5 Breakline}}
 
-### Boundaries
+### Boundaries {#sec:boundaries}
 
 Additionally, it is also possible to define boundaries of the source data in the boundary group \<Boundaries>, where each \<Boundary> is presented in its own element. Each boundary may have properties of the area as "IM_surfaceStructure", "IM_structLayer" or "IM_soil", as well as calculated area or volume quantities as "IM_quantity". 
 
@@ -99,7 +99,7 @@ Additionally, it is also possible to define boundaries of the source data in the
  
  {{xtabulate5 IM_quantity}}
 
-## Triangular mesh surface
+## Triangular mesh surface {#sec:triangulatedmeshsurface}
 
 Surface geometry is described as triangulated meshes. 
 Each surface is defined under the \<Definition> in terms of boundaries, exterior features and holes. 
@@ -118,7 +118,7 @@ The face definitions are done by referring to the id numbers id of the vertice p
 The surface type surfType is fixed to "TIN" when describing a triangular mesh. 
 The presicion of the mesh model depends on the available software and data.
 
-### Vertices
+### Vertices {#sec:vertices}
 
 The *vertex point group* \<Pnts> contains a listing of individual vertices \<P>, which are each assigned an individual id number id.
 
@@ -126,7 +126,7 @@ The *vertex point group* \<Pnts> contains a listing of individual vertices \<P>,
 
 {{xtabulate5 P}}
 
-### Faces
+### Faces {#sec:faces}
 
 The *triangulation* is defined by the \<Faces> collection. It consists of consecutive list of faces \<F>. 
 The order of the faces implicitly defines the index number of each triangle (1,2,..). 
@@ -138,7 +138,7 @@ Each face is defined by referencing three vertex id numbers.
 
 {{figure Surfaces_kolmiokuvaus.png}}
 
-## Terrain model
+## Terrain model {#sec:terrainmodel}
 
 The *terrain model* contains the description of the topmost terrain surface (also Relief or Digital Elevation Model) as one or more \<Surface> under \<Surfaces> *surface group*. 
 It consists of the vertices of the component faces <Pnts> and the faces <Faces> as explained above. 
@@ -147,7 +147,7 @@ An "IM_coding" \<Feature> extension enables surface classifications, and "IM_soi
 Terrain model may be part of a optional plan described in "IM_plan" \<Feature>. 
 When exchanging a terrain model, the attribute \<Surfaces>.desc shall be set to "terrain model". TODO:why?
 
-### Soil properties
+### Soil properties {#sec:soilproperties}
 
 When no information of individual ground layers is available, surface model may define the soil propertites below the topmost surface by using "IM_soil" \<Feature> extension.
 
@@ -155,7 +155,7 @@ When no information of individual ground layers is available, surface model may 
 
 {{figure Surfaces_terrain.png}}
 
-## Ground layer model
+## Ground layer model {#sec:groundlayermodel}
 
 The *ground layer model* contains a description of all the surfaces between different ground layers (and the topmost surface) in the plan. 
 It is recommended that surfaces are described top-down. Individual layer surfaces are constructed as explained above.

@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Route planning
+# Route planning {#sec:routeplanning}
 
 ## Contents
 
@@ -13,7 +13,7 @@ Geometric alignments describe parameters of the horizontal and optional vertical
 
 {{figure Road_Geometriakuvaus.png}}
 
-Once the alignments have been described, it is possible to assign them to a string line model, that contains a description of the layers of the route structure, as described in {{refsec String line model}}. Alternatively, a triangulated surface mesh model can be used to represent the top surface of a route, or its structural model can composed by describing all its layers as triangulated mesh surfaces.
+Once the alignments have been described, it is possible to assign them to a string line model, that contains a description of the layers of the route structure, as described in {{refsec stringlinemodel}}. Alternatively, a triangulated surface mesh model can be used to represent the top surface of a route, or its structural model can composed by describing all its layers as triangulated mesh surfaces.
 
 Cross-section parameters, which are described in further detail in the sections covering each route type, complement the route description with design parameter information of the cross-sections (without actual cross section geometry).
 
@@ -175,7 +175,7 @@ A line string may belong to several different layers. It is recommended to descr
 
 ## Terrain model
 
-The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec Source data}} Also, random points and breaklines of the surface can be described as explained in {{refsec Source data}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
+The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec sourcedata}} Also, random points and breaklines of the surface can be described as explained in {{refsec sourcedata}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
 
 The route terrain model consists of:
 
@@ -191,7 +191,7 @@ The route terrain model consists of:
 
 ## Structural model
 
-The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in {{refsec Ground layer model}} .
+The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in {{refsec groundlayermodel}} .
 
 {{figure Todo Surfaces_Rakennemalli.png}}
   

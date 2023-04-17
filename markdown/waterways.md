@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Waterway design
+# Waterway design {#sec:waterwaydesign}
 
 ## Content
 
@@ -31,7 +31,7 @@ The *cross-section parameters* are set for the *stationing reference alignment* 
 
 The string line model of an *alignment group* **\<Alignments>** is defined in the extension "IM_stringlineLayers" after the *alignments* **\<Alignment>**. A line string layer is presented by refering to the names of its constituent *alignments* **\<Alignment>.name.**
 
-The *line string model* of routes is described in further detail in {{refsec String line model}} The constituent *line strings* **\<Alignment>** of the *string line model* adhere to the *terrain codes* (**terrainCoding**) defined for the line strings. The layers of the line string model are defined by assigning them a *surface code*.
+The *line string model* of routes is described in further detail in {{refsec stringlinemodel}} The constituent *line strings* **\<Alignment>** of the *string line model* adhere to the *terrain codes* (**terrainCoding**) defined for the line strings. The layers of the line string model are defined by assigning them a *surface code*.
 
 {{figure Water_stringlinemodel.png}}
 
@@ -39,13 +39,13 @@ The *line string model* of routes is described in further detail in {{refsec Str
 
 ## Surface and structural model
 
-The structural model of a waterway is described in detail in {{refsec Structural model}}. The surface model contains at least one triangular mesh that describes the bottom of the waterway. The structural model contain at least the water level in addition to this. It is possible to define *surface codes* (**surfaceCoding**) for all surfaces.
+The structural model of a waterway is described in detail in {{refsec structuralmodel}}. The surface model contains at least one triangular mesh that describes the bottom of the waterway. The structural model contain at least the water level in addition to this. It is possible to define *surface codes* (**surfaceCoding**) for all surfaces.
 
-It is possible to attach source data point and breakline information to surfaces. The process is described in further detail in {{refsec Source data}}.
+It is possible to attach source data point and breakline information to surfaces. The process is described in further detail in {{refsec sourcedata}}.
 
 {{figure Water_structuremodel.png}}
 
-## Waterway plan features
+## Waterway plan features {#sec:waterwayplanfeatures}
 
 The waterway planimetric features such as guard rails, lightpole or signage footings that are assigned to a particular waterway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeatures>**.
 
@@ -64,11 +64,11 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
-     1. {{refsec Cable information}} in "IM_cable" extension
-     2. {{refsec Footing information}} in "IM_footing" extension
-     3. {{refsec Railing information}} in "IM_railing" extension
-     4. {{refsec Fence information}} in "IM_fence" extension
-     5. {{refsec Surface structure properties}} in "IM_surfaceStructure" extension
-     6. {{refsec Generic plan feature}} in "IM_planfeature" extension
+     1. {{refsec cableinformationext}} in "IM_cable" extension
+     2. {{refsec footinginformationext}} in "IM_footing" extension
+     3. {{refsec railinginformationext}} in "IM_railing" extension
+     4. {{refsec fenceinformationext}} in "IM_fence" extension
+     5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
+     6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
 
-Additionally, all plan features may be type coded in **\<Feature>** using {{refsec Type coding}} in "IM_coding" extension.
+Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.

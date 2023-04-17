@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Inframodel \<Feature> extensions
+# Inframodel \<Feature> extensions {#sec:inframodelfeatureextensions}
 
 Inframodel transfer files fully conform to the LandXML v1.2 schema (with one exeption\*), but some extensions have been made using the Feature-mechanism. 
 This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
@@ -8,7 +8,7 @@ NB: In addition to these extensions, Inframodel specifies many restrctions on th
 
 \* LandXML v1.2 \<choice> declaration in \<Roadways> collection has been changed to \<sequence> in Inframodel v4.1.0, whereby both \<Roadway> elements and feature extensions may appear in the same \<Roadways> collection. 
 
-## Local coordinate transformation definition by point pairs
+## Local coordinate transformation definition by point pairs {#sec:localcoordinatetransfromationbypointpairsext}
 
 Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension.
 
@@ -41,7 +41,7 @@ where:
 {{xtabulate elevation--ltProperty--gt}}
 
 
-## Type coding systems
+## Type coding systems {#sec:typecodingsystemsext}
 
 Type coding systems define the purpose of geometric elemnents (points, lines and surfaces) as well as other types of elements (such as plan features, pipes and structures in pipe networks, etc).) in Inframodel file transfers. 
 
@@ -99,7 +99,7 @@ TODO-MISSING FEATURE ITEM
 More information can be found from {{refsec Typecodingsystems}} 
 
 
-## Type coding
+## Type coding {#sec:typecodingext}
 
 Individual type codes are set for the following elements in inframodel file transfers:
 
@@ -125,7 +125,7 @@ Individual type codes are set in the individual element, or in the parent elemen
 {{refsec PlanimetricfeaturesTypecoding}}
 
 
-## User defined properties
+## User defined properties {#sec:userdefinedpropertiesext}
 
 Custom properties may be defined by using "IM_userDefinedProperties" \<Feature>
 
@@ -142,7 +142,7 @@ where:
 {{xtabulate propertySource--ltProperty--gt}}
 
 
-## Plan information
+## Plan information {#sec:planinformationext}
 
 The details of a plan are described for each project part:
 
@@ -160,24 +160,24 @@ If the project consists of sub-projects that have different rates of progress, t
 
 {{refsec WatersupplyandseweragePlaninformation}}
 
-## Quantity information
+## Quantity information {#sec:qauntityinformationext}
 
 Calculated area of a surface (**\<Surface>**) or the volume below (between two surfaces) can be transferred using "IM_quantity" extension. These quanties may also be assingned to a part of a surface (**\<Surface>**.**\<SourceData>**.**\<Boundaries>**.**\<Boundary>**) or an area defined as a **\<Parcel>**.
 
 {{xtabulate5 IM_quantity}}
 
 
-## Soil properties
+## Soil properties {#sec:soilpropertiesext}
 
 Soil properties of terrain model or ground layer model are captured in "IM_soil" feature extension.
 
 **Details:**  
 
-{{refsec BasedataTerrainmodel}}
+{{refsec terrainmodel}}
 
-{{refsec BasedataGroundlayernmodel}}
+{{refsec groundlayermodel}}
 
-## String line model
+## String line model {#sec:stringlinemodelext}
 
 The string line model is composed of *line string alignments* **\<IrregularLine>**. Their order with an **\<Alignment>** is irrelevant. The string line model used in Inframodel is based on the Leica RoadRunner software.
 
@@ -185,9 +185,9 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 **Details:**
 
-{{refsec Stringlinemodel}}
+{{refsec stringlinemodel}}
 
-## Cross-section parameters
+## Cross-section parameters {#sec:crosssectionparametersext}
 
 *Cross-section parameters* contain parametric information considered crucial for each route type. They are set for the *stationing reference alignment* in the **\<CrossSects>**.**\<CrossSect>** "IM_crossSect" extension under the **\<Alignment>** element. The chosen cross-section parameters are set in fields (**\<Property>**). It is advisable to describe all parameters for each cross-section. If the some parameters change, the cross-section where the parameter begins to change and the end of the transition are described.
 
@@ -212,29 +212,29 @@ The described parameters vary by route type:
 
 **Details:**
 
-{{refsec Crosssectparameters}}
+{{refsec crosssectparameters}}
 
-{{refsec Crosssectionsandtrackinformation}}
+{{refsec crosssectionsandtrackinformation}}
 
-{{refsec Crosssectionparameters}}
+{{refsec crosssectionparameters}}
 
-## Strcutural layer properties
+## Strcutural layer properties {#sec:structureallayerpropertiesext}
 
 Material properties of layers in road, street or railway structual model are captured in "IM_structLayer" feature extension.
 
 **Details:**  
 
-{{refsec RoadandstreetdesignStructurallayers}}
+{{refsec roadandstreetsstructurallayers}}
 
-{{refsec RailwaydesignStructurallayers}}
+{{refsec railwaystructurallayers}}
 
-## Road and street design - Road signs
+## Road and street design - Road signs {#sec:roadsignext}
 
 Road signs belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<Roadside>**.**\<RoadSign>**, with detailed properties captured in "IM_roadSign" feature extension:
 
 {{xtabulate5 IM_roadSign}}
 
-## Railway design - KM post coordinates
+## Railway design - KM post coordinates {#sec:kmpostcoordinatesext}
 
 To assign northing and easting coordinates to railway **\<Alignment>**.**\<StationEquation>**, the parameters are:
 
@@ -243,9 +243,9 @@ To assign northing and easting coordinates to railway **\<Alignment>**.**\<Stati
 
 **Details:**
 
-{{refsec KM-posting}}
+{{refsec kmposting}}
 
-## Railway design - switches
+## Railway design - switches {#sec:switchesext}
 
 Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, the parameters are:
 
@@ -255,9 +255,9 @@ Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, t
 
 **Details:**
 
-{{refsec Switchinformation}}
+{{refsec switch}
 
-## Utility networks - network type
+## Utility networks - network type {#sec:networktypeext}
 
 When the attribute pipeNetType in \>PipeNetwork> element is set to 'other', the type of utility network may be speficied in "IM_pipeNetworkType" extension:
 
@@ -267,7 +267,7 @@ When the attribute pipeNetType in \>PipeNetwork> element is set to 'other', the 
 - waste transport piping
 - cable
 
-## Utility networks - structure details
+## Utility networks - structure details {#sec:structuredetailsext}
 
 It is possible to describe additional details of network structures described in inframodel file transfers. The parameters in "IM_struct" are:
 
@@ -275,17 +275,17 @@ It is possible to describe additional details of network structures described in
 
 **Details:**
 
-{{refsec Circularstructures}}
+{{refsec circularstructures}}
 
-{{refsec Rectangularstructures}}
+{{refsec rectangularstructures}}
 
-{{refsec Pipeinletsandoutlets}}
+{{refsec pipeinletsandoutlets}}
 
-{{refsec Pipeconnections}}
+{{refsec pipeconnections}}
 
-{{refsec Equipment}}
+{{refsec equipment}}
 
-## Utility networks - pipe details
+## Utility networks - pipe details {#sec:pipedetailsext}
 
 It is possible to describe additional details of pipes of a network described in inframodel file transfers. The parameters in "IM_pipe" are:
 
@@ -293,17 +293,17 @@ It is possible to describe additional details of pipes of a network described in
 
 **Details:**
 
-{{refsec Circularpipes}}
+{{refsec circularpipes}}
 
-{{refsec Eggpipes}}
+{{refsec eggpipes}}
 
-{{refsec Ellipticpipes}}
+{{refsec ellipticpipes}}
 
-{{refsec Rectangularpipes}}
+{{refsec rectangularpipes}}
 
-{{refsec Channels}}
+{{refsec channels}}
 
-## Utility networks - cable details
+## Utility networks - cable details {#sec:cabledetailsext}
 
 It is possible to describe additional details of cables of a network described in inframodel file transfers. The parameters in "IM_cable" are:
 
@@ -311,9 +311,9 @@ It is possible to describe additional details of cables of a network described i
 
 **Details:**
 
-{{refsec Cables}}
+{{refsec cables}}
 
-## Plan features
+## Plan features {#sec:planfeaturesext}
 
 Planimetric features belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<PlanFeature>**, or in other cases in **\<PlanFeatures>**.**\<PlanFeature>**. In addition of capability of being classified using "IM_coding" extension (and/or "IM_proprietaryCoding") and having custom properties using "IM_userDefinedProperties", detailed propeties may be assigned by the type of plan feature:
 
@@ -326,15 +326,15 @@ Planimetric features belonging to a particular route design are described in **\
 
 **Details:**
 
-{{refsec Roadplanfeatures}}
+{{refsec roadplanfeatures}}
 
-{{refsec Railplanfeatures}}
+{{refsec railplanfeatures}}
 
-{{refsec Waterwayplanfeatures}}
+{{refsec waterwayplanfeatures}}
 
-{{refsec Planimetricfeatures}}
+{{refsec planimetricfeatures}}
 
-## As-built survey points
+## As-built survey points {#sec:asbuiltsurveypointsext}
 
 Inframodel enables transfering both planned control points with tolerances (**\<Cgpoints>** as top-level collection), and the measured values (**\<Survey>**.**\<Cgpoints>**), both having detailed properties assign to the collection as "IM_cgpoints":
 
@@ -342,10 +342,10 @@ Inframodel enables transfering both planned control points with tolerances (**\<
 
 **Details:**
 
-{{refsec Controlpoints}}
-{{refsec As-builtsurvey}}
+{{refsec controlpoints}}
+{{refsec asbuiltsurvey}}
 
-## Spatial allocation and spatial avoidance
+## Spatial allocation and spatial avoidance {#sec:spatialallocationandavoidanceext}
 
 An area or a space allocated for some specific use, or a perimeter around an object to be avoided can be defined using "IM_spatialZone" extension, applicable to  **\<PlanFeature>**, **\<Parcel>**, **\<Pipe>** or **\<Struct>**.
 
@@ -353,7 +353,10 @@ An area or a space allocated for some specific use, or a perimeter around an obj
 
 **Details:**
 
-{{refsec Planimetricfeatures}}
-{{refsec Parcels}}
-{{refsec Structures}}
-{{refsec Pipes}}
+{{refsec planimetricfeatures}}
+
+{{refsec parcels}}
+
+{{refsec structures}}
+
+{{refsec pipes}}

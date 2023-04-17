@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Railway design
+# Railway design {#sec:railwaydesign}
 
 ## Contents
 
@@ -81,15 +81,15 @@ The information on switches of tracks is given under track centerlines in the **
 
 {{xtabulate5 IM_switch}}
 
-## Terrain model and structural model of the track
+## Terrain model and structural model of the track {#sec:railwaystructurallayers}
 
-The presentation method of the *terrain model* is described in further detail in {{refsec Terrain model}}. The terrain model of the track only contains the triangular mesh surface of the visible track structures. The structural model contains all surfaces as described in {{refsec  Structural model}}. The goal is to assign all surfaces a type code in accordance to the type coding system.
+The presentation method of the *terrain model* is described in further detail in {{refsec terrainmodel}}. The terrain model of the track only contains the triangular mesh surface of the visible track structures. The structural model contains all surfaces as described in {{refsec  structuralmodel}}. The goal is to assign all surfaces a type code in accordance to the type coding system.
 
-It is also possible to add source data point and breakline information to surfaces. This is described in further detail in the section {{refsec Source data}}.
+It is also possible to add source data point and breakline information to surfaces. This is described in further detail in the section {{refsec sourcedata}}.
 
 {{figure Rail_structuremodel.png}}
 
-## Rail plan features
+## Rail plan features {#sec:railwayplanfeatures}
 
 The rail planimetric features such as fences, lightpole or signage footings that are assigned to a particular railway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *centerline* **\<Alignment>**, and it can hold a number of **\<PlanFeature>** elements.
 
@@ -110,11 +110,11 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
-1. {{refsec Cable information}} in "IM_cable" extension
-2. {{refsec Footing information}} in "IM_footing" extension
-3. {{refsec Railing information}} in "IM_railing" extension
-4. {{refsec Fence information}} in "IM_fence" extension
-5. {{refsec Surface structure properties}} in "IM_surfaceStructure" extension
-6. {{refsec Generic plan feature}} in "IM_planfeature" extension
+1. {{refsec cableinformationext}} in "IM_cable" extension
+2. {{refsec footinginformationext}} in "IM_footing" extension
+3. {{refsec railinginformationext}} in "IM_railing" extension
+4. {{refsec fenceinformationext}} in "IM_fence" extension
+5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
 
-Additionally, all plan features may be type coded in **\<Feature>** using {{refsec Type coding}} in "IM_coding" extension.
+Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
