@@ -22,7 +22,7 @@ The networks are presented in the parent element **\<PipeNetworks>** whose child
     - the exact length may be calculated as the distance between the coordinates of the pipe start and end given in the extension "IM_pipe".    
     - pressurized pipes can be described in Inframodel extension "IM_pipe" using the property "pressureClass".
 
-{{figure Pipenetworks_general}}
+![Pipe networks]({{figure Pipenetworks_general.png}} "Pipe networks"){{figst pipenetworks}}
 
 The pipe network is, depending on the situation, usually described in its entirety. LandXML schema exposes some limitations on how a network can be delimited. E.g. describing the inverts of a delimiting storm drain requires additional pipes and corresponding terminal structures to be in the model. The process of delimiting the network is described in further detail in {{refsec structures}} and {{refsec pipes}}.
    
@@ -146,7 +146,7 @@ The figure below illustrates the representation of a drain well, including a sum
 
 The *body* **diameter** at the bottom of the well, the *description* **desc**, the **material** and the **thickness** of the shell material. The well cone and sump are described in further detail in the extension "IM_struct"
 
-{{figure Pipenetwork_CircStruct}}
+![Circular structures]({{figure Pipenetwork_CircStruct.png}} "Circular structures"){{figst circularstructures}}
 
 {{xtabulate5 CircStruct}}
 
@@ -163,7 +163,7 @@ The illustration demonstrates the method of description of a rectangular well, i
 
 The mandatory attributes of a rectangular structure are the **length** the direction of the long edge **lenghtDir**, the **width** of the short edge width, the **material** of the structure and the **thickness** of the surface structure.
 
-{{figure Pipenetwork_RectStruct}}
+![Rectangular structures]({{figure Pipenetwork_RectStruct.png}} "Rectangular structures"){{figst rectangularstructures}}
 
 {{xtabulate5 RectStruct}}
 
@@ -181,7 +181,7 @@ The illustration below demonstrates how pipe inlets and outlets are described. T
 
 *Inlets* **\<InletStruct>** and *outlets* **\<OutletStruct>** have no attributes.
 
-{{figure Pipenetwork_InletOutletStruct}}
+![Inlets and outlets]({{figure Pipenetwork_InletOutletStruct.png}} "Inlets and outlets"){{figst inletsandoutlets}}
 
 {{xtabulate5 InletStruct}}
 
@@ -204,7 +204,7 @@ When a **\<Connection>** is used for modeling a bend (inflexion) of a flexible p
 
 Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
 
-{{figure Pipenetwork_Connection1}}
+![Pipe connections]({{figure Pipenetwork_Connection1.png}} "Pipe connections"){{figst pipeconnections}}
 
 {{xtabulate5 Connection}}
 
@@ -220,7 +220,7 @@ Equipment is defined using the **\<Connection>** element. The illustration bello
 
 The illustration demonstrates the mode of description of a valve:
 
-{{figure Pipenetwork_Connection2}}
+![Equipment]({{figure Pipenetwork_Connection2.png}} "Equipment"){{figst equipment}}
 
 A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment is defined in the extension "IM_struct".
 
@@ -281,7 +281,8 @@ The jointType sets the type of joints and connections used for the pipe. When th
 
 When the start and end coordinates are given with elevation values, elevation type shall be given as one of the enumerated elevTypes shown below.
 
-{{figure Pipenetwork_elevType}}
+
+![Elevation type]({{figure Pipenetwork_elevType.png}} "Elevation type"){{figst elevationtype}}
 
 {{xtabulate5 IM_pipe}}
     
