@@ -60,11 +60,11 @@ Optional surface information
 - random points <DataPoints>
 - breaklines <BreakLines>
  
-{{figure Surfaces_Pintamalli.png}}
+![Surface model]({{figure Surfaces_Pintamalli.png}} "Surface model"){{figst surfacemodel}}
 
 {{xmlsnippet Surfacemodel}}
 
-{{figure Surfaces_Maaperamalli.png}}
+![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
 
 {{xmlsnippet Groundlayermodel}}
  

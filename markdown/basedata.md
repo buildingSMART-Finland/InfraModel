@@ -67,7 +67,7 @@ Source data consists of:
  - Source data points \<DataPoints> and
  - Breaklines \<BreakLines>
 
-{{figure Surfaces_Pinnat-perus.png}}
+![Source data]({{figure Surfaces_Pinnat-perus.png}} "Source data"){{figst sourcedata}}
 
 ### Data points {#sec:datapoints}
 
@@ -111,7 +111,7 @@ A triangular mesh is defined in two steps:
 The surface points used as vertices are assigned unique identifiers id within the same surface definition \<Surface>.\<Definition> element. 
 The face definitions are done by referring to the id numbers id of the vertice points.
 
-{{figure Surfaces_kolmioverkko.png}}
+![Triangular mesh]({{figure Surfaces_kolmioverkko.png}} "Triangular mesh"){{figst triangularmesh}}
 
 {{xtabulate5 Definition}}
 
@@ -136,7 +136,7 @@ Each face is defined by referencing three vertex id numbers.
 
 {{xtabulate5 F}}
 
-{{figure Surfaces_kolmiokuvaus.png}}
+![Triangle face definition]({{figure Surfaces_kolmiokuvaus.png}} "Triangle face definition"){{figst trianglefaces}}
 
 ## Terrain model {#sec:terrainmodel}
 
@@ -153,7 +153,7 @@ When no information of individual ground layers is available, surface model may 
 
 {{xtabulate4 IM_Soil--ltFeature--gt}}
 
-{{figure Surfaces_terrain.png}}
+![Soil properties]({{figure Surfaces_terrain.png}} "Soil properties"){{figst soilproperties}}
 
 ## Ground layer model {#sec:groundlayermodel}
 
@@ -164,9 +164,9 @@ A "IM_coding" \<Feature> extension provides surface classifications.
 The technical properties of each soil layer between two surfaces may be given in "IM_soil" <Feature> extension described above. 
 When exchanging a ground layer model as collection of Surfaces, the attribute <Surfaces>.desc shall be set to "ground layer model". TODO:why
 
-{{figure Surfaces_Maaperamalli.png}}
+![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
  
-{{figure Surfaces_kolmiomalli.png}}
+![Triangulated ground model]({{figure Surfaces_kolmiomalli.png}} "Triangulated ground model"){{figst triangulatedgroundmodel}}	
 
 
 
