@@ -303,7 +303,8 @@ The following illustation descibes the definition of a round pipe  The definitio
 3. Center **\<Center>**
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
-{{figure Pipenetwork_CircPipe}}
+
+![Circular pipe]({{figure Pipenetwork_ConPipenetwork_CircPipenection2.png}} "Circular pipe"){{figst circularpipe}}
 
 The **diameter**, *type description* **desc**, **material** and wall **thickness** of the pipe are mandatory attributes.
 
@@ -338,11 +339,15 @@ The following illustation descibes the definition of an elliptical pipe. The def
 3. Center **\<Center>**
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
+![Circular pipe]({{figure Pipenetwork_CircPipe.png}} "Circular pipe"){{figst circularpipe}}
+
 {{figure Pipenetwork_ElliPipe}}
 
 Mandatory attributes are pipe section *height* **height**, *width* **span**, pipe type *description* **desc**, *material* **material** and pipe *thickness* **thickness**.
 
 When defining a network mandatory attributes are *height* **height** ja *width* **span**. Other attributes are not set.
+
+![Elliptic pipe]({{figure Pipenetwork_ElliPipe.png}} "Elliptic pipe"){{figst ellipticpipe}}
 
 {{xtabulate5 ElliPipe}}
 
@@ -361,6 +366,8 @@ The pipe *height* **height**, *width* **width**, *description* **desc**, **mater
 
 When defining a network-limiting pipe the **height** and **width** are mandatory attributes. Other attributes are not set.
 
+![Rectangular pipe]({{figure Pipenetwork_RectPipe.png}} "Rectangular pipe"){{figst rectpipe}}
+
 {{xtabulate5 RectPipe}}
 
 ### Channels {#sec:channels}
@@ -374,7 +381,7 @@ The following illustation descibes the definition of a channel pipe. The definit
 
 Illustration of channel description:
 
-{{figure Pipenetwork_Channel}}
+![Channel]({{figure Pipenetwork_Channel.png}} "Channel"){{figst channel}}
 
 Mandatory attributes are channel section *height* **height**, *top width* **widthTop**, *bottom width* **widthBottom**, pipe type *description* **desc**, *material* **material** and *thickness* **thickness**.
 
