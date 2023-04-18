@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Route planning
+# Route planning {#sec:routeplanning}
 
 ## Contents
 
@@ -11,9 +11,10 @@ An *alignment group* \<Alignments> consists of one or several alignments \<Align
 
 Geometric alignments describe parameters of the horizontal and optional vertical elements of an alignment. A line string is a description where consecutive points are connected by line segments (in 2D or 3D). Geometric alignments are typically used to describe the stationing reference line of a road as well as other important geometric descriptions such as road edges. Other route components are usually described as line strings.
 
-{{figure Road_Geometriakuvaus.png}}
+![Route geometry]({{figure Road_Geometriakuvaus.png}} "Route geometry"){{figst routegeometry}}
 
-Once the alignments have been described, it is possible to assign them to a string line model, that contains a description of the layers of the route structure, as described in {{refsec String line model}}. Alternatively, a triangulated surface mesh model can be used to represent the top surface of a route, or its structural model can composed by describing all its layers as triangulated mesh surfaces.
+
+Once the alignments have been described, it is possible to assign them to a string line model, that contains a description of the layers of the route structure, as described in {{refsec stringlinemodel}}. Alternatively, a triangulated surface mesh model can be used to represent the top surface of a route, or its structural model can composed by describing all its layers as triangulated mesh surfaces.
 
 Cross-section parameters, which are described in further detail in the sections covering each route type, complement the route description with design parameter information of the cross-sections (without actual cross section geometry).
 
@@ -58,8 +59,7 @@ The *plan information* of an *alignment group* is described under the **\<Alignm
 
 The geometric alignment contains the horizontal and vertical alignment information. The *horizontal alignment* information is described in the **\<CoordGeom>** and the corresponding (0 or 1) *vertical geometry* in the element **\<Profile>**.**\<ProfAlign>**. For the connection between horizontal and vertical geometry it is crucial that the geometric description is continuous from the beginning of the first element to the end of the last element. The *horizontal geometry* is described using a 2D coordinate representation, and the final elevation values along the element can only be produced once the vertical geometry is finished. The illustration below shows the horizontal and vertical geometry definition and their connection principal, the optional **staStart** attribute in **\<Line>**, **\<Curve>**, **\<Spiral>** and **\<Profile>** **SHALL NOT** be used for calculating horizontal or vertical geometry.
 
-{{figure Alignments_Hor_Ver.png}}
-
+![Alignment]({{figure Alignments_Hor_Ver.png}} "Alignment"){{figst alignment}}
 
 ### Horizontal geometry
 
@@ -71,7 +71,7 @@ The dimensioning components of horizontal alignments:
 
 The horizontal alignment is a listing of consecutive dimensioning components, starting at the **staStart** of the parent **\<Alignment>**. The precise location of the elements is defined in terms of 2D coordinates.
 
-{{figure Road_Line-curve-spiral.png}}
+![Horizontal geometry]({{figure Road_Line-curve-spiral.png}} "Horizontal geometry"){{figst horizontalgeometry}}
 
 inframodel does not use attributes for the  **\<CoordGeom>** element.
 
@@ -118,7 +118,7 @@ The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** elemen
 - Point of Vertical Intersection **\<PVI>**
 - Vertical circular arc **\<CircCurve>**
 
-{{figure Road_PVI_CircCurve.png}}
+![Vertical geometry]({{figure Road_PVI_CircCurve.png}} "Vertical geometry"){{figst verticalgeometry}}
 
 {{xtabulate5 Profile}}
 
@@ -146,7 +146,7 @@ The location of the **\<CircCurve>** is defined by the *station* and *elevation*
 
 - **\<IrregularLine>**
 
-{{figure Road_IrLine.png}}
+![Irregular line]({{figure Road_IrLine.png}} "Irregular line"){{figst irregularline}}
 
 ### Line string
 
@@ -158,7 +158,7 @@ A *line string* has optional attributes and sub-elements to define its **\<Start
 
 An *alignment group* **\<Alignments>** is a collection of geometric alignments and line strings. The string line model of a route is composed of their descriptions in the file, ordered into layers. The order of *alignment* descriptions within the *alignment group* does not matter. The string line model used in Inframodel is based on the Leica RoadRunner software.
 
-{{figure Road_stringline_model.png}}
+![String line model]({{figure Road_stringline_model.png}} "String line model]"){{figst stringlinemodel]}}
 
 The string line model of a **\<Alignment>** is defined by the "IM\_stringlineLayers" extension. The string line model consists of individual line strings, whose locations are described layer by layer in the "IM_stringlineLayer" child element. The order of the **\<Alignment>** elements is irrelevant, because their unique names are used as alignment identifiers **\<Alignment>.name.** Each layer of the string line model is assigned a **unique name** and the **alignments** it contains. It is optional to define a **centerline** and set the *surface codes* **surfaceCoding**.
 
@@ -175,7 +175,7 @@ A line string may belong to several different layers. It is recommended to descr
 
 ## Terrain model
 
-The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec Source data}} Also, random points and breaklines of the surface can be described as explained in {{refsec Source data}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
+The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec sourcedata}} Also, random points and breaklines of the surface can be described as explained in {{refsec sourcedata}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
 
 The route terrain model consists of:
 
@@ -185,17 +185,17 @@ The route terrain model consists of:
 - Breaklines,
 - Inframodel type coding.
 
-{{figure Surfaces_terrain.png}}
+![Terrain model]({{figure Surfaces_terrain.png}} "Terrain model]"){{figst terrainmodel]}}
 
 {{xtabulate Surfaces}}
 
 ## Structural model
 
-The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in {{refsec Ground layer model}} .
+The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in {{refsec groundlayermodel}} .
 
-{{figure Todo Surfaces_Rakennemalli.png}}
-  
-{{figure Todo Surfaces_kolmiomalli.png}}
+![Structural model]({{figure Surfaces_Rakennemalli.png}} "Structural model]"){{figst structuralmodel]}}
+
+![Triangulated model]({{figure Surfaces_kolmiomalli.png}} "Triangulated model]"){{figst triangulatedmodel]}}
 
 {{xtabulate Surfaces}}
 

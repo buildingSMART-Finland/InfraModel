@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# File headers
+# File headers {#sec:fileheaders}
 
-## XML file header
+## XML file header {#sec:xmlfileheader}
 
 Inframodel XML files shall use UTF-8 character encoding, and encoder attribute shall be set on XML header.
 
@@ -14,7 +14,7 @@ Example:
 NB: even if it is possible to use scandic characters in Inframodel XML files, they should not be used in **name**-attribute values, e.g. "väylä 2" should be spelled "vayla 2".
 
 
-## LandXML container
+## LandXML container {#sec:landxmlcontainer}
 
 The namespaces in Inframodel file shall be the following:
 
@@ -40,7 +40,7 @@ The root element (\<LandXML>) of the transfer file is used by software to check 
 {{xtabulate4 LandXML}}
 
 
-## Units
+## Units {#sec:units}
 
 The units used in the file are defined by the \<Units> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>.
 
@@ -48,7 +48,7 @@ The units used in the file are defined by the \<Units> element. Only certain met
 
 {{xtabulate Metric}}
 
-## Coordinate and height systems
+## Coordinate and height systems {#sec:coordinateandheightsystems}
 
 The height and coordinate system information is defined in the element \<CoordinateSystem>. 
 Exactly one coordinate system shall be defined:
@@ -65,12 +65,12 @@ It is also possible to set a rotationAngle for the coordinate system.
 
 
 
-### Local coordinate transformation by point pairs
+### Local coordinate transformation by point pairs {#sec:localcoordinatetransfromationbypointpairs}
 
 Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension. 
 See {{refto IM_coordTransformation-feature}} for detailed information about "IM_coordTransformation" \<Feature> extension.
 
-### Local coordinate transformation by transformation parameters
+### Local coordinate transformation by transformation parameters {#sec:localcoordinatetransfromationbytransformationparameters}
 
 The exact parameters of a particular local coordinate transformation may be given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under \<LandXML>. 
 The im namespace xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
@@ -115,7 +115,7 @@ In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> tran
 
 {{xtabulate FittedPlane ../schema/im.xsd}}
 
-## Project
+## Project {#sec:project}
 
 \<Project> element defines base data of the project, including it's name description and classification system definitions. 
 
@@ -136,7 +136,7 @@ Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDef
 - "IM_userDefinedProperties" \<Feature> extension,{{refto IM_userDefinedProperties-feature}}  
 
 
-## Type coding systems
+## Type coding systems {#sec:typecodingsystems}
 
 The meaning (semantic) of the points, lines and surfaces is defined in the file. The parties of a project agree on type coding systems that are used in the data transfer.
 
@@ -151,19 +151,19 @@ The existing terrain description contains source data points and breaklines. The
 In addition to the main coding systems, it is also possible to define additional or alternative type coding systems *(none, one or more e.g. InfraRAK2.3, Vesilaitos X, Kaupunki Y etc.)*, using "IM_proprietaryCodings" extension (one instance per coding system) under \<Project>. When a code from a proprietary system is used for an element, each "IM_proprietaryCoding" \<Feature> instance placed under the element being coded shall identify the coding system by its property proprietaryInfraCodingSource, having the same value as the system name set in "IM_proprietaryCodings" property proprietaryInfraCoding.
 
 
-## Application
+## Application {#sec:application}
 
 The \<Application> element describes what software was used to create the file. If the file has been created using several different applications, all are described by their own \<Application> element.
 
 {{xtabulate4 Application}}
 
-## Authors
+## Authors {#sec:authors}
 
 Information of the author of the file is recorded in the sub-element \<Application>.\<Author>. It is possible to define several authors as separate \<Author>-elements.
 
 {{xtabulate4 Author}}
 
-## Feature dictionary
+## Feature dictionary {#sec:featuredictionary}
 
 The \<FeatureDictionary> identifies the specification source of extensions used in the file, and the point of access to their documentation.
 
@@ -181,7 +181,7 @@ Optional \<DocFileRef> element can be used to provide the URI link to named exte
 
 Proprietary extensions can be included in addition to Inframodel extensions, as "IM_userDefinedProperties" (generic extension specified in Inframodel feature dictionary), with mandatory propertyLabel (name of the property from proprietary source) and propertyValue (value set for the property in this instance), and optional propertyDescription (description or definition of the property from proprietary source) and propertySource (identification of or reference to the property definition source).
 
-## Metadata
+## Metadata {#sec:metadata}
   
 Metadata is described with the **\<im:Metadata>** element (specified im-extension schema) as **\<any>** element under **\<LandXML>**. The im namespace xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
 

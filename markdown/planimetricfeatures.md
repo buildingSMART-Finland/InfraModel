@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Planimetric features
+# Planimetric features {#sec:planimetricfeatures}
 
 ## Contents
 
@@ -7,7 +7,7 @@ In an Inframodel file, any plan contains the header information described in {{r
 
 Planimetric features, such as *cables*, lightpole or signage *footings*, *railings* and *fences*, or any other objects not otherwise defined by LandXML schema are described using **\<PlanFeature>** element. These features often interface with route (road, street, railway or waterway), in which case they are described under **\<Roadways>** collection in the same file, as defined in chapters 4, 5 and 6. This chapter covers those planimetric features not directly assigned to any particular route, and surface structures potentially spanning across multiple routes (such as urban street surface plans).
 
-## Plan features
+## Plan features {#sec:planfeatures}
 
 The planimetric features not directly assigned to any particular route (road, street, railway or waterway) are grouped in *planimetric features collections* under **\<PlanFeatures>** consisting of one or several **\<PlanFeature>** elements. How the planimetric features are arranged into collections (e.g. by types) is subject to project guidelines or other usage agreements. Each collection shall be given a unique **name**.
 
@@ -62,7 +62,7 @@ Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined
 
 All plan features may be type coded in **\<Feature>** using "IM_coding" extension, as well as given alternative or additional type codes in "IM_proprietaryCoding" extension. All plan features may also be assigned custom properties in **\<Feature>** using "IM_userDefinedProperties" extension.
 
-#### Cable
+#### Cable {#sec:cable}
 
 Details of **\<PlanFeature>** in "IM_cable" **\<Feature>**
 
@@ -70,7 +70,7 @@ Details of **\<PlanFeature>** in "IM_cable" **\<Feature>**
 
 todo kuva PlanFeature_cable
 
-#### Footing
+#### Footing {#sec:footing}
 
 Details of **\<PlanFeature>** in "IM_footing" **\<Feature>**
 
@@ -79,7 +79,7 @@ Details of **\<PlanFeature>** in "IM_footing" **\<Feature>**
 todo kuva PlanFeature_footing
 
 
-#### Railing
+#### Railing {#sec:railing}
 
 In Inframodel, this type of planfeature covers guardrails and guide bars, as well as touch, bump and collision protection structures.
 
@@ -87,7 +87,7 @@ In Inframodel, this type of planfeature covers guardrails and guide bars, as wel
 
 todo kuva PlanFeature_railing
 
-#### Fence
+#### Fence {#sec:fence}
 
 In Inframodel, this type of planfeature covers fences, booms and barriers, as well as gates and openings such as fence manholes.
 
@@ -95,13 +95,13 @@ In Inframodel, this type of planfeature covers fences, booms and barriers, as we
 
 todo kuva PlanFeature_fence
 
-#### Surface structure
+#### Surface structure {#sec:surfacestructure}
 
 In Inframodel, this type of planfeature covers surface structure properties (material, thickness).
 
 {{xtabulate5 IM_surfaceStructure}}
 
-#### Generic feature
+#### Generic feature {#sec:genericplanfeature}
 
 When no specific **\<Feature>** extension defined above can be applied, these generic definitions can be used.
 

@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Railway design
+# Railway design {#sec:railwaydesign}
 
 ## Contents
 
@@ -17,7 +17,8 @@ After a particular **\<Alignment>** out of a group of **\<Alignments>** has been
 
 The detailed description of the construction process of line string model can be found in {{refsec String line model}}. The lines of the string line model employ the same terrain point coding as alignments. Surfaces are defined in the string line model with surface codes (**surfaceCoding**).
 
-{{figure Rail_stringlinemodel.png}}
+![String line representation of railway]({{figure Rail_stringlinemodel.png}} "String line representation of railway"){{figst stringlinerepresentationofrailway}}
+
 
 ## KM-posting
 
@@ -27,7 +28,7 @@ Although the Finnish KM-posting system is nominally kilometre based, it cannot b
 
 {{xtabulate StaEquation}}
 
-{{figure KM_paalutus.png}}
+![KM-posting]({{figure KM_paalutus.png}} "KM-posting"){{figst kmposting}}
 
 {{xtabulate5 Feature}}
 
@@ -41,7 +42,7 @@ It is recommended that all parameters are described along with the cross-section
 
 The cross-sections for KM-posting reference track are defined by the element **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>**. For individual cross-sections, the cross-section parameters are presented in the extension "IM_crossSect". Transitions are defined in the points where parameters change start and where they have reached their final values after the transition. Triple and higher multiple track railways are composed of double and single track standard cross-sections.
 
-{{figure Rail_crossSect_cant.png}}
+![Cross section({{figure Rail_crossSect_cant.png}} "Cross section"){{figst crosssection}}
 
 {{xtabulate5 CrossSect}}
 
@@ -65,7 +66,7 @@ The following transitions are described by the track information sub-element:
 - **\<CantStation>** is used at cant events, typically: 0-value at the start and end of straight track segments, same value at the start and end of circular curve segments, and different values at start and end of transition curve segments (interpolated according to the horizontal spiral curvature change)
 - **\<SpeedStation>** is used when the design speed changes
 
-{{figure Rail_cant.png}}
+![Railway cant({{figure Rail_cant.png}} "Railway cant"){{figst railwaycant}}
 
 1. When the *cant* changes in the **\<CantStation>**:
 
@@ -81,15 +82,15 @@ The information on switches of tracks is given under track centerlines in the **
 
 {{xtabulate5 IM_switch}}
 
-## Terrain model and structural model of the track
+## Terrain model and structural model of the track {#sec:railwaystructurallayers}
 
-The presentation method of the *terrain model* is described in further detail in {{refsec Terrain model}}. The terrain model of the track only contains the triangular mesh surface of the visible track structures. The structural model contains all surfaces as described in {{refsec  Structural model}}. The goal is to assign all surfaces a type code in accordance to the type coding system.
+The presentation method of the *terrain model* is described in further detail in {{refsec terrainmodel}}. The terrain model of the track only contains the triangular mesh surface of the visible track structures. The structural model contains all surfaces as described in {{refsec  structuralmodel}}. The goal is to assign all surfaces a type code in accordance to the type coding system.
 
-It is also possible to add source data point and breakline information to surfaces. This is described in further detail in the section {{refsec Source data}}.
+It is also possible to add source data point and breakline information to surfaces. This is described in further detail in the section {{refsec sourcedata}}.
 
-{{figure Rail_structuremodel.png}}
+![Railway structural model({{figure Rail_structuremodel.png}} "Railway structural model"){{figst railwaystructuralmodel}}
 
-## Rail plan features
+## Rail plan features {#sec:railwayplanfeatures}
 
 The rail planimetric features such as fences, lightpole or signage footings that are assigned to a particular railway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *centerline* **\<Alignment>**, and it can hold a number of **\<PlanFeature>** elements.
 
@@ -110,11 +111,11 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
-1. {{refsec Cable information}} in "IM_cable" extension
-2. {{refsec Footing information}} in "IM_footing" extension
-3. {{refsec Railing information}} in "IM_railing" extension
-4. {{refsec Fence information}} in "IM_fence" extension
-5. {{refsec Surface structure properties}} in "IM_surfaceStructure" extension
-6. {{refsec Generic plan feature}} in "IM_planfeature" extension
+1. {{refsec cableinformationext}} in "IM_cable" extension
+2. {{refsec footinginformationext}} in "IM_footing" extension
+3. {{refsec railinginformationext}} in "IM_railing" extension
+4. {{refsec fenceinformationext}} in "IM_fence" extension
+5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
 
-Additionally, all plan features may be type coded in **\<Feature>** using {{refsec Type coding}} in "IM_coding" extension.
+Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.

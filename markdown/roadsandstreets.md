@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# Road and street design
+# Road and street design {#sec:roadandstreedesign}
 
 ## Contents
 
@@ -41,9 +41,9 @@ Once the *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>**
 
 The detailed description of the construction process of line string model can be found in {{refsec Line string}}. The string line model employs the same **infraCoding** system for *line strings* as the **\<Alignment>**. The surface codes are set using the **surfaceCoding**.
 
-{{figure Road_stringline_model.png}}
+![Stringline representaion of road]({{figure Road_stringline_model.png}} "Stringline representaion of road"){{figst stringlinerepresentaionofroad}}
 
-{{figure Street_stringlinemodel.png}}
+![Stringline representaion of street]({{figure Street_stringlinemodel.png}} "Stringline representaion of street"){{figst stringlinerepresentaionofstreet}}
 
 ## Cross-section parameters of roads and streets
 
@@ -51,7 +51,8 @@ The cross *section parameters* of an *alignment group* **\<Alignments>** expand 
 
 The cross-section parameters describe the situation at a given station, including the *cross-slopes* of the roadways, streets and sidewalks. The following elaborates on the process of description: the cross-section parameters are presented at a station where a value begins or stops changing. Cross-slopes are set for each lane starting from the left to the right. A positive superelevation indicates a superelevation where the edge located further from the centerline of two is above the inner one. Accordingly, a negative one indicates that the outer edge is below the inner one.
 
-{{figure Road_crossSect_slope.png}}
+![Road cross section]({{figure Road_crossSect_slope.png}} "Road cross section"){{figst roadcrosssection}}
+
 
 ### Cross-section parameters
 
@@ -74,7 +75,7 @@ Attributes for a single "IM_crossSect":
 
 The superelevation is defined at the transition points, when a transition in the superelevation either begins or end. The cross-slopes are defined along with the cross-section parameters. The following picture illustarates the process in a road design environment.
 
-{{figure Road_slope.png}}
+![Superelevation]({{figure Road_slope.png}} "Superelevation"){{figst superelevation}}
 
 {{xtabulate5 Feature}}
 
@@ -82,7 +83,7 @@ The superelevation is defined at the transition points, when a transition in the
 
 {{xtabulate5 streetplan}}
 
-## Terrain model and structural model of road or street
+## Terrain model and structural model of road or street {#sec:roadsandstreetsterrainmodel}
 
 The process of constructing a terrain model or structural model is described in detail in {{refsec Terrain model}} and {{refsec Structural model}} of a route. The terrain model only contains a triangle mesh of the visible surfaces. The structural model contains all the structure boundaries. All layers in the terrain model and the structural model may be assigned a *type code* (**surfaceCoding**).
 
@@ -90,11 +91,11 @@ It is also possible to attach source data point or breakline information to the 
 
 The example illustrations below demonstrate the composition of structural models in road and street design.
 
-{{figure Road_structuremodel.png}}
+![Structural model of a road]({{figure Road_structuremodel.png}} "Structural model of a road"){{figst structuralmodelofaroad}}
 
-{{figure Street_structuremodel.png}}
+![Structural model of a street]({{figure Street_structuremodel.png}} "Structural model of a street"){{figst structuralmodelofastreet}}
 
-### Structural layers
+### Structural layers {#sec:roadsandstreetsstructurallayers}
 
 The material properties of a structural layer between two surfaces are assigned to its top surface, i.e. in a *structural model* of road or street an "IM_structLayer" **\<Feature>** extension describes the soil properties below the **\<Surface>**.
 
@@ -102,7 +103,7 @@ Details of **\<Surface>** in "IM_structLayer" **\<Feature>**
 
 {{xtabulate SurfaceinFeature}}
 
-## Road signs and plan features
+## Road signs and plan features {#sec:roadplanfeatures}
 
 The road signs and planimetric features such as fences, guard rails, lightpole or signage footings that are assigned to a particular road or street are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeature>** elements, as well as **\<Roadside>** elements with **\<RoadSign>** elements.
 
@@ -127,16 +128,16 @@ Attributes of **\<PlanFeature>**:
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
-1. {{refsec Cable information}} in "IM_cable" extension
-2. {{refsec Footing information}} in "IM_footing" extension
-3. {{refsec Railing information}} in "IM_railing" extension
-4. {{refsec Fence information}} in "IM_fence" extension
-5. {{refsec Surface structure properties}} in "IM_surfaceStructure" extension
-6. {{refsec Generic plan feature}} in "IM_planfeature" extension
+1. {{refsec cableinformationext}} in "IM_cable" extension
+2. {{refsec footinginformationext}} in "IM_footing" extension
+3. {{refsec railinginformationext}} in "IM_railing" extension
+4. {{refsec fenceinformationext}} in "IM_fence" extension
+5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
 
-Additionally, all plan features may be type coded in **\<Feature>** using {{refsec Type coding}} in "IM_coding" extension.
+Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
 
-### Road signs
+### Road signs  {#sec:roadsigns}
 
 The individual *road signs* are each described under **\<RoadSign>** (placed under **\<RoadSide>**, having no attributes). Mandatory attributes of **\<RoadSign>** in Inframodel are **width** and **height**, defining the bounding rectangle around the *road sign*, the actual shape and other properties can be specified "IM_roadSign" extension.
 
@@ -148,4 +149,4 @@ Details in "IM_roadSign" extension:
 
 {{xtabulate5 IM_roadSign}}
 
-{{figure RoadSign.png}}
+![Road sign]({{figure RoadSign.png}} "Road sign"){{figst roadsign}}
