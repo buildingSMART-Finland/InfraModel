@@ -17,7 +17,8 @@ After a particular **\<Alignment>** out of a group of **\<Alignments>** has been
 
 The detailed description of the construction process of line string model can be found in {{refsec String line model}}. The lines of the string line model employ the same terrain point coding as alignments. Surfaces are defined in the string line model with surface codes (**surfaceCoding**).
 
-{{figure Rail_stringlinemodel.png}}
+![String line representation of railway]({{figure Rail_stringlinemodel.png}} "String line representation of railway"){{figst stringlinerepresentationofrailway}}
+
 
 ## KM-posting
 
@@ -27,7 +28,7 @@ Although the Finnish KM-posting system is nominally kilometre based, it cannot b
 
 {{xtabulate StaEquation}}
 
-{{figure KM_paalutus.png}}
+![KM-posting]({{figure KM_paalutus.png}} "KM-posting"){{figst kmposting}}
 
 {{xtabulate5 Feature}}
 
@@ -41,7 +42,7 @@ It is recommended that all parameters are described along with the cross-section
 
 The cross-sections for KM-posting reference track are defined by the element **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>**. For individual cross-sections, the cross-section parameters are presented in the extension "IM_crossSect". Transitions are defined in the points where parameters change start and where they have reached their final values after the transition. Triple and higher multiple track railways are composed of double and single track standard cross-sections.
 
-{{figure Rail_crossSect_cant.png}}
+![Cross section({{figure Rail_crossSect_cant.png}} "Cross section"){{figst crosssection}}
 
 {{xtabulate5 CrossSect}}
 
@@ -65,7 +66,7 @@ The following transitions are described by the track information sub-element:
 - **\<CantStation>** is used at cant events, typically: 0-value at the start and end of straight track segments, same value at the start and end of circular curve segments, and different values at start and end of transition curve segments (interpolated according to the horizontal spiral curvature change)
 - **\<SpeedStation>** is used when the design speed changes
 
-{{figure Rail_cant.png}}
+![Railway cant({{figure Rail_cant.png}} "Railway cant"){{figst railwaycant}}
 
 1. When the *cant* changes in the **\<CantStation>**:
 
@@ -87,7 +88,7 @@ The presentation method of the *terrain model* is described in further detail in
 
 It is also possible to add source data point and breakline information to surfaces. This is described in further detail in the section {{refsec sourcedata}}.
 
-{{figure Rail_structuremodel.png}}
+![Railway structural model({{figure Rail_structuremodel.png}} "Railway structural model"){{figst railwaystructuralmodel}}
 
 ## Rail plan features {#sec:railwayplanfeatures}
 
