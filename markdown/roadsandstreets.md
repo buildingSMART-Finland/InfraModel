@@ -41,9 +41,9 @@ Once the *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>**
 
 The detailed description of the construction process of line string model can be found in {{refsec Line string}}. The string line model employs the same **infraCoding** system for *line strings* as the **\<Alignment>**. The surface codes are set using the **surfaceCoding**.
 
-{{figure Road_stringline_model.png}}
+![Stringline representaion of road]({{figure Road_stringline_model.png}} "Stringline representaion of road"){{figst stringlinerepresentaionofroad}}
 
-{{figure Street_stringlinemodel.png}}
+![Stringline representaion of street]({{figure Street_stringlinemodel.png}} "Stringline representaion of street"){{figst stringlinerepresentaionofstreet}}
 
 ## Cross-section parameters of roads and streets
 
@@ -51,7 +51,8 @@ The cross *section parameters* of an *alignment group* **\<Alignments>** expand 
 
 The cross-section parameters describe the situation at a given station, including the *cross-slopes* of the roadways, streets and sidewalks. The following elaborates on the process of description: the cross-section parameters are presented at a station where a value begins or stops changing. Cross-slopes are set for each lane starting from the left to the right. A positive superelevation indicates a superelevation where the edge located further from the centerline of two is above the inner one. Accordingly, a negative one indicates that the outer edge is below the inner one.
 
-{{figure Road_crossSect_slope.png}}
+![Road cross section]({{figure Road_crossSect_slope.png}} "Road cross section"){{figst roadcrosssection}}
+
 
 ### Cross-section parameters
 
@@ -74,7 +75,7 @@ Attributes for a single "IM_crossSect":
 
 The superelevation is defined at the transition points, when a transition in the superelevation either begins or end. The cross-slopes are defined along with the cross-section parameters. The following picture illustarates the process in a road design environment.
 
-{{figure Road_slope.png}}
+![Superelevation]({{figure Road_slope.png}} "Superelevation"){{figst superelevation}}
 
 {{xtabulate5 Feature}}
 
@@ -90,9 +91,9 @@ It is also possible to attach source data point or breakline information to the 
 
 The example illustrations below demonstrate the composition of structural models in road and street design.
 
-{{figure Road_structuremodel.png}}
+![Structural model of a road]({{figure Road_structuremodel.png}} "Structural model of a road"){{figst structuralmodelofaroad}}
 
-{{figure Street_structuremodel.png}}
+![Structural model of a street]({{figure Street_structuremodel.png}} "Structural model of a street"){{figst structuralmodelofastreet}}
 
 ### Structural layers {#sec:roadsandstreetsstructurallayers}
 
@@ -148,4 +149,4 @@ Details in "IM_roadSign" extension:
 
 {{xtabulate5 IM_roadSign}}
 
-{{figure RoadSign.png}}
+![Road sign]({{figure RoadSign.png}} "Road sign"){{figst roadsign}}
