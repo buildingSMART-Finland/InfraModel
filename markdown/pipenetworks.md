@@ -1,7 +1,5 @@
 # Pipenetworks {#sec:pipenetworks}
 
-## Contents
-
 The **\<PipeNetworks>** in Inframodel covers diffrent drainage and utility network types: storm drain, combined sewer, sewer, French drain, culvert, water pipe, district heating, district cooling, gas, waste disposal and cable networks.
 
 A network model can be transferred in a separate file or (e.g. in case of route drainage plan) in the same file as other (route) plan content. The metric units used in network plan and the coordinate system are defined in chapter 1 Headers.
