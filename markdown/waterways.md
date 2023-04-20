@@ -23,9 +23,9 @@ The cross-section parameters of an *alignment group* describe the values of cros
 
 The *cross-section parameters* are set for the *stationing reference alignment* cross-sections **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the "IM_crossSects" extension **\<Feature>**. The first cross-section of the alignment is defined by describing all parameters of the cross-section. The parameters of the following cross-sections are only described if a value begins or stops changing.
 
-{{xtabulate5  CrossSect}}
+{{xtabulate CrossSect}}
 
-{{xtabulate5  IM_CrossSect}}
+{{xtabulate IM_CrossSect}}
 
 ## String line model
 
@@ -49,7 +49,7 @@ It is possible to attach source data point and breakline information to surfaces
 
 The waterway planimetric features such as guard rails, lightpole or signage footings that are assigned to a particular waterway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeatures>**.
 
-{{xtabulate5  Roadway}}
+{{xtabulate  Roadway}}
 
 ### Plan features
 
