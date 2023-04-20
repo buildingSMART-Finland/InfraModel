@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Railway design {#sec:railwaydesign}
 
-## Contents
-
 The methods used to describe a route in inframodel file transfer are described in detail in the section route planning. It is possible to describe road, street and railway plans and information about water supply and sewerage. A railway plan typically consists of one continuous track for KM-posting and other tracks. The centerlines and the bottoms of the rails of each track are described as geometric alignments. The transition points for cant and design speeds are also described in conjunction with the stationing of the centerlines of the KM-posting track and of other tracks. The current specification does not include description of switches and crossings. The alignments with string line representations can be collected into a string line model of the railway. The model can also include a surface model and structural model, and it is possible to attach additional breakline and random point information.
 
 ## Track geometry
