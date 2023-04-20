@@ -84,4 +84,4 @@ An area defined as a **\<Parcel>** may have an adjoining area spatial allocation
  
 {{xtabulate IM_spatialZone}}
  
-{{figure SpatialZoneArea}}
+![Spatial Zone Area]({{figure SpatialZoneArea.png}} "Spatial Zone Area"){{figst spatialzonearea}}
