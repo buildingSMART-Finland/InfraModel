@@ -1,6 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # AsBuilt data
-## Contents {#sec:asbuiltcontents}
 
 An Inframodel file of any plan contains the header information described in the section 1.
 This section describes as-built data that can include both planned control points with tolerances, and the measured values with metadata (survey and its accuracy). Also the diffence vectors between planned (designed) and measured can be captured.
@@ -9,13 +8,13 @@ This section describes as-built data that can include both planned control point
 
 Collections of *coordinate geometry points* grouping control points on a planned surface, on a breakline or on a plan feature, with same tolerance values, are set in **\<CgPoints>** elements. Each collection has a unique **name** and a **code**, and these collections can be nested; code is set to "control" in root level control points collection, and to any approriate value in each subcollection. Optionally, a **description** can be given and a **state** can be set (usually "proposed" for planned points) for any collection of control points. Additionally, the collection may include an IM\_coding **\<Feature>** element classifying the surface, breakline or planimetric feature where the control points are assigned to. The tolerance values are set in IM_cgpoints **\<Feature>** element.
 
-{{xtabulate5 CgPoints}}
+{{xtabulate CgPoints}}
 
 ### Control point {#sec:controlpoint}
 
 Each individual control point is set under **\<CgPoint>** element, and shall have **name** that is a Universal Unique Identifier (UUID as defined in ISO/IEC 9834-8:2005), and shall be generated in compressed form as explained for IFC Globally Unique Identifier (GUID). When the **name** is a GUID, a human-readable name shall be given in **description**. Additionally, **surveyOrder** (sequence number) shall be set.
 
-{{xtabulate5 CgPoint}}
+{{xtabulate CgPoint}}
 
 ### Tolerances {#sec:tolerances}
 
@@ -28,7 +27,7 @@ Horizontal tolerance is given either
 
 In both cases, horizontal tolerances can be coupled with vertical tolerance values *toleranceZmin* and *toleranceZmax*. The required combination of tolerance values to be set in IM_cgpoints **\<Feature>** must be agreed for each use case separately (in Common InfraBIM Requirements or other such guidelines).
 
-{{xtabulate5 IM_cgpoints}}
+{{xtabulate IM_cgpoints}}
 
 
 ![As-built plan]({{figure AsBuilt_plan.png}} "As-built plan"){{figst asbuiltplan}}
@@ -39,7 +38,7 @@ Measured as-built data is grouped in survey collection for each surface under **
 
 The mandatory element **\<SurveyHeader>** under **\<Survey>** has a mandatory **name** (to give name to the survey data set) and optional **purpose** (to be set "asbuilt").
 
-{{xtabulate5 SurveyHeader}}
+{{xtabulate SurveyHeader}}
 
 ### Survey equipment {#sec:surveyequipment}
 
@@ -47,7 +46,7 @@ Under each **\<Survey>** element, an **\<Equipment>** element (no attributes) sh
 
 {{xtabulate InstrumentDetails}}
 
-{{xtabulate5 InstrumentDetailsandCorrectionsinIM_surveyFeature}}
+{{xtabulate InstrumentDetailsandCorrectionsinIM_surveyFeature}}
 
 The **Finnish RAK survey code list** is recommended to be used for accuracyType and corresponding accuracyDescription in Inframodel transfer.
 

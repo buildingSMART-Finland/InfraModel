@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Waterway design {#sec:waterwaydesign}
 
-## Content
-
 An inframodel compliant file transfer utilizes the header information defined in chapter 1 Headers. The plan is described as appropriate according to the guidelines laid out in chapter 3 Route planning (general). All plan information contained in the file utilize a common coordinate, elevation and unit system. The utilized units are metric units appropriate for the file content.
 
 The geometry of a waterway is not described by tangent points in this context. An waterway design contains at least one *alignment group* **\<Alignments>** composed of *alignments* **\<Alignment>**, a string line model or a surface model and a structural model. Surfaces can have source data point or breakline information attached to them. In addition, the cross-section, minimum depth, minimum width and dimensioning water level height is described.
@@ -23,9 +21,9 @@ The cross-section parameters of an *alignment group* describe the values of cros
 
 The *cross-section parameters* are set for the *stationing reference alignment* cross-sections **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the "IM_crossSects" extension **\<Feature>**. The first cross-section of the alignment is defined by describing all parameters of the cross-section. The parameters of the following cross-sections are only described if a value begins or stops changing.
 
-{{xtabulate5  CrossSect}}
+{{xtabulate CrossSect}}
 
-{{xtabulate5  IM_CrossSect}}
+{{xtabulate IM_CrossSect}}
 
 ## String line model
 
@@ -49,7 +47,7 @@ It is possible to attach source data point and breakline information to surfaces
 
 The waterway planimetric features such as guard rails, lightpole or signage footings that are assigned to a particular waterway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeatures>**.
 
-{{xtabulate5  Roadway}}
+{{xtabulate  Roadway}}
 
 ### Plan features
 

@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design {#sec:roadandstreedesign}
 
-## Contents
-
 The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in chapter 2 route planning. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
 
 The content of the design file is defined in metric units, using an adequate number of decimals for accuracy. For example, when the length unit in use is a meter, the values must be defined to at least six decimal places. Street designs often interface with  water supply and sewerage systems , which are described in the same file. The constituent surfaces of the water supply and sewerage design are defined as triangular meshes and the design information in the \<PipeNetworks> element.
@@ -60,7 +58,7 @@ The cross-section parameters describe the situation at a given station, includin
 
 It is recommended that all parameters are described along with the cross-section. When transitions from one parameter value to another occur, the start and end of the transition are defined. Details on the Finnish road design parameters are provided by Finnish Transport Infrastructure Agency (FTIA).
 
-{{xtabulate5 CrossSect}}
+{{xtabulate CrossSect}}
 
 Attributes for a single "IM_crossSect":  
 
@@ -69,7 +67,7 @@ Attributes for a single "IM_crossSect":
 - **subgradeLoadCapacityClass**
 - cross **slope** of roads or streets
 
-{{xtabulate5 Feature}}
+{{xtabulate Feature}}
 
 ### Transitions in superelevation
 
@@ -77,11 +75,11 @@ The superelevation is defined at the transition points, when a transition in the
 
 ![Superelevation]({{figure Road_slope.png}} "Superelevation"){{figst superelevation}}
 
-{{xtabulate5 Feature}}
+{{xtabulate Feature}}
 
-{{xtabulate5 roadplan}}
+{{xtabulate roadplan}}
 
-{{xtabulate5 streetplan}}
+{{xtabulate streetplan}}
 
 ## Terrain model and structural model of road or street {#sec:roadsandstreetsterrainmodel}
 
@@ -123,8 +121,6 @@ Attributes of **\<PlanFeature>**:
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using **line strings** for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
-{{xmlsnippet Location}}
-
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
@@ -147,6 +143,6 @@ Attributes of **\<RoadSign>**:
 
 Details in "IM_roadSign" extension:
 
-{{xtabulate5 IM_roadSign}}
+{{xtabulate IM_roadSign}}
 
 ![Road sign]({{figure RoadSign.png}} "Road sign"){{figst roadsign}}

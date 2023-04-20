@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Railway design {#sec:railwaydesign}
 
-## Contents
-
 The methods used to describe a route in inframodel file transfer are described in detail in the section route planning. It is possible to describe road, street and railway plans and information about water supply and sewerage. A railway plan typically consists of one continuous track for KM-posting and other tracks. The centerlines and the bottoms of the rails of each track are described as geometric alignments. The transition points for cant and design speeds are also described in conjunction with the stationing of the centerlines of the KM-posting track and of other tracks. The current specification does not include description of switches and crossings. The alignments with string line representations can be collected into a string line model of the railway. The model can also include a surface model and structural model, and it is possible to attach additional breakline and random point information.
 
 ## Track geometry
@@ -30,7 +28,7 @@ Although the Finnish KM-posting system is nominally kilometre based, it cannot b
 
 ![KM-posting]({{figure KM_paalutus.png}} "KM-posting"){{figst kmposting}}
 
-{{xtabulate5 Feature}}
+{{xtabulate Feature}}
 
 ## Cross-sections and track information
 
@@ -44,7 +42,7 @@ The cross-sections for KM-posting reference track are defined by the element **\
 
 ![Cross section({{figure Rail_crossSect_cant.png}} "Cross section"){{figst crosssection}}
 
-{{xtabulate5 CrossSect}}
+{{xtabulate CrossSect}}
 
 The following information must be defined in the extension "IM_crossSect" for an individual cross-section:
 
@@ -53,13 +51,13 @@ The following information must be defined in the extension "IM_crossSect" for an
 - the total thichness of track bed layers **thickness**
 - track bed or cut width **bedWidth**
 
-{{xtabulate5 Feature}}
+{{xtabulate Feature}}
 
 ### Track information
 
 The transitions in cant and design speed for each track are described under the track centerline **\<Alignment>** in **\<Cant>** sub-elements. The *track information* **\<Cant>** defines the **name**, the track **gauge** and the *cant rotation point* **rotationPoint**.
 
-{{xtabulate5 Cant}}
+{{xtabulate Cant}}
 
 The following transitions are described by the track information sub-element:
 
@@ -80,7 +78,7 @@ The following transitions are described by the track information sub-element:
 
 The information on switches of tracks is given under track centerlines in the **\<Alignment>**.**\<CoordGeom>**.**\<Line>** using "IM_switch" **\<Feature>**
 
-{{xtabulate5 IM_switch}}
+{{xtabulate IM_switch}}
 
 ## Terrain model and structural model of the track {#sec:railwaystructurallayers}
 
@@ -96,20 +94,17 @@ The rail planimetric features such as fences, lightpole or signage footings that
 
 Attributes of the *roadways collection* **\<Roadways>** are not used in inframodel.
 
-{{xtabulate5 Roadways}}
+{{xtabulate Roadways}}
 
 ### Plan features
 
 The individual *plan features* are each described under **\<PlanFeature>**, having a mandatory and unique **name** and optionally **\<Location>** and *geometry* as **\<CoordGeom>**.
 
-{{xtabulate5 PlanFeature}}
+{{xtabulate PlanFeature}}
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using line strings for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
-{{xmlsnippet Location}}>
-
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
-
 
 1. {{refsec cableinformationext}} in "IM_cable" extension
 2. {{refsec footinginformationext}} in "IM_footing" extension

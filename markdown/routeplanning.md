@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Route planning {#sec:routeplanning}
 
-## Contents
-
 Routes encompass highways, local roads and private roads, waterways and railways. Each route has one continuous stationing reference alignment and a vertical alignment. In inframodel file transfer, a route plan may consist of route geometric alignments, their stringline models and surface or structural models as triangulated meshes.
 
 An *alignment group* \<Alignments> consists of one or several alignments \<Alignment>. Their geometry can be described in two ways:
@@ -18,13 +16,13 @@ Once the alignments have been described, it is possible to assign them to a stri
 
 Cross-section parameters, which are described in further detail in the sections covering each route type, complement the route description with design parameter information of the cross-sections (without actual cross section geometry).
 
-### Route description
+## Route description
 
 Route description is driven by stationing reference line (principal alignment). Other geometry lines are given in the same *alignment collection* \<Alignments> each as separate *alignment* \<Alignment>. Geometry lines and string lines are given in separate *alignment collections* \<Alignments>.
 
 Different routes, alignement options and stationing reference line discontinuities are placed in *separate* \<Alignments>.
 
-### Naming and Type coding
+## Naming and Type coding
 
 *Alignment groups* and each individual *alignment* within a group must be assigned unique name. It is advisble to use different naming convention for *geometric alignments* and line strings in string line models. 
 
@@ -44,7 +42,7 @@ An **\<Alignment>** is an element that describes
   
 The alignments within a file do not have to be presented in any particular order. It is, however, advisable to first describe geometric alignments and then line strings. The **\<Alignment>** definition describes a **name**, **length**, *the stationing start* **staStart** and the **state** of the **\<Alignment>**. It is recommended that lines are named in an intuitive fashion. If the **state** is set for the entire alignment group **\<Alignments>** the **\<Alignment>** elements will inherit the **state** attribute from the parent element, hence is should not be set. When alternative alignments are being described by different *alignment groups* the differences between elements can be described briefly in the  atrribute **desc**. The optional *object identifying number* **oID** makes object management easier in applications.
 
-{{xtabulate5 alignment}}
+{{xtabulate alignment}}
 
 A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element.
 
@@ -52,7 +50,7 @@ A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** ele
 
 The *plan information* of an *alignment group* is described under the **\<Alignments>** element in the optional extension "IM\_plan". If the plan consists of subsets that progress at a different rate or there is some other reason to partition the project into smaller entities, these subsets should be sorted into separate *alignment groups*. The *plan information* contains information about the **planName**, the **planCode**, the **planState** and a description of the plan, **planDesc**. The state is described according to a system agreed on by the parties of the project. See sample in the table below. The *plan information* is also set when describing the surfaces of a route. These are set in the "IM_plan" extension of the **\<Surfaces>** element.
 
-{{xtabulate5 IM_plan}}
+{{xtabulate IM_plan}}
 
 
 ## Geometric alignments
@@ -81,25 +79,17 @@ inframodel does not use attributes for the  **\<CoordGeom>** element.
 
 A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction* **dir** and **length** are mandatory, but shall be used as additional information only.
 
-1. {{xtabulate5 Line}}
-2. The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the 2D coordinates are separated by spaces.
+{{xtabulate Line}}
 
-{{xmlsnippet Start}}
-
-{{xmlsnippet End}}
+The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the 2D coordinates are separated by spaces.
 
 #### Curve
 
 A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction of rotation* **rot**, **chord**, *end direction* **dirEnd**, *start direction* **dirStart**, **length** and **radius** are mandatory, but shall be used as additional information only.
 
-1. {{xtabulate5 Curve}}
-2. The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
+{{xtabulate Curve}}
 
-{{xmlsnippet Start}}
-  
-{{xmlsnippet Center}}
-  
-{{xmlsnippet End}}
+The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
 
 #### Transition curve
 
@@ -107,7 +97,7 @@ A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end ta
 
 NOTE: since attribute **spiType** is mandatory, but has no meaning for "biquadraticParabola" or "cubic", it shall have value set to "NaN" in these cases.
 
-{{xtabulate5 Curve}}
+{{xtabulate Curve}}
 
 The **\<Start>**, point on intersection of start and end tangents **\<PI>** and **\<End>** are defined as 2D coordinates separated by spaces.
 
@@ -120,9 +110,9 @@ The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** elemen
 
 ![Vertical geometry]({{figure Road_PVI_CircCurve.png}} "Vertical geometry"){{figst verticalgeometry}}
 
-{{xtabulate5 Profile}}
+{{xtabulate Profile}}
 
-{{xtabulate5 ProfAlign}}
+{{xtabulate ProfAlign}}
 
 #### Point of vertical intersection
 
@@ -130,7 +120,7 @@ The first and last element of the *vertical profile* is always *a Point of Verti
 
 *A Point of Vertical Intersection* **\<PVI>** marks the ends of the line segments of a vertical geometry. *A Point of Vertical Intersection* is described by a **station** and an **elevation**. These are separated by a space.
 
-{{xtabulate5 PVI}}
+{{xtabulate PVI}}
 
 #### Vertical curve
 
@@ -138,7 +128,7 @@ Vertical circular arcs may be combined into S-curves or compound curves. The fir
 
 The location of the **\<CircCurve>** is defined by the *station* and *elevation*, separated by spaces.
 
-{{xtabulate5 CircCurve}}
+{{xtabulate CircCurve}}
 
 ## Line strings
 
@@ -152,7 +142,7 @@ The location of the **\<CircCurve>** is defined by the *station* and *elevation*
 
 A *line string* has optional attributes and sub-elements to define its **\<Start>**, **\<End>** and the *intermediate points* either as **\<PntList2D>** or **\<PntList3D>**.
 
-{{xtabulate5 IrregularLine}}
+{{xtabulate IrregularLine}}
 
 ## String line model
 
@@ -171,7 +161,7 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 
 A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
 
-{{xtabulate5 IM_stringLineLayers}}
+{{xtabulate IM_stringLineLayers}}
 
 ## Terrain model
 

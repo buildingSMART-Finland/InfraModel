@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Area structures
 
-## Contents {#sec:areacontents}
-
 *Area structures* encompass descriptions of surfaces and boundaries that complement routes. Such descriptions are for e.g. landscaping, noise barriers and geostructures. The file in which these structures are described contains the header information presented in chapter 1. Area structures are described as *defined areas*  **\<Parcel>** with **\<CoordGeom>**, or as  *surfaces* **\<Surface>**. The surface description consist of triangular meshes as explained in {{refsec basedata}}, where it is also possible to attach random points **\<DataPoints>** and breaklines **\<BreakLines>** to the surfaces. 
 
 ## Landscaping {#sec:landscaping}
@@ -68,20 +66,20 @@ Optional surface information
 
 {{xmlsnippet Groundlayermodel}}
  
- ## Surface structures {#sec:surfacetructures}
+## Surface structures {#sec:surfacetructures}
 
 *Surface structures* potentially span across multiple routes (such as urban street surface plans), or need not be associated with any route plan. These structures are described as *defined areas* under **\<Parcels>** collection, having one or several **\<Parcel>** elements. Optional *plan information* is defined in the extension "IM_plan" for **\<Parcels>** collection, which may also be given a unique **name**. Each **\<Parcel>** shall have a unique **name**, and either its location as **\<Center>** or its boundaries as **\<CoordGeom>**. 
  
- The properties of *surface structure* are defined in "IM_surfaceStructure":
+The properties of *surface structure* are defined in "IM_surfaceStructure":
  
- {{xtabulate5 IM_surfaceStructure}}
+{{xtabulate IM_surfaceStructure}}
  
-  *Surface structure* may also have calculated area or volume quantities assinged as "IM_quantity" extension:
+*Surface structure* may also have calculated area or volume quantities assinged as "IM_quantity" extension:
  
-  {{xtabulate5 IM_quantity}}
+{{xtabulate IM_quantity}}
  
- An area defined as a **\<Parcel>** may have an adjoining area spatial allocation or spatial avoidance (or both). These can be described using "IM_spatialZone" extension:
+An area defined as a **\<Parcel>** may have an adjoining area spatial allocation or spatial avoidance (or both). These can be described using "IM_spatialZone" extension:
  
- {{xtabulate5 IM_spatialZone}}
+{{xtabulate IM_spatialZone}}
  
- todo figure SpatialZoneArea
+![Spatial Zone Area]({{figure SpatialZoneArea.png}} "Spatial Zone Area"){{figst spatialzonearea}}
