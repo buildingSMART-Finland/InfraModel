@@ -6133,7 +6133,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:sequence>
 				<xs:element ref="propertyplanName--ltProperty--gt"/>
 				<xs:element ref="propertyplanCode--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="propertyplanDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="propertyplanDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="propertyplanState--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_plan">
@@ -6909,7 +6909,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="propertyplanDesc-ltProperty--gt">
+	<xs:element name="propertyplanDesc--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Sets plan description</xs:documentation>
 		</xs:annotation>
