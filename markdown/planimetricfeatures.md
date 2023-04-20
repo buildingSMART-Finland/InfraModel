@@ -11,7 +11,7 @@ Planimetric features, such as *cables*, lightpole or signage *footings*, *railin
 
 The planimetric features not directly assigned to any particular route (road, street, railway or waterway) are grouped in *planimetric features collections* under **\<PlanFeatures>** consisting of one or several **\<PlanFeature>** elements. How the planimetric features are arranged into collections (e.g. by types) is subject to project guidelines or other usage agreements. Each collection shall be given a unique **name**.
 
-{{xtabulate5 PlanFeatures}}
+{{xtabulate PlanFeatures}}
 
 *Planimetric features collections* may be type coded in **\<Feature>** using "IM_coding" extension, as well as given alternative or additional type codes in "IM_proprietaryCoding" extension. In particular, this may be practical when the collection contains surface structrure definitions associated with the topmost surface of a plan, all having the same type code.
 *Planimetric features collections* may also be assigned custom properties in **\<Feature>** using "IM_userDefinedProperties" extension.
@@ -20,7 +20,7 @@ The planimetric features not directly assigned to any particular route (road, st
 
 The individual planimetric features are each described under **\<PlanFeature>**, having a mandatory and unique **name** and either **\<Location>** or line geometry as **\<CoordGeom>**.
 
-{{xtabulate5 PlanFeature}}
+{{xtabulate PlanFeature}}
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>**. For linear features, e.g. *cables*, *railings* and *fences* it shall be either single **line* geometry (also **circular** or **spiral** curve arcs may be used) or **polyline** geometry. In case of *surface structure* boudaries **closed polyline** geometry shall be given (same value in both  **\<Start>** and **\<End>** of **\<IrregularLine>**). For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
@@ -35,6 +35,7 @@ The individual planimetric features are each described under **\<PlanFeature>**,
    3D : sphere around the point
 
 todo kuva SpatialZonePoint
+![Spatial Zone Point]({{figure SpatialZonePoint.png}} "Spatial Zone Point"){{figst spatialzonepoint}}
    
 - Line or Polyline as \<CoorGeom>:
 
@@ -42,13 +43,13 @@ todo kuva SpatialZonePoint
    
    3D : radius around the line (producing a cylinder, possibly curved or segmented)
 
-todo kuva SpatialZoneLine
+![Spatial Zone Line]({{SpatialZoneLine.png}} "Spatial Zone Line"){{figst spatialzoneline}}
 
 - Closed polyline area as \<CoorGeom>: 
 
    2D or 3D : perpendicular distance in northing easting -plane from the boundary on the outside of the area 
 
-todo kuva SpatialZoneArea
+![Spatial Zone Area]({{figure SpatialZoneArea.png}} "Spatial Zone Area"){{figst spatialzonearea}}
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
@@ -66,40 +67,42 @@ All plan features may be type coded in **\<Feature>** using "IM_coding" extensio
 
 Details of **\<PlanFeature>** in "IM_cable" **\<Feature>**
 
-{{xtabulate5 IM_cable}}
+{{xtabulate IM_cable}}
 
-todo kuva PlanFeature_cable
+![Plan Feature cable]({{figure PlanFeature_cable.png}} "Plan Feature cable"){{figst planFeaturecable}}
 
 #### Footing {#sec:footing}
 
 Details of **\<PlanFeature>** in "IM_footing" **\<Feature>**
 
-{{xtabulate5 IM_footing}}
+{{xtabulate IM_footing}}
 
 todo kuva PlanFeature_footing
+![Plan Feature footing]({{figure PlanFeature_footing.png}} "Plan Feature footing"){{figst plafFeaturefooting}}
 
 
 #### Railing {#sec:railing}
 
 In Inframodel, this type of planfeature covers guardrails and guide bars, as well as touch, bump and collision protection structures.
 
-{{xtabulate5 IM_railing}}
+{{xtabulate IM_railing}}
 
 todo kuva PlanFeature_railing
+![Plan Feature railing]({{figure PlanFeature_railing.png}} "Plan Feature railing"){{figst planFeaturerailing}}
 
 #### Fence {#sec:fence}
 
 In Inframodel, this type of planfeature covers fences, booms and barriers, as well as gates and openings such as fence manholes.
 
-{{xtabulate5 IM_fence}}
+{{xtabulate IM_fence}}
 
-todo kuva PlanFeature_fence
+![Plan Feature fence]({{figure PlanFeature_fence.png}} "Plan Feature fence"){{figst planFeaturefence}}
 
 #### Surface structure {#sec:surfacestructure}
 
 In Inframodel, this type of planfeature covers surface structure properties (material, thickness).
 
-{{xtabulate5 IM_surfaceStructure}}
+{{xtabulate IM_surfaceStructure}}
 
 #### Generic feature {#sec:genericplanfeature}
 
