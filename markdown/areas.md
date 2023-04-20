@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Area structures
 
-## Contents {#sec:areacontents}
-
 *Area structures* encompass descriptions of surfaces and boundaries that complement routes. Such descriptions are for e.g. landscaping, noise barriers and geostructures. The file in which these structures are described contains the header information presented in chapter 1. Area structures are described as *defined areas*  **\<Parcel>** with **\<CoordGeom>**, or as  *surfaces* **\<Surface>**. The surface description consist of triangular meshes as explained in {{refsec basedata}}, where it is also possible to attach random points **\<DataPoints>** and breaklines **\<BreakLines>** to the surfaces. 
 
 ## Landscaping {#sec:landscaping}
