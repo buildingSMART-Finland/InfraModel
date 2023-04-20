@@ -1,6 +1,5 @@
 # Pipenetworks {#sec:pipenetworks}
 
-
 ## Contents
 
 The **\<PipeNetworks>** in Inframodel covers diffrent drainage and utility network types: storm drain, combined sewer, sewer, French drain, culvert, water pipe, district heating, district cooling, gas, waste disposal and cable networks.
@@ -33,13 +32,13 @@ A file may contain multiple *utility network groups* **\<PipeNetworks>**. It is 
 
 The names of *utility network groups* are unique within the file. If a *network group* contains networks with different states, the **state** shall not be set for the group.
 
-{{xtabulate5 PipeNetworks}}
+{{xtabulate PipeNetworks}}
 
 ### Plan information
 
 The *plan information* of a *network group* is set in the optional "IM_plan" extension under **\<PipeNetworks>** element. If the project consists of several sub-divisions, which progress at different rate, the plan content can be divided into several *network group* **\<PipeNetworks>** elements according to those divisions, or alternatively *plan information* may be set for each *network* in separate "IM_plan" under **\<PipeNetwork>** elements. The plan information contains the **planName** the **planCode**, the **planState**, and the *plan description* **planDesc**. The *plan state* is set according to a scale agreed on by the parties. An example is presented in the tabel below.
 
-{{xtabulate5 IM_plan}}
+{{xtabulate IM_plan}}
 
 ## Pipe network {#sec:pipenetwork}
 
@@ -49,7 +48,7 @@ Individual networks are described in **\<PipeNetwork>** elements, organized unde
 
 The **pipeNetType** defines the type of the network as 1) "sanitary" 2) "storm" 3) "water" 4) "other" (not specified, or specified in "IM_pipeNetworkType" extension).
 
-{{xtabulate5 PipeNetwork}}
+{{xtabulate PipeNetwork}}
 
 ### Pipe network type extensions
 
@@ -61,7 +60,7 @@ When the *network type* is not one of those covered by the **pipeNetType** (attr
 
 In Inframodel, the same metric units (as specified in the header-section) shall always be used. The LandXML capability to assing separate units for structures and pipes in networks shall not be used in Inframodel.
 
-{{xtabulate5 Pipenetworkunits}}
+{{xtabulate Pipenetworkunits}}
 
 ## Structures
 
@@ -81,7 +80,7 @@ LandXML standard structure types:
 
 Delimiting the network is a special case of using connection, described in further detail in the section covering the **\<Connection>** element.
 
-{{xtabulate5 IM_struct}}
+{{xtabulate IM_struct}}
 
 #### General data
 
@@ -89,7 +88,7 @@ The **name**, *rim elevation* **elevRim**, *sump elevation* **elevSump** and the
 
 All structural elements in the file are assigned individual names.
 
-{{xtabulate5 Struct}}
+{{xtabulate Struct}}
 
 #### Center
 
@@ -101,13 +100,13 @@ All structural elements in the file are assigned individual names.
 
 ***Equipments:*** The **\<Center>** of a piece of equipment at the mounting level is set using space-separated 3D coordinates.
 
-{{xtabulate5 Center}}
+{{xtabulate Center}}
 
 #### Inverts
 
 The inlets and outlets in a structure for adjoining pipes are described using the element **\<Invert>**. The required attributes of invert are: the elevation **\<elev>**, the flow direction **\<flowDir>** and the reference to the adjoining pipe **\<refPipe>**. The elevation is given according to "elevType" set for the adjoining pipe in "IM_pipe" extension (crown level for pressure pipes and the invert level for others).
 
-{{xtabulate5 Invert}}
+{{xtabulate Invert}}
 
 #### Details
 
@@ -126,7 +125,7 @@ When describing a conical well the **diameter** attribute describes the inner di
 ***Equipment:***
 It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. 
 
-{{xtabulate5 IM_struct}}
+{{xtabulate IM_struct}}
 
 #### Spatial allocation and avoidance
 
@@ -148,7 +147,7 @@ The *body* **diameter** at the bottom of the well, the *description* **desc**, t
 
 ![Circular structures]({{figure Pipenetwork_CircStruct.png}} "Circular structures"){{figst circularstructures}}
 
-{{xtabulate5 CircStruct}}
+{{xtabulate CircStruct}}
 
 ### Rectangular structures {#sec:rectangularstructures}
 
@@ -165,7 +164,7 @@ The mandatory attributes of a rectangular structure are the **length** the direc
 
 ![Rectangular structures]({{figure Pipenetwork_RectStruct.png}} "Rectangular structures"){{figst rectangularstructures}}
 
-{{xtabulate5 RectStruct}}
+{{xtabulate RectStruct}}
 
 ### Pipe inlets and outlets {#sec:pipeinletsandoutlets}
 
@@ -183,7 +182,7 @@ The illustration below demonstrates how pipe inlets and outlets are described. T
 
 ![Inlets and outlets]({{figure Pipenetwork_InletOutletStruct.png}} "Inlets and outlets"){{figst inletsandoutlets}}
 
-{{xtabulate5 InletStruct}}
+{{xtabulate InletStruct}}
 
 ### Pipe connections {#sec:pipeconnection}
 
@@ -201,12 +200,11 @@ When using the element to delimit a pipe network, the terminal drainage well is 
 When the element describes a delimiting element, all attributes are not used. The name of the structure and the description desc are set to differ from the plan information as much as possible e.g. by naming them "Terminal1", "Terminal2". The elevation of the rim elevRim, the elevation of the sump elevSump and the state of the structure are left undefined (given value "NaN").
     
 When a **\<Connection>** is used for modeling a bend (inflexion) of a flexible pipe of cable (being actually continuous), its name and description desc should indicate that it is not a physical conncection.  
-
 Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
 
 ![Pipe connections]({{figure Pipenetwork_Connection1.png}} "Pipe connections"){{figst pipeconnections}}
 
-{{xtabulate5 Connection}}
+{{xtabulate Connection}}
 
 ### Equipment {#sec:equipment}
 
@@ -224,7 +222,7 @@ The illustration demonstrates the mode of description of a valve:
 
 A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment is defined in the extension "IM_struct".
 
-{{xtabulate5 Connection}}
+{{xtabulate Connection}}
 
 
 ## Pipes {#sec:pipes}
@@ -253,15 +251,13 @@ When using a pipe to delimit a network, its refEnd or refStart shall be to a \<C
     
 When a pipe has several segments, with \<Conncetion> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique *name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment. In particular, this should be provided for continuous flexible pipes or cables having inflexions modeled as virtual connections.
 
-{{xtabulate5 Pipe}}
+{{xtabulate Pipe}}
 
 ## Center
 
 The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
 
-{{xmlsnippet Center}}
-
-{{xtabulate5 Center}}
+{{xtabulate Center}}
 
 More details can be found from {{refsec pipedetails}}
 
@@ -284,11 +280,11 @@ When the start and end coordinates are given with elevation values, elevation ty
 
 ![Elevation type]({{figure Pipenetwork_elevType.png}} "Elevation type"){{figst elevationtype}}
 
-{{xtabulate5 IM_pipe}}
+{{xtabulate IM_pipe}}
     
 ***Cable:*** *When the \<Pipe> represents a cable, and its start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.* Also, cable-specific properties in separate "IM_cable" extension:
     
- {{xtabulate5 IM_cable}}
+{{xtabulate IM_cable}}
 
 #### Spatial allocation and avoidance
 
@@ -310,7 +306,7 @@ The **diameter**, *type description* **desc**, **material** and wall **thickness
 
 When defining a network-limiting pipe the **diameter** is the only defined attribute. Other attributes are not defined.
 
-{{xtabulate5 CircPipe}}
+{{xtabulate CircPipe}}
 
 
 ### Egg pipes {#sec:eggpipes}
@@ -328,7 +324,7 @@ Mandatory attributes are *height* **height**, *width* **span**, *type descriptio
 
 When defining a network-limiting pipe the *height* **height** and *width* **span** are set. Other attributes are not set.
 
-{{xtabulate5 EggPipe}}
+{{xtabulate EggPipe}}
 
 ### Elliptic pipes {#sec:ellipticpipe}
 
@@ -349,7 +345,7 @@ When defining a network mandatory attributes are *height* **height** ja *width* 
 
 ![Elliptic pipe]({{figure Pipenetwork_ElliPipe.png}} "Elliptic pipe"){{figst ellipticpipe}}
 
-{{xtabulate5 ElliPipe}}
+{{xtabulate ElliPipe}}
 
 ### Rectangular pipes {#sec:rectangularpipe}
 
@@ -368,7 +364,7 @@ When defining a network-limiting pipe the **height** and **width** are mandatory
 
 ![Rectangular pipe]({{figure Pipenetwork_RectPipe.png}} "Rectangular pipe"){{figst rectpipe}}
 
-{{xtabulate5 RectPipe}}
+{{xtabulate RectPipe}}
 
 ### Channels {#sec:channels}
 
@@ -387,4 +383,4 @@ Mandatory attributes are channel section *height* **height**, *top width* **widt
 
 When defining a network mandatory attributes are *height* **height**, *top width* **widthTop** and *bottom width* **widthBottom**. Other attributes are not set.
 
-{{xtabulate5 Channel}}
+{{xtabulate Channel}}
