@@ -11,9 +11,9 @@ They are also used for terrain (visible surface) or structural models of roads, 
 
 Surfaces and source data is described as surface groups \<Surfaces>, which are made of individual \<Surface>-elements. 
 
-{{xtabulate5 Surfaces}}
+{{xtabulate Surfaces}}
 
-{{xtabulate5 Surface}}
+{{xtabulate Surface}}
 
 ### Plan information {#sec:planinformation}
 
@@ -21,7 +21,7 @@ For the surface description the project is divided into surface groups \<Surface
 If the project consists of sub-projects that have different rates of progress, the plan contents of the file are divided into sub-projects according to the same division.
 Note:The plan state is described according to a scheme agreed on by the parties of the project.
 
-{{xtabulate5 IM_plan--ltFeature--gt}}
+{{xtabulate IM_plan--ltFeature--gt}}
 
 ### Current and planned surfaces {#sec:currentandplannedsurfaces}
 
@@ -73,31 +73,31 @@ Source data consists of:
 
 Source *data points* are described by the element \<DataPoints>, sorting every point group into individual elements. 
 
-{{xtabulate5 DataPoints}}
+{{xtabulate DataPoints}}
 
 ### Breaklines {#sec:breaklines}
 
 Source *breakline group* is described by the element \<BreakLines>, where each \<BreakLine> presents single continous line. 
 
-{{xtabulate4 Breaklines}}
+{{xtabulate Breaklines}}
 
-{{xtabulate5 Breakline}}
+{{xtabulate Breakline}}
 
 ### Boundaries {#sec:boundaries}
 
 Additionally, it is also possible to define boundaries of the source data in the boundary group \<Boundaries>, where each \<Boundary> is presented in its own element. Each boundary may have properties of the area as "IM_surfaceStructure", "IM_structLayer" or "IM_soil", as well as calculated area or volume quantities as "IM_quantity". 
 
-{{xtabulate4 Boundaries}}
+{{xtabulate Boundaries}}
 
-{{xtabulate5 Boundary}}
+{{xtabulate Boundary}}
  
-{{xtabulate5 IM_surfaceStructure}}
+{{xtabulate IM_surfaceStructure}}
  
- {{xtabulate5 IM_structLayer}}
+{{xtabulate IM_structLayer}}
  
- {{xtabulate5 IM_soil}}
+{{xtabulate IM_soil}}
  
- {{xtabulate5 IM_quantity}}
+{{xtabulate IM_quantity}}
 
 ## Triangular mesh surface {#sec:triangulatedmeshsurface}
 
@@ -113,7 +113,7 @@ The face definitions are done by referring to the id numbers id of the vertice p
 
 ![Triangular mesh]({{figure Surfaces_kolmioverkko.png}} "Triangular mesh"){{figst triangularmesh}}
 
-{{xtabulate5 Definition}}
+{{xtabulate Definition}}
 
 The surface type surfType is fixed to "TIN" when describing a triangular mesh. 
 The presicion of the mesh model depends on the available software and data.
@@ -122,9 +122,9 @@ The presicion of the mesh model depends on the available software and data.
 
 The *vertex point group* \<Pnts> contains a listing of individual vertices \<P>, which are each assigned an individual id number id.
 
-{{xtabulate4 Pnts}}
+{{xtabulate Pnts}}
 
-{{xtabulate5 P}}
+{{xtabulate P}}
 
 ### Faces {#sec:faces}
 
@@ -132,9 +132,9 @@ The *triangulation* is defined by the \<Faces> collection. It consists of consec
 The order of the faces implicitly defines the index number of each triangle (1,2,..). 
 Each face is defined by referencing three vertex id numbers.
 
-{{xtabulate4 Faces}}
+{{xtabulate Faces}}
 
-{{xtabulate5 F}}
+{{xtabulate F}}
 
 ![Triangle face definition]({{figure Surfaces_kolmiokuvaus.png}} "Triangle face definition"){{figst trianglefaces}}
 
