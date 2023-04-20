@@ -40,7 +40,7 @@ The individual planimetric features are each described under **\<PlanFeature>**,
    
    3D : radius around the line (producing a cylinder, possibly curved or segmented)
 
-![Spatial Zone Line]({{SpatialZoneLine.png}} "Spatial Zone Line"){{figst spatialzoneline}}
+![Spatial Zone Line]({{figure SpatialZoneLine.png}} "Spatial Zone Line"){{figst spatialzoneline}}
 
 - Closed polyline area as \<CoorGeom>: 
 
