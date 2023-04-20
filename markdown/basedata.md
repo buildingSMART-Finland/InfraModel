@@ -1,7 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Base data {#sec:basedata}
 
-## Contents {#sec:basedatacontents}
 The base data contains the data points and breaklines of the source data, as well as the triangulated representation of mesh surfaces.
 The surface description contains the points used to form the surface (as vertices of the triangles in TIN)).
 Breaklines are not used to form surfaces, but if transferred under \<Surface> as source data they shall coincide with the triangulation defining the surface, i.e. each pair of consecutive breakline points given in 3D coordinates, must match the coordinates of two vertices of a triangle (exactly, within the numeric precision of the exchange file).
@@ -15,7 +14,7 @@ Surfaces and source data is described as surface groups \<Surfaces>, which are m
 
 {{xtabulate Surface}}
 
-### Plan information {#sec:planinformation}
+## Plan information {#sec:planinformation}
 
 For the surface description the project is divided into surface groups \<Surfaces> with optional "IM_plan" \<Feature> extension.
 If the project consists of sub-projects that have different rates of progress, the plan contents of the file are divided into sub-projects according to the same division.
