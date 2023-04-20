@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Waterway design {#sec:waterwaydesign}
 
-## Content
-
 An inframodel compliant file transfer utilizes the header information defined in chapter 1 Headers. The plan is described as appropriate according to the guidelines laid out in chapter 3 Route planning (general). All plan information contained in the file utilize a common coordinate, elevation and unit system. The utilized units are metric units appropriate for the file content.
 
 The geometry of a waterway is not described by tangent points in this context. An waterway design contains at least one *alignment group* **\<Alignments>** composed of *alignments* **\<Alignment>**, a string line model or a surface model and a structural model. Surfaces can have source data point or breakline information attached to them. In addition, the cross-section, minimum depth, minimum width and dimensioning water level height is described.
