@@ -81,25 +81,17 @@ inframodel does not use attributes for the  **\<CoordGeom>** element.
 
 A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction* **dir** and **length** are mandatory, but shall be used as additional information only.
 
-1. {{xtabulate5 Line}}
-2. The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the 2D coordinates are separated by spaces.
+{{xtabulate Line}}
 
-{{xmlsnippet Start}}
-
-{{xmlsnippet End}}
+The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the 2D coordinates are separated by spaces.
 
 #### Curve
 
 A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction of rotation* **rot**, **chord**, *end direction* **dirEnd**, *start direction* **dirStart**, **length** and **radius** are mandatory, but shall be used as additional information only.
 
-1. {{xtabulate5 Curve}}
-2. The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
+{{xtabulate Curve}}
 
-{{xmlsnippet Start}}
-  
-{{xmlsnippet Center}}
-  
-{{xmlsnippet End}}
+The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
 
 #### Transition curve
 
@@ -107,7 +99,7 @@ A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end ta
 
 NOTE: since attribute **spiType** is mandatory, but has no meaning for "biquadraticParabola" or "cubic", it shall have value set to "NaN" in these cases.
 
-{{xtabulate5 Curve}}
+{{xtabulate Curve}}
 
 The **\<Start>**, point on intersection of start and end tangents **\<PI>** and **\<End>** are defined as 2D coordinates separated by spaces.
 
@@ -120,9 +112,9 @@ The vertical geometry is described in the **\<Profile>**.**\<ProfAlign>** elemen
 
 ![Vertical geometry]({{figure Road_PVI_CircCurve.png}} "Vertical geometry"){{figst verticalgeometry}}
 
-{{xtabulate5 Profile}}
+{{xtabulate Profile}}
 
-{{xtabulate5 ProfAlign}}
+{{xtabulate ProfAlign}}
 
 #### Point of vertical intersection
 
@@ -138,7 +130,7 @@ Vertical circular arcs may be combined into S-curves or compound curves. The fir
 
 The location of the **\<CircCurve>** is defined by the *station* and *elevation*, separated by spaces.
 
-{{xtabulate5 CircCurve}}
+{{xtabulate CircCurve}}
 
 ## Line strings
 
@@ -152,7 +144,7 @@ The location of the **\<CircCurve>** is defined by the *station* and *elevation*
 
 A *line string* has optional attributes and sub-elements to define its **\<Start>**, **\<End>** and the *intermediate points* either as **\<PntList2D>** or **\<PntList3D>**.
 
-{{xtabulate5 IrregularLine}}
+{{xtabulate IrregularLine}}
 
 ## String line model
 
@@ -171,7 +163,7 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 
 A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
 
-{{xtabulate5 IM_stringLineLayers}}
+{{xtabulate IM_stringLineLayers}}
 
 ## Terrain model
 
