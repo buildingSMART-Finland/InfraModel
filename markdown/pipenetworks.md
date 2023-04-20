@@ -129,6 +129,8 @@ It is possible to define more detailed type information of a piece of equipment 
 
 Related to structure geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the structure geometry definition as a radius around the vertical line defined by structure \<Center> 3D coordinates at the bottom level and @elevRim.
 
+![Spatial Zone Pipe]({{figure SpatialZonePipe.png}} "Spatial Zone Pipe"){{figst SpatialZonePipe}}
+
 ### Circular structures {#sec:circularstructures}
 
 Inspection wells of French drains are an example of a circular structure. Circular structures are defined using the structure element **\<Struct>** and its child elements.
