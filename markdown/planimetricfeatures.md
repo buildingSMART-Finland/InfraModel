@@ -24,7 +24,7 @@ The individual planimetric features are each described under **\<PlanFeature>**,
 
 {{xmlsnippet Location}}
   
- Related to their *geometry* planimetric features may have an area or a volume for spatial allocation or avoidance defined as "IM_spatialZone" extension. Both **spatialAllocation** and **spatialAvoidance** are given as single metric value (in file length units), interpreted according to the type of the plan feature geometry definition:
+Related to their *geometry* planimetric features may have an area or a volume for spatial allocation or avoidance defined as "IM_spatialZone" extension. Both **spatialAllocation** and **spatialAvoidance** are given as single metric value (in file length units), interpreted according to the type of the plan feature geometry definition:
 
 - Point geometry as \<Location>: 
 
@@ -74,7 +74,6 @@ Details of **\<PlanFeature>** in "IM_footing" **\<Feature>**
 
 {{xtabulate IM_footing}}
 
-todo kuva PlanFeature_footing
 ![Plan Feature footing]({{figure PlanFeature_footing.png}} "Plan Feature footing"){{figst plafFeaturefooting}}
 
 
