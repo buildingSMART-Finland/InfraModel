@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design {#sec:roadandstreedesign}
 
-## Contents
-
 The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in chapter 2 route planning. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
 
 The content of the design file is defined in metric units, using an adequate number of decimals for accuracy. For example, when the length unit in use is a meter, the values must be defined to at least six decimal places. Street designs often interface with  water supply and sewerage systems , which are described in the same file. The constituent surfaces of the water supply and sewerage design are defined as triangular meshes and the design information in the \<PipeNetworks> element.
