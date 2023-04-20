@@ -2862,40 +2862,11 @@ A collection of surface models.</xs:documentation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Surface" maxOccurs="unbounded"/>
-				<xs:element ref="SurfVolumes" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelSurfacesFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelSurfacesFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="SurfVolumes" minOccurs="0" maxOccurs="0"/>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="name" type="xs:string"/>
@@ -2953,8 +2924,8 @@ SourceData is an optional collection of the points, contours, breaklines and bou
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="OID" type="xs:string"/>
 			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="OID" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="SourceData">
@@ -6026,6 +5997,43 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="IM_coding--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel type coding system definition  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="terrainCoding--ltProperty--gt__im_coding__" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sets terrain coding system</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="terrainCodingDesc--ltProperty--gt__im_coding__" minOccurs="0"/>
+				<xs:element ref="surfaceCoding--ltProperty--gt__im_coding__" minOccurs="0"/>
+				<xs:element ref="surfaceCodingDesc--ltProperty--gt__im_coding__" minOccurs="0"/>
+				<xs:element ref="infraCoding--ltProperty--gt__im_coding__" minOccurs="0"/>
+				<xs:element ref="infraCodingDesc--ltProperty--gt__im_coding__" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_coding">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_coding</xs:documentation>
+					<xs:documentation>Example:IM_coding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="IM_proprietaryCodings--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel proprietary feature coding system definition  --ltFeature--gt extension</xs:documentation>
@@ -6035,6 +6043,36 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 				<xs:element ref="proprietaryInfraCoding--ltProperty--gt"/>
 				<xs:element ref="proprietaryInfraCodingDesc--ltProperty--gt"/>
 				<xs:element ref="proprietaryInfraCodingSourceRef--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_proprietaryCodings">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_proprietaryCodings</xs:documentation>
+					<xs:documentation>Example:IM_proprietaryCodings</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_proprietaryCoding--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel proprietary feature coding system definition  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="proprietaryInfraCoding--ltProperty--gt__im_proprietarycoding__"/>
+				<xs:element ref="proprietaryInfraCodingDesc--ltProperty--gt__im_proprietarycoding__"/>
+				<xs:element ref="proprietaryInfraCodingSource--ltProperty--gt"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="optional">
 				<xs:annotation>
@@ -6083,6 +6121,37 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 				<xs:annotation>
 					<xs:documentation>Fixed value, inframodel</xs:documentation>
 					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_plan--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel user defined custom properties  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="propertyplanName--ltProperty--gt"/>
+				<xs:element ref="propertyplanCode--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="propertyplanDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="propertyplanState--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_plan">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_plan</xs:documentation>
+					<xs:documentation>Example:IM_plan</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -6393,8 +6462,8 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCodingDesc">
 				<xs:annotation>
-					<xs:documentation>Fixed value, surfaceCodingSourceRef</xs:documentation>
-					<xs:documentation>Example:surfaceCodingSourceRef</xs:documentation>
+					<xs:documentation>Fixed value, surfaceCoding</xs:documentation>
+					<xs:documentation>Example:surfaceCoding</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
@@ -6450,14 +6519,129 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCodingDesc">
 				<xs:annotation>
-					<xs:documentation>Fixed value, infraCodingSourceRef</xs:documentation>
-					<xs:documentation>Example:infraCodingSourceRef</xs:documentation>
+					<xs:documentation>Fixed value, infraCodingDesc</xs:documentation>
+					<xs:documentation>Example:infraCodingDesc</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Feature coding system description, ie. Finnish InfraBIM coding</xs:documentation>
 					<xs:documentation>Example:Finnish InfraBIM coding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_coding-->
+	<xs:element name="terrainCoding--ltProperty--gt__im_coding__">
+		<xs:annotation>
+			<xs:documentation>Sets terrain code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCoding">
+				<xs:annotation>
+					<xs:documentation>Fixed value, terrainCoding</xs:documentation>
+					<xs:documentation>Example:terrainCoding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Terrain code</xs:documentation>
+					<xs:documentation>Example:1</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="terrainCodingDesc--ltProperty--gt__im_coding__">
+		<xs:annotation>
+			<xs:documentation>Sets terrain code description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCodingDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, terrainCodinSourceRef</xs:documentation>
+					<xs:documentation>Example:terrainCodingSourceRef</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Terrain code</xs:documentation>
+					<xs:documentation>Example:Maanpinta</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="surfaceCoding--ltProperty--gt__im_coding__">
+		<xs:annotation>
+			<xs:documentation>Sets surface code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCoding">
+				<xs:annotation>
+					<xs:documentation>Fixed value, surfaceCoding</xs:documentation>
+					<xs:documentation>Example:surfaceCoding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Surface code</xs:documentation>
+					<xs:documentation>Example:201000</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="surfaceCodingDesc--ltProperty--gt__im_coding__">
+		<xs:annotation>
+			<xs:documentation>Sets surface code description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCodingDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, surfaceCoding</xs:documentation>
+					<xs:documentation>Example:surfaceCoding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Surface code</xs:documentation>
+					<xs:documentation>Example:Ylin yhdistelmäpinta</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="infraCoding--ltProperty--gt__im_coding__">
+		<xs:annotation>
+			<xs:documentation>Sets feature code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCoding">
+				<xs:annotation>
+					<xs:documentation>Fixed value, infraCoding</xs:documentation>
+					<xs:documentation>Example:infraCoding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Feature code</xs:documentation>
+					<xs:documentation>Example:101</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="infraCodingDesc--ltProperty--gt__im_coding__">
+		<xs:annotation>
+			<xs:documentation>Sets  feature code description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCodingDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, infraCodingDesc</xs:documentation>
+					<xs:documentation>Example:infraCodingDesc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Feature code</xs:documentation>
+					<xs:documentation>Example:Mittalinja</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -6508,13 +6692,71 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingDesc">
 				<xs:annotation>
-					<xs:documentation>Fixed value, proprietaryInfraCodingSourceRef</xs:documentation>
-					<xs:documentation>Example:proprietaryInfraCodingSourceRef</xs:documentation>
+					<xs:documentation>Fixed value, proprietaryInfraCodingDesc</xs:documentation>
+					<xs:documentation>Example:proprietaryInfraCodingDesc</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Proprietary feature coding system description, ie. my own coding system</xs:documentation>
+					<xs:documentation>Example:my own coding system</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_proprietaryCoding-->
+	<xs:element name="proprietaryInfraCoding--ltProperty--gt__im_proprietarycoding__">
+		<xs:annotation>
+			<xs:documentation>Sets proprietary feature code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCoding">
+				<xs:annotation>
+					<xs:documentation>Fixed value, proprietaryInfraCoding</xs:documentation>
+					<xs:documentation>Example:proprietaryInfraCoding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Proprietary feature code</xs:documentation>
+					<xs:documentation>Example:1234</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="proprietaryInfraCodingDesc--ltProperty--gt__im_proprietarycoding__">
+		<xs:annotation>
+			<xs:documentation>Sets proprietary feature code description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, proprietaryInfraCodingDesc</xs:documentation>
+					<xs:documentation>Example:proprietaryInfraCodingDesc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Proprietary feature code description</xs:documentation>
+					<xs:documentation>Example:myitem</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="proprietaryInfraCodingSource--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sets proprietary feature coding system source </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingSource">
+				<xs:annotation>
+					<xs:documentation>Fixed value, proprietaryInfraCodingSource</xs:documentation>
+					<xs:documentation>Example:proprietaryInfraCodingSourceRef</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Proprietary coding system source, as declared in proprietaryInfraCoding --ltProperty--gt under IM_proprietaryCodings --ltFeature--gt</xs:documentation>
 					<xs:documentation>Example:my own coding system</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -6593,6 +6835,95 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 				<xs:annotation>
 					<xs:documentation>User defined property source, ie. companyxy.com</xs:documentation>
 					<xs:documentation>Example:companyxy.com</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_plan-->
+	<xs:element name="propertyplanName--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sets plan name</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="planName">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planName</xs:documentation>
+					<xs:documentation>Example:planName</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Plan name</xs:documentation>
+					<xs:documentation>Example:Plan1</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="propertyplanCode--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sets plan code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="planCode">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planCode</xs:documentation>
+					<xs:documentation>Example:planCode</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Plan code</xs:documentation>
+					<xs:documentation>Example:12345-321</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="propertyplanState--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sets plan state</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="planState">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planState</xs:documentation>
+					<xs:documentation>Example:planState</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Plan state</xs:documentation>
+					<xs:documentation>Example:plan</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="zoning"/>
+						<xs:enumeration value="preliminary plan"/>
+						<xs:enumeration value="general plan"/>
+						<xs:enumeration value="plan"/>
+						<xs:enumeration value="construction plan"/>
+						<xs:enumeration value="construction "/>
+						<xs:enumeration value="maintenance "/>
+						<xs:enumeration value="removal"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="propertyplanDesc--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sets plan description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="planDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planDesc</xs:documentation>
+					<xs:documentation>Example:planDesc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Additional information</xs:documentation>
+					<xs:documentation>Example:Part 1</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
