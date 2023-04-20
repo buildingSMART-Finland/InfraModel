@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Route planning {#sec:routeplanning}
 
-## Contents
-
 Routes encompass highways, local roads and private roads, waterways and railways. Each route has one continuous stationing reference alignment and a vertical alignment. In inframodel file transfer, a route plan may consist of route geometric alignments, their stringline models and surface or structural models as triangulated meshes.
 
 An *alignment group* \<Alignments> consists of one or several alignments \<Alignment>. Their geometry can be described in two ways:
@@ -18,13 +16,13 @@ Once the alignments have been described, it is possible to assign them to a stri
 
 Cross-section parameters, which are described in further detail in the sections covering each route type, complement the route description with design parameter information of the cross-sections (without actual cross section geometry).
 
-### Route description
+## Route description
 
 Route description is driven by stationing reference line (principal alignment). Other geometry lines are given in the same *alignment collection* \<Alignments> each as separate *alignment* \<Alignment>. Geometry lines and string lines are given in separate *alignment collections* \<Alignments>.
 
 Different routes, alignement options and stationing reference line discontinuities are placed in *separate* \<Alignments>.
 
-### Naming and Type coding
+## Naming and Type coding
 
 *Alignment groups* and each individual *alignment* within a group must be assigned unique name. It is advisble to use different naming convention for *geometric alignments* and line strings in string line models. 
 
@@ -44,7 +42,7 @@ An **\<Alignment>** is an element that describes
   
 The alignments within a file do not have to be presented in any particular order. It is, however, advisable to first describe geometric alignments and then line strings. The **\<Alignment>** definition describes a **name**, **length**, *the stationing start* **staStart** and the **state** of the **\<Alignment>**. It is recommended that lines are named in an intuitive fashion. If the **state** is set for the entire alignment group **\<Alignments>** the **\<Alignment>** elements will inherit the **state** attribute from the parent element, hence is should not be set. When alternative alignments are being described by different *alignment groups* the differences between elements can be described briefly in the  atrribute **desc**. The optional *object identifying number* **oID** makes object management easier in applications.
 
-{{xtabulate5 alignment}}
+{{xtabulate alignment}}
 
 A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element.
 
@@ -52,7 +50,7 @@ A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** ele
 
 The *plan information* of an *alignment group* is described under the **\<Alignments>** element in the optional extension "IM\_plan". If the plan consists of subsets that progress at a different rate or there is some other reason to partition the project into smaller entities, these subsets should be sorted into separate *alignment groups*. The *plan information* contains information about the **planName**, the **planCode**, the **planState** and a description of the plan, **planDesc**. The state is described according to a system agreed on by the parties of the project. See sample in the table below. The *plan information* is also set when describing the surfaces of a route. These are set in the "IM_plan" extension of the **\<Surfaces>** element.
 
-{{xtabulate5 IM_plan}}
+{{xtabulate IM_plan}}
 
 
 ## Geometric alignments
@@ -122,7 +120,7 @@ The first and last element of the *vertical profile* is always *a Point of Verti
 
 *A Point of Vertical Intersection* **\<PVI>** marks the ends of the line segments of a vertical geometry. *A Point of Vertical Intersection* is described by a **station** and an **elevation**. These are separated by a space.
 
-{{xtabulate5 PVI}}
+{{xtabulate PVI}}
 
 #### Vertical curve
 
