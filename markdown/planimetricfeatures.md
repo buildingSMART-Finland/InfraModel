@@ -1,8 +1,6 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Planimetric features {#sec:planimetricfeatures}
 
-## Contents
-
 In an Inframodel file, any plan contains the header information described in {{refsec Headers}}. The design content in the file is defined in metric units, using an adequate number of decimals for accuracy. For example, when the length unit in use is meter, the values must be defined to at least six decimal places.
 
 Planimetric features, such as *cables*, lightpole or signage *footings*, *railings* and *fences*, or any other objects not otherwise defined by LandXML schema are described using **\<PlanFeature>** element. These features often interface with route (road, street, railway or waterway), in which case they are described under **\<Roadways>** collection in the same file, as defined in chapters 4, 5 and 6. This chapter covers those planimetric features not directly assigned to any particular route, and surface structures potentially spanning across multiple routes (such as urban street surface plans).
@@ -34,7 +32,6 @@ The individual planimetric features are each described under **\<PlanFeature>**,
    
    3D : sphere around the point
 
-todo kuva SpatialZonePoint
 ![Spatial Zone Point]({{figure SpatialZonePoint.png}} "Spatial Zone Point"){{figst spatialzonepoint}}
    
 - Line or Polyline as \<CoorGeom>:
@@ -87,7 +84,6 @@ In Inframodel, this type of planfeature covers guardrails and guide bars, as wel
 
 {{xtabulate IM_railing}}
 
-todo kuva PlanFeature_railing
 ![Plan Feature railing]({{figure PlanFeature_railing.png}} "Plan Feature railing"){{figst planFeaturerailing}}
 
 #### Fence {#sec:fence}
