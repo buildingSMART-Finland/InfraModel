@@ -19,4 +19,4 @@ xnos-number-by-section: True
 {{include asbuilt.md}}
 {{include deepfoundations.md}}
 {{include im_extensions.md}}
-{{include ./../qamarkdown/inframodel.md}}
+{{include ../qamarkdown/Inframodel.md}}
