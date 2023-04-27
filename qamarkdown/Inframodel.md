@@ -89,13 +89,15 @@ Aineiston luomisessa, dokumentoinnissa, laadunvarmistuksessa, objekti- ja tiedos
 #### Q&A
 
 ### Headers
-Linkki dokumentaatioon {{refsec Headers}}
+Linkki dokumentaatioon {{refsec fileheaders}}
 
 #### Yleistiedot
 
 Inframodel tukee LandXML-versiota 1.2 Inframodel- ja LandXML-versio näkyy aina tiedoston alussa. **Aineiston toimittaja vastaa siitä, että tiedosto on näiden suhteen validi, eli täyttää sisällön ja ominaisuustietojen (attribuuttien) rajausten ja eheyden osalta ko. versioiden vaatimukset.**
 
 **Mittayksikkösuositukset:**
+
+{{refsec units}}
 
 - sijainnin ja etäisyyden mittayksikkönä käytetään metriä (m)
 - pinta-alalle neliömetri (m2)
@@ -124,9 +126,11 @@ Tiedoston nimi ei saa sisältää välilyöntejä, erikois- tai skandinaavisia m
 Objektien nimi ei saa sisältää välilyöntejä, erikois- tai skandinaavisia merkkejä (~!'"@#$%^&äÄöÖåÅ*+=[]\<,>?/;:)
 
 #### Codings
-Linkki dokumentaatioon {{refsec Codings}}
+
+Linkki dokumentaatioon {{refsec typecodingsystems}} ja {{refsec imcoding}}
 
 ##### Lajiluokitukset ja nimikkeistöt
+
 Inframodel tiedonsiirrossa aineiston laatimisessa käytetty luokittelu ja nimikkeistö esitetään Codings elementillä.
 
 Yleisesesti koodaukseen on sovittu seuraavat arvot ja käyttötarkoitus:
@@ -153,7 +157,8 @@ Lisäksi on mahdollista sisällyttää yksi tai useampi muu tarkentava koodaus. 
 #### Q&A
 
 ### Base data
-Linkki dokumentaatioon {{refsec Base data}}
+
+Linkki dokumentaatioon {{refsec basedata}}
 
 #### Lähtötietoaineisto ja maaperämallit
 
@@ -174,7 +179,8 @@ Maaperämallin pintojen lajikoodausta on tarkennettu InfraBIM-nimikkeistössä. 
 #### Q&A
 
 ### Route planning
-Linkki dokumentaatioon {{refsec Route planning}}
+
+Linkki dokumentaatioon {{refsec routeplanning}}
 
 #### Väylätiedot
 Inframodel-tiedonsiirrossa väylällä on yksi jatkuva mittalinja ja tasaus. Tien mittalinjan InfraBIM-koodi tulee olla nimikkeistön mukaisesti (tie= 101 tai rata=111). Ratamallissa kilometripaalutus liitetään mittaraiteeseen. Muut geometrialinjat ja taiteviivat sekä pinnat nimetään InfraBIM-luokituksen mukaisesti. Taiteviivamallin viivoilla tulee olla väyläkohtainen yksilöllinen nimi (@name).
@@ -190,27 +196,32 @@ Aineistossa siirretään mallin objekteja sekä niihin liitettyä tietoa. Objekt
 #### Q&A
 
 ### Roads and street
-Linkki dokumentaatioon {{refsec Roads and street}}
+
+Linkki dokumentaatioon {{refsec roadandstreedesign}}
 
 #### Q&A
 
 ### Railways
-Linkki dokumentaatioon {{refsec Railways}}
+
+Linkki dokumentaatioon {{refsec railwaydesign}}
 
 #### Q&A
 
 ### Waterways
-Linkki dokumentaatioon {{refsec Waterways}}
+
+Linkki dokumentaatioon {{refsec waterwaydesign}}
 
 #### Q&A
 
 ### Areas
-Linkki dokumentaatioon {{refsec Areas}}
+
+Linkki dokumentaatioon {{refsec areastructures}}
 
 #### Q&A
 
 ### Water supply and sewerage
-Linkki dokumentaatioon {{refsec Water supply and sewerage}}
+
+Linkki dokumentaatioon {{refsec pipenetworks}}
 
 #### Kuivatus
 
@@ -228,7 +239,8 @@ Inframodel sisältää omat määritteet verkostolajeina jäte, hule, vesi, kauk
 #### Q&A
 
 ### Planimetric features
-Linkki dokumentaatioon {{refsec Planimetric features}}
+
+Linkki dokumentaatioon {{refsec planimetricfeatures}}
 
 #### Pintarakenteet ja niiden materiaaliominaisuudet
 
@@ -238,11 +250,15 @@ Pintarakenteiden materiaali esitetään aluerajauksina. Rajaus annetaan geometri
 
 #### Rakennekerrosten materiaaliominaisuudet
 
+Linkki dokumentaatioon {{refsec surfacestructure}}
+
 Päällyste- ja pintarakennekerroksille luokitellaan materiaaliominaisuudet. Perusperiaatteena, että ominaisuus liitetään kerroksen yläpintaan. Tiedolla kuvataan kerroksen materiaali ja/tai materiaalin ominaisuuksia. Inframodel sisältää materiaaliominaisuuksista valmiit arvojoukkoluettelot.
 
 *todo figure rakennekerrosesimerkki*
 
 #### Jalustojen ominaisuudet
+
+Linkki dokumentaatioon {{refsec footing}}
 
 Jalusta on pistemäinen PlanFeatures- kohde, jolla on InfraBIM-luokitus. Lisäksi jalustalle voicdaan antaa lisätietoja kuten korkeus, materiaali, perustustapa, numero ja tilavaraus. Korkeus esitetään tietomallin *Units* asetusten mukaisesti. Jalustan tilavaraus määritetään joko säteenä tai suorakulmion nurkkapisteinä suhteessa jalustan keskipisteeseen.
 
@@ -250,11 +266,15 @@ Jalusta on pistemäinen PlanFeatures- kohde, jolla on InfraBIM-luokitus. Lisäks
 
 #### Johto- ja kaapelireitit
 
+Linkki dokumentaatioon {{refsec cable}}
+
 Kaapelirakenteet on kvuattu Inframodelissa PlanFeature objekteina. Kaapeli on murtoviivaa, jolla on InfraBIM-luokitus. Kaapelin muita ominaisuuksia ovat omistaja, kaapelin tyyppi, tunnus ja tilavaraus. Tilavaraus kuvataan metatietona säteenä tai suorakulmion nurkkapisteinä suhteessa kaapelin keskipisteeseen.
 
 *todo figure kaapeliesimerkki*
 
 #### Kaiteiden ja aitojen ominaisuudet
+
+Linkki dokumentaatioon {{refsec railing}} ja {{refsec fence}}
 
 Kaide ja aitarakenteet on kuvattu Inframodelissa PlanFeature-objekteina. Kohteet ovat murtoviivaa, jolla on InfraBIM-luokitus. Objektin asennuskohdan XYZ ilmaistaan ylimmän yhdistelmäpinnan (yyp) koordinaatteina. Lisäinformaatio voi sisältää esim. kaidetyyppi, käyttötarkoitus, törmäyskestävyys, joustovara, aurauskestävyys, toimintaleveys, korkeus, kaiteen aloitus ja lopetus
 
@@ -263,7 +283,8 @@ Kaide ja aitarakenteet on kuvattu Inframodelissa PlanFeature-objekteina. Kohteet
 #### Q&A
 
 ### As-built
-Linkki dokumentaatioon {{refsec As-built}}
+
+Linkki dokumentaatioon {{refsec asbuilt}}
 
 #### Toteumatiedot
 
@@ -272,7 +293,6 @@ Toteutuneen tilanteen tallentamista kutsutaan toteumatiedoksi. Tietoihin sisäll
 Toteumamallin käyttötarkoitus on rakenteen geometrisen laadun ja vaatimusten mukaisen toteutuksen todenaminen tilaajalle ja omaisuudenhallinnan lähtötietona toimiminen tilaajan ylläpitoprosessissa. Suosituksena on vähentää laadunvarmistukseen liittyvän mittaustiedon paperidokumentaation laatimiseen käytettävää työmäärää ja dokumentteja.
 
 *todo figure esimerkkitoteuma*
-
 
 Väylärakenteen toteutusmalli koostuu seuraavista INFRA 2015 rakennusosa- ja hankenimikkeistön mukaisista rakennusosista:
 
@@ -294,7 +314,8 @@ Väylärakenteen toteutusmalli koostuu seuraavista INFRA 2015 rakennusosa- ja ha
 #### Q&A
 
 ### Deep foundations
-Linkki dokumentaatioon {{refsec Deep foundations}}
+
+Linkki dokumentaatioon {{refsec deepfoundations}}
 
 #### Pilari- ja massastabilointi
 
@@ -307,7 +328,8 @@ Pilari- ja massastabilointi on pääelementti Inframodelissa. Pilariryhmä voida
 #### Q&A
 
 ### Extensions
-Linkki dokumentaatioon {{refsec Extensions}}
+
+Linkki dokumentaatioon {{refsec inframodelfeatureextensions}}
 
 #### Q&A
 
