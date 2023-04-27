@@ -38,7 +38,7 @@ Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Ylei
 - pilaristabilointi ominaisuustietoineen
 - vapaat ominaisuustiedot *(esim. omistajatieto, lisätieto, tarkennus tms. jollekin objektille, kuten viivalle, pisteelle tai putkiverkolle)*
 
-{{todo figure havainnekuva}}
+*todo figure havainnekuva* **onko tälle tarvetta?**
 
 Silta- ja muiden taitorakenteiden tietomallipohjaiseen tiedonsiirtoon käytetään IFC-standardia, jota kehittää buildingSMART organisaatio. Lisätietoja standardiversioista ja sisällöstä: https://wiki.buildingsmart.fi/fi/04_Julkaisut_ja_Standardit/bSI
 
@@ -181,7 +181,6 @@ Inframodel-tiedonsiirrossa väylällä on yksi jatkuva mittalinja ja tasaus. Tie
 
 Aineistojen nimeämisessä noudatetaan Yleisten inframallivaatimusten sekä InfraBIM-nimikkeistön mukaisia numerointi- ja nimeämiskäytäntöjä. Aineistossa siirretään mallin objekteja sekä niihin liitettyä tietoa. Objektit voivat olla esim. pisteitä, viivoja, geometrioita sekä kolmiointeja. Kolmioinnin vaatimuksena on käyttää kolmioverkkoa, jonka *sourcedata* osiosta löytyy myös BreakLine-tieto (kolmioinnin laskentaa ohjaavat taiteviivat).
 
-{{figure yhdistelmämalli}}
 ![Esimerkki yhdistelmämalli]({{figure yhdistelmämalli.png}} "Esimerkki yhdistelmämalli"){{figst yhdistelmämalli}}
 
 *Kuva. Inframodel osamalleja voi yhdistää samaan näkymään eri työkaluilla.*
@@ -223,7 +222,6 @@ Kaivoilla ja laitteilla tulee olla koko aineiston kattava yksilöllinen nimi (@n
 
 Inframodel sisältää omat määritteet verkostolajeina jäte, hule, vesi, kaukolämpö, kaukojäähdytys, kaasu, jätteen putkikeräys sekä kaapelit varten. Verkkolajit sisällytetään metatietolajiin "IM_pipeNetworkType".
 
-{{figure verkostoesimerkki}}
 ![Esimerkki verkostoista]({{figure verkostoesimerkki.png}} "Esimerkki verkostoista"){{figst verkostoesimerkki}}
 
 
@@ -236,31 +234,31 @@ Linkki dokumentaatioon {{refsec Planimetric features}}
 
 Pintarakenteiden materiaali esitetään aluerajauksina. Rajaus annetaan geometrialinjoina tai 3D- tai 3D-taiteviivaketjuina. Materiaalin päänimike tulee InfraBIM-luokituksen mukaisesti. Lisäksi voidaan antaa kerrospaksuus ja tarkempi kuvaus materiaalista tekstinä kuvauskentässä.
 
-{{todo figure pintarakenneesimerkki}}
+*todo figure pintarakenneesimerkki*
 
 #### Rakennekerrosten materiaaliominaisuudet
 
 Päällyste- ja pintarakennekerroksille luokitellaan materiaaliominaisuudet. Perusperiaatteena, että ominaisuus liitetään kerroksen yläpintaan. Tiedolla kuvataan kerroksen materiaali ja/tai materiaalin ominaisuuksia. Inframodel sisältää materiaaliominaisuuksista valmiit arvojoukkoluettelot.
 
-{{todo figure rakennekerrosesimerkki}}
+*todo figure rakennekerrosesimerkki*
 
 #### Jalustojen ominaisuudet
 
 Jalusta on pistemäinen PlanFeatures- kohde, jolla on InfraBIM-luokitus. Lisäksi jalustalle voicdaan antaa lisätietoja kuten korkeus, materiaali, perustustapa, numero ja tilavaraus. Korkeus esitetään tietomallin *Units* asetusten mukaisesti. Jalustan tilavaraus määritetään joko säteenä tai suorakulmion nurkkapisteinä suhteessa jalustan keskipisteeseen.
 
-{{todo figure jalustaesimerkki}}
+*todo figure jalustaesimerkki*
 
 #### Johto- ja kaapelireitit
 
 Kaapelirakenteet on kvuattu Inframodelissa PlanFeature objekteina. Kaapeli on murtoviivaa, jolla on InfraBIM-luokitus. Kaapelin muita ominaisuuksia ovat omistaja, kaapelin tyyppi, tunnus ja tilavaraus. Tilavaraus kuvataan metatietona säteenä tai suorakulmion nurkkapisteinä suhteessa kaapelin keskipisteeseen.
 
-{{todo figure kaapeliesimerkki}}
+*todo figure kaapeliesimerkki*
 
 #### Kaiteiden ja aitojen ominaisuudet
 
 Kaide ja aitarakenteet on kuvattu Inframodelissa PlanFeature-objekteina. Kohteet ovat murtoviivaa, jolla on InfraBIM-luokitus. Objektin asennuskohdan XYZ ilmaistaan ylimmän yhdistelmäpinnan (yyp) koordinaatteina. Lisäinformaatio voi sisältää esim. kaidetyyppi, käyttötarkoitus, törmäyskestävyys, joustovara, aurauskestävyys, toimintaleveys, korkeus, kaiteen aloitus ja lopetus
 
-{{todo figure kaideesimerkki}}
+*todo figure kaideesimerkki*
 
 #### Q&A
 
@@ -273,7 +271,7 @@ Toteutuneen tilanteen tallentamista kutsutaan toteumatiedoksi. Tietoihin sisäll
 
 Toteumamallin käyttötarkoitus on rakenteen geometrisen laadun ja vaatimusten mukaisen toteutuksen todenaminen tilaajalle ja omaisuudenhallinnan lähtötietona toimiminen tilaajan ylläpitoprosessissa. Suosituksena on vähentää laadunvarmistukseen liittyvän mittaustiedon paperidokumentaation laatimiseen käytettävää työmäärää ja dokumentteja.
 
-{{todo figure esimerkkitoteuma}}
+*todo figure esimerkkitoteuma*
 
 
 Väylärakenteen toteutusmalli koostuu seuraavista INFRA 2015 rakennusosa- ja hankenimikkeistön mukaisista rakennusosista:
