@@ -300,7 +300,7 @@ The following illustation descibes the definition of a round pipe  The definitio
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
 
-![Circular pipe]({{figure Pipenetwork_ConPipenetwork_CircPipenection2.png}} "Circular pipe"){{figst circularpipe}}
+![Circular pipe]({{figure Pipenetwork_CircPipe.png}} "Circular pipe"){{figst circularpipe}}
 
 The **diameter**, *type description* **desc**, **material** and wall **thickness** of the pipe are mandatory attributes.
 
