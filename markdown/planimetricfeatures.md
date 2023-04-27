@@ -105,6 +105,6 @@ When no specific **\<Feature>** extension defined above can be applied, these ge
 
 {{xtabulate IM_planfeature}}
 
-#### Type coding
+#### Type coding {#sec:imcoding}
 
 {{xtabulate IM_coding}}
