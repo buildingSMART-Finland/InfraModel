@@ -1,5 +1,5 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
-# AsBuilt data
+# AsBuilt data {#sec:asbuilt}
 
 An Inframodel file of any plan contains the header information described in the section 1.
 This section describes as-built data that can include both planned control points with tolerances, and the measured values with metadata (survey and its accuracy). Also the diffence vectors between planned (designed) and measured can be captured.
