@@ -1,4 +1,4 @@
-# Inframodel käyttöohje (Q&A)
+# Annex 1. Inframodel käyttöohje (Q&A)
 
 ## Johdanto
 
@@ -12,7 +12,7 @@ Inframodel skeema ja dokumentaatio sisältävät tietoa sovelluskehittäjille ja
 
 Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja InfraBIM-nimikkeistöjärjstelmään.  
 
-{{figure Kolminaisuus}}
+![Kolminaisuus]({{figure Kolminaisuus.png}} "Kolminaisuus"){{figst Kolminaisuus}}
 
 - Yleiset inframallivaatimukset *(ohje ja vaatimus: mitä ja miten mallinnetaan, laadunvarmistus, lopputuotteen määrittely, mallinnusprosessi jne.)*
 - InfraBIM nimikkeistö *(miten nimetään ja luokitellaan)*
@@ -38,7 +38,7 @@ Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Ylei
 - pilaristabilointi ominaisuustietoineen
 - vapaat ominaisuustiedot *(esim. omistajatieto, lisätieto, tarkennus tms. jollekin objektille, kuten viivalle, pisteelle tai putkiverkolle)*
 
-{{figure havainnekuva}}
+{{todo figure havainnekuva}}
 
 Silta- ja muiden taitorakenteiden tietomallipohjaiseen tiedonsiirtoon käytetään IFC-standardia, jota kehittää buildingSMART organisaatio. Lisätietoja standardiversioista ja sisällöstä: https://wiki.buildingsmart.fi/fi/04_Julkaisut_ja_Standardit/bSI
 
@@ -56,7 +56,7 @@ Ohjeen jäsentely noudattaa Inframodel dokumentaation sisällysluetteloa. Ohjeen
 
 Ohjeistus on jatkuvasti päivittyvä ja täydentyvä kysymyksiin ja vastauksiin perustuva jatkuvasti kehittyvä dokumentti. 
 
-Ohjeistukseen voi itse vaikuttaa antamalla palautetta tai kysymällä buildingSMART Finlandin palautekanavien kautta tai tekemällä suoraan tiketin kehitysympäristöön \<linkki>. Saatu palaute tai tarvittavat lisäykset / tarkennukset täydennetään käyttöohjeeseen ylläpitoprosessin mukaisesti.
+Ohjeistukseen voi itse vaikuttaa antamalla palautetta tai kysymällä buildingSMART Finlandin palautekanavien kautta tai tekemällä suoraan tiketin kehitysympäristöön \\ \<linkki>. Saatu palaute tai tarvittavat lisäykset / tarkennukset täydennetään käyttöohjeeseen ylläpitoprosessin mukaisesti.
 
 ## Käyttöohje + Q&A
 
@@ -80,7 +80,7 @@ Hankkeissa tulee noudattaa selkeää jaottelua loogisiin osakokonaisuuksiin tai 
 
 Näiden lisäksi voi tulla tarpeeseen jakaa aineistoa myös paaluväleittäin selkeyttämään suunnittelurajoja tai mallinnusositusta. Vaikka tietomalli säsältää tiedon aineiston käyttötarkoituksesta, nimeämisessä olisi hyvä muistaa käyttää loogisia jaotteluita. Aineiston jakamisesta sopiviin osiin on hyvä sopia ennen hankkeen alkua, koska hankevaihe tai -muoto vaikuttaa myös aineiston jakamisen tarpeisiin. Esim. varhaisen suunnitteluvaiheen aineistoa voi olla helpompi jakaa isompina kokonaisuuksina, jopa yhtenä projektitietona.
 
-{{figure tiedostolista}}
+![Tiedostolista]({{figure tiedostolista.png}} "Tiedostolista"){{figst Tiedostolista}}
 
 Käytännössä tiedonsiirron tarpeet ovat monenlaisia ja kokonaisuudet on sovittava hankkeen alussa selkeästi. Esimerkiksi kun suunnittelija toimittaa malleja koneohjaukseen, voidaan toimia väylärakenteiden toteutusmalliohjeen mukaisesti (Väylärakenteen toteutusmallin vaatimukset ja -ohjeet) Tai kun maastomallin eri mittausaineistot (likimalli, tarkka maastomalli, täydennysmittaukset) halutaan selkeästi erottaa omina tiedostoina toisistaan.
 
@@ -163,13 +163,13 @@ Kalliopinta-aineisto jaetaan avokalliopisteisiin ja tulkittuihin pisteisiin. Ero
 
 Maakerrosrajapinnat tms. maaperämallin pinnat tulostetaan joko kaikki samaan tiedostoon omina pintoina tai erikseen kukin pinta omaan tiedostoon.
 
-{{figure maalajipinnat}}
+![Maalajipinnat esimerkki 1]({{figure maalajipinnat.png}} "Maalajipinnat esimerkki 1"){{figst maalajipinnat}}
 
 Lähtitietoaineistot sisältävät ko. pintojen ns. lähtiedot eli pisteet ja viivat. Näistä muodostettuja kolmiopintoja voidaan siirtää omina tiedostoinaan, jos tiedoston koko muuten kasvaa liian isoksi.
 
 Maaperämallin pintojen lajikoodausta on tarkennettu InfraBIM-nimikkeistössä. Suosituksen mukaisesti maaperämallin tulkinta pitää luokitella tulkintatarkkuuden mukaan ja luokituksesta on tehty valmiit arvojoukot eli luettelo sallituista tietoarvoista.
 
-{{figure maalajipinnat2}}
+![Maalajipinnat esimerkki 2]({{figure maalajipinnat2.png}} "Maalajipinnat esimerkki 2"){{figst maalajipinnat2}}
 
 #### Q&A
 
@@ -182,6 +182,7 @@ Inframodel-tiedonsiirrossa väylällä on yksi jatkuva mittalinja ja tasaus. Tie
 Aineistojen nimeämisessä noudatetaan Yleisten inframallivaatimusten sekä InfraBIM-nimikkeistön mukaisia numerointi- ja nimeämiskäytäntöjä. Aineistossa siirretään mallin objekteja sekä niihin liitettyä tietoa. Objektit voivat olla esim. pisteitä, viivoja, geometrioita sekä kolmiointeja. Kolmioinnin vaatimuksena on käyttää kolmioverkkoa, jonka *sourcedata* osiosta löytyy myös BreakLine-tieto (kolmioinnin laskentaa ohjaavat taiteviivat).
 
 {{figure yhdistelmämalli}}
+![Esimerkki yhdistelmämalli]({{figure yhdistelmämalli.png}} "Esimerkki yhdistelmämalli"){{figst yhdistelmämalli}}
 
 *Kuva. Inframodel osamalleja voi yhdistää samaan näkymään eri työkaluilla.*
 
@@ -223,6 +224,8 @@ Kaivoilla ja laitteilla tulee olla koko aineiston kattava yksilöllinen nimi (@n
 Inframodel sisältää omat määritteet verkostolajeina jäte, hule, vesi, kaukolämpö, kaukojäähdytys, kaasu, jätteen putkikeräys sekä kaapelit varten. Verkkolajit sisällytetään metatietolajiin "IM_pipeNetworkType".
 
 {{figure verkostoesimerkki}}
+![Esimerkki verkostoista]({{figure verkostoesimerkki.png}} "Esimerkki verkostoista"){{figst verkostoesimerkki}}
+
 
 #### Q&A
 
@@ -233,31 +236,31 @@ Linkki dokumentaatioon {{refsec Planimetric features}}
 
 Pintarakenteiden materiaali esitetään aluerajauksina. Rajaus annetaan geometrialinjoina tai 3D- tai 3D-taiteviivaketjuina. Materiaalin päänimike tulee InfraBIM-luokituksen mukaisesti. Lisäksi voidaan antaa kerrospaksuus ja tarkempi kuvaus materiaalista tekstinä kuvauskentässä.
 
-{{figure pintarakenneesimerkki}}
+{{todo figure pintarakenneesimerkki}}
 
 #### Rakennekerrosten materiaaliominaisuudet
 
 Päällyste- ja pintarakennekerroksille luokitellaan materiaaliominaisuudet. Perusperiaatteena, että ominaisuus liitetään kerroksen yläpintaan. Tiedolla kuvataan kerroksen materiaali ja/tai materiaalin ominaisuuksia. Inframodel sisältää materiaaliominaisuuksista valmiit arvojoukkoluettelot.
 
-{{figure rakennekerrosesimerkki}}
+{{todo figure rakennekerrosesimerkki}}
 
 #### Jalustojen ominaisuudet
 
 Jalusta on pistemäinen PlanFeatures- kohde, jolla on InfraBIM-luokitus. Lisäksi jalustalle voicdaan antaa lisätietoja kuten korkeus, materiaali, perustustapa, numero ja tilavaraus. Korkeus esitetään tietomallin *Units* asetusten mukaisesti. Jalustan tilavaraus määritetään joko säteenä tai suorakulmion nurkkapisteinä suhteessa jalustan keskipisteeseen.
 
-{{figure jalustaesimerkki}}
+{{todo figure jalustaesimerkki}}
 
 #### Johto- ja kaapelireitit
 
 Kaapelirakenteet on kvuattu Inframodelissa PlanFeature objekteina. Kaapeli on murtoviivaa, jolla on InfraBIM-luokitus. Kaapelin muita ominaisuuksia ovat omistaja, kaapelin tyyppi, tunnus ja tilavaraus. Tilavaraus kuvataan metatietona säteenä tai suorakulmion nurkkapisteinä suhteessa kaapelin keskipisteeseen.
 
-{{figure kaapeliesimerkki}}
+{{todo figure kaapeliesimerkki}}
 
 #### Kaiteiden ja aitojen ominaisuudet
 
 Kaide ja aitarakenteet on kuvattu Inframodelissa PlanFeature-objekteina. Kohteet ovat murtoviivaa, jolla on InfraBIM-luokitus. Objektin asennuskohdan XYZ ilmaistaan ylimmän yhdistelmäpinnan (yyp) koordinaatteina. Lisäinformaatio voi sisältää esim. kaidetyyppi, käyttötarkoitus, törmäyskestävyys, joustovara, aurauskestävyys, toimintaleveys, korkeus, kaiteen aloitus ja lopetus
 
-{{figure kaideesimerkki}}
+{{todo figure kaideesimerkki}}
 
 #### Q&A
 
@@ -270,7 +273,8 @@ Toteutuneen tilanteen tallentamista kutsutaan toteumatiedoksi. Tietoihin sisäll
 
 Toteumamallin käyttötarkoitus on rakenteen geometrisen laadun ja vaatimusten mukaisen toteutuksen todenaminen tilaajalle ja omaisuudenhallinnan lähtötietona toimiminen tilaajan ylläpitoprosessissa. Suosituksena on vähentää laadunvarmistukseen liittyvän mittaustiedon paperidokumentaation laatimiseen käytettävää työmäärää ja dokumentteja.
 
-{{figure esimerkkimalli}}
+{{todo figure esimerkkitoteuma}}
+
 
 Väylärakenteen toteutusmalli koostuu seuraavista INFRA 2015 rakennusosa- ja hankenimikkeistön mukaisista rakennusosista:
 
@@ -298,9 +302,9 @@ Linkki dokumentaatioon {{refsec Deep foundations}}
 
 Pilari- ja massastabilointi on pääelementti Inframodelissa. Pilariryhmä voidaan kuvata pintojen välisenä tilavarauksena (ulkoreuna ylä- ja alapinnassa) tai yksittäisen pilarin tarkkuudella. Molemmissa tavoissa ryhmään voi liittää useita ominaisuuksia, kuten esim. halkaisija, sideainetyyppi, sideainemäärä.
 
-{{figure stabilointiesimerkki}}
+![Esimerkki pilaristabilointi]({{figure pilaristabilointi.png}} "Esimerkki pilaristabilointi"){{figst pilaristabilointi}}
 
-{{figure erillinen skeemakuvaus}}
+![Esimerkki skeemakuvaus]({{figure erillinenskeemakuvaus.png}} "Esimerkki skeemakuvaus"){{figst skeemakuvaus}}
 
 #### Q&A
 
