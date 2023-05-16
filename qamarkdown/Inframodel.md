@@ -22,7 +22,7 @@ Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Ylei
 
 ![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previous_inframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
 
-**Inframodel 4- tiedonsiirron uusia ominaisuuksia ovat**
+**Inframodel 4.1 tiedonsiirron uusia ominaisuuksia ovat**
 
 - Vapaamuotoiset ominaisuustiedot – Mahdollistavat entistä laajemman kohdekohtaisen ominaisuustiedon siirtämisen standardin avulla
 - Metadatan laajempi hyödyntäminen – esim. Tiedostokohtaisesti voidaan osoittaa kuka on tiedon omistaja
