@@ -20,23 +20,20 @@ Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja Inf
 
 Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Yleisten inframallivaatimusten liitteessä: Luovutusaineiston tiedonsiirron vaatimukset.
 
-**Inframodel 4- tiedonsiirron ominaisuuksia ovat**
+![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previous_inframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
 
-*tähän taulukko/lista siirrettävistä asioista ja ominaisuuksista. alla esimerkki (ei lopullinen)*
+**Inframodel 4- tiedonsiirron uusia ominaisuuksia ovat**
 
-- maaperämalli ominaisuustietoineen *(esim. maalajikerrosominaisuudet)*
-- pintarakenteet ominaisuustietoineen *(esim materiaaliominaisuudet, aluerajaukset)*
-- rakennekerrokset ominaisuustietoineen *(esim. materiaaliominaisuudet)*
-- alueet ominaisuustietoineen
-- turva- ja varoitusalueet ominaisuustietoineen
-- Verkostolajit (jätevesi, hulevesi, vesijohdot, kaukolämpö, kaasu, jäte, kaapelit) ominaisuustietoineen *(esim. materiaali, halkaisija)*
-- jalustat ominaisuustietoineen
-- liikennemerkit ominaisuustietoineen
-- johto- ja kaapelireittien tilavaraukset
-- kaiteet ja aidat ominaisuustietoineen
-- toteumatiedot ominaisuustietoineen
-- pilaristabilointi ominaisuustietoineen
-- vapaat ominaisuustiedot *(esim. omistajatieto, lisätieto, tarkennus tms. jollekin objektille, kuten viivalle, pisteelle tai putkiverkolle)*
+- Vapaamuotoiset ominaisuustiedot – Mahdollistavat entistä laajemman kohdekohtaisen ominaisuustiedon siirtämisen standardin avulla
+- Metadatan laajempi hyödyntäminen – esim. Tiedostokohtaisesti voidaan osoittaa kuka on tiedon omistaja
+- Määrätiedot - Pintojen ja aluerajojen mukana voidaan kuljettaa tietoa pinta-alasta ja tilavuustiedosta
+- Kaapelitiedon välittäminen selkeämpää – Kaapelitiedot siirtyvät skeemassa pipenetwork elementin alle 
+- Putkille ja kaivoille lisätty ominaisuustietoja – Kaivon pohjanpaksuus - Putken lujuusluokka
+- Liikennemerkkitietojen siirtäminen – Mahdollista siirtää liikennemerkkien, pylväiden ja jalustan tietoja
+- Kaiteet ja aidat – Pylväsväli lisätty ominaisuustietoihin
+- Name attribuutit uniikeiksi – Määritellään name-attribuutit tiedostokohtaisesti uniikeiksi
+- Turvarajat ja varoalueet - Muutos mahdollistaa tilavaraus- ja turvaetäisyystiedon siirtämisen
+- Aluemaiselle tiedolle ominaisuudeksi pinta-ala – Mahdollistaa pinta-ala tiedon myös aluerajauksille
 
 Silta- ja muiden taitorakenteiden tietomallipohjaiseen tiedonsiirtoon käytetään IFC-standardia, jota kehittää buildingSMART organisaatio. Lisätietoja standardiversioista ja sisällöstä: https://wiki.buildingsmart.fi/fi/04_Julkaisut_ja_Standardit/bSI
 
