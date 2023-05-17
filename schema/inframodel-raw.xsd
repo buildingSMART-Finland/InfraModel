@@ -6005,7 +6005,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:sequence>
 				<xs:element ref="terrainCoding--ltProperty--gt__im_coding__" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>Sets terrain coding system</xs:documentation>
+						<xs:documentation>Sets terrain code</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="terrainCodingDesc--ltProperty--gt__im_coding__" minOccurs="0"/>
@@ -6131,15 +6131,183 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="propertyplanName--ltProperty--gt"/>
-				<xs:element ref="propertyplanCode--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="propertyplanDesc--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="propertyplanState--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="planName--ltProperty--gt"/>
+				<xs:element ref="planCode--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="planDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="planState--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_plan">
 				<xs:annotation>
 					<xs:documentation>Fixed value, IM_plan</xs:documentation>
 					<xs:documentation>Example:IM_plan</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_soil--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel soil properties  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soiltypeGEO--ltProperty--gt"/>
+				<xs:element ref="soiltypeISO--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="qualificationClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="frostSwellingFactorWet--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="frostSwellingFactorDry--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="elasticModulusWet--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="elasticModulusDry--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_plan">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_soil</xs:documentation>
+					<xs:documentation>Example:IM_soil</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_structLayer--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel structural layer properties  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="material--ltProperty--gt"/>
+				<xs:element ref="grainSizeMin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="grainSizeMax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="nominalThickness--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="strength--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="E-module--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="loadCapacity--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="pavementType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="surfacingMethod--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="stoneStructureType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="stoneType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="stabilizationMethod--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="lightweightFillMaterial--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="lightweightFillMaterialProperty--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_structLayer">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_structLayer</xs:documentation>
+					<xs:documentation>Example:IM_structLayer</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_quantity--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel quantities  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="areaQuantity--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="volumeQuantity--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="quantityCoding--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="quantityCodingDescription--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="quantityCodingSource--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_quantity">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_quantity</xs:documentation>
+					<xs:documentation>Example:IM_quantity</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_cable--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel cable properties  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="label--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="owner--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="networkType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="cableType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_cable">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_cable</xs:documentation>
+					<xs:documentation>Example:IM_cable</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_spatialZone--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel spatial zone  --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="description--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="spatialAllocation--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="spatialAvoidance--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_spatialZone">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_spatialZone</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
@@ -6198,7 +6366,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<!--Typed Inframodel Property definitions, IM_controlPoint-->
 	<xs:element name="useHorizontal--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Shall be set to [yes] if the point should be used for calculating the horizontal transformation</xs:documentation>
+			<xs:documentation>Use point for calculating the horizontal transformation</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="useHorizontal">
@@ -6222,7 +6390,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="useVertical--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Shall be set to [yes] if the point should be used for calculating the vertical transformation</xs:documentation>
+			<xs:documentation>Use point for calculating the vertical transformation</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="useVertical">
@@ -6362,7 +6530,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<!--Typed Inframodel Property definitions, IM_codings-->
 	<xs:element name="terrainCoding--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets terrain coding system</xs:documentation>
+			<xs:documentation>Terrain coding system</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCoding">
@@ -6381,7 +6549,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="terrainCodingSourceRef--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets terrain coding system source</xs:documentation>
+			<xs:documentation>Terrain coding system source</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCodingSourceRef">
@@ -6400,7 +6568,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="terrainCodingDesc--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets terrain coding system description</xs:documentation>
+			<xs:documentation>Terrain coding system description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCodingDesc">
@@ -6419,7 +6587,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="surfaceCoding--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets surface coding system</xs:documentation>
+			<xs:documentation>Surface coding system</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCoding">
@@ -6438,7 +6606,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="surfaceCodingSourceRef--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets surface coding system source</xs:documentation>
+			<xs:documentation>Surface coding system source</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCodingSourceRef">
@@ -6457,7 +6625,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="surfaceCodingDesc--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets surface coding system description</xs:documentation>
+			<xs:documentation>Surface coding system description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCodingDesc">
@@ -6476,7 +6644,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="infraCoding--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets feature coding system</xs:documentation>
+			<xs:documentation>Feature coding system</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCoding">
@@ -6495,7 +6663,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="infraCodingSourceRef--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets  feature coding system source</xs:documentation>
+			<xs:documentation>Feature coding system source</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCodingSourceRef">
@@ -6514,7 +6682,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="infraCodingDesc--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets  feature coding system description</xs:documentation>
+			<xs:documentation>Feature coding system description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCodingDesc">
@@ -6534,7 +6702,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<!--Typed Inframodel Property definitions, IM_coding-->
 	<xs:element name="terrainCoding--ltProperty--gt__im_coding__">
 		<xs:annotation>
-			<xs:documentation>Sets terrain code</xs:documentation>
+			<xs:documentation>Terrain code</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCoding">
@@ -6553,7 +6721,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="terrainCodingDesc--ltProperty--gt__im_coding__">
 		<xs:annotation>
-			<xs:documentation>Sets terrain code description</xs:documentation>
+			<xs:documentation>Terrain code description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCodingDesc">
@@ -6572,7 +6740,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="surfaceCoding--ltProperty--gt__im_coding__">
 		<xs:annotation>
-			<xs:documentation>Sets surface code</xs:documentation>
+			<xs:documentation>Surface code</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCoding">
@@ -6591,7 +6759,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="surfaceCodingDesc--ltProperty--gt__im_coding__">
 		<xs:annotation>
-			<xs:documentation>Sets surface code description</xs:documentation>
+			<xs:documentation>Surface code description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCodingDesc">
@@ -6610,7 +6778,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="infraCoding--ltProperty--gt__im_coding__">
 		<xs:annotation>
-			<xs:documentation>Sets feature code</xs:documentation>
+			<xs:documentation>Feature code</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCoding">
@@ -6629,7 +6797,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="infraCodingDesc--ltProperty--gt__im_coding__">
 		<xs:annotation>
-			<xs:documentation>Sets  feature code description</xs:documentation>
+			<xs:documentation>Feature code description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="infraCodingDesc">
@@ -6649,7 +6817,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<!--Typed Inframodel Property definitions, IM_proprietaryCodings-->
 	<xs:element name="proprietaryInfraCoding--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets proprietary feature coding system</xs:documentation>
+			<xs:documentation>Proprietary feature coding system</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCoding">
@@ -6668,7 +6836,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="proprietaryInfraCodingSourceRef--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets proprietary feature coding system source</xs:documentation>
+			<xs:documentation>Proprietary feature coding system source</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingSourceRef">
@@ -6687,7 +6855,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="proprietaryInfraCodingDesc--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets proprietary feature coding system description</xs:documentation>
+			<xs:documentation>Proprietary feature coding system description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingDesc">
@@ -6707,7 +6875,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<!--Typed Inframodel Property definitions, IM_proprietaryCoding-->
 	<xs:element name="proprietaryInfraCoding--ltProperty--gt__im_proprietarycoding__">
 		<xs:annotation>
-			<xs:documentation>Sets proprietary feature code</xs:documentation>
+			<xs:documentation>Proprietary feature code</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCoding">
@@ -6726,7 +6894,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="proprietaryInfraCodingDesc--ltProperty--gt__im_proprietarycoding__">
 		<xs:annotation>
-			<xs:documentation>Sets proprietary feature code description</xs:documentation>
+			<xs:documentation>Proprietary feature code description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingDesc">
@@ -6745,7 +6913,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="proprietaryInfraCodingSource--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets proprietary feature coding system source </xs:documentation>
+			<xs:documentation>Proprietary feature coding system source </xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingSource">
@@ -6765,7 +6933,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	<!--Typed Inframodel Property definitions, IM_userDefinedProperties-->
 	<xs:element name="propertyLabel--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets user defined property name</xs:documentation>
+			<xs:documentation>User defined property name</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="propertyLabel">
@@ -6784,7 +6952,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="propertyValue--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets user defined property value</xs:documentation>
+			<xs:documentation>User defined property value</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="propertyValue">
@@ -6803,7 +6971,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="propertyDescription--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets user defined property description</xs:documentation>
+			<xs:documentation>User defined property description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="propertyDescription">
@@ -6822,7 +6990,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="propertySource--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets user defined property source</xs:documentation>
+			<xs:documentation>User defined property source</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="propertySource">
@@ -6840,9 +7008,9 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		</xs:complexType>
 	</xs:element>
 	<!--Typed Inframodel Property definitions, IM_plan-->
-	<xs:element name="propertyplanName--ltProperty--gt">
+	<xs:element name="planName--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets plan name</xs:documentation>
+			<xs:documentation>Plan name</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="planName">
@@ -6859,9 +7027,9 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="propertyplanCode--ltProperty--gt">
+	<xs:element name="planCode--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets plan code</xs:documentation>
+			<xs:documentation>Plan code</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="planCode">
@@ -6878,9 +7046,9 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="propertyplanState--ltProperty--gt">
+	<xs:element name="planState--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets plan state</xs:documentation>
+			<xs:documentation>Plan state</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="planState">
@@ -6909,9 +7077,9 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="propertyplanDesc--ltProperty--gt">
+	<xs:element name="planDesc--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Sets plan description</xs:documentation>
+			<xs:documentation>Plan description</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="planDesc">
@@ -6924,6 +7092,748 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 				<xs:annotation>
 					<xs:documentation>Additional information</xs:documentation>
 					<xs:documentation>Example:Part 1</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_soil-->
+	<xs:element name="soiltypeGEO--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type classification according to Geotekninen maaluokitus (VTT 1974)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="soilTypeGEO">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planDesc</xs:documentation>
+					<xs:documentation>Example:planDesc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type classification according to Geotekninen maaluokitus (VTT 1974)</xs:documentation>
+					<xs:documentation>Example:Sa</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="soiltypeISO--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type classification according to SFS-EN ISO 14688-1 or SFS-EN ISO 14688-2	</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="soilTypeISO">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planDesc</xs:documentation>
+					<xs:documentation>Example:planDesc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type classification according to SFS-EN ISO 14688-1 or SFS-EN ISO 14688-2</xs:documentation>
+					<xs:documentation>Example:Cl</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="qualificationClass--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type qualification according to table 10 in TIEH 2100029-04</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="qualificationClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, planDesc</xs:documentation>
+					<xs:documentation>Example:planDesc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type qualification according to table 10 in TIEH 2100029-04</xs:documentation>
+					<xs:documentation>Example:U3</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="frostSwellingFactorWet--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type frost swelling factor in wet conditions</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="frostSwellingFactorWet">
+				<xs:annotation>
+					<xs:documentation>Fixed value, frostSwellingFactorWet</xs:documentation>
+					<xs:documentation>Example:frostSwellingFactorWet</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type frost swelling factor in wet conditions</xs:documentation>
+					<xs:documentation>Example:6</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="frostSwellingFactorDry--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type frost swelling factor in dry conditions</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="frostSwellingFactorDry">
+				<xs:annotation>
+					<xs:documentation>Fixed value, frostSwellingFactorDry</xs:documentation>
+					<xs:documentation>Example:frostSwellingFactorDry</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type frost swelling factor in dry conditions</xs:documentation>
+					<xs:documentation>Example:6</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="elasticModulusWet--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type modulus of elasticity in wet conditions (MPa)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="elasticModulusWet">
+				<xs:annotation>
+					<xs:documentation>Fixed value, elasticModulusWet</xs:documentation>
+					<xs:documentation>Example:elasticModulusWet</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type modulus of elasticity in wet conditions (MPa)</xs:documentation>
+					<xs:documentation>Example:6</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="elasticModulusDry--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Soil type modulus of elasticity in dry conditions (MPa)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="elasticModulusDry">
+				<xs:annotation>
+					<xs:documentation>Fixed value, elasticModulusDry</xs:documentation>
+					<xs:documentation>Example:elasticModulusDry</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Soil type modulus of elasticity in dry conditions (MPa)</xs:documentation>
+					<xs:documentation>Example:6</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_structLayer-->
+	<xs:element name="material--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Material name of the structural layer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="material">
+				<xs:annotation>
+					<xs:documentation>Fixed value, material
+</xs:documentation>
+					<xs:documentation>Example:material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Material name of the structural layer according to applicable guideline, i.e:
+- Asfalttinormit 2011 (PANK Ry. 2011)
+- Tierakenteen suunnittelu (Tiehallinto 2005)
+- Tietoa tiensuunnitteluun 71D (Tiehallinto 2005)
+- Paallysrakenteen stabilointi (Tiehallinto 2007)
+- Kevennysrakenteiden suunnittelu (Liikennevirasto 2011)</xs:documentation>
+					<xs:documentation>Example:KaM</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="grainSizeMin--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Minimum grain size of the material</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="grainSizeMin">
+				<xs:annotation>
+					<xs:documentation>Fixed value, grainSizeMin
+</xs:documentation>
+					<xs:documentation>Example:grainSizeMin</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Minimum grain size of the material in diameter units</xs:documentation>
+					<xs:documentation>Example:0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="grainSizeMax--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Maximum grain size of the material</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="grainSizeMax">
+				<xs:annotation>
+					<xs:documentation>Fixed value, grainSizeMax
+</xs:documentation>
+					<xs:documentation>Example:grainSizeMax</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Maximum grain size of the material in diameter units</xs:documentation>
+					<xs:documentation>Example:0.06</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nominalThickness--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Nominal thickness of the product</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="nominalThickness">
+				<xs:annotation>
+					<xs:documentation>Fixed value, nominalThickness
+</xs:documentation>
+					<xs:documentation>Example:nominalThickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Nominal thickness of the product in meters</xs:documentation>
+					<xs:documentation>Example:0.8</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="strength--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Material strength</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strength">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strength
+</xs:documentation>
+					<xs:documentation>Example:strength</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Material strength (MPa)</xs:documentation>
+					<xs:documentation>Example:10</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E-module--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>E-module used in dimensioning road structure</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="E-module">
+				<xs:annotation>
+					<xs:documentation>Fixed value, E-module
+</xs:documentation>
+					<xs:documentation>Example:E-module</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>E-module used in dimensioning road structure (MPa)</xs:documentation>
+					<xs:documentation>Example:10</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="loadCapacity--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Load-bearing capacity or the structure</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pavementType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pavementType
+</xs:documentation>
+					<xs:documentation>Example:pavementType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Load-bearing capacity or the structure (MPa)</xs:documentation>
+					<xs:documentation>Example:10</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pavementType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pavement type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pavementType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pavementType
+</xs:documentation>
+					<xs:documentation>Example:pavementType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pavement type</xs:documentation>
+					<xs:documentation>Example:Concrete</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="surfacingMethod--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Surfacing method</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="surfacingMethod">
+				<xs:annotation>
+					<xs:documentation>Fixed value, surfacingMethod
+</xs:documentation>
+					<xs:documentation>Example:surfacingMethod</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Surfacing method</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stoneStructureType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Stone structure type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="stoneStructureType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, stoneStructureType
+</xs:documentation>
+					<xs:documentation>Example:stoneStructureType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Stone structure type</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stoneType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Stone type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="stoneType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, stoneType</xs:documentation>
+					<xs:documentation>Example:stoneType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Stone type</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stabilizationMethod--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Stabilzation method</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="stabilizationMethod">
+				<xs:annotation>
+					<xs:documentation>Fixed value, stabilizationMethod</xs:documentation>
+					<xs:documentation>Example:stabilizationMethod</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Stabilization method</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lightweightFillMaterial--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Lightweight fill material</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="lightweightFillMaterial">
+				<xs:annotation>
+					<xs:documentation>Fixed value, lightweightFillMaterial</xs:documentation>
+					<xs:documentation>Example:lightweightFillMaterial</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Lightweight fill material</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lightweightFillMaterialProperty--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Lightweight fill material property</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="lightweightFillMaterialProperty">
+				<xs:annotation>
+					<xs:documentation>Fixed value,lightweightFillMaterialProperty</xs:documentation>
+					<xs:documentation>Example:lightweightFillMaterialProperty</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Lightweight fill material property</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_quantity-->
+	<xs:element name="areaQuantity--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Area</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="areaQuantity">
+				<xs:annotation>
+					<xs:documentation>Fixed value, areaQuantity
+</xs:documentation>
+					<xs:documentation>Example:areaQuantity</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Area in square meters</xs:documentation>
+					<xs:documentation>Example:10</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="volumeQuantity--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Volume</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="volumeQuantity">
+				<xs:annotation>
+					<xs:documentation>Fixed value, volumeQuantity
+</xs:documentation>
+					<xs:documentation>Example:volumeQuantity</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Area in qubic meters</xs:documentation>
+					<xs:documentation>Example:10</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="quantityCoding--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Quantity code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="quantityCoding">
+				<xs:annotation>
+					<xs:documentation>Fixed value, quantityCoding</xs:documentation>
+					<xs:documentation>Example:quantityCoding</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Quantity code</xs:documentation>
+					<xs:documentation>Example:1234</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="quantityCodingDescription--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Quantity code description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="quantityCodingDescription">
+				<xs:annotation>
+					<xs:documentation>Fixed value, quantityCodingDescription</xs:documentation>
+					<xs:documentation>Example:quantityCodingDescription</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Quantity code description</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="quantityCodingSource--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Quantity coding system name</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="quantityCodingSource">
+				<xs:annotation>
+					<xs:documentation>Fixed value, quantityCodingSource</xs:documentation>
+					<xs:documentation>Example:quantityCodingSource</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Quantity coding system name, as defined under --ltProject--gt ->  IM_proprietaryCodings--ltFeature--gt</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_cable-->
+	<xs:element name="label--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Cable label</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="label">
+				<xs:annotation>
+					<xs:documentation>Fixed value, label</xs:documentation>
+					<xs:documentation>Example:label</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Cable label</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="owner--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Cable owner</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="owner">
+				<xs:annotation>
+					<xs:documentation>Fixed value, owner</xs:documentation>
+					<xs:documentation>Example:owner</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Cable owner</xs:documentation>
+					<xs:documentation>Example:companyXY</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="networkType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Cable network type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="networkType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, networkType</xs:documentation>
+					<xs:documentation>Example:networkType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Cable network type</xs:documentation>
+					<xs:documentation>Example:electric</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cableType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Cable type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="cableType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, cableType</xs:documentation>
+					<xs:documentation>Example:networkType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Cable type</xs:documentation>
+					<xs:documentation>Example:??</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_spatialZone-->
+	<xs:element name="description--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Spatial zone description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="description">
+				<xs:annotation>
+					<xs:documentation>Fixed value, description</xs:documentation>
+					<xs:documentation>Example:description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Spatial zone description</xs:documentation>
+					<xs:documentation>Example:existing cables xx</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="spatialAllocation--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Spatial allocation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="spatialAllocation">
+				<xs:annotation>
+					<xs:documentation>Fixed value, spatialAllocation</xs:documentation>
+					<xs:documentation>Example:spatialAllocation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Spatial allocation in meters</xs:documentation>
+					<xs:documentation>Example:1.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="spatialAvoidance--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Spatial avoidance</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="spatialAvoidance">
+				<xs:annotation>
+					<xs:documentation>Fixed value, spatialAvoidance</xs:documentation>
+					<xs:documentation>Example:spatialAvoidance</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Spatial avoidance in meters</xs:documentation>
+					<xs:documentation>Example:1.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_struct-->
+	<xs:element name="structLabel--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Struct label</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="structLabel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, structLabel</xs:documentation>
+					<xs:documentation>Example:structLabel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Struct label</xs:documentation>
+					<xs:documentation>Example:abc123</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimType</xs:documentation>
+					<xs:documentation>Example:rimType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim type</xs:documentation>
+					<xs:documentation>Example:solid cover</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="solid cover"/>
+						<xs:enumeration value="grate "/>
+						<xs:enumeration value="atrium grate"/>
+						<xs:enumeration value="side inlet"/>
+						<xs:enumeration value="drain cap"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimMaterial--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim material</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimMaterial">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimMaterial</xs:documentation>
+					<xs:documentation>Example:rimMaterial</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim material</xs:documentation>
+					<xs:documentation>Example:stainless steel</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="cast iron"/>
+						<xs:enumeration value="stainless steel"/>
+						<xs:enumeration value="concrete"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimLoad--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim load bearing capacity</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimLoad">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimLoad</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim load bearing capacity in kN</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
