@@ -6,11 +6,9 @@ Inframodel (IM) on suomalaisten kehittämä, kansainväliseen LandXML-standardii
 
 Inframodel tiedonsiirtoa hyödynnetään mm. suunnitteluohjelmissa sekä mittaus-, koneohjaus- ja tarkastussovelluksissa. Yhtenäinen toimintatapa ja avoin tietomallipohjainen formaatti on tehostanut suunnittelua ja rakentamista.
 
-Inframodelin ajantasainen dokumentaatio ja skeema löytyy osoitteesta \<linkki>
-
 Inframodel skeema ja dokumentaatio sisältävät tietoa sovelluskehittäjille ja käyttöohje tukee loppukäyttäjiä.
 
-Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja InfraBIM-nimikkeistöjärjstelmään.  
+Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja InfraBIM-nimikkeistöjärjestelmään.  
 
 ![Kolminaisuus]({{figure Kolminaisuus.png}} "Kolminaisuus"){{figst Kolminaisuus}}
 
@@ -35,11 +33,11 @@ Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Ylei
 - Turvarajat ja varoalueet - Muutos mahdollistaa tilavaraus- ja turvaetäisyystiedon siirtämisen
 - Aluemaiselle tiedolle ominaisuudeksi pinta-ala – Mahdollistaa pinta-ala tiedon myös aluerajauksille
 
-Silta- ja muiden taitorakenteiden tietomallipohjaiseen tiedonsiirtoon käytetään IFC-standardia, jota kehittää buildingSMART organisaatio. Lisätietoja standardiversioista ja sisällöstä: https://wiki.buildingsmart.fi/fi/04_Julkaisut_ja_Standardit/bSI
+Silta- ja muiden taitorakenteiden tietomallipohjaiseen tiedonsiirtoon käytetään IFC-standardia, jota kehittää buildingSMART organisaatio. 
 
 Pohjatutkimusten siirtoon käytetään SGY:n (Suomen Geoteknillinen Yhdistys) Infra-pohjatutkimusformaattia.
 
-Inframodel on eräänlainen tietokantamuoto, joka sisältää geometriaa, objektikuvauksia sekä metatietoja. Metatiedoille saattaa olla rajoitettuja arvojoukkoja, jotka ovat sallittuja ko. objekteille. Näistä arvojoukoista löytyy sallittujen arvojen tietolistaukset taulukkomuodossa osoitteesta: https://wiki.buildingsmart.fi/fi/04_Julkaisut_ja_Standardit/Inframodel
+Inframodel on eräänlainen tietokantamuoto, joka sisältää geometriaa, objektikuvauksia sekä metatietoja. Metatiedoille saattaa olla rajoitettuja arvojoukkoja, jotka ovat sallittuja ko. objekteille. 
 
 Inframodel- formaatti on kehittyvä ja sen tietosisältöä laajennetaan tulevissa versioissa. Inframodel on suomalainen lokalisaatio, miten infran tietoa siirretään koneluettavassa muodossa. Tulevaisuuden tavoite on, että Inframodel aineistoa voidaan kirjoittaa ja lukea LandXML sekä IFC muodossa.
 
@@ -51,7 +49,7 @@ Ohjeen jäsentely noudattaa Inframodel dokumentaation sisällysluetteloa. Ohjeen
 
 Ohjeistus on jatkuvasti päivittyvä ja täydentyvä kysymyksiin ja vastauksiin perustuva jatkuvasti kehittyvä dokumentti. 
 
-Ohjeistukseen voi itse vaikuttaa antamalla palautetta tai kysymällä buildingSMART Finlandin palautekanavien kautta tai tekemällä suoraan tiketin kehitysympäristöön \\ \<linkki>. Saatu palaute tai tarvittavat lisäykset / tarkennukset täydennetään käyttöohjeeseen ylläpitoprosessin mukaisesti.
+Ohjeistukseen voi itse vaikuttaa antamalla palautetta tai kysymällä buildingSMART Finlandin palautekanavien kautta tai tekemällä suoraan tiketin kehitysympäristöön. Saatu palaute tai tarvittavat lisäykset / tarkennukset täydennetään käyttöohjeeseen ylläpitoprosessin mukaisesti.
 
 ## Käyttöohje + Q&A
 
@@ -79,7 +77,7 @@ Näiden lisäksi voi tulla tarpeeseen jakaa aineistoa myös paaluväleittäin se
 
 Käytännössä tiedonsiirron tarpeet ovat monenlaisia ja kokonaisuudet on sovittava hankkeen alussa selkeästi. Esimerkiksi kun suunnittelija toimittaa malleja koneohjaukseen, voidaan toimia väylärakenteiden toteutusmalliohjeen mukaisesti (Väylärakenteen toteutusmallin vaatimukset ja -ohjeet) Tai kun maastomallin eri mittausaineistot (likimalli, tarkka maastomalli, täydennysmittaukset) halutaan selkeästi erottaa omina tiedostoina toisistaan.
 
-Aineiston luomisessa, dokumentoinnissa, laadunvarmistuksessa, objekti- ja tiedostonimeämisessä sekä kansioinnissa noudatetaan yleisiä inframallivaatimuksia \<linkki>
+Aineiston luomisessa, dokumentoinnissa, laadunvarmistuksessa, objekti- ja tiedostonimeämisessä sekä kansioinnissa noudatetaan yleisiä inframallivaatimuksia.
 
 #### Q&A
 
@@ -98,7 +96,7 @@ Inframodel tukee LandXML-versiota 1.2 Inframodel- ja LandXML-versio näkyy aina 
 - pinta-alalle neliömetri (m2)
 - tilavuuden yksikkö kuutiometri (m3)
 
-**Yleistietona on annettava ainakin seuraavat:**
+**Yleistietona on annettava seuraavat:**
 
 - Projektin
     - lyhyt nimi tai tunnus
@@ -116,9 +114,7 @@ Inframodel tukee LandXML-versiota 1.2 Inframodel- ja LandXML-versio näkyy aina 
     - sähköpostiosoite
     - tulostuksen aikaleima
 
-Tiedoston nimi ei saa sisältää välilyöntejä, erikois- tai skandinaavisia merkkejä (~!'"@#$%^&äÄöÖåÅ*+=[]\<,>?/;:)
-
-Objektien nimi ei saa sisältää välilyöntejä, erikois- tai skandinaavisia merkkejä (~!'"@#$%^&äÄöÖåÅ*+=[]\<,>?/;:)
+Tiedoston ja objektin nimi ei saa sisältää välilyöntejä, erikois- tai skandinaavisia merkkejä.
 
 #### Codings
 
@@ -178,13 +174,11 @@ Maaperämallin pintojen lajikoodausta on tarkennettu InfraBIM-nimikkeistössä. 
 Linkki dokumentaatioon {{refsec routeplanning}}
 
 #### Väylätiedot
-Inframodel-tiedonsiirrossa väylällä on yksi jatkuva mittalinja ja tasaus. Tien mittalinjan InfraBIM-koodi tulee olla nimikkeistön mukaisesti (tie= 101 tai rata=111). Ratamallissa kilometripaalutus liitetään mittaraiteeseen. Muut geometrialinjat ja taiteviivat sekä pinnat nimetään InfraBIM-luokituksen mukaisesti. Taiteviivamallin viivoilla tulee olla väyläkohtainen yksilöllinen nimi (@name).
+Inframodel-tiedonsiirrossa väylällä on yksi jatkuva mittalinja ja tasaus. Tien mittalinjan InfraBIM-koodi tulee olla nimikkeistön mukaisesti (tie= 101 tai rata=111). Ratamallissa kilometripaalutus liitetään mittaraiteeseen. Muut geometrialinjat ja taiteviivat sekä pinnat nimetään InfraBIM-luokituksen mukaisesti. Taiteviivamallin viivoilla tulee olla tiedostokohtainen yksilöllinen nimi (@name).
 
 Aineistojen nimeämisessä noudatetaan Yleisten inframallivaatimusten sekä InfraBIM-nimikkeistön mukaisia numerointi- ja nimeämiskäytäntöjä. Aineistossa siirretään mallin objekteja sekä niihin liitettyä tietoa. Objektit voivat olla esim. pisteitä, viivoja, geometrioita sekä kolmiointeja. Kolmioinnin vaatimuksena on käyttää kolmioverkkoa, jonka *sourcedata* osiosta löytyy myös BreakLine-tieto (kolmioinnin laskentaa ohjaavat taiteviivat).
 
 ![Esimerkki yhdistelmämalli]({{figure yhdistelmämalli.png}} "Esimerkki yhdistelmämalli"){{figst yhdistelmämalli}}
-
-*Kuva. Inframodel osamalleja voi yhdistää samaan näkymään eri työkaluilla.*
 
 Aineistossa siirretään mallin objekteja sekä niihin liitettyä tietoa. Objektit voivat olla esim. pisteitä, viivoja, alueita, geometrioita sekä kolmiointeja. 
 
@@ -226,7 +220,7 @@ Kaivoilla ja laitteilla tulee olla koko aineiston kattava yksilöllinen nimi (@n
 
 #### Verkostolajit: Kaukolämpö, kaukokylmä, kaasu, jäte yms.
 
-Inframodel sisältää omat määritteet verkostolajeina jäte, hule, vesi, kaukolämpö, kaukojäähdytys, kaasu, jätteen putkikeräys, varoalueet sekä kaapelit varten. Verkkolajit sisällytetään metatietolajiin "IM_pipeNetworkType".
+Inframodel sisältää omat määritteet verkostolajeina mm. vesijohdolle, kaukolämmölle, kaasulle sekä sähkö ja tietoliikennekaapelisuojaputkille. Verkkolajit sisällytetään metatietolajiin "IM_pipeNetworkType".
 
 ![Esimerkki verkostoista]({{figure verkostoesimerkki.png}} "Esimerkki verkostoista"){{figst verkostoesimerkki}}
 
@@ -241,7 +235,7 @@ Linkki dokumentaatioon {{refsec planimetricfeatures}}
 
 Linkki dokumentaatioon {{refsec roadsandstreetsterrainmodel}}
 
-Pintarakenteiden materiaali esitetään aluerajauksina. Rajaus annetaan geometrialinjoina tai 3D- tai 3D-taiteviivaketjuina. Materiaalin päänimike tulee InfraBIM-luokituksen mukaisesti. Lisäksi voidaan antaa kerrospaksuus ja tarkempi kuvaus materiaalista tekstinä kuvauskentässä.
+Pintarakenteiden materiaali esitetään aluerajauksina. Rajaus annetaan geometrialinjoina tai 2D- tai 3D-taiteviivaketjuina. Materiaalin päänimike tulee InfraBIM-luokituksen mukaisesti. Lisäksi voidaan antaa kerrospaksuus ja tarkempi kuvaus materiaalista tekstinä kuvauskentässä.
 
 
 #### Rakennekerrosten materiaaliominaisuudet
@@ -265,7 +259,7 @@ Linkki dokumentaatioon {{refsec cable}}
 
 Kaapelirakenteet on kuvattu Inframodelissa PlanFeature objekteina. Kaapeli on murtoviivaa, jolla on InfraBIM-luokitus. Kaapelin muita ominaisuuksia ovat omistaja, kaapelin tyyppi, tunnus ja tilavaraus. Tilavaraus kuvataan metatietona säteenä tai suorakulmion nurkkapisteinä suhteessa kaapelin keskipisteeseen.
 
-![Esimerkkikuva kaapelirakenteet]({{figure kaapeliesimerkki.png}} "Esimerkkikuva kaapelirakenteet"){{figst kaapeliesimerkki}}
+Inframodel 4.1 versiossa johdot ja kaapelit voidaan kuvata myös putkiverkkona. {{refsec pipes}}
 
 #### Kaiteiden ja aitojen ominaisuudet
 
@@ -289,24 +283,8 @@ Toteutuneen tilanteen tallentamista kutsutaan toteumatiedoksi. Tietoihin sisäll
 
 Toteumamallin käyttötarkoitus on rakenteen geometrisen laadun ja vaatimusten mukaisen toteutuksen todenaminen tilaajalle ja omaisuudenhallinnan lähtötietona toimiminen tilaajan ylläpitoprosessissa. Suosituksena on vähentää laadunvarmistukseen liittyvän mittaustiedon paperidokumentaation laatimiseen käytettävää työmäärää ja dokumentteja.
 
-![Havainnekuva toteumatieto]({{figure toteuma.png}} "Havainnekuva toteumatieto"){{figst toteuma}}
+Väylärakenteen toteumamalli koostuu seuraavista INFRA 2015 rakennusosa- ja hankenimikkeistön mukaisista rakennusosista:
 
-Väylärakenteen toteutusmalli koostuu seuraavista INFRA 2015 rakennusosa- ja hankenimikkeistön mukaisista rakennusosista:
-
-**tähän lista rakennusosista**
-- 1100 Olevat rakenteet ja rakennusosat
-- 1200 Pilaantuneet maat
-- 1300 Perustusrakenteet
-- 1400 Pohjarakenteet
-- 1600 Maaleikkaukset ja -kaivannot
-- 1700 Kallioleikkaukset ja -kaivannot
-- 1800 Penkereet, maapadot ja täytöt
-- 2000 Päällys- ja pintarakenteet
-- 2100 Päällysrakenteen osat ja radan alusrakennekerrokset
-- 2200 Reunatuet, kourut, askelmat ja eroosiosuojaukset
-- 2300 Kasvillisuusrakenteet
-- 2400 Ratojen päällysrakenteet
-- muut mahdolliset ohjeiston mukaiset lisäykset
 
 #### Q&A
 
