@@ -4,7 +4,7 @@
 Inframodel transfer files fully conform to the LandXML v1.2 schema (with one exeption\*), but some extensions have been made using the Feature-mechanism. 
 This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
 
-NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in chapters 1 to 11 of this document. Also, further extensions have been specified in separate schema (im.xsd) for 1) Local Coordinate Transformation (section 1.6) 2) Metadata (section 1.10) and 3) Deep Foundations (section 11).
+NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in  this document. Also, further extensions have been specified in separate schema (im.xsd) for 1) Local Coordinate Transformation (section 1.6) 2) Metadata (section 1.10) and 3) Deep Foundations (section 11).
 
 \* LandXML v1.2 \<choice> declaration in \<Roadways> collection has been changed to \<sequence> in Inframodel v4.1.0, whereby both \<Roadway> elements and feature extensions may appear in the same \<Roadways> collection. 
 
@@ -92,7 +92,6 @@ where:
 
 {{xtabulate proprietaryInfraCodingSourceRef--ltProperty--gt}} 
 
-TODO-MISSING FEATURE ITEM
 {{xtabulate IM_coding--ltFeature--gt}}
 
 
@@ -151,6 +150,8 @@ The details of a plan are described for each project part:
 - water supply and sewerage, in the **\<PipeNetworks>** element.
 
 If the project consists of sub-projects that have different rates of progress, the plan contents of the file are divided into sub-projects according to the same division. The plan information contains the **planName**, **planCode**, the **planState** and the plan description **planDesc**. The plan state is described according to a scheme agreed on by the parties of the project.
+
+{{xtabulate im_plan--ltFeature--gt}}
 
 **Details:**  
 
