@@ -46,7 +46,7 @@ The alignments within a file do not have to be presented in any particular order
 
 A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element.
 
-### Plan information
+### Plan information {{#sec:routeplanningplaninformation}}
 
 The *plan information* of an *alignment group* is described under the **\<Alignments>** element in the optional extension "IM\_plan". If the plan consists of subsets that progress at a different rate or there is some other reason to partition the project into smaller entities, these subsets should be sorted into separate *alignment groups*. The *plan information* contains information about the **planName**, the **planCode**, the **planState** and a description of the plan, **planDesc**. The state is described according to a system agreed on by the parties of the project. See sample in the table below. The *plan information* is also set when describing the surfaces of a route. These are set in the "IM_plan" extension of the **\<Surfaces>** element.
 
