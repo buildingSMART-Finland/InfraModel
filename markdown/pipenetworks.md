@@ -32,7 +32,7 @@ The names of *utility network groups* are unique within the file. If a *network 
 
 {{xtabulate PipeNetworks}}
 
-### Plan information
+### Plan information {#sec:watersupplyandsewerageplaninformation}
 
 The *plan information* of a *network group* is set in the optional "IM_plan" extension under **\<PipeNetworks>** element. If the project consists of several sub-divisions, which progress at different rate, the plan content can be divided into several *network group* **\<PipeNetworks>** elements according to those divisions, or alternatively *plan information* may be set for each *network* in separate "IM_plan" under **\<PipeNetwork>** elements. The plan information contains the **planName** the **planCode**, the **planState**, and the *plan description* **planDesc**. The *plan state* is set according to a scale agreed on by the parties. An example is presented in the tabel below.
 
