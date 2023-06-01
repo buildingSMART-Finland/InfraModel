@@ -68,7 +68,7 @@ It is also possible to set a rotationAngle for the coordinate system.
 ### Local coordinate transformation by point pairs {#sec:localcoordinatetransfromationbypointpairs}
 
 Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension. 
-See {{refto IM_coordTransformation-feature}} for detailed information about "IM_coordTransformation" \<Feature> extension.
+See {{refsec localcoordinatetransfromationbypointpairsext}} for detailed information about "IM_coordTransformation" \<Feature> extension.
 
 ### Local coordinate transformation by transformation parameters {#sec:localcoordinatetransfromationbytransformationparameters}
 
@@ -129,11 +129,7 @@ where:
 
 {{xtabulate stateType}}
 
-Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDefinedProperties" \<Feature> extensions can be found from {{refto IMFeatureEXT}}
-
-- "IM_codings" \<Feature> extension,{{refto IM_codings-feature}}
-- "IM_proprietaryCodings" \<Feature> extension,{{refto IM_proprietaryCodings-feature}}
-- "IM_userDefinedProperties" \<Feature> extension,{{refto IM_userDefinedProperties-feature}}  
+Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDefinedProperties" \<Feature> extensions can be found from {{refsec inframodelfeatureextensions}}
 
 
 ## Type coding systems {#sec:typecodingsystems}
@@ -148,20 +144,20 @@ The main coding systems are set in the "IM_codings" extension *(exactly one in e
 
 The existing terrain description contains source data points and breaklines. The surface description consists of the individual surfaces of the base data (terrain and ground layers) or the planned route or areal structures as TIN surface model or string line model. In addtion to surfaces, planned objects may be described as alignment geometry, line strings or points. It is possible to set the same type coding system for more than one of these.
 
-In addition to the main coding systems, it is also possible to define additional or alternative type coding systems *(none, one or more e.g. InfraRAK2.3, Vesilaitos X, Kaupunki Y etc.)*, using "IM_proprietaryCodings" extension (one instance per coding system) under \<Project>. When a code from a proprietary system is used for an element, each "IM_proprietaryCoding" \<Feature> instance placed under the element being coded shall identify the coding system by its property proprietaryInfraCodingSource, having the same value as the system name set in "IM_proprietaryCodings" property proprietaryInfraCoding.
+In addition to the main coding systems, it is also possible to define additional or alternative type coding systems *(none, one or more e.g. Company X etc.)*, using "IM_proprietaryCodings" extension (one instance per coding system) under \<Project>. When a code from a proprietary system is used for an element, each "IM_proprietaryCoding" \<Feature> instance placed under the element being coded shall identify the coding system by its property proprietaryInfraCodingSource, having the same value as the system name set in "IM_proprietaryCodings" property proprietaryInfraCoding.
 
 
 ## Application {#sec:application}
 
 The \<Application> element describes what software was used to create the file. If the file has been created using several different applications, all are described by their own \<Application> element.
 
-{{xtabulate4 Application}}
+{{xtabulate Application}}
 
 ## Authors {#sec:authors}
 
 Information of the author of the file is recorded in the sub-element \<Application>.\<Author>. It is possible to define several authors as separate \<Author>-elements.
 
-{{xtabulate4 Author}}
+{{xtabulate Author}}
 
 ## Feature dictionary {#sec:featuredictionary}
 
@@ -175,9 +171,9 @@ The name attribute shall be unique, and always 'inframodel' for the dictionary o
 
 The \<version> should match the version number of the Inframodel schema. 
   
-Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ({{refto IMExtensions}} in the case of Inframodel feature dictionary).
+Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ({{resec inframodelfeatureextensions}} in the case of Inframodel feature dictionary).
 
-{{xtabulate4 FeatureDictionary}}
+{{xtabulate FeatureDictionary}}
 
 Proprietary extensions can be included in addition to Inframodel extensions, as "IM_userDefinedProperties" (generic extension specified in Inframodel feature dictionary), with mandatory propertyLabel (name of the property from proprietary source) and propertyValue (value set for the property in this instance), and optional propertyDescription (description or definition of the property from proprietary source) and propertySource (identification of or reference to the property definition source).
 
@@ -187,4 +183,4 @@ Metadata is described with the **\<im:Metadata>** element (specified im-extensio
 
 Metadata is optional and enables the following features shown below.
   
-{{xtabulate IM-Metadata}}
+{{xtabulate IM_Metadata--ltFeature--gt}}
