@@ -165,12 +165,14 @@ If the project consists of sub-projects that have different rates of progress, t
 
 Calculated area of a surface (**\<Surface>**) or the volume below (between two surfaces) can be transferred using "IM_quantity" extension. These quanties may also be assingned to a part of a surface (**\<Surface>**.**\<SourceData>**.**\<Boundaries>**.**\<Boundary>**) or an area defined as a **\<Parcel>**.
 
-{{xtabulate5 IM_quantity}}
+{{xtabulate IM_quantity--ltFeature--gt}}
 
 
 ## Soil properties {#sec:soilpropertiesext}
 
 Soil properties of terrain model or ground layer model are captured in "IM_soil" feature extension.
+
+{{xtabulate IM_soil--ltFeature--gt}}
 
 **Details:**  
 
@@ -178,38 +180,29 @@ Soil properties of terrain model or ground layer model are captured in "IM_soil"
 
 {{refsec groundlayermodel}}
 
+
 ## String line model {#sec:stringlinemodelext}
 
 The string line model is composed of *line string alignments* **\<IrregularLine>**. Their order with an **\<Alignment>** is irrelevant. The string line model used in Inframodel is based on the Leica RoadRunner software.
 
-The string line model is defined under an **\<Alignment>** in the **"IM\_stringlineLayers"** extension. The constituent line strings and their locations are set by layer in the **"IM_stringlineLayer"** child element.  The order of description of the line strings does not matter, the alignments are identified by their unique name **\<Aligenment>.name**, which are listed in the element, separated by commas. A layer is assigned a **name** and optionally a **centerline**. When describing a layered structure the layers of the string line model are assigned surface codes **SurfaceCoding**. The same line string may belong to several different layers. Layer are listed starting from the top downwards.
+The string line model is defined under an **\<Alignment>** in the **"IM\_stringlineLayers"** extension. The constituent line strings and their locations are set by layer in the **"IM_stringlineLayer"** child element.  The order of description of the line strings does not matter, the alignments are identified by their unique name **\<Alignment>.** name, which are listed in the element, separated by commas. A layer is assigned a **name** and optionally a **centerline**. When describing a layered structure the layers of the string line model are assigned surface codes **SurfaceCoding**. The same line string may belong to several different layers. Layer are listed starting from the top downwards.
+
+{{xtabulate IM_stringlineLayers--ltFeature--gt}}
+
+{{xtabulate IM_stringlineLayer--ltFeature--gt}}
 
 **Details:**
 
 {{refsec stringlinemodel}}
 
+
 ## Cross-section parameters {#sec:crosssectionparametersext}
 
 *Cross-section parameters* contain parametric information considered crucial for each route type. They are set for the *stationing reference alignment* in the **\<CrossSects>**.**\<CrossSect>** "IM_crossSect" extension under the **\<Alignment>** element. The chosen cross-section parameters are set in fields (**\<Property>**). It is advisable to describe all parameters for each cross-section. If the some parameters change, the cross-section where the parameter begins to change and the end of the transition are described.
 
-The described parameters vary by route type:
+{{xtabulate CrossSect--ltFeature--gt}}
 
-**parameters in road and street planning**
-- **pavementClass**
-- **pavementThickness**
-- **subgradeLoadCapacityClass**
-- (perpendicular) **slope**
-
-**railway planning parameters**
-- number of **tracks**
-- track distance **trackDist**
-- **thickness** of permanent way
-- track bed width **bedWidth**
-
-**waterway planning parameters**
-- minumum **depth**
-- waterway **width**
-- dimensioning water level height **waterLevel**
+{{xtabulate IM_CrossSect--ltFeature--gt}}
 
 **Details:**
 
@@ -219,13 +212,16 @@ The described parameters vary by route type:
 
 {{refsec crosssectionparameters}}
 
+
 ## Strcutural layer properties {#sec:structureallayerpropertiesext}
 
 Material properties of layers in road, street or railway structual model are captured in "IM_structLayer" feature extension.
 
+{{xtabulate IM_structLayer--ltFeature--gt}}
+
 **Details:**  
 
-{{refsec roadandstreetsstructurallayers}}
+{{refsec roadsandstreetsstructurallayers}}
 
 {{refsec railwaystructurallayers}}
 
@@ -233,46 +229,42 @@ Material properties of layers in road, street or railway structual model are cap
 
 Road signs belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<Roadside>**.**\<RoadSign>**, with detailed properties captured in "IM_roadSign" feature extension:
 
-{{xtabulate5 IM_roadSign}}
+{{xtabulate IM_roadSign--ltFeature--gt}}
 
 ## Railway design - KM post coordinates {#sec:kmpostcoordinatesext}
 
 To assign northing and easting coordinates to railway **\<Alignment>**.**\<StationEquation>**, the parameters are:
 
-- northing coordinate **northing**
-- easting coordinate **easting**
+{{xtabulate IM_kmPostCoords--ltFeature--gt}}
 
 **Details:**
 
 {{refsec kmposting}}
 
+
+
 ## Railway design - switches {#sec:switchesext}
 
 Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, the parameters are:
 
-- switch type **switchType**
-- switch hand **switchHand**
-- switch joint **switchJoint**
+{{xtabulate IM_switch--ltFeature--gt}}
 
 **Details:**
 
-{{refsec switch}}
+{{refsec switchinformation}}
+
 
 ## Utility networks - network type {#sec:networktypeext}
 
 When the attribute pipeNetType in \>PipeNetwork> element is set to 'other', the type of utility network may be speficied in "IM_pipeNetworkType" extension:
 
-- districtheating
-- districtcooling
-- gas
-- waste transport piping
-- cable
+{{xtabulate IM_pipeNetworkType--ltFeature--gt}}
 
 ## Utility networks - structure details {#sec:structuredetailsext}
 
 It is possible to describe additional details of network structures described in inframodel file transfers. The parameters in "IM_struct" are:
 
-{{xtabulate5 IM_struct}}
+{{xtabulate IM_struct--ltFeature--gt}}
 
 **Details:**
 
@@ -282,7 +274,7 @@ It is possible to describe additional details of network structures described in
 
 {{refsec pipeinletsandoutlets}}
 
-{{refsec pipeconnections}}
+{{refsec pipeconnection}}
 
 {{refsec equipment}}
 
@@ -290,7 +282,7 @@ It is possible to describe additional details of network structures described in
 
 It is possible to describe additional details of pipes of a network described in inframodel file transfers. The parameters in "IM_pipe" are:
 
-{{xtabulate5 IM_pipe}}
+{{xtabulate5 IM_pipe--ltFeature--gt}}
 
 **Details:**
 
@@ -298,9 +290,9 @@ It is possible to describe additional details of pipes of a network described in
 
 {{refsec eggpipes}}
 
-{{refsec ellipticpipes}}
+{{refsec ellipticpipe}}
 
-{{refsec rectangularpipes}}
+{{refsec rectangularpipe}}
 
 {{refsec channels}}
 
@@ -308,28 +300,33 @@ It is possible to describe additional details of pipes of a network described in
 
 It is possible to describe additional details of cables of a network described in inframodel file transfers. The parameters in "IM_cable" are:
 
-{{xtabulate5 IM_cable}}
+{{xtabulate IM_cable--ltFeature--gt}}
 
 **Details:**
 
-{{refsec cables}}
+{{refsec cable}}
 
 ## Plan features {#sec:planfeaturesext}
 
 Planimetric features belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<PlanFeature>**, or in other cases in **\<PlanFeatures>**.**\<PlanFeature>**. In addition of capability of being classified using "IM_coding" extension (and/or "IM_proprietaryCoding") and having custom properties using "IM_userDefinedProperties", detailed propeties may be assigned by the type of plan feature:
 
-- cable properties in **"IM_cable"**
-- footing properties in **"IM_footing"**
-- railing properties in **"IM_railing"**
-- fence properties in **"IM_fence"**
-- surface structure properties in **"IM_surfaceStruct"**
-- generic (none of the above) properties in **"IM_planFeature"**
+{{xtabulate IM_cable--ltFeature--gt}}
+
+{{xtabulate IM_footing--ltFeature--gt}}
+
+{{xtabulate IM_railing--ltFeature--gt}}
+
+{{xtabulate IM_fence--ltFeature--gt}}
+
+{{xtabulate IM_surfaceStructure--ltFeature--gt}}
+
+{{xtabulate IM_planFeature--ltFeature--gt}}
 
 **Details:**
 
 {{refsec roadplanfeatures}}
 
-{{refsec railplanfeatures}}
+{{refsec railwayplanfeatures}}
 
 {{refsec waterwayplanfeatures}}
 
@@ -339,7 +336,7 @@ Planimetric features belonging to a particular route design are described in **\
 
 Inframodel enables transfering both planned control points with tolerances (**\<Cgpoints>** as top-level collection), and the measured values (**\<Survey>**.**\<Cgpoints>**), both having detailed properties assign to the collection as "IM_cgpoints":
 
-{{xtabulate IM_cgpoints}}
+{{xtabulate IM_cgpoints--ltFeature--gt}}
 
 **Details:**
 
@@ -350,13 +347,13 @@ Inframodel enables transfering both planned control points with tolerances (**\<
 
 An area or a space allocated for some specific use, or a perimeter around an object to be avoided can be defined using "IM_spatialZone" extension, applicable to  **\<PlanFeature>**, **\<Parcel>**, **\<Pipe>** or **\<Struct>**.
 
-{{xtabulate IM_spatialZone}}
+{{xtabulate IM_spatialZone--ltFeature--gt}}
 
 **Details:**
 
 {{refsec planimetricfeatures}}
 
-{{refsec parcels}}
+{{refsec surfacetructures}}
 
 {{refsec structures}}
 

@@ -18,7 +18,7 @@ The detailed description of the construction process of line string model can be
 ![String line representation of railway]({{figure Rail_stringlinemodel.png}} "String line representation of railway"){{figst stringlinerepresentationofrailway}}
 
 
-## KM-posting
+## KM-posting {#sec:kmposting}
 
 The KM-posting method in inframodel uses **\<StaEquation>** in a way that somewhat differs from its typical use in LandXML. The individual km-post station distances from the previous post station are defined by their back stations **staBack** (for the first KM-post on a given alignment, the **staBack** can be set to "NaN", when it is not known or relevant). This use of **\<StaEquation>** does not imply a re-start in the alignment stationing, hence in inframodel the **staAhead** attribute is always set to the same value as **staInternal** attribute. Individual locations according to the KM-posting system on all tracks are presented in relation to the KM-posting reference alignment. The name of the KM-post station is defined by the **desc** attribute.
 
@@ -28,9 +28,9 @@ Although the Finnish KM-posting system is nominally kilometre based, it cannot b
 
 ![KM-posting]({{figure KM_paalutus.png}} "KM-posting"){{figst kmposting}}
 
-{{xtabulate Feature}}
+{{xtabulate IM_kmPostCoords--ltFeature--gt}}
 
-## Cross-sections and track information
+## Cross-sections and track information {#sec:crosssectionsandtrackinformation}
 
 Cross-section plan contains information that fleshes out the geometry and string line model descriptions of the railway. The information contained by the cross-section element is valid from the given station forward, either to the next transition cross-section element or the end of the line. The cross-section parameters are described under the KM-posting reference track in the **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** element and its extension "IM_crossSect" (**\<Feature>**).
 
@@ -74,7 +74,7 @@ The following transitions are described by the track information sub-element:
 
 {{xtabulate SpeedStation}}
 
-### Switch information
+### Switch information {#sec:switchinformation}
 
 The information on switches of tracks is given under track centerlines in the **\<Alignment>**.**\<CoordGeom>**.**\<Line>** using "IM_switch" **\<Feature>**
 

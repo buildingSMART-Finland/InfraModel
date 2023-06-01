@@ -60,7 +60,7 @@ In Inframodel, the same metric units (as specified in the header-section) shall 
 
 {{xtabulate Pipenetworkunits}}
 
-## Structures
+## Structures {#sec:structures}
 
 The topological network consists of different kinds of structures whose exact location is defined in the file. The different structures in the **\<PipeNetwork>** compose the *structure group* **\<Structs>**, that has no attributes.
 
