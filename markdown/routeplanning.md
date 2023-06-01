@@ -144,7 +144,7 @@ A *line string* has optional attributes and sub-elements to define its **\<Start
 
 {{xtabulate IrregularLine}}
 
-## String line model
+## String line model {#sec:stringlinemodel}
 
 An *alignment group* **\<Alignments>** is a collection of geometric alignments and line strings. The string line model of a route is composed of their descriptions in the file, ordered into layers. The order of *alignment* descriptions within the *alignment group* does not matter. The string line model used in Inframodel is based on the Leica RoadRunner software.
 
