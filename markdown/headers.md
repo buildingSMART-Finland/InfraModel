@@ -171,7 +171,7 @@ The name attribute shall be unique, and always 'inframodel' for the dictionary o
 
 The \<version> should match the version number of the Inframodel schema. 
   
-Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ( {{resec inframodelfeatureextensions}} in the case of Inframodel feature dictionary).
+Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ( {{refsec inframodelfeatureextensions}} in the case of Inframodel feature dictionary).
 
 {{xtabulate FeatureDictionary}}
 
