@@ -41,7 +41,7 @@ The type coding systems used in Inframodel file transfers are set in the header 
 
 Type coding is set by "IM_Coding" \<Feature> extension under a parent element.
 
-{{xtabulate5 IM_Coding--ltFeature--gt}}
+{{xtabulate IM_coding--ltFeature--gt}}
 
 Individual type codes are set primarily in parent elements, from which the child elements will inherit the values. 
 Terrain points and breaklines are type coded using the **terrainCoding** and a coding description **terrainCodingDesc**.
@@ -49,14 +49,14 @@ It is optional to set a **surfaceCoding** and a surface coding description **sur
 Surfaces are given a **surfaceCoding** and a surface coding description **surfaceCodingDesc**, and optionally **terrainCoding** and a coding description **terrainCodingDesc**.
 These both may be given an **infraCoding** and its description **infraCodingDesc**. 
  
-Alternative type codings can be given using "IM_proprietaryCoding" with **proprietaryInfraCoding** and their descriptions **proprietaryInfraCodingDesc**, and with **proprietaryInfraCodingSource* where they both have prefix per proprietary coding systems named under \<Project> element.
+Alternative type codings can be given using "IM_proprietaryCoding" with **proprietaryInfraCoding** and their descriptions **proprietaryInfraCodingDesc**, and with **proprietaryInfraCodingSource** where they both have prefix per proprietary coding systems named under \<Project> element.
 Type coding set by the parent element is also inherited by the child elements, ie. \<Surfaces> element may also set the type coding of its child elements.
 
 ### Quantity information {#sec:quantityinformation}
 
 Calculated area or volume quantities may be assinged to entire \<Surface>, or part of it in source data \<Boundary>, using "IM_quantity" extension:
  
-{{xtabulate5 IM_quantity}}
+{{xtabulate IM_quantity--ltFeature--gt}} 
  
 ## Source data {#sec:sourcedata}
 
@@ -90,13 +90,13 @@ Additionally, it is also possible to define boundaries of the source data in the
 
 {{xtabulate Boundary}}
  
-{{xtabulate IM_surfaceStructure}}
+{{xtabulate IM_surfaceStructure--ltFeature--gt}}
  
-{{xtabulate IM_structLayer}}
+{{xtabulate IM_structLayer--ltFeature--gt}}
  
-{{xtabulate IM_soil}}
+{{xtabulate IM_soil--ltFeature--gt}}
  
-{{xtabulate IM_quantity}}
+{{xtabulate IM_quantity--ltFeature--gt}}
 
 ## Triangular mesh surface {#sec:triangulatedmeshsurface}
 
@@ -144,15 +144,14 @@ It consists of the vertices of the component faces <Pnts> and the faces <Faces> 
 In inframodel file transfers it is also possible to assign source data points and breaklines to the surface.
 An "IM_coding" \<Feature> extension enables surface classifications, and "IM_soil" \<Feature> extension allows to add the technical properties. 
 Terrain model may be part of a optional plan described in "IM_plan" \<Feature>. 
-When exchanging a terrain model, the attribute \<Surfaces>.desc shall be set to "terrain model". TODO:why?
 
+![Terrain model]({{figure Surfaces_terrain.png}} "Terrain model"){{figst terrainmodel}}
+ 
 ### Soil properties {#sec:soilproperties}
 
 When no information of individual ground layers is available, surface model may define the soil propertites below the topmost surface by using "IM_soil" \<Feature> extension.
 
-{{xtabulate4 IM_Soil--ltFeature--gt}}
-
-![Soil properties]({{figure Surfaces_terrain.png}} "Soil properties"){{figst soilproperties}}
+{{xtabulate IM_soil--ltFeature--gt}}
 
 ## Ground layer model {#sec:groundlayermodel}
 
@@ -161,11 +160,9 @@ It is recommended that surfaces are described top-down. Individual layer surface
 A surface may be part of a plan described in "IM_plan" \<Feature>. 
 A "IM_coding" \<Feature> extension provides surface classifications. 
 The technical properties of each soil layer between two surfaces may be given in "IM_soil" <Feature> extension described above. 
-When exchanging a ground layer model as collection of Surfaces, the attribute <Surfaces>.desc shall be set to "ground layer model". TODO:why
 
 ![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
- 
-![Triangulated ground model]({{figure Surfaces_kolmiomalli.png}} "Triangulated ground model"){{figst triangulatedgroundmodel}}	
+
 
 
 
