@@ -90,7 +90,7 @@ Additionally, it is also possible to define boundaries of the source data in the
 
 {{xtabulate Boundary}}
  
-{{xtabulate IM_surfaceStructure}}
+{{xtabulate IM_surfaceStructure--ltFeature--gt}}
  
 {{xtabulate IM_structLayer--ltFeature--gt}}
  
