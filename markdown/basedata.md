@@ -86,9 +86,9 @@ Source *breakline group* is described by the element \<BreakLines>, where each \
 
 Additionally, it is also possible to define boundaries of the source data in the boundary group \<Boundaries>, where each \<Boundary> is presented in its own element. Each boundary may have properties of the area as "IM_surfaceStructure", "IM_structLayer" or "IM_soil", as well as calculated area or volume quantities as "IM_quantity". 
 
-{{xtabulate Boundaries}}
+{{xtabulate Boundaries--ltFeature--gt}}
 
-{{xtabulate Boundary}}
+{{xtabulate Boundary--ltFeature--gt}}
  
 {{xtabulate IM_surfaceStructure--ltFeature--gt}}
  
