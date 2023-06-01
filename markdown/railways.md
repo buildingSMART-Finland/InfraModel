@@ -30,7 +30,7 @@ Although the Finnish KM-posting system is nominally kilometre based, it cannot b
 
 {{xtabulate Feature}}
 
-## Cross-sections and track information
+## Cross-sections and track information {#sec:crosssectionsandtrackinformation}
 
 Cross-section plan contains information that fleshes out the geometry and string line model descriptions of the railway. The information contained by the cross-section element is valid from the given station forward, either to the next transition cross-section element or the end of the line. The cross-section parameters are described under the KM-posting reference track in the **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** element and its extension "IM_crossSect" (**\<Feature>**).
 
