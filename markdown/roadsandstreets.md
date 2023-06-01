@@ -52,7 +52,7 @@ The cross-section parameters describe the situation at a given station, includin
 ![Road cross section]({{figure Road_crossSect_slope.png}} "Road cross section"){{figst roadcrosssection}}
 
 
-### Cross-section parameters
+### Cross-section parameters {#sec:crosssectparameters}
 
 *The cross-section parameters* are set under **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the extension "IM_crossSect". The *cross-section parameters* are optional in street designs.
 
