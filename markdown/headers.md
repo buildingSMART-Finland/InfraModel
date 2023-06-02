@@ -81,8 +81,7 @@ Coordinate systems use a reference ellipsoid, defined by the semi-major and semi
 
 For example, the WGS84 system uses a reference ellipsoid with a semi-major axis of 6 378 137m and a semi-minor axis of 6 356 752m. The ellipsoid center is located at the Earth's center of mass.
 
-1. SourceCRS
-
+#### Source coordinate reference system
 {{xtabulate im:SourceCRS ../schema/im.xsd}}
 
 where
@@ -91,23 +90,24 @@ where
 
 {{xtabulate im:PrimeMeridian ../schema/im.xsd}}
 
-2. TargetCRS
-
+#### Target coordinate reference system
 {{xtabulate im:TargetCRS ../schema/im.xsd}}
 
-3. DatumTransformation
+#### Datum transformation
+{{xtabulate im:DatumTransformation ../schema/im.xsd}}
 
-Helmert3D \<im:DatumTransformation>.\<im:Helmert3D> performs a coordinate transformation from one datum to another.
+Helmert3D performs a coordinate transformation from one datum to another.
 
 {{xtabulate im:Helmert3D ../schema/im.xsd}}
 
-4. Projection
+#### Projection
+{{xtabulate im:Projection ../schema/im.xsd}}
 
 Transverse Mercator Map projection \<im:Projection>.\<im:TransverseMercator> transforms geographical coordinates (latitude, longitude, altitude) to a plane (x, ,y, z). The grid origin is taken on the central latitude and longitude, and false easting and northing is then applied to prevent negative coordinates west or south of the origin.
 
 {{xtabulate im:TransverseMercator ../schema/im.xsd}}
 
-5. Local transformation
+#### Local transformation
 
 In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (x,y,z) is z_corrected = z + (a*x + b*y +c).
 
@@ -129,8 +129,6 @@ where:
 
 {{xtabulate stateType}}
 
-Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDefinedProperties" \<Feature> extensions can be found from {{refsec inframodelfeatureextensions}}
-
 
 ## Type coding systems {#sec:typecodingsystems}
 
@@ -145,6 +143,8 @@ The main coding systems are set in the "IM_codings" extension *(exactly one in e
 The existing terrain description contains source data points and breaklines. The surface description consists of the individual surfaces of the base data (terrain and ground layers) or the planned route or areal structures as TIN surface model or string line model. In addtion to surfaces, planned objects may be described as alignment geometry, line strings or points. It is possible to set the same type coding system for more than one of these.
 
 In addition to the main coding systems, it is also possible to define additional or alternative type coding systems *(none, one or more e.g. Company X etc.)*, using "IM_proprietaryCodings" extension (one instance per coding system) under \<Project>. When a code from a proprietary system is used for an element, each "IM_proprietaryCoding" \<Feature> instance placed under the element being coded shall identify the coding system by its property proprietaryInfraCodingSource, having the same value as the system name set in "IM_proprietaryCodings" property proprietaryInfraCoding.
+
+Detailed information about "IM_codings", "IM_proprietaryCodings" and "IM_userDefinedProperties" \<Feature> extensions can be found from {{refsec inframodelfeatureextensions}}
 
 
 ## Application {#sec:application}

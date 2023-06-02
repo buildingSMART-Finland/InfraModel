@@ -249,9 +249,19 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:sequence>
 				<xs:element ref="im:SourceCRS"/>
 				<xs:element ref="im:TargetCRS"/>
-				<xs:element ref="im:DatumTransformation"/>
-				<xs:element ref="im:Projection"/>
-				<xs:element ref="im:LocalTransformation"/>
+				<xs:element ref="im:DatumTransformation" minOccurs="0"/>
+				<xs:element ref="im:Projection">
+					<xs:annotation>
+						<xs:documentation>Specifies projection to use for projecting the geographical coordinates to a plane and its parameters. </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="im:LocalTransformation">
+					<xs:annotation>
+						<xs:documentation>Transformation from the projected coordinates to the final local coordinates. This consists of first a 2D transformation for the plane coordinates and then a transformation for the height (using a fitted plane).
+
+The plane can be skipped and one can use a real geoid model instead, using the existing markup (verticalCoordinateSystemName).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -528,11 +538,21 @@ tiedot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="im:Ellipsoid"/>
-				<xs:element ref="im:PrimeMeridian"/>
+				<xs:element ref="im:Ellipsoid" minOccurs="0"/>
+				<xs:element ref="im:PrimeMeridian" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="epsg" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Source coordinate reference system name ie. WGS84</xs:documentation>
+					<xs:documentation>Example:WGS84</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="epsg" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>EPSG code of the source coordinate reference system</xs:documentation>
+					<xs:documentation>Example:1234</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="TargetCRS">
@@ -541,20 +561,21 @@ tiedot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Ellipsoid">
-					<xs:complexType>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="semiMajorAxis" type="xs:double"/>
-						<xs:attribute name="inverseFlattening" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="PrimeMeridian">
-					<xs:complexType>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="value" type="xs:double"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:Ellipsoid" minOccurs="0"/>
+				<xs:element ref="im:PrimeMeridian" minOccurs="0"/>
 			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Target coordinate reference system name ie. WGS84</xs:documentation>
+					<xs:documentation>Example:WGS84</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="epsg" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>EPSG code of the target coordinate reference system</xs:documentation>
+					<xs:documentation>Example:1234</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="DatumTransformation">
@@ -597,9 +618,21 @@ tiedot</xs:documentation>
 			<xs:documentation>Ellipsoid definition</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="semiMajorAxis" type="xs:double"/>
-			<xs:attribute name="inverseFlattening" type="xs:double"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Ellipsoid name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="semiMajorAxis" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Ellipsoid semi-major axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="inverseFlattening" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Ellipsoid flattening</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PrimeMeridian">
@@ -607,8 +640,16 @@ tiedot</xs:documentation>
 			<xs:documentation>Prime meridian definition</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="value" type="xs:double"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Prime meridian name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Prime meridian value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Helmert3D">
@@ -616,13 +657,41 @@ tiedot</xs:documentation>
 			<xs:documentation>3D helmert transformation</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="rotationX" type="xs:double"/>
-			<xs:attribute name="rotationY" type="xs:double"/>
-			<xs:attribute name="rotationZ" type="xs:double"/>
-			<xs:attribute name="translationX" type="xs:double"/>
-			<xs:attribute name="translationY" type="xs:double"/>
-			<xs:attribute name="translationZ" type="xs:double"/>
-			<xs:attribute name="scale" type="xs:double"/>
+			<xs:attribute name="rotationX" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Rotation around X-axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rotationY" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Rotation around Y-axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rotationZ" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Rotation around Z-axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="translationX" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>X-axis translation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="translationY" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Y-axis translation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="translationZ" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Z-axis translation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="scale" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Scale in ppm</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="TransverseMercator">
@@ -630,11 +699,31 @@ tiedot</xs:documentation>
 			<xs:documentation>Transverse mercator projection</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="falseEasting" type="xs:double"/>
-			<xs:attribute name="falseNorthing" type="xs:double"/>
-			<xs:attribute name="longitude0" type="xs:double"/>
-			<xs:attribute name="latitude0" type="xs:double"/>
-			<xs:attribute name="scale0" type="xs:double"/>
+			<xs:attribute name="falseEasting" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>False easting value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="falseNorthing" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>False northing value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="longitude0" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Projection center longitude</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="latitude0" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Projection center latitude</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="scale0" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Projection scale in ppm</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Helmert2D">
@@ -642,10 +731,26 @@ tiedot</xs:documentation>
 			<xs:documentation>2D helmert transformation</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="rotation" type="xs:double" use="required"/>
-			<xs:attribute name="scale" type="xs:double" use="required"/>
-			<xs:attribute name="dn" type="xs:double" use="required"/>
-			<xs:attribute name="de" type="xs:double" use="required"/>
+			<xs:attribute name="rotation" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Rotation around z-axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="scale" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Scale in ppm</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dn" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Translation in norting(X) axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="de" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Translation in easting(Y) axis</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="FittedPlane">
@@ -653,9 +758,21 @@ tiedot</xs:documentation>
 			<xs:documentation>Vertical height adjustment with sloping plane</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="a" type="xs:double"/>
-			<xs:attribute name="b" type="xs:double"/>
-			<xs:attribute name="c" type="xs:double"/>
+			<xs:attribute name="constantAdjustment" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Adjustment constant value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="originNorthing" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>North origin</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="originEasting" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>East origin</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
