@@ -41,41 +41,19 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 				<xs:element ref="GradeModel" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Monuments" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Parcels" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="PlanFeatures" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>A collection of planimetric features not otherwise defined by the schema, such as building footprints, guard rails, tree lines, lightpoles or signage.</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element ref="PipeNetworks" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel pipe, duct and cable networks</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element ref="Roadways" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel Roadways with planimetric features and road signs</xs:documentation>
-					</xs:annotation>
-				</xs:element>
+				<xs:element ref="PlanFeatures" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="PipeNetworks" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Roadways" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="Surfaces" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>A collection of surface models.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Survey" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel  survey accuracy
-										I've added state here as a safety net</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element ref="FeatureDictionary" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel feature dictionary (also proprietary dictionaries possible)
-											Used to describe specific Feature code / property type values. DocFileRef points to reference documentation</xs:documentation>
-					</xs:annotation>
-				</xs:element>
+				<xs:element ref="Survey" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="FeatureDictionary" maxOccurs="unbounded"/>
 				<xs:any namespace="##other" processContents="skip" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>Inframodel: Metadata, Local Coordinate Transformations and Pile groups can be transfered in this section</xs:documentation>
+						<xs:documentation>Objects in "im" namespace as  Metadata, Local Coordinate Transformations and Pile groups can be transfered in this section</xs:documentation>
 					</xs:annotation>
 				</xs:any>
 			</xs:choice>
@@ -1241,7 +1219,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	</xs:element>
 	<xs:element name="FeatureDictionary">
 		<xs:annotation>
-			<xs:documentation>Used to describe specific Feature code / property type values. DocFileRef points to reference documentation</xs:documentation>
+			<xs:documentation>Defines the extension sets used by --ltfeature--gt under other elements. </xs:documentation>
 			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1876,8 +1854,8 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 	<!-- Application element -->
 	<xs:element name="Application">
 		<xs:annotation>
-			<xs:documentation>Optional element to identify the software that was used to create the file.
-			Mandatory in Inframodel</xs:documentation>
+			<xs:documentation>Element which identifies the software and author(s) of the file creator and editor(s).
+</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:sequence>
@@ -1914,7 +1892,7 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 	<!-- Survey collection -->
 	<xs:element name="Survey">
 		<xs:annotation>
-			<xs:documentation>I've added state here as a safety net</xs:documentation>
+			<xs:documentation>Survey collection, contains the surveyed as-built data</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3999,17 +3977,11 @@ The "staInternal" value identifies the location of the station equation. It is t
 	<!-- PipeNetworks collection -->
 	<xs:element name="PipeNetworks">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Pipe network collection</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="PipeNetwork" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>(Inframodel)
-
-This element contains one "Structs" collection element and one "Pipes" collection element.</xs:documentation>
-					</xs:annotation>
-				</xs:element>
+				<xs:element ref="PipeNetwork" maxOccurs="unbounded"/>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Inframodel</xs:documentation>
@@ -4044,23 +4016,36 @@ This element contains one "Structs" collection element and one "Pipes" collectio
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Human readable description of the collection</xs:documentation>
+					<xs:documentation>Example:Storm drains and drainage</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>Pipe network collwection state</xs:documentation>
+					<xs:documentation>Example:proposed</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PipeNetwork">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)
-
-This element contains one "Structs" collection element and one "Pipes" collection element.</xs:documentation>
+			<xs:documentation>Pipe network, defined by --ltStructs--gt and --ltPipes--gt</xs:documentation>
 			<xs:documentation>keyRef is a Schema validation mechanism that ensures that the "structRef" and "pipeRef" attribute values have corresponding Pipe and Struct "name" values"</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Structs">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>Structures of pipe network</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="Pipes">
@@ -4102,12 +4087,31 @@ This element contains one "Structs" collection element and one "Pipes" collectio
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="pipeNetType" type="pipeNetworkType" use="required"/>
-			<xs:attribute name="alignmentRef" type="alignmentNameRef"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="pipeNetType" type="pipeNetworkType" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe network type</xs:documentation>
+					<xs:documentation>Example:storm</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Human readable description</xs:documentation>
+					<xs:documentation>Example:Storm drains, area52</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>Pipe network state</xs:documentation>
+					<xs:documentation>Example:proposed</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Pipes">
@@ -4320,7 +4324,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Units" minOccurs="0"/>
+				<xs:element ref="Units" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Struct" minOccurs="2" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Inframodel.
@@ -4500,11 +4504,8 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	<!-- PlanFeatures collection -->
 	<xs:element name="PlanFeatures">
 		<xs:annotation>
-			<xs:documentation>
-(Inframodel)
-
-A collection of planimetric features not otherwise defined by the schema, such as building footprints, guard rails, tree lines, lightpoles or signage.</xs:documentation>
-			<xs:documentation>Typically a PlanFeatures element will contain a collection of similar items.</xs:documentation>
+			<xs:documentation>A collection of planimetric features, ie. footings</xs:documentation>
+			<xs:documentation/>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -5017,7 +5018,7 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 	<!-- FHWA IHSDM elements -->
 	<xs:element name="Roadways">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)</xs:documentation>
+			<xs:documentation>Roadways collection which contain planimetric features of a route, ie. signage</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
