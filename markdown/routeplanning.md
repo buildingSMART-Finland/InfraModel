@@ -53,7 +53,7 @@ The *plan information* of an *alignment group* is described under the **\<Alignm
 {{xtabulate IM_plan--ltFeature--gt}}
 
 
-## Geometric alignments
+## Geometric alignments {#sec:alignments}
 
 The geometric alignment contains the horizontal and vertical alignment information. The *horizontal alignment* information is described in the **\<CoordGeom>** and the corresponding (0 or 1) *vertical geometry* in the element **\<Profile>**.**\<ProfAlign>**. For the connection between horizontal and vertical geometry it is crucial that the geometric description is continuous from the beginning of the first element to the end of the last element. The *horizontal geometry* is described using a 2D coordinate representation, and the final elevation values along the element can only be produced once the vertical geometry is finished. The illustration below shows the horizontal and vertical geometry definition and their connection principal, the optional **staStart** attribute in **\<Line>**, **\<Curve>**, **\<Spiral>** and **\<Profile>** **SHALL NOT** be used for calculating horizontal or vertical geometry.
 
@@ -163,7 +163,7 @@ A line string may belong to several different layers. It is recommended to descr
 
 {{xtabulate IM_stringLineLayers--ltFeature--gt}}
 
-## Terrain model
+## Terrain model {#sec:terrainmodel}
 
 The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec sourcedata}} Also, random points and breaklines of the surface can be described as explained in {{refsec sourcedata}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
 
@@ -179,7 +179,7 @@ The route terrain model consists of:
 
 {{xtabulate Surfaces}}
 
-## Structural model
+## Structural model {#sec:structuralmodel}
 
 The structural model of a route contains the surface meshes of all structural layers. When several layers are transferred in the same file, they shall be described in order from top to down, as explained in {{refsec groundlayermodel}} .
 
