@@ -20,7 +20,7 @@ Cross-section parameters, which are described in further detail in the sections 
 
 Route description is driven by stationing reference line (principal alignment). Other geometry lines are given in the same *alignment collection* \<Alignments> each as separate *alignment* \<Alignment>. Geometry lines and string lines are given in separate *alignment collections* \<Alignments>.
 
-Different routes, alignement options and stationing reference line discontinuities are placed in *separate* \<Alignments>.
+Different routes, alignment options and stationing reference line discontinuities are placed in *separate* \<Alignments>.
 
 ## Naming and Type coding
 
@@ -48,9 +48,9 @@ A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** ele
 
 ### Plan information {#sec:routeplanningplaninformation}
 
-The *plan information* of an *alignment group* is described under the **\<Alignments>** element in the optional extension "IM\_plan". If the plan consists of subsets that progress at a different rate or there is some other reason to partition the project into smaller entities, these subsets should be sorted into separate *alignment groups*. The *plan information* contains information about the **planName**, the **planCode**, the **planState** and a description of the plan, **planDesc**. The state is described according to a system agreed on by the parties of the project. See sample in the table below. The *plan information* is also set when describing the surfaces of a route. These are set in the "IM_plan" extension of the **\<Surfaces>** element.
+The *plan information* of an *alignment group* is described under the **\<Alignments>** element in the optional extension "IM\_plan". If the plan consists of subsets that progress at a different rate or there is some other reason to partition the project into smaller entities, these subsets should be sorted into separate *alignment groups*. The *plan information* is also set when describing the surfaces of a route. These are set in the "IM_plan" extension of the **\<Surfaces>** element.
 
-{{xtabulate IM_plan}}
+{{xtabulate IM_plan--ltFeature--gt}}
 
 
 ## Geometric alignments
@@ -67,7 +67,7 @@ The dimensioning components of horizontal alignments:
 - **\<Curve>**
 - **\<Spiral>**
 
-The horizontal alignment is a listing of consecutive dimensioning components, starting at the **staStart** of the parent **\<Alignment>**. The precise location of the elements is defined in terms of 2D coordinates.
+The horizontal alignment is a listing of consecutive dimensioning components, starting at the **staStart**. The precise location of the elements is defined in terms of 2D coordinates.
 
 ![Horizontal geometry]({{figure Road_Line-curve-spiral.png}} "Horizontal geometry"){{figst horizontalgeometry}}
 
@@ -77,7 +77,7 @@ inframodel does not use attributes for the  **\<CoordGeom>** element.
 
 #### Line
 
-A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction* **dir** and **length** are mandatory, but shall be used as additional information only.
+A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates. In addition, attributes *direction* **dir** and **length** are mandatory, but shall be used as additional information only.
 
 {{xtabulate Line}}
 
@@ -85,19 +85,19 @@ The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the
 
 #### Curve
 
-A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions). In addition, attributes *direction of rotation* **rot**, **chord**, *end direction* **dirEnd**, *start direction* **dirStart**, **length** and **radius** are mandatory, but shall be used as additional information only.
+A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End>** 2D coordinates. In addition, attributes *direction of rotation* **rot**, **chord**, *end direction* **dirEnd**, *start direction* **dirStart**, **length** and **radius** are mandatory, but shall be used as additional information only.
 
 {{xtabulate Curve}}
 
-The **\<Start>**, **\<Center>** and **\<End>** of a **\<Curve>**, the 2D coordinates are separated by spaces.
-
 #### Transition curve
 
-A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end tangents* **\<PI>** and **\<End>** 2D coordinates (3D definition of is possible, but should not be used in horisontal alignment definitions), together with mandatory attribute *transition curve type* **spiType**. In addition, attributes **length**, *end radius* **radiusEnd**, *start radius* **radiusStart**, *direction of rotation* **rot**, the *transition curve parameter* **constant**, *end direction* **dirEnd** and *start direction* **dirStart** are mandatory. In Finnish route design the default *transition curve type* is an Euler spiral "clothoid"; bi-quadratic parabola "biquadraticParabola", or third-degree spiral "cubic" may be used under special circumstances e.g. in railway design.
+A **\<Spiral>** is defined by **\<Start>**, *point of intersection of the end tangents* **\<PI>** and **\<End>** 2D coordinates, together with mandatory attribute *transition curve type* **spiType**. In addition, attributes **length**, *end radius* **radiusEnd**, *start radius* **radiusStart**, *direction of rotation* **rot**, the *transition curve parameter* **constant**, *end direction* **dirEnd** and *start direction* **dirStart** are mandatory. In Finnish route design the default *transition curve type* is an Euler spiral "clothoid"; bi-quadratic parabola "biquadraticParabola", or third-degree spiral "cubic" may be used under special circumstances e.g. in railway design.
 
 NOTE: since attribute **spiType** is mandatory, but has no meaning for "biquadraticParabola" or "cubic", it shall have value set to "NaN" in these cases.
 
 {{xtabulate Curve}}
+
+{{xtabulate Spiral--ltFeature--gt
 
 The **\<Start>**, point on intersection of start and end tangents **\<PI>** and **\<End>** are defined as 2D coordinates separated by spaces.
 
@@ -124,7 +124,7 @@ The first and last element of the *vertical profile* is always *a Point of Verti
 
 #### Vertical curve
 
-Vertical circular arcs may be combined into S-curves or compound curves. The first and last element of a vertical *profile* is never a vertical circular arc **\<CircCurve>**.
+Vertical circular arcs may be combined into S-curves or compound curves. 
 
 The location of the **\<CircCurve>** is defined by the *station* and *elevation*, separated by spaces.
 
@@ -132,11 +132,11 @@ The location of the **\<CircCurve>** is defined by the *station* and *elevation*
 
 ## Line strings
 
-*Line strings* are defined in concert with the *horizontal geometry* **\<CoordGeom>**. *Line strings* are defined as a series of 2D points (when 2D representation is sufficient) or 3D points, hence it does not need a vertical **\<Profile>** element for 3D representation. The dimensioning element of a line string is:
+*Line strings* are defined in concert with the *horizontal geometry* **\<CoordGeom>**. *Line strings* are defined as a series of 2D points or 3D points, hence it does not need a vertical **\<Profile>** element for 3D representation. The dimensioning element of a line string is:
 
 - **\<IrregularLine>**
 
-![Irregular line]({{figure Road_IrLine.png}} "Irregular line"){{figst irregularline}}
+![Line Strings]({{figure Road_IrLine.png}} "Line Strings"){{figst linestrings}}
 
 ### Line string
 
@@ -161,7 +161,7 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 
 A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
 
-{{xtabulate IM_stringLineLayers}}
+{{xtabulate IM_stringLineLayers--ltFeature--gt}}
 
 ## Terrain model
 
