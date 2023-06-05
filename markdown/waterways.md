@@ -1,13 +1,13 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Waterway design {#sec:waterwaydesign}
 
-An inframodel compliant file transfer utilizes the header information defined in chapter 1 Headers. The plan is described as appropriate according to the guidelines laid out in chapter 3 Route planning (general). All plan information contained in the file utilize a common coordinate, elevation and unit system. The utilized units are metric units appropriate for the file content.
+An inframodel compliant file transfer utilizes the header information defined in chapter 1 Headers. The plan is described as appropriate according to the guidelines laid out in {{refsec routeplanning}}. All plan information contained in the file utilize a common coordinate, elevation and unit system. The utilized units are metric units appropriate for the file content.
 
 The geometry of a waterway is not described by tangent points in this context. An waterway design contains at least one *alignment group* **\<Alignments>** composed of *alignments* **\<Alignment>**, a string line model or a surface model and a structural model. Surfaces can have source data point or breakline information attached to them. In addition, the cross-section, minimum depth, minimum width and dimensioning water level height is described.
 
 ## Waterway geometry
 
-Inframodel waterways **\<Alignments>** must have a continuous stationing reference alignment. This alignment and other central alignments are presented as geometric alignments (description hierarchy *1).In waterway designs, the stationing reference line and the left and right edge alignments are usually described as geometric alignments. A geometric alignment contains information about the horizontal and vertical dimensioning elements of an alignment. Other alignments are described in terms of line strings (description hierarchy *2). The geometric alignments are also given a line string representation for use in the line string model. The process is described in further detail in chapter 3 Route planning (general).
+Inframodel waterways **\<Alignments>** must have a continuous stationing reference alignment. This alignment and other central alignments are presented as geometric alignments. In waterway designs, the stationing reference line and the left and right edge alignments are usually described as geometric alignments. A geometric alignment contains information about the horizontal and vertical dimensioning elements of an alignment. Other alignments are described in terms of line strings. The geometric alignments are also given a line string representation for use in the line string model. The process is described in further detail in {{refsec routeplanning}}.
 
 The alignment group must contain at least one continuous geometric alignment as the stationing reference line. The reference line may be something other than the alignment centerline and its position relative to the centerline may vary. The tangent points are not described in the alignment definition. They can, however, be described as separate *line strings* **\<Alignment>**. The elevation of the centerline is usually set to the average lowest height of the sailing season in inland bodies of water.
 
@@ -23,7 +23,7 @@ The *cross-section parameters* are set for the *stationing reference alignment* 
 
 {{xtabulate CrossSect}}
 
-{{xtabulate IM_CrossSect}}
+{{xtabulate IM_CrossSect--ltFeature--gt}}
 
 ## String line model
 
@@ -33,7 +33,6 @@ The *line string model* of routes is described in further detail in {{refsec str
 
 ![Waterway string line representation]({{figure Water_stringlinemodel.png}} "Waterway string line representation"){{figst waterwaystringlinerepresentation]}}
 
-{{xmlsnippet stringlinemodel}}
 
 ## Surface and structural model
 
@@ -41,7 +40,7 @@ The structural model of a waterway is described in detail in {{refsec structural
 
 It is possible to attach source data point and breakline information to surfaces. The process is described in further detail in {{refsec sourcedata}}.
 
-![Waterway structural model]({{figure Water_stringlinemodel.png}} "Waterway structural model"){{figst waterwaystructuralmodel}}
+![Waterway structural model]({{figure Water_structuremodel.png}} "Waterway structural model"){{figst waterwaystructuralmodel}}
 
 ## Waterway plan features {#sec:waterwayplanfeatures}
 
@@ -62,11 +61,11 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
-     1. {{refsec cableinformationext}} in "IM_cable" extension
-     2. {{refsec footinginformationext}} in "IM_footing" extension
-     3. {{refsec railinginformationext}} in "IM_railing" extension
-     4. {{refsec fenceinformationext}} in "IM_fence" extension
-     5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
-     6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
+     1. {{refsec cable}} in "IM_cable" extension
+     2. {{refsec footing}} in "IM_footing" extension
+     3. {{refsec railing}} in "IM_railing" extension
+     4. {{refsec fence}} in "IM_fence" extension
+     5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
+     6. {{refsec genericplanfeature}} in "IM_planfeature" extension
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
