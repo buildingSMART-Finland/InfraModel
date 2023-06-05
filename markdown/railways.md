@@ -7,7 +7,7 @@ The methods used to describe a route in inframodel file transfer are described i
 
 One **\<Alignments>** collection containing several **\<Alignment>** elements is used for describing a railway geometry. Only one of those **\<Alignment>** elements can be the centerline of reference track for KM-posting. Description a track centerline is always a geometric **\<Alignment>**.
 
-The geometric alignment description is composed of elements in horizontal and vertical geometry, respectively. The KM-posting reference track and additional track center lines have their own type codes in inframodel rail planning. Other lines than centerlines and the bottoms of the rails are described as line strings. Since the *string line model* of the track only uses line strings, the *line information* contained by the *geometry lines* is also described as an approximate *line string*. These may be presented in any order. The type coding of individual lines determines their purposes; the type code (terrainCoding) for the terrain model is set in a structural extension. The desired lines can be included in a *string line model*, according to the structural extension "IM\_stringlineLayers". In the stringline model the surfaces can be assigned surface codes (**surfaceCoding**). The *surface and structural models of a railway* can also be described as triangular meshes (TIN surfaces). The raiway *plan information* is defined in the optional "IM_plan" structural extension.
+The geometric alignment description is composed of elements in horizontal and vertical geometry, respectively (see {{refsec alignments}}). The KM-posting reference track and additional track center lines have their own type codes in inframodel rail planning. Other lines than centerlines and the bottoms of the rails are described as line strings. Since the *string line model* of the track only uses line strings, the *line information* contained by the *geometry lines* is also described as an approximate *line string*. These may be presented in any order. The type coding of individual lines determines their purposes; the type code (terrainCoding) for the terrain model is set in a structural extension. The desired lines can be included in a *string line model*, according to the structural extension "IM\_stringlineLayers". In the stringline model the surfaces can be assigned surface codes (**surfaceCoding**). The *surface and structural models of a railway* can also be described as triangular meshes (TIN surfaces). The raiway *plan information* is defined in the optional "IM_plan" structural extension.
 
 ## String line model
 
@@ -51,7 +51,7 @@ The following information must be defined in the extension "IM_crossSect" for an
 - the total thichness of track bed layers **thickness**
 - track bed or cut width **bedWidth**
 
-{{xtabulate IM-crossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt}}
 
 ### Track information
 
