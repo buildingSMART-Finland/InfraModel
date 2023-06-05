@@ -97,7 +97,7 @@ NOTE: since attribute **spiType** is mandatory, but has no meaning for "biquadra
 
 {{xtabulate Curve}}
 
-{{xtabulate Spiral--ltFeature--gt}}
+{{xtabulate Spiral}}
 
 The **\<Start>**, point on intersection of start and end tangents **\<PI>** and **\<End>** are defined as 2D coordinates separated by spaces.
 
