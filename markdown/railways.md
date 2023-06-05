@@ -7,13 +7,13 @@ The methods used to describe a route in inframodel file transfer are described i
 
 One **\<Alignments>** collection containing several **\<Alignment>** elements is used for describing a railway geometry. Only one of those **\<Alignment>** elements can be the centerline of reference track for KM-posting. Description a track centerline is always a geometric **\<Alignment>**.
 
-The geometric alignment description is composed of elements in horizontal and vertical geometry, respectively (see section 3.3). The KM-posting reference track and additional track center lines have their own type codes in inframodel rail planning. Other lines than centerlines and the bottoms of the rails are described as line strings (description hierarchy \*2). Since the *string line model* of the track only uses line strings, the *line information* contained by the *geometry lines* is also described as an approximate *line string*. These may be presented in any order. The type coding of individual lines determines their purposes; the type code (terrainCoding) for the terrain model is set in a structural extension. The desired lines can be included in a *string line model*, according to the structural extension "IM\_stringlineLayers". In the stringline model the surfaces can be assigned surface codes (**surfaceCoding**). The *surface and structural models of a railway* can also be described as triangular meshes (TIN surfaces). The raiway *plan information* is defined in the optional "IM_plan" structural extension.
+The geometric alignment description is composed of elements in horizontal and vertical geometry, respectively. The KM-posting reference track and additional track center lines have their own type codes in inframodel rail planning. Other lines than centerlines and the bottoms of the rails are described as line strings. Since the *string line model* of the track only uses line strings, the *line information* contained by the *geometry lines* is also described as an approximate *line string*. These may be presented in any order. The type coding of individual lines determines their purposes; the type code (terrainCoding) for the terrain model is set in a structural extension. The desired lines can be included in a *string line model*, according to the structural extension "IM\_stringlineLayers". In the stringline model the surfaces can be assigned surface codes (**surfaceCoding**). The *surface and structural models of a railway* can also be described as triangular meshes (TIN surfaces). The raiway *plan information* is defined in the optional "IM_plan" structural extension.
 
 ## String line model
 
 After a particular **\<Alignment>** out of a group of **\<Alignments>** has been defined, the stringline model may be defined in the structural extension "IM_stringlineLayers". The mode of presentation is akin to cross-sections, the stringline layers of the string line model are refered to by their name **\<Alignment>.name** and the location is described as surfaces. It is not always possible to present all line strings contained by the layer in order from left to right, although this is recommended.
 
-The detailed description of the construction process of line string model can be found in {{refsec String line model}}. The lines of the string line model employ the same terrain point coding as alignments. Surfaces are defined in the string line model with surface codes (**surfaceCoding**).
+The detailed description of the construction process of line string model can be found in {{refsec stringlinemodel}}. The lines of the string line model employ the same terrain point coding as alignments. Surfaces are defined in the string line model with surface codes (**surfaceCoding**).
 
 ![String line representation of railway]({{figure Rail_stringlinemodel.png}} "String line representation of railway"){{figst stringlinerepresentationofrailway}}
 
@@ -40,7 +40,7 @@ It is recommended that all parameters are described along with the cross-section
 
 The cross-sections for KM-posting reference track are defined by the element **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>**. For individual cross-sections, the cross-section parameters are presented in the extension "IM_crossSect". Transitions are defined in the points where parameters change start and where they have reached their final values after the transition. Triple and higher multiple track railways are composed of double and single track standard cross-sections.
 
-![Cross section({{figure Rail_crossSect_cant.png}} "Cross section"){{figst crosssection}}
+![Cross section]({{figure Rail_crossSect_cant.png}} "Cross section"){{figst crosssection}}
 
 {{xtabulate CrossSect}}
 
@@ -51,7 +51,7 @@ The following information must be defined in the extension "IM_crossSect" for an
 - the total thichness of track bed layers **thickness**
 - track bed or cut width **bedWidth**
 
-{{xtabulate Feature}}
+{{xtabulate IM-crossSect--ltFeature--gt}}
 
 ### Track information
 
@@ -78,7 +78,7 @@ The following transitions are described by the track information sub-element:
 
 The information on switches of tracks is given under track centerlines in the **\<Alignment>**.**\<CoordGeom>**.**\<Line>** using "IM_switch" **\<Feature>**
 
-{{xtabulate IM_switch}}
+{{xtabulate IM_switch--ltFeature--gt}}
 
 ## Terrain model and structural model of the track {#sec:railwaystructurallayers}
 
@@ -86,7 +86,7 @@ The presentation method of the *terrain model* is described in further detail in
 
 It is also possible to add source data point and breakline information to surfaces. This is described in further detail in the section {{refsec sourcedata}}.
 
-![Railway structural model({{figure Rail_structuremodel.png}} "Railway structural model"){{figst railwaystructuralmodel}}
+![Railway structural model]({{figure Rail_structuremodel.png}} "Railway structural model"){{figst railwaystructuralmodel}}
 
 ## Rail plan features {#sec:railwayplanfeatures}
 
@@ -106,11 +106,11 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
-1. {{refsec cableinformationext}} in "IM_cable" extension
-2. {{refsec footinginformationext}} in "IM_footing" extension
-3. {{refsec railinginformationext}} in "IM_railing" extension
-4. {{refsec fenceinformationext}} in "IM_fence" extension
-5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
-6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
+1. {{refsec cable}} in "IM_cable" extension
+2. {{refsec footing}} in "IM_footing" extension
+3. {{refsec railing}} in "IM_railing" extension
+4. {{refsec fence}} in "IM_fence" extension
+5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeature}} in "IM_planfeature" extension
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
