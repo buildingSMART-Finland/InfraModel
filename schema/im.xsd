@@ -309,41 +309,24 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	<xs:element name="Metadata">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Description" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>Description of the data set</xs:documentation>
-					</xs:annotation>
-				</xs:element>
 				<xs:element name="CreatedBy">
 					<xs:annotation>
-						<xs:documentation>Vendor who created the XML message</xs:documentation>
+						<xs:documentation>Person who has created the data</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Company" type="xs:string">
-								<xs:annotation>
-									<xs:documentation>Company name</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Company WWW URL</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="ContactInformation" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Contact information within company</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Firstname" type="xs:string"/>
-										<xs:element name="Lastname" type="xs:string"/>
-										<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-										<xs:element name="Email" type="xs:string" minOccurs="0"/>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
+							<xs:element ref="im:ContactInformation"/>
 						</xs:sequence>
+						<xs:attribute name="Company" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Company name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CompanyURL" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Company URL</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="DataOwner" minOccurs="0">
@@ -352,95 +335,78 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Company" type="xs:string">
-								<xs:annotation>
-									<xs:documentation>Company name</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Company WWW URL</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="ContactInformation" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Contact information within company</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Firstname" type="xs:string"/>
-										<xs:element name="Lastname" type="xs:string"/>
-										<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-										<xs:element name="Email" type="xs:string" minOccurs="0"/>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
+							<xs:element ref="im:ContactInformation" minOccurs="0"/>
 						</xs:sequence>
+						<xs:attribute name="Company" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Company name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CompanyURL" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Company URL</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="History" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Data creation and modification information</xs:documentation>
+					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="CreateTimestamp">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="Company" type="xs:string" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Company name</xs:documentation>
-											</xs:annotation>
-										</xs:element>
-										<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Company WWW URL</xs:documentation>
-											</xs:annotation>
-										</xs:element>
-										<xs:element name="ContactInformation" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Contact information within company</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="Firstname" type="xs:string"/>
-													<xs:element name="Lastname" type="xs:string"/>
-													<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-													<xs:element name="Email" type="xs:string" minOccurs="0"/>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="TimeStamp" type="xs:dateTime"/>
-										<xs:element name="Description" type="xs:string" minOccurs="0"/>
+										<xs:element ref="im:ContactInformation" minOccurs="0"/>
 									</xs:sequence>
+									<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+										<xs:annotation>
+											<xs:documentation>Creation time as UTC</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Company" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Company name</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="CompanyURL" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Company WWW URL</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Description" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Desription</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="ModifiedTimestamp" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="Company" type="xs:string" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Company name</xs:documentation>
-											</xs:annotation>
-										</xs:element>
-										<xs:element name="CompanyURL" type="xs:string" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Company WWW URL</xs:documentation>
-											</xs:annotation>
-										</xs:element>
-										<xs:element name="ContactInformation" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Contact information within company</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="Firstname" type="xs:string"/>
-													<xs:element name="Lastname" type="xs:string"/>
-													<xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-													<xs:element name="Email" type="xs:string" minOccurs="0"/>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="TimeStamp" type="xs:dateTime"/>
-										<xs:element name="Description" type="xs:string" minOccurs="0"/>
+										<xs:element ref="im:ContactInformation" minOccurs="0"/>
 									</xs:sequence>
+									<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+										<xs:annotation>
+											<xs:documentation>Modification time as UTC</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Company" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Company name</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="CompanyURL" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Company WWW URL</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Description" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Desription</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
@@ -452,62 +418,35 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Accuracy" type="xs:string" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Free text describing the data accuracy</xs:documentation>
-								</xs:annotation>
-							</xs:element>
 							<xs:element name="Source">
 								<xs:annotation>
-									<xs:documentation>When and Where is data originated from </xs:documentation>
+									<xs:documentation>When and where is data originated from </xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Date" type="xs:date"/>
-										<xs:element name="Type" type="xs:string"/>
-									</xs:sequence>
+									<xs:attribute name="Date" type="xs:date" use="required">
+										<xs:annotation>
+											<xs:documentation>Date</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Type" type="xs:string" use="required">
+										<xs:annotation>
+											<xs:documentation>Type</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="CreateMethod" type="xs:string">
-								<xs:annotation>
-									<xs:documentation>Free text describing how data was created from the Source (with the described Accuracy)</xs:documentation>
-								</xs:annotation>
-							</xs:element>
 						</xs:sequence>
+						<xs:attribute name="CreateMethod" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Free text describing how data was created from the Source</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Accuracy" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Free text describing the data accuracy</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
-				</xs:element>
-				<xs:element name="Status" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Data status</xs:documentation>
-					</xs:annotation>
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="final"/>
-							<xs:enumeration value="draft"/>
-							<xs:enumeration value="other"/>
-							<xs:enumeration value="unknown"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
-				<xs:element name="Language" type="xs:string" minOccurs="0"/>
-				<xs:element name="MetadataURL" type="xs:string" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>URL www-sivulle, josta aineiston metatiedot ovat 
-luettavissa ”selkokielisenä”. Esim: 
-http://www.paikkatietoikkuna.fi/web/fi/paikkatietoaineisto?inspireMetadat
-aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="InformationProductURL" type="xs:string" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>URL, josta saadaan aineistoon liittyvän tietotuotteen 
-tiedot</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="PlanningStatus" type="xs:string" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Planning status</xs:documentation>
-					</xs:annotation>
 				</xs:element>
 				<xs:element name="modelStatus" minOccurs="0">
 					<xs:annotation>
@@ -515,6 +454,9 @@ tiedot</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:attribute name="label">
+							<xs:annotation>
+								<xs:documentation>Status</xs:documentation>
+							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
 									<xs:enumeration value="preliminary plan"/>
@@ -526,10 +468,54 @@ tiedot</xs:documentation>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
-						<xs:attribute name="desc" type="xs:string"/>
+						<xs:attribute name="desc" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Description</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
+			<xs:attribute name="Description" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Description of the data set</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Status">
+				<xs:annotation>
+					<xs:documentation>Data status</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="final"/>
+						<xs:enumeration value="draft"/>
+						<xs:enumeration value="other"/>
+						<xs:enumeration value="unknown"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="Language" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Metadata language</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="MetadataURL" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>URL pointing to location of the metadata
+http://www.paikkatietoikkuna.fi/web/fi/paikkatietoaineisto?inspireMetadat
+aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="InformationProductURL" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>URL pointing to location which has the details about information product</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="PlanningStatus" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Planning status</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="SourceCRS">
@@ -771,6 +757,33 @@ tiedot</xs:documentation>
 			<xs:attribute name="originEasting" type="xs:double" use="required">
 				<xs:annotation>
 					<xs:documentation>East origin</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ContactInformation">
+		<xs:annotation>
+			<xs:documentation>Contact information within company</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="Firstname" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>First name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Lastname" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Last name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Phone" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Phone number</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Email" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Email address</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>

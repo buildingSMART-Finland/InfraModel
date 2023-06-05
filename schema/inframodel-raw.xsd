@@ -738,6 +738,9 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="stateType">
+		<xs:annotation>
+			<xs:documentation>State of object</xs:documentation>
+		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="abandoned"/>
 			<xs:enumeration value="destroyed"/>
@@ -1186,8 +1189,16 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:documentation>A reference to any external document file containing related information for the associated element.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="name" use="required"/>
-			<xs:attribute name="location" type="xs:anyURI" use="required"/>
+			<xs:attribute name="name" use="required">
+				<xs:annotation>
+					<xs:documentation>Document name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="location" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>Document URL</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="fileType" type="xs:string"/>
 			<xs:attribute name="fileFormat" type="xs:string"/>
 		</xs:complexType>
@@ -1229,10 +1240,22 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>A reference to external document file containing definitions of extensions</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="version" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Feature dictionary name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="version" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Feature dictionary version</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PntList2D">
@@ -1815,7 +1838,7 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 						<xs:documentation>Represents the base point of coordinate system</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Note as a text content of element</xs:documentation>
 					</xs:annotation>
