@@ -30,7 +30,7 @@ Assigning *type codes* to alignments is optional in Inframodel file transfers. T
 
 Layers of a string line model, described in optional "IM_stringLineLayers" extension may also have type codes, as well as the triangulated meshes surfaces in surface or structural models, using "IM_coding" with **surfaceCoding** and its description **surfaceCodingDesc**, or also as "IM_proprietaryCoding".
 
-## Composing alignments
+## Composing alignments 
 
 The names *name* of *alignment groups* \<Alignments> are unique. The **state** attribute is optional. The *description* attribute **desc** is also optional and may be used to describe the *alignment group* \<Alignments> in further detail.
 
