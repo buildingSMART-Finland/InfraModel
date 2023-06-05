@@ -171,11 +171,12 @@ The name attribute shall be unique, and always 'inframodel' for the dictionary o
 
 The \<version> should match the version number of the Inframodel schema. 
   
-Optional \<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ( {{refsec inframodelfeatureextensions}} in the case of Inframodel feature dictionary).
+\<DocFileRef> element can be used to provide the URI link to named external documentation where applicable feature code and property type values are described ( {{refsec inframodelfeatureextensions}} in the case of Inframodel feature dictionary).
 
 {{xtabulate FeatureDictionary}}
 
-Proprietary extensions can be included in addition to Inframodel extensions, as "IM_userDefinedProperties" (generic extension specified in Inframodel feature dictionary), with mandatory propertyLabel (name of the property from proprietary source) and propertyValue (value set for the property in this instance), and optional propertyDescription (description or definition of the property from proprietary source) and propertySource (identification of or reference to the property definition source).
+Proprietary extensions can be included in addition to Inframodel extensions, as "IM_userDefinedProperties" (generic extension specified in Inframodel feature dictionary)
+For more information about "IM_userDefinedProperties" see {{refsec userdefinedpropertiesext}}
 
 ## Metadata {#sec:metadata}
   
@@ -183,4 +184,4 @@ Metadata is described with the **\<im:Metadata>** element (specified im-extensio
 
 Metadata is optional and enables the following features shown below.
   
-{{xtabulate IM_metadata}}
+{{xtabulate im:Metadata ../schema/im.xsd}}
