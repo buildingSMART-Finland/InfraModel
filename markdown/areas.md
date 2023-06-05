@@ -1,11 +1,11 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Area structures {#sec:areastructures}
 
-*Area structures* encompass descriptions of surfaces and boundaries that complement routes. Such descriptions are for e.g. landscaping, noise barriers and geostructures. The file in which these structures are described contains the header information presented in chapter 1. Area structures are described as *defined areas*  **\<Parcel>** with **\<CoordGeom>**, or as  *surfaces* **\<Surface>**. The surface description consist of triangular meshes as explained in {{refsec basedata}}, where it is also possible to attach random points **\<DataPoints>** and breaklines **\<BreakLines>** to the surfaces. 
+*Area structures* encompass descriptions of surfaces and boundaries that complement routes. Such descriptions are for e.g. landscaping, noise barriers and geostructures. The file in which these structures are described contains the header information presented in {{refsec fileheaders}}. Area structures are described as *defined areas*  **\<Parcel>** with **\<CoordGeom>**, or as  *surfaces* **\<Surface>**. The surface description consist of triangular meshes as explained in {{refsec basedata}}, where it is also possible to attach random points **\<DataPoints>** and breaklines **\<BreakLines>** to the surfaces. 
 
 ## Landscaping {#sec:landscaping}
 
-Landscaping encompasses the areas surrounding a design entity. The description consists of a surface description, which is described in further detail in section 2.4. The surface description consists of a triangle mesh, which may have random points or breaklines attached to it. Structural surfaces or cross-sections are usually not defined for landscaping.
+Landscaping encompasses the areas surrounding a design entity. The description consists of a surface description, which is described in further detail in {{refsec terrainmodel}}. The surface description consists of a triangle mesh, which may have random points or breaklines attached to it. Structural surfaces or cross-sections are usually not defined for landscaping.
 
 The landscaping *plan information* is defined in the optional extension "IM_plan". A *surface code* (**SurfaceCoding**) is set for the surfaces . It is also possible to set an alternative type coding (**proprietaryInfraCoding**).
 
@@ -19,12 +19,9 @@ Optional surface information
 - breaklines <**BreakLines**>
  
 ![Surface model]({{figure Surfaces_Pintamalli.png}} "Surface model"){{figst surfacemodel}}
-
-{{xmlsnippet Surfacemodel}}
  
 ![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
 
-{{xmlsnippet Groundlayermodel}} 
 
 ## Noise barriers {#sec:noisebarriers}
 
@@ -60,11 +57,7 @@ Optional surface information
  
 ![Surface model]({{figure Surfaces_Pintamalli.png}} "Surface model"){{figst surfacemodel}}
 
-{{xmlsnippet Surfacemodel}}
-
 ![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
-
-{{xmlsnippet Groundlayermodel}}
  
 ## Surface structures {#sec:surfacetructures}
 
@@ -72,14 +65,14 @@ Optional surface information
  
 The properties of *surface structure* are defined in "IM_surfaceStructure":
  
-{{xtabulate IM_surfaceStructure}}
+{{xtabulate IM_surfaceStructure--ltFeature--gt}}
  
 *Surface structure* may also have calculated area or volume quantities assinged as "IM_quantity" extension:
  
-{{xtabulate IM_quantity}}
+{{xtabulate IM_quantity--ltFeature--gt}}
  
 An area defined as a **\<Parcel>** may have an adjoining area spatial allocation or spatial avoidance (or both). These can be described using "IM_spatialZone" extension:
  
-{{xtabulate IM_spatialZone}}
+{{xtabulate IM_spatialZone--ltFeature--gt}}
  
 ![Spatial Zone Area]({{figure SpatialZoneArea.png}} "Spatial Zone Area"){{figst spatialzonearea}}
