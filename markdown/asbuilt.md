@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # AsBuilt data {#sec:asbuilt}
 
-An Inframodel file of any plan contains the header information described in the section 1.
+An Inframodel file of any plan contains the header information described in {{refsec fileheaders}}.
 This section describes as-built data that can include both planned control points with tolerances, and the measured values with metadata (survey and its accuracy). Also the diffence vectors between planned (designed) and measured can be captured.
 
 ## Control points {#sec:controlpoints}
@@ -12,7 +12,7 @@ Collections of *coordinate geometry points* grouping control points on a planned
 
 ### Control point {#sec:controlpoint}
 
-Each individual control point is set under **\<CgPoint>** element, and shall have **name** that is a Universal Unique Identifier (UUID as defined in ISO/IEC 9834-8:2005), and shall be generated in compressed form as explained for IFC Globally Unique Identifier (GUID). When the **name** is a GUID, a human-readable name shall be given in **description**. Additionally, **surveyOrder** (sequence number) shall be set.
+Each individual control point is set under **\<CgPoint>** element.
 
 {{xtabulate CgPoint}}
 
@@ -27,16 +27,13 @@ Horizontal tolerance is given either
 
 In both cases, horizontal tolerances can be coupled with vertical tolerance values *toleranceZmin* and *toleranceZmax*. The required combination of tolerance values to be set in IM_cgpoints **\<Feature>** must be agreed for each use case separately (in Common InfraBIM Requirements or other such guidelines).
 
-{{xtabulate IM_cgpoints}}
-
+{{xtabulate IM_cgpoints--ltFeature--gt}}
 
 ![As-built plan]({{figure AsBuilt_plan.png}} "As-built plan"){{figst asbuiltplan}}
 
 ## As-built survey {#sec:asbuiltsurvey}
 
-Measured as-built data is grouped in survey collection for each surface under **\<Survey>** element. No attributes of **\<Survey>** are required to be used in Inframodel, but optionally a **description** may be given.
-
-The mandatory element **\<SurveyHeader>** under **\<Survey>** has a mandatory **name** (to give name to the survey data set) and optional **purpose** (to be set "asbuilt").
+Measured as-built data is grouped in survey collection for each surface under **\<Survey>** element. 
 
 {{xtabulate SurveyHeader}}
 
@@ -46,21 +43,13 @@ Under each **\<Survey>** element, an **\<Equipment>** element (no attributes) sh
 
 {{xtabulate InstrumentDetails}}
 
-{{xtabulate InstrumentDetailsandCorrectionsinIM_surveyFeature}}
-
-The **Finnish RAK survey code list** is recommended to be used for accuracyType and corresponding accuracyDescription in Inframodel transfer.
+{{xtabulate IM_surveyFeature--ltFeature--gt}}
 
 ### Survey points {#sec:surveypoints}
 
-The survey points belonging to the survey are grouped under <Survey>.<CgPoints> element with attributes described above in 10.2: the name is used to identify the correspoding collection of control points, and code can be set to "survey" at the root of nested collections.
-Within the survey points collection, another <CgPoints> element is used as a wrapper, to pair <CgPoint> elements with an "IM_cgpoints" <Feature>, and optionally also an "IM_coding" <Feature>. Each survey point <CgPoint> shall have a unique name, and pntRef shall be used to identify the corresponding control point (set as explained in 10.2.1), as well as timeStamp when surveyed (always as UTC) and surveyOrder (sequence number).
+The survey points belonging to the survey are grouped under <Survey>.<CgPoints> element with attributes described above in {{refsec asbuiltsurvey}} the name is used to identify the correspoding collection of control points, and code can be set to "survey" at the root of nested collections.
+Within the survey points collection, another <CgPoints> element is used as a wrapper, to pair <CgPoint> elements with an "IM_cgpoints" <Feature>, and optionally also an "IM_coding" <Feature>. Each survey point <CgPoint> shall have a unique name, and pntRef shall be used to identify the corresponding control point (set as explained in {{refsec surveyequipment}}), as well as timeStamp when surveyed (always as UTC) and surveyOrder (sequence number).
 
 {{xtabulate CgPoint}}
-
-3D location as surveyd is set in 
-{{xmlsnippet CgPoint}}
-
-{{xtabulate IM_cgpoints}}
-
 
 ![As-built survey]({{figure AsBuilt_survey.png}} "As-built survey"){{figst asbuiltsurvey}}

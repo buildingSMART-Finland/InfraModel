@@ -1,11 +1,11 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design {#sec:roadandstreedesign}
 
-The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in chapter 2 route planning. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
+The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in {{refsec routeplanning}}. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
 
 The content of the design file is defined in metric units, using an adequate number of decimals for accuracy. For example, when the length unit in use is a meter, the values must be defined to at least six decimal places. Street designs often interface with  water supply and sewerage systems , which are described in the same file. The constituent surfaces of the water supply and sewerage design are defined as triangular meshes and the design information in the \<PipeNetworks> element.
 
-A road or street design in inframodel contains:
+A road or street design in inframodel may contain:
 
 - individual alignments and their purpose, defined by type coding (geometric alignments and line strings)
 - line string model (line string alignments)
@@ -25,9 +25,9 @@ The superelevation of the road can be described alongside the cross-section para
 
 ## Geometry of roads and streets
 
-An *alignment group* of road or street **\<Alignments>** contains a *geometric description* (description hierarchy *1) of a continuous stationing reference **\<Alignment>**. The *geometric description* is composed of horizontal and vertical geometric elements. The central *alignments* such as the centerline and left and right edges of a road or the centerline and edges of a sidewalk for a street are described as *geometric alignments* while the rest are described in terms of *line strings* (description hierarchy *2). The alignments described as *geometric descriptions* are also described as *line strings* for use in the *line string model*.
+An *alignment group* of road or street **\<Alignments>** contains a *geometric description* of a continuous stationing reference **\<Alignment>**. The *geometric description* is composed of horizontal and vertical geometric elements. The central *alignments* such as the centerline and left and right edges of a road or the centerline and edges of a sidewalk for a street are described as *geometric alignments* while the rest are described in terms of *line strings*. The alignments described as *geometric descriptions* are also described as *line strings* for use in the *line string model*.
 
-The *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>** are described before the *line string model* or the *plan information* contained by the extensions "IM_stringlinelayers" and "IM_plan". The particular order of the alignments **\<Alignment>** within the alignment group **\<Alignments>** does not matter. The alignment description process is described in further detain in {{refsec Alignments}} .
+The *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>** are described before the *line string model* or the *plan information* contained by the extensions "IM_stringlinelayers" and "IM_plan". The particular order of the alignments **\<Alignment>** within the alignment group **\<Alignments>** does not matter. The alignment description process is described in further detain in {{refsec alignments}} .
 
 The **infraCode** is set in the extension "IM_coding" - this *type coding* for an individual **\<Alignment>** describes the purpose of the alignment.
 
@@ -37,7 +37,7 @@ Selected alignments are included in the *line string model* defined by the exten
 
 Once the *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>** are defined, the string line model of the *alignment group* is defined in the extension "IM_stringlineLayers". The presentation method resembles a cross-section, a *layer* of the string line model are referred to by their name **\<Alignment>.name** and their location is presented as surfaces. It is not always possible to present all line strings contained by the layer in order from left to right, although this is recommended.
 
-The detailed description of the construction process of line string model can be found in {{refsec Line string}}. The string line model employs the same **infraCoding** system for *line strings* as the **\<Alignment>**. The surface codes are set using the **surfaceCoding**.
+The detailed description of the construction process of line string model can be found in {{refsec stringlinemodel}}. The string line model employs the same **infraCoding** system for *line strings* as the **\<Alignment>**. The surface codes are set using the **surfaceCoding**.
 
 ![Stringline representaion of road]({{figure Road_stringline_model.png}} "Stringline representaion of road"){{figst stringlinerepresentaionofroad}}
 
@@ -51,23 +51,15 @@ The cross-section parameters describe the situation at a given station, includin
 
 ![Road cross section]({{figure Road_crossSect_slope.png}} "Road cross section"){{figst roadcrosssection}}
 
-
 ### Cross-section parameters {#sec:crosssectparameters}
 
-*The cross-section parameters* are set under **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the extension "IM_crossSect". The *cross-section parameters* are optional in street designs.
+*The cross-section parameters* are set under **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the extension "IM_crossSect". 
 
 It is recommended that all parameters are described along with the cross-section. When transitions from one parameter value to another occur, the start and end of the transition are defined. Details on the Finnish road design parameters are provided by Finnish Transport Infrastructure Agency (FTIA).
 
 {{xtabulate CrossSect}}
 
-Attributes for a single "IM_crossSect":  
-
-- **pavementClass**
-- **pavementThickness**
-- **subgradeLoadCapacityClass**
-- cross **slope** of roads or streets
-
-{{xtabulate Feature}}
+{{xtabulate IM_crossSect--ltFeature--gt}}
 
 ### Transitions in superelevation
 
@@ -75,17 +67,15 @@ The superelevation is defined at the transition points, when a transition in the
 
 ![Superelevation]({{figure Road_slope.png}} "Superelevation"){{figst superelevation}}
 
-{{xtabulate Feature}}
+{{xtabulate CrossSect}}
 
-{{xtabulate roadplan}}
-
-{{xtabulate streetplan}}
+{{xtabulate IM_crossSect--ltFeature--gt}}
 
 ## Terrain model and structural model of road or street {#sec:roadsandstreetsterrainmodel}
 
-The process of constructing a terrain model or structural model is described in detail in {{refsec Terrain model}} and {{refsec Structural model}} of a route. The terrain model only contains a triangle mesh of the visible surfaces. The structural model contains all the structure boundaries. All layers in the terrain model and the structural model may be assigned a *type code* (**surfaceCoding**).
+The process of constructing a terrain model or structural model is described in detail in {{refsec terrainmodel}} and {{refsec structuralmodel}} of a route. The terrain model only contains a triangle mesh of the visible surfaces. The structural model contains all the structure boundaries. All layers in the terrain model and the structural model may be assigned a *type code* (**surfaceCoding**).
 
-It is also possible to attach source data point or breakline information to the meshes, with assigned a *type code* (**terrainCoding**). The process is described in further detail in the {{refsec Source data}}.
+It is also possible to attach source data point or breakline information to the meshes, with assigned a *type code* (**terrainCoding**). The process is described in further detail in the {{refsec sourcedata}}.
 
 The example illustrations below demonstrate the composition of structural models in road and street design.
 
@@ -99,7 +89,7 @@ The material properties of a structural layer between two surfaces are assigned 
 
 Details of **\<Surface>** in "IM_structLayer" **\<Feature>**
 
-{{xtabulate SurfaceinFeature}}
+{{xtabulate IM_structLayer--ltFeature--gt}}
 
 ## Road signs and plan features {#sec:roadplanfeatures}
 
@@ -109,7 +99,7 @@ Attributes of the *roadways collection* **\<Roadways>** are not used in inframod
 
 Attributes of a *roadway* **\<Roadway>**:
 
-{xtabulate Roadway}}
+{{xtabulate Roadway}}
 
 ### Plan features
 
@@ -124,12 +114,12 @@ Attributes of **\<PlanFeature>**:
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
 
-1. {{refsec cableinformationext}} in "IM_cable" extension
-2. {{refsec footinginformationext}} in "IM_footing" extension
-3. {{refsec railinginformationext}} in "IM_railing" extension
-4. {{refsec fenceinformationext}} in "IM_fence" extension
-5. {{refsec surfacestructureext}} in "IM_surfaceStructure" extension
-6. {{refsec genericplanfeatureext}} in "IM_planfeature" extension
+1. {{refsec cable}} in "IM_cable" extension
+2. {{refsec footing}} in "IM_footing" extension
+3. {{refsec railing}} in "IM_railing" extension
+4. {{refsec fence}} in "IM_fence" extension
+5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeature}} in "IM_planfeature" extension
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
 
@@ -143,6 +133,6 @@ Attributes of **\<RoadSign>**:
 
 Details in "IM_roadSign" extension:
 
-{{xtabulate IM_roadSign}}
+{{xtabulate IM_roadSign--ltFeature--gt}}
 
 ![Road sign]({{figure RoadSign.png}} "Road sign"){{figst roadsign}}
