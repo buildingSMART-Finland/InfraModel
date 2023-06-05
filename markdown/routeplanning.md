@@ -161,7 +161,7 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 
 A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
 
-{{xtabulate IM_stringLineLayers--ltFeature--gt}}
+{{xtabulate IM_stringLineLayers}}
 
 ## Terrain model
 
