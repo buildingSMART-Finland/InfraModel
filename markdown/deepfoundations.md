@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Deep foundations {#sec:deepfoundations}
 
-An Inframodel file of any plan contains the header information described in {{refsec headers}}.
+An Inframodel file of any plan contains the header information described in {{refsec fileheaders}}.
 
 This section describes deep foundations (such as pile groups) transferred using **\<any>** element under **\<LandXML>**. The xml schema (im.xsd) for these extensions is available at Inframodel schema page.
 
