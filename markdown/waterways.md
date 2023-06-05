@@ -56,10 +56,7 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using **line strings** for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
-{{xmlsnippet Location}}
-
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
-
 
      1. {{refsec cable}} in "IM_cable" extension
      2. {{refsec footing}} in "IM_footing" extension
