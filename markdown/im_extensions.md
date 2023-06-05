@@ -4,7 +4,7 @@
 Inframodel transfer files fully conform to the LandXML v1.2 schema (with one exeption\*), but some extensions have been made using the Feature-mechanism. 
 This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
 
-NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in  this document. Also, further extensions have been specified in separate schema (im.xsd) for 1) Local Coordinate Transformation (section 1.6) 2) Metadata (section 1.10) and 3) Deep Foundations (section 11).
+NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in this document. Also, further extensions have been specified in separate schema (im.xsd) for 1) Local Coordinate Transformation ({{refsec typecodingsystems}}) 2) Metadata ({{refsec metadata}}) and 3) Deep Foundations ({{refsec deepfoundations}}).
 
 \* LandXML v1.2 \<choice> declaration in \<Roadways> collection has been changed to \<sequence> in Inframodel v4.1.0, whereby both \<Roadway> elements and feature extensions may appear in the same \<Roadways> collection. 
 

@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design {#sec:roadandstreedesign}
 
-The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in {{refsec routeplanning}}. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
+The file describing a road or street plan contains the header information described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in {{refsec routeplanning}}. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
 
 The content of the design file is defined in metric units, using an adequate number of decimals for accuracy. For example, when the length unit in use is a meter, the values must be defined to at least six decimal places. Street designs often interface with  water supply and sewerage systems , which are described in the same file. The constituent surfaces of the water supply and sewerage design are defined as triangular meshes and the design information in the \<PipeNetworks> element.
 
@@ -112,7 +112,6 @@ Attributes of **\<PlanFeature>**:
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using **line strings** for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
-
 
 1. {{refsec cable}} in "IM_cable" extension
 2. {{refsec footing}} in "IM_footing" extension

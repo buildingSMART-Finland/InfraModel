@@ -81,8 +81,6 @@ A **\<Line>** is defined by **\<Start>** and **\<End**> 2D coordinates. In addit
 
 {{xtabulate Line}}
 
-The format for the **\<Start>** and **\<End>** coordinates of a **\<Line>**, the 2D coordinates are separated by spaces.
-
 #### Curve
 
 A circular arc **\<Curve>** is defined by **\<Start>** **\<Center>** and **\<End>** 2D coordinates. In addition, attributes *direction of rotation* **rot**, **chord**, *end direction* **dirEnd**, *start direction* **dirStart**, **length** and **radius** are mandatory, but shall be used as additional information only.
