@@ -12,7 +12,7 @@ Collections of *coordinate geometry points* grouping control points on a planned
 
 ### Control point {#sec:controlpoint}
 
-Each individual control point is set under **\<CgPoint>** element, and shall have unique **name** within the file. A human-readable name shall be given in **description**. Additionally, **surveyOrder** (sequence number) shall be set.
+Each individual control point is set under **\<CgPoint>** element.
 
 {{xtabulate CgPoint}}
 
