@@ -235,7 +235,7 @@ Available pipe types in the LandXML standard:
 The **name**, end reference **refEnd**, start reference **refStart**, **slope** and **state** are mandatory attributes.
 Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
 
-When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Conncetion> with a name that clearly distinguishes it from other content in the file. 
+When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Connection> with a name that clearly distinguishes it from other content in the file. 
     
 When a pipe has several segments, with \<Connection> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique **name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment. In particular, this should be provided for continuous flexible pipes or cables having inflexions modeled as virtual connections.
 
