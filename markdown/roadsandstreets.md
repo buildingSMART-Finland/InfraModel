@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Road and street design {#sec:roadandstreedesign}
 
-The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in chapter 2 route planning. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
+The file describing a road or street plan contains the header informatun described in the previous section. In inframodel-compliant file transfers a road or street alignment is defined in according to the process defined in {{refsec routeplanning}}. A LandXML file may contain plans describing several topics, i.e. the same file may contain e.g. road, street, and railway plans.
 
 The content of the design file is defined in metric units, using an adequate number of decimals for accuracy. For example, when the length unit in use is a meter, the values must be defined to at least six decimal places. Street designs often interface with  water supply and sewerage systems , which are described in the same file. The constituent surfaces of the water supply and sewerage design are defined as triangular meshes and the design information in the \<PipeNetworks> element.
 
@@ -25,7 +25,7 @@ The superelevation of the road can be described alongside the cross-section para
 
 ## Geometry of roads and streets
 
-An *alignment group* of road or street **\<Alignments>** contains a *geometric description* (description hierarchy *1) of a continuous stationing reference **\<Alignment>**. The *geometric description* is composed of horizontal and vertical geometric elements. The central *alignments* such as the centerline and left and right edges of a road or the centerline and edges of a sidewalk for a street are described as *geometric alignments* while the rest are described in terms of *line strings* (description hierarchy *2). The alignments described as *geometric descriptions* are also described as *line strings* for use in the *line string model*.
+An *alignment group* of road or street **\<Alignments>** contains a *geometric description* of a continuous stationing reference **\<Alignment>**. The *geometric description* is composed of horizontal and vertical geometric elements. The central *alignments* such as the centerline and left and right edges of a road or the centerline and edges of a sidewalk for a street are described as *geometric alignments* while the rest are described in terms of *line strings*. The alignments described as *geometric descriptions* are also described as *line strings* for use in the *line string model*.
 
 The *alignments* **\<Alignment>** of an *alignment group* **\<Alignments>** are described before the *line string model* or the *plan information* contained by the extensions "IM_stringlinelayers" and "IM_plan". The particular order of the alignments **\<Alignment>** within the alignment group **\<Alignments>** does not matter. The alignment description process is described in further detain in {{refsec alignments}} .
 
@@ -53,20 +53,13 @@ The cross-section parameters describe the situation at a given station, includin
 
 ### Cross-section parameters {#sec:crosssectparameters}
 
-*The cross-section parameters* are set under **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the extension "IM_crossSect". The *cross-section parameters* are optional in street designs.
+*The cross-section parameters* are set under **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the extension "IM_crossSect". 
 
 It is recommended that all parameters are described along with the cross-section. When transitions from one parameter value to another occur, the start and end of the transition are defined. Details on the Finnish road design parameters are provided by Finnish Transport Infrastructure Agency (FTIA).
 
 {{xtabulate CrossSect}}
 
-Attributes for a single "IM_crossSect":  
-
-- **pavementClass**
-- **pavementThickness**
-- **subgradeLoadCapacityClass**
-- cross **slope** of roads or streets
-
-{{xtabulate IM-crossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt}}
 
 ### Transitions in superelevation
 
@@ -76,7 +69,7 @@ The superelevation is defined at the transition points, when a transition in the
 
 {{xtabulate CrossSect}}
 
-{{xtabulate IM-crossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt}}
 
 ## Terrain model and structural model of road or street {#sec:roadsandstreetsterrainmodel}
 
@@ -106,7 +99,7 @@ Attributes of the *roadways collection* **\<Roadways>** are not used in inframod
 
 Attributes of a *roadway* **\<Roadway>**:
 
-{{xtabulate Roadway--ltFeature--gt}}
+{{xtabulate Roadway}}
 
 ### Plan features
 
