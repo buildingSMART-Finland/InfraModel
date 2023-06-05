@@ -68,7 +68,7 @@ The following transitions are described by the track information sub-element:
 
 1. When the *cant* changes in the **\<CantStation>**:
 
-{{xtabulate5 CantStation}}
+{{xtabulate CantStation}}
 
 2. When the *design speed* changes in the **\<SpeedStation>**
 
