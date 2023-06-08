@@ -228,12 +228,7 @@ Available pipe types in the LandXML standard:
 - Rectangular pipe
 - Channel
 
-{{xtabulate Pipe}}
-
 ### Pipe
-
-The **name**, end reference **refEnd**, start reference **refStart**, **slope** and **state** are mandatory attributes.
-Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
 
 When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Connection> with a name that clearly distinguishes it from other content in the file. 
     
@@ -244,8 +239,6 @@ When a pipe has several segments, with \<Connection> elements (physical or virtu
 ## Center
 
 The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
-
-{{xtabulate Center}}
 
 More details can be found from {{refsec pipedetails}}
 
