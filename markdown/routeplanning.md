@@ -3,10 +3,6 @@
 
 Routes encompass highways, local roads and private roads, waterways and railways. Each route has one continuous stationing reference alignment and a vertical alignment. In inframodel file transfer, a route plan may consist of route geometric alignments, their stringline models and surface or structural models as triangulated meshes.
 
-An *alignment group* \<Alignments> consists of one or several alignments \<Alignment>. Their geometry can be described in two ways:
-- Geometric alignment 
-- Line string 
-
 Geometric alignments describe parameters of the horizontal and optional vertical elements of an alignment. A line string is a description where consecutive points are connected by line segments (in 2D or 3D). Geometric alignments are typically used to describe the stationing reference line of a road as well as other important geometric descriptions such as road edges. Other route components are usually described as line strings.
 
 ![Route geometry]({{figure Road_Geometriakuvaus.png}} "Route geometry"){{figst routegeometry}}
@@ -42,7 +38,7 @@ An **\<Alignment>** is an element that describes
   
 The alignments within a file do not have to be presented in any particular order. It is, however, advisable to first describe geometric alignments and then line strings. The **\<Alignment>** definition describes a **name**, **length**, *the stationing start* **staStart** and the **state** of the **\<Alignment>**. It is recommended that lines are named in an intuitive fashion. If the **state** is set for the entire alignment group **\<Alignments>** the **\<Alignment>** elements will inherit the **state** attribute from the parent element, hence is should not be set. When alternative alignments are being described by different *alignment groups* the differences between elements can be described briefly in the  atrribute **desc**. The optional *object identifying number* **oID** makes object management easier in applications.
 
-{{xtabulate alignment}}
+{{xtabulate Alignment}}
 
 A *geometric alignment* contains a horizontal geometry in a **\<CoordGeom>** element and the corresponding *vertical alignment* in a **\<Profile>**.**\<ProfAlign>** element. Line strings are described as a chain of 3D points in the **\<CoordGeom>** element.
 
@@ -130,9 +126,7 @@ The location of the **\<CircCurve>** is defined by the *station* and *elevation*
 
 ## Line strings
 
-*Line strings* are defined in concert with the *horizontal geometry* **\<CoordGeom>**. *Line strings* are defined as a series of 2D points or 3D points, hence it does not need a vertical **\<Profile>** element for 3D representation. The dimensioning element of a line string is:
-
-- **\<IrregularLine>**
+*Line strings* are defined in concert with the *horizontal geometry* **\<CoordGeom>**. *Line strings* are defined as a series of 2D points or 3D points, hence it does not need a vertical **\<Profile>** element for 3D representation. The dimensioning element of a line string is **\<IrregularLine>**
 
 ![Line Strings]({{figure Road_IrLine.png}} "Line Strings"){{figst linestrings}}
 
@@ -159,7 +153,7 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 
 A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
 
-{{xtabulate IM_stringLineLayers--ltFeature--gt}}
+{{xtabulate IM_stringlineLayers--ltFeature--gt}}
 
 ## Terrain model {#sec:terrainmodel}
 
