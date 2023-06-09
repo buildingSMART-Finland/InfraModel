@@ -3363,7 +3363,7 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="FaceType">
+	<xs:simpleType name="integer">
 		<xs:list itemType="xs:integer"/>
 	</xs:simpleType>
 	<xs:element name="F">
@@ -3407,7 +3407,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 							<xs:documentation>Invalid triangle flag. If  i=1, the face should be hidden</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="n" type="FaceType" use="optional">
+					<xs:attribute name="n" type="integer" use="optional">
 						<xs:annotation>
 							<xs:documentation>Surrounding faces defined as integer numbers. if there is a face adjacent to the face described.</xs:documentation>
 						</xs:annotation>
@@ -7963,7 +7963,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 		<xs:list itemType="xs:double"/>
 	</xs:simpleType>
 	<xs:simpleType name="TINFaceType" final="restriction">
-		<xs:restriction base="FaceType">
+		<xs:restriction base="integer">
 			<xs:minLength value="3"/>
 			<xs:maxLength value="3"/>
 		</xs:restriction>
