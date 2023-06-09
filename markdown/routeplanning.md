@@ -138,7 +138,7 @@ A *line string* has optional attributes and sub-elements to define its **\<Start
 
 ## String line model {#sec:stringlinemodel}
 
-An *alignment group* **\<Alignments>** is a collection of geometric alignments and line strings. The string line model of a route is composed of their descriptions in the file, ordered into layers. The order of *alignment* descriptions within the *alignment group* does not matter. The string line model used in Inframodel is based on the Leica RoadRunner software.
+An *alignment group* **\<Alignments>** is a collection of geometric alignments and line strings. The string line model of a route is composed of their descriptions in the file, ordered into layers. The string line model used in Inframodel is based on the Leica RoadRunner software.
 
 ![String line model]({{figure Road_stringline_model.png}} "String line model]"){{figst stringlinemodel]}}
 
@@ -151,7 +151,7 @@ The procedure for constructing a new layer in the string line model in the *"IM_
 3. The **centreline** may optionally be set.
 4. The **surfaceCoding** and **surfaceCodingDesc** may optionally be set.
 
-A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding. The sample describes a road surface and the underside of the lowest structural layer.
+A line string may belong to several different layers. It is recommended to describe the layers in order beginning from the topmost layer. The string line model sample below utilizes the general surface coding.
 
 {{xtabulate IM_stringlineLayers--ltFeature--gt}}
 
