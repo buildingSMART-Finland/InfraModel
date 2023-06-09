@@ -1040,8 +1040,8 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 	</xs:simpleType>
 	<!-- 3d point in all 3 coors are required -->
 	<xs:simpleType name="Point3dReq">
-		<xs:restriction base="Point">
-			<xs:minLength value="0"/>
+		<xs:restriction base="double">
+			<xs:minLength value="3"/>
 			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -1075,11 +1075,31 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="Point3dOpt">
-				<xs:attribute name="name" type="xs:string"/>
-				<xs:attribute name="desc" type="xs:string"/>
-				<xs:attribute name="code" type="xs:string"/>
-				<xs:attribute name="state" type="stateType"/>
-				<xs:attribute name="timeStamp" type="xs:dateTime" use="optional"/>
+				<xs:attribute name="name" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Unique name</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="desc" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Description</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="code" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Feature code</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="state" type="stateType">
+					<xs:annotation>
+						<xs:documentation>State</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="timeStamp" type="xs:dateTime" use="optional">
+					<xs:annotation>
+						<xs:documentation>Time stamp as UTC</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -3080,17 +3100,17 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice>
-					<xs:element ref="PntList2D">
+					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
+					<xs:element ref="PntList2D" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="PntList3D">
+					<xs:element ref="PntList3D" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>A sequential space delimited list of 3D coordinates with a minimum of 3 points</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 				</xs:choice>
 				<xs:element ref="IM_soil--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_structLayer--ltFeature--gt" minOccurs="0"/>
@@ -3302,7 +3322,7 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
-				<xs:extension base="PointType">
+				<xs:extension base="PointType3dReq">
 					<xs:attribute name="id" type="xs:positiveInteger" use="required">
 						<xs:annotation>
 							<xs:documentation>Id of the point "P". Id shall be unique in scope of single surface</xs:documentation>
@@ -3381,7 +3401,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
-				<xs:extension base="FaceType">
+				<xs:extension base="TINFaceType">
 					<xs:attribute name="i" type="xs:integer" use="optional">
 						<xs:annotation>
 							<xs:documentation>Invalid triangle flag. If  i=1, the face should be hidden</xs:documentation>
@@ -7939,4 +7959,13 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:simpleType name="double">
+		<xs:list itemType="xs:double"/>
+	</xs:simpleType>
+	<xs:simpleType name="TINFaceType" final="restriction">
+		<xs:restriction base="FaceType">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
