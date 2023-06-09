@@ -202,5 +202,5 @@ Where:
 
 {{xtabulate Source ../schema/im.xsd}}
 
-{{xtabulate modelStatus ../schema/im.xsd}}
+{{xtabulate ModelStatus ../schema/im.xsd}}
 

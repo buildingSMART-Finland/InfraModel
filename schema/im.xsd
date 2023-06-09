@@ -448,7 +448,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="modelStatus" minOccurs="0">
+				<xs:element name="ModelStatus" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>This field identifes the status of process phase for this document. This is used to determine processing of the record.</xs:documentation>
 					</xs:annotation>
