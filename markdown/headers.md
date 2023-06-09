@@ -188,19 +188,19 @@ Metadata is optional and enables the following features shown below.
 
 Where:
 
-{{xtabulate CreatedBy ../schema/im.xsd}}
+{{xtabulate im:CreatedBy ../schema/im.xsd}}
 
 {{xtabulate im:ContactInformation ../schema/im.xsd}}
 
-{{xtabulate DataOwner ../schema/im.xsd}}
+{{xtabulate im:DataOwner ../schema/im.xsd}}
 
-{{xtabulate History ../schema/im.xsd}}
+{{xtabulate im:History ../schema/im.xsd}}
 
 {{xtabulate im:ModifiedTimestamp ../schema/im.xsd}}
 
-{{xtabulate DataQuality ../schema/im.xsd}}
+{{xtabulate im:DataQuality ../schema/im.xsd}}
 
-{{xtabulate Source ../schema/im.xsd}}
+{{xtabulate im:Source ../schema/im.xsd}}
 
-{{xtabulate ModelStatus ../schema/im.xsd}}
+{{xtabulate im:ModelStatus ../schema/im.xsd}}
 
