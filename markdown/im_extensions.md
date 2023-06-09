@@ -151,7 +151,7 @@ The details of a plan are described for each project part:
 
 If the project consists of sub-projects that have different rates of progress, the plan contents of the file are divided into sub-projects according to the same division. The plan information contains the **planName**, **planCode**, the **planState** and the plan description **planDesc**. The plan state is described according to a scheme agreed on by the parties of the project.
 
-{{xtabulate im_plan--ltFeature--gt}}
+{{xtabulate IM_plan--ltFeature--gt}}
 
 **Details:**  
 
