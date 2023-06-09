@@ -309,172 +309,11 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	<xs:element name="Metadata">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="CreatedBy">
-					<xs:annotation>
-						<xs:documentation>Person who has created the data</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="im:ContactInformation"/>
-						</xs:sequence>
-						<xs:attribute name="Company" type="xs:string" use="required">
-							<xs:annotation>
-								<xs:documentation>Company name</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="CompanyURL" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Company URL</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="DataOwner" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Organisation who owns the data</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="im:ContactInformation" minOccurs="0"/>
-						</xs:sequence>
-						<xs:attribute name="Company" type="xs:string" use="required">
-							<xs:annotation>
-								<xs:documentation>Company name</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="CompanyURL" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Company URL</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="History" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Data creation and modification information</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="CreateTimestamp">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element ref="im:ContactInformation" minOccurs="0"/>
-									</xs:sequence>
-									<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
-										<xs:annotation>
-											<xs:documentation>Creation time as UTC</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="Company" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Company name</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="CompanyURL" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Company WWW URL</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="Description" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Desription</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="ModifiedTimestamp" minOccurs="0" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element ref="im:ContactInformation" minOccurs="0"/>
-									</xs:sequence>
-									<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
-										<xs:annotation>
-											<xs:documentation>Modification time as UTC</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="Company" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Company name</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="CompanyURL" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Company WWW URL</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="Description" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Desription</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="DataQuality" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Group of attributes which describe the quality from data collection point of view</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Source">
-								<xs:annotation>
-									<xs:documentation>When and where is data originated from </xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="Date" type="xs:date" use="required">
-										<xs:annotation>
-											<xs:documentation>Date</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="Type" type="xs:string" use="required">
-										<xs:annotation>
-											<xs:documentation>Type</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="CreateMethod" type="xs:string" use="required">
-							<xs:annotation>
-								<xs:documentation>Free text describing how data was created from the Source</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="Accuracy" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Free text describing the data accuracy</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="ModelStatus" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>This field identifes the status of process phase for this document. This is used to determine processing of the record.</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:attribute name="label">
-							<xs:annotation>
-								<xs:documentation>Status</xs:documentation>
-							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="preliminary plan"/>
-									<xs:enumeration value="general plan"/>
-									<xs:enumeration value="plan"/>
-									<xs:enumeration value="construction plan"/>
-									<xs:enumeration value="construction"/>
-									<xs:enumeration value="maintenance"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-						<xs:attribute name="desc" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Description</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="im:CreatedBy"/>
+				<xs:element ref="im:DataOwner" minOccurs="0"/>
+				<xs:element ref="im:History" minOccurs="0"/>
+				<xs:element ref="im:DataQuality" minOccurs="0"/>
+				<xs:element ref="im:ModelStatus" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="Description" type="xs:string" use="required">
 				<xs:annotation>
@@ -784,6 +623,175 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 			<xs:attribute name="Email" type="xs:string">
 				<xs:annotation>
 					<xs:documentation>Email address</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CreatedBy">
+		<xs:annotation>
+			<xs:documentation>Person who has created the data</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:ContactInformation"/>
+			</xs:sequence>
+			<xs:attribute name="Company" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Company name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="CompanyURL" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Company URL</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DataOwner">
+		<xs:annotation>
+			<xs:documentation>Organisation who owns the data</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:ContactInformation" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="Company" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Company name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="CompanyURL" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Company URL</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="History">
+		<xs:annotation>
+			<xs:documentation>Data creation and modification information</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:CreateTimestamp"/>
+				<xs:element ref="im:ModifiedTimestamp" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DataQuality">
+		<xs:annotation>
+			<xs:documentation>Group of attributes which describe the quality from data collection point of view</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:Source"/>
+			</xs:sequence>
+			<xs:attribute name="CreateMethod" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Free text describing how data was created from the Source</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Accuracy" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Free text describing the data accuracy</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ModelStatus">
+		<xs:annotation>
+			<xs:documentation>This field identifes the status of process phase for this document. This is used to determine processing of the record.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label">
+				<xs:annotation>
+					<xs:documentation>Status</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="preliminary plan"/>
+						<xs:enumeration value="general plan"/>
+						<xs:enumeration value="plan"/>
+						<xs:enumeration value="construction plan"/>
+						<xs:enumeration value="construction"/>
+						<xs:enumeration value="maintenance"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Source">
+		<xs:annotation>
+			<xs:documentation>When and where is data originated from </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="Date" type="xs:date" use="required">
+				<xs:annotation>
+					<xs:documentation>Date</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CreateTimestamp">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:ContactInformation" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+				<xs:annotation>
+					<xs:documentation>Creation time as UTC</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Company" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Company name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="CompanyURL" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Company WWW URL</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Desription</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ModifiedTimestamp">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:ContactInformation" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+				<xs:annotation>
+					<xs:documentation>Modification time as UTC</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Company" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Company name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="CompanyURL" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Company WWW URL</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Desription</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
