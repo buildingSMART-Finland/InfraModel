@@ -2,7 +2,7 @@
 
 The **\<PipeNetworks>** in Inframodel covers diffrent drainage and utility network types: storm drain, combined sewer, sewer, French drain, culvert, water pipe, district heating, district cooling, gas, waste disposal and cable networks.
 
-A network model can be transferred in a separate file or (e.g. in case of route drainage plan) in the same file as other (route) plan content. The metric units used in network plan and the coordinate system are defined in chapter 1 Headers.
+A network model can be transferred in a separate file or (e.g. in case of route drainage plan) in the same file as other (route) plan content. The metric units used in network plan and the coordinate system are defined in {{refsec fileheaders}}.
 
 The definition of a utility network in LandXML is a topological one. The structures (manholes, drain wells etc.) are nodes and the pipes (or cables) are links that connect these nodes. As the pipes are always defined between two nodes, the free ends of pipes are modelled as virtual structures, of which there are two types, inlets and outlets.
 
@@ -36,7 +36,7 @@ The names of *utility network groups* are unique within the file. If a *network 
 
 The *plan information* of a *network group* is set in the optional "IM_plan" extension under **\<PipeNetworks>** element. If the project consists of several sub-divisions, which progress at different rate, the plan content can be divided into several *network group* **\<PipeNetworks>** elements according to those divisions, or alternatively *plan information* may be set for each *network* in separate "IM_plan" under **\<PipeNetwork>** elements. The plan information contains the **planName** the **planCode**, the **planState**, and the *plan description* **planDesc**. The *plan state* is set according to a scale agreed on by the parties. An example is presented in the tabel below.
 
-{{xtabulate IM_plan}}
+{{xtabulate IM_plan--ltFeature--gt}}
 
 ## Pipe network {#sec:pipenetwork}
 
@@ -44,21 +44,17 @@ Individual networks are described in **\<PipeNetwork>** elements, organized unde
 
 {{xtabulate pipeNetType}}
 
-The **pipeNetType** defines the type of the network as 1) "sanitary" 2) "storm" 3) "water" 4) "other" (not specified, or specified in "IM_pipeNetworkType" extension).
-
 {{xtabulate PipeNetwork}}
 
 ### Pipe network type extensions
 
 When the *network type* is not one of those covered by the **pipeNetType** (attribute set to "other"), the "IM_pipeNetworkType" extension can be used to specify the type.
 
-{{xtabulate IM_pipeNetworkType}}
+{{xtabulate IM_pipeNetworkType--ltFeature--gt}}
 
 ## Units
 
-In Inframodel, the same metric units (as specified in the header-section) shall always be used. The LandXML capability to assing separate units for structures and pipes in networks shall not be used in Inframodel.
-
-{{xtabulate Pipenetworkunits}}
+In Inframodel, the same metric units (as specified in {{refsec fileheaders}}) shall always be used. The LandXML capability to assing separate units for structures and pipes in networks shall not be used in Inframodel.
 
 ## Structures {#sec:structures}
 
@@ -72,17 +68,15 @@ LandXML standard structure types:
 - Rectangular structure
 - Inlet structure (free intake end of pipe)
 - Outlet structure (free exhaust end of pipe)
-- Conncection 
-- - Pipe joints, extensions and inflexions
-- - Equipment (as specified in Inframodel extension)
+- Connections 
+- Pipe joints, extensions and inflexions
+- Equipment (as specified in Inframodel extension)
 
 Delimiting the network is a special case of using connection, described in further detail in the section covering the **\<Connection>** element.
 
-{{xtabulate IM_struct}}
+{{xtabulate IM_struct--ltFeature--gt}}
 
 #### General data
-
-The **name**, *rim elevation* **elevRim**, *sump elevation* **elevSump** and the **state** of the structure are mandatory attributes. 
 
 All structural elements in the file are assigned individual names.
 
@@ -98,7 +92,6 @@ All structural elements in the file are assigned individual names.
 
 ***Equipments:*** The **\<Center>** of a piece of equipment at the mounting level is set using space-separated 3D coordinates.
 
-{{xtabulate Center}}
 
 #### Inverts
 
@@ -122,8 +115,6 @@ When describing a conical well the **diameter** attribute describes the inner di
 
 ***Equipment:***
 It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. 
-
-{{xtabulate IM_struct}}
 
 #### Spatial allocation and avoidance
 
@@ -182,8 +173,6 @@ The illustration below demonstrates how pipe inlets and outlets are described. T
 
 ![Inlets and outlets]({{figure Pipenetwork_InletOutletStruct.png}} "Inlets and outlets"){{figst inletsandoutlets}}
 
-{{xtabulate InletStruct}}
-
 ### Pipe connections {#sec:pipeconnection}
 
 Pipe connections, joints and points of intersection are defined by the **\<Connection>** elements. The illustration below demonstrates the mode of description, which contains the attributes of the structure **\<Struct>** and its child elements:
@@ -195,9 +184,9 @@ Pipe connections, joints and points of intersection are defined by the **\<Conne
 5. Details **\<Feature>** "IM_struct" structural extension
 
 The illustration demonstrates the description method of a point of intersection.
-When using the element to delimit a pipe network, the terminal drainage well is connected to a pipe that terminates in a **\<Connection>** element. It is thus possible to also describe the connections of the outermost wells in the plan network. It is advisable to name the elements in a fashion that is clearly different from the rest of the plan, e.g. "Terminal1", "Terminal2".
+When using the element to delimit a pipe network, the terminal drainage well is connected to a pipe that terminates in a **\<Connection>** element. It is thus possible to also describe the connections of the outermost wells in the plan network. It is advisable to name the elements in a fashion that is clearly different from the rest of the plan.
 
-When the element describes a delimiting element, all attributes are not used. The name of the structure and the description desc are set to differ from the plan information as much as possible e.g. by naming them "Terminal1", "Terminal2". The elevation of the rim elevRim, the elevation of the sump elevSump and the state of the structure are left undefined (given value "NaN").
+When the element describes a delimiting element, all attributes are not used. The elevation of the rim elevRim, the elevation of the sump elevSump and the state of the structure are left undefined (given value "NaN").
     
 When a **\<Connection>** is used for modeling a bend (inflexion) of a flexible pipe of cable (being actually continuous), its name and description desc should indicate that it is not a physical conncection.  
 Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
@@ -239,17 +228,11 @@ Available pipe types in the LandXML standard:
 - Rectangular pipe
 - Channel
 
-
-{{xtabulate Pipe}}
-
 ### Pipe
 
-The **name**, end reference **refEnd**, start reference **refStart**, **slope** and **state** are mandatory attributes.
-Setting the exact length of a pipe is optional. All pipe elements are assigned unique names.
-
-When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Conncetion> with a name that clearly distinguishes it from other content in the file, e.g. "Terminal1". 
+When using a pipe to delimit a network, its refEnd or refStart shall be to a \<Connection> with a name that clearly distinguishes it from other content in the file. 
     
-When a pipe has several segments, with \<Conncetion> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique *name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment. In particular, this should be provided for continuous flexible pipes or cables having inflexions modeled as virtual connections.
+When a pipe has several segments, with \<Connection> elements (physical or virtual) between them, each segment must be a \<Pipe> element with unique **name**. If the whole pipe (e.g. from one well to another) needs a name, it should be given in **desc** attribute of every segment. In particular, this should be provided for continuous flexible pipes or cables having inflexions modeled as virtual connections.
 
 {{xtabulate Pipe}}
 
@@ -257,11 +240,9 @@ When a pipe has several segments, with \<Conncetion> elements (physical or virtu
 
 The pipe curvature is defined by space-separated 3D-coordinates in the \<Center> element.
 
-{{xtabulate Center}}
-
 More details can be found from {{refsec pipedetails}}
 
-## Details
+## Details {#sec:pipedetails}
 
 It is optional to define details in inframodel file transfers using "IM_pipe" extension. The label of pipe can be given using a pipeLabel. The start and end coordinates of a pipe are defined by three parameters: 
 
@@ -280,15 +261,17 @@ When the start and end coordinates are given with elevation values, elevation ty
 
 ![Elevation type]({{figure Pipenetwork_elevType.png}} "Elevation type"){{figst elevationtype}}
 
-{{xtabulate IM_pipe}}
+{{xtabulate IM_pipe--ltFeature--gt}}
     
 ***Cable:*** *When the \<Pipe> represents a cable, and its start and end coordinates are defined, elevation type shall be given as one of the elevTypes illustrated for circular pipes.* Also, cable-specific properties in separate "IM_cable" extension:
     
-{{xtabulate IM_cable}}
+{{xtabulate IM_cable--ltFeature--gt}}
 
 #### Spatial allocation and avoidance
 
 Related to pipe geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the pipe geometry definition as a radius around the pipe path defined by start and end structure \<Center> coordinates and their **\<Invert>** elevation values .    
+
+![Spatial zone - around Pipe]({{figure SpatialZonePipe.png}} "Spatial zone - around Pipe"){{figst spatialzonearoundpipe}}    
     
 #### Circular pipes {#sec:circularpipes}
 
@@ -301,8 +284,6 @@ The following illustation descibes the definition of a round pipe  The definitio
 
 
 ![Circular pipe]({{figure Pipenetwork_CircPipe.png}} "Circular pipe"){{figst circularpipe}}
-
-The **diameter**, *type description* **desc**, **material** and wall **thickness** of the pipe are mandatory attributes.
 
 When defining a network-limiting pipe the **diameter** is the only defined attribute. Other attributes are not defined.
 
@@ -320,8 +301,6 @@ The following illustation descibes the definition of an egg-shaped pipe  The def
 
 Illustration of egg-shaped pipe represenation.
 
-Mandatory attributes are *height* **height**, *width* **span**, *type description* **desc**, *material* **material** and pipe *thickness* **thickness**.
-
 When defining a network-limiting pipe the *height* **height** and *width* **span** are set. Other attributes are not set.
 
 {{xtabulate EggPipe}}
@@ -337,10 +316,6 @@ The following illustation descibes the definition of an elliptical pipe. The def
 
 ![Circular pipe]({{figure Pipenetwork_CircPipe.png}} "Circular pipe"){{figst circularpipe}}
 
-{{figure Pipenetwork_ElliPipe}}
-
-Mandatory attributes are pipe section *height* **height**, *width* **span**, pipe type *description* **desc**, *material* **material** and pipe *thickness* **thickness**.
-
 When defining a network mandatory attributes are *height* **height** ja *width* **span**. Other attributes are not set.
 
 ![Elliptic pipe]({{figure Pipenetwork_ElliPipe.png}} "Elliptic pipe"){{figst ellipticpipe}}
@@ -355,10 +330,6 @@ The following illustation descibes the definition of a rectangular pipe.  The de
 2. Rectangular pipe **\<RectPipe>**
 3. Center **\<Center>**
 4. Pipe details **\<Feature>** "IM_pipe" extension
-
-{{figure Pipenetwork_RectPipe}}
-
-The pipe *height* **height**, *width* **width**, *description* **desc**, **material** and pipe **thickness**.
 
 When defining a network-limiting pipe the **height** and **width** are mandatory attributes. Other attributes are not set.
 
@@ -378,8 +349,6 @@ The following illustation descibes the definition of a channel pipe. The definit
 Illustration of channel description:
 
 ![Channel]({{figure Pipenetwork_Channel.png}} "Channel"){{figst channel}}
-
-Mandatory attributes are channel section *height* **height**, *top width* **widthTop**, *bottom width* **widthBottom**, pipe type *description* **desc**, *material* **material** and *thickness* **thickness**.
 
 When defining a network mandatory attributes are *height* **height**, *top width* **widthTop** and *bottom width* **widthBottom**. Other attributes are not set.
 
