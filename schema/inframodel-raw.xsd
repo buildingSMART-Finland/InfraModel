@@ -2915,16 +2915,32 @@ A collection of surface models.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Surface" maxOccurs="unbounded"/>
+				<xs:element ref="Surface" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Surface mesh and its sourcedata</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="SurfVolumes" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Surface">
@@ -2938,48 +2954,37 @@ SourceData is an optional collection of the points, contours, breaklines and bou
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="3">
-					<xs:element ref="SourceData" minOccurs="0"/>
+					<xs:element ref="SourceData" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The collection of data that was used to triangulate the surface.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:element ref="Definition" minOccurs="0"/>
 					<xs:element ref="Watersheds" minOccurs="0" maxOccurs="0"/>
 				</xs:choice>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelSurfaceFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelSurfaceFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_soil--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_structLayer--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="OID" type="xs:string"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="SourceData">
@@ -2991,14 +2996,22 @@ The collection of data that was used to create the surface.</xs:documentation>
 		<xs:complexType>
 			<xs:sequence maxOccurs="unbounded">
 				<xs:choice>
-					<xs:element ref="Chain" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="PointFiles" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="Chain" minOccurs="0" maxOccurs="0"/>
+					<xs:element ref="PointFiles" minOccurs="0" maxOccurs="0"/>
 					<xs:element ref="Boundaries" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Breaklines" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Contours" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="DataPoints" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="Breaklines" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>The collection of breaklines that were used to define the surface.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="Contours" minOccurs="0" maxOccurs="0"/>
+					<xs:element ref="DataPoints" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Collection of data points that were used to define the surface </xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -3011,7 +3024,11 @@ The sub element PntList3D is group of points is defined by a 3D
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:sequence maxOccurs="unbounded">
-				<xs:element ref="PntList3D" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="PntList3D" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>A sequential space delimited list of 3D coordinates.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Inframodel</xs:documentation>
@@ -3045,14 +3062,26 @@ The sub element PntList3D is group of points is defined by a 3D
 						<xs:attribute name="source"/>
 					</xs:complexType>
 				</xs:element>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="code" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="pntRef" type="pointNameRef"/>
-			<xs:attribute name="pointGeometry" type="pointGeometryType"/>
-			<xs:attribute name="DTMAttribute" type="DTMAttributeType"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PointFiles">
@@ -3086,7 +3115,7 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Boundary" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -3100,50 +3129,55 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice>
-					<xs:element ref="PntList2D"/>
-					<xs:element ref="PntList3D"/>
+					<xs:element ref="PntList2D">
+						<xs:annotation>
+							<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="PntList3D">
+						<xs:annotation>
+							<xs:documentation>A sequential space delimited list of 3D coordinates with a minimum of 3 points</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 				</xs:choice>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelSurfaceBoundaryFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelSurfaceBoundaryFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_soil--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_structLayer--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="bndType" type="surfBndType" use="required"/>
-			<xs:attribute name="edgeTrim" type="xs:boolean" use="required"/>
-			<xs:attribute name="area" type="xs:double"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="bndType" type="surfBndType" use="required">
+				<xs:annotation>
+					<xs:documentation>Boundary type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="edgeTrim" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Edge trimming flag</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="area" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Boundary area</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Breaklines">
@@ -3155,9 +3189,13 @@ The collection of breaklines that were used to define the surface.</xs:documenta
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Breakline" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="RetWall" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Breakline" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Invidual surface breakline</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="RetWall" minOccurs="0" maxOccurs="0"/>
+				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -3170,49 +3208,36 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:choice>
-					<xs:element ref="PntList2D"/>
-					<xs:element ref="PntList3D"/>
-					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
-				</xs:choice>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="PntList3D">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>A sequential space delimited list of 3D coordinates with a minimum of 2 points.</xs:documentation>
 					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelBreaklineFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelBreaklineFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
 				</xs:element>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:any namespace="##local"/>
 			</xs:sequence>
-			<xs:attribute name="brkType" type="breakLineType"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="brkType" type="breakLineType">
+				<xs:annotation>
+					<xs:documentation>Breakline type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="RetWall">
