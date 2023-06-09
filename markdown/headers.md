@@ -185,3 +185,22 @@ Metadata is described with the **\<im:Metadata>** element (specified im-extensio
 Metadata is optional and enables the following features shown below.
   
 {{xtabulate im:Metadata ../schema/im.xsd}}
+
+Where:
+
+{{xtabulate im:CreatedBy ../schema/im.xsd}}
+
+{{xtabulate im:ContactInformation ../schema/im.xsd}}
+
+{{xtabulate im:DataOwner ../schema/im.xsd}}
+
+{{xtabulate im:History ../schema/im.xsd}}
+
+{{xtabulate im:ModifiedTimestamp ../schema/im.xsd}}
+
+{{xtabulate im:DataQuality ../schema/im.xsd}}
+
+{{xtabulate im:Source ../schema/im.xsd}}
+
+{{xtabulate im:ModelStatus ../schema/im.xsd}}
+
