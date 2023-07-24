@@ -2298,6 +2298,9 @@ The sub element PntList3D is group of points is defined by a 3D
 			<xs:sequence>
 				<xs:choice>
 					<!-- Here PntList2D represents 2D planimetric coordinate pairs expressed as space delimited Northing Easting pairs. -->
+					<xs:annotation>
+						<xs:documentation>Boundary may be represented as PntList2D or PntList3D element</xs:documentation>
+					</xs:annotation>
 					<xs:element ref="PntList2D">
 						<xs:annotation>
 							<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points</xs:documentation>
