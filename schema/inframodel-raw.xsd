@@ -932,6 +932,9 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 	</xs:simpleType>
 	<!-- 3d point in all 3 coors are required -->
 	<xs:simpleType name="Point3dReq">
+		<xs:annotation>
+			<xs:documentation>3d point</xs:documentation>
+		</xs:annotation>
 		<xs:restriction base="double">
 			<xs:minLength value="3"/>
 			<xs:maxLength value="3"/>
@@ -939,6 +942,9 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 	</xs:simpleType>
 	<!-- 2d Point in which all coors are required -->
 	<xs:simpleType name="Point2dReq">
+		<xs:annotation>
+			<xs:documentation>2d point</xs:documentation>
+		</xs:annotation>
 		<xs:restriction base="Point">
 			<xs:length value="2"/>
 		</xs:restriction>
@@ -2291,13 +2297,13 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice>
-					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
-					<xs:element ref="PntList2D" minOccurs="0">
+					<!-- Here PntList2D represents 2D planimetric coordinate pairs expressed as space delimited Northing Easting pairs. -->
+					<xs:element ref="PntList2D">
 						<xs:annotation>
 							<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="PntList3D" minOccurs="0">
+					<xs:element ref="PntList3D">
 						<xs:annotation>
 							<xs:documentation>A sequential space delimited list of 3D coordinates with a minimum of 3 points</xs:documentation>
 						</xs:annotation>
@@ -2451,6 +2457,9 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 		</xs:complexType>
 	</xs:element>
 	<xs:simpleType name="TINFaceType" final="restriction">
+		<xs:annotation>
+			<xs:documentation>Face definition</xs:documentation>
+		</xs:annotation>
 		<xs:restriction base="integer">
 			<xs:minLength value="3"/>
 			<xs:maxLength value="3"/>
@@ -3858,16 +3867,11 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ObstructionOffset" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="BikeFacilities" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="RoadSign" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation/>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="DrivewayDensity" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="HazardRating" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="Ditch" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 		</xs:complexType>
