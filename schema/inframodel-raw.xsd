@@ -1252,7 +1252,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					<xs:element ref="PntList3D"/>
 					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="dir" type="direction"/>
@@ -1307,7 +1306,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 				<xs:element ref="Center"/>
 				<xs:element ref="End"/>
 				<xs:element ref="PI" minOccurs="0"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="rot" type="clockwise" use="required"/>
 			<xs:attribute name="chord" type="xs:double" use="required"/>
@@ -1340,7 +1338,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					<xs:element ref="PI"/>
 					<xs:element ref="End"/>
 				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="length" type="xs:double" use="required"/>
 			<xs:attribute name="radiusEnd" type="xs:double" use="required"/>
@@ -1418,18 +1415,39 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:sequence>
 				<xs:element ref="CrossSect" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>Cross section</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="calcMethod" type="xsVolCalcMethodType"/>
-			<xs:attribute name="curveCorrection" type="xs:boolean"/>
-			<xs:attribute name="swellFactor" type="xs:double"/>
-			<xs:attribute name="shrinkFactor" type="xs:double"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="sectType">
+				<xs:annotation>
+					<xs:documentation>FTIA types (a, b, c, f, x) cross-section transition begins or is in progress.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="a"/>
+						<xs:enumeration value="b"/>
+						<xs:enumeration value="c"/>
+						<xs:enumeration value="f"/>
+						<xs:enumeration value="x"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CrossSect">
@@ -1438,8 +1456,11 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="CrossSectSurf" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="DesignCrossSectSurf" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="DesignCrossSectSurf" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Design cross sectiopn definition</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Inframodel</xs:documentation>
@@ -1473,18 +1494,26 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 						<xs:attribute name="source"/>
 					</xs:complexType>
 				</xs:element>
+				<xs:element ref="IM_crossSect--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="sta" type="xs:double" use="required"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="angleSkew" type="angle"/>
-			<xs:attribute name="areaCut" type="crossSectSurfaceArea"/>
-			<xs:attribute name="areaFill" type="crossSectSurfaceArea"/>
-			<xs:attribute name="centroidCut" type="xs:double"/>
-			<xs:attribute name="centroidFill" type="xs:double"/>
-			<xs:attribute name="sectType" type="xs:string"/>
-			<xs:attribute name="volumeCut" type="crossSectSurfaceVolume"/>
-			<xs:attribute name="volumeFill" type="crossSectSurfaceVolume"/>
+			<xs:attribute name="sta" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Cross section station</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CrossSectSurf">
@@ -1509,15 +1538,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
-				<xs:extension base="PointType">
-					<xs:attribute name="dataFormat" type="dataFormatType" default="Offset Elevation"/>
-					<xs:attribute name="alignRef" type="alignmentNameRef"/>
-					<xs:attribute name="alignRefStation" type="station"/>
-					<xs:attribute name="planFeatureRef" type="planFeatureNameRef"/>
-					<xs:attribute name="planFeatureRefStation" type="station"/>
-					<xs:attribute name="parcelRef" type="parcelNameRef"/>
-					<xs:attribute name="parcelRefStation" type="station"/>
-				</xs:extension>
+				<xs:extension base="PointType"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1527,19 +1548,32 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="CrossSectPnt" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="CrossSectPnt" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Cross section point</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="side" type="sideofRoadType"/>
-			<xs:attribute name="material" type="xs:string"/>
-			<xs:attribute name="closedArea" type="xs:boolean"/>
-			<xs:attribute name="typicalThickness" type="xs:double"/>
-			<xs:attribute name="typicalWidth" type="xs:double"/>
-			<xs:attribute name="area" type="crossSectSurfaceArea"/>
-			<xs:attribute name="volume" type="crossSectSurfaceVolume"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="side" type="sideofRoadType">
+				<xs:annotation>
+					<xs:documentation>Side of road</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!-- Project element -->
@@ -2297,10 +2331,10 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice>
-					<!-- Here PntList2D represents 2D planimetric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 					<xs:annotation>
 						<xs:documentation>Boundary may be represented as PntList2D or PntList3D element</xs:documentation>
 					</xs:annotation>
+					<!-- Here PntList2D represents 2D planimetric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 					<xs:element ref="PntList2D">
 						<xs:annotation>
 							<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points</xs:documentation>
@@ -2713,82 +2747,31 @@ A collection of horizontal Alignments</xs:documentation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Alignment" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelAlignmentsFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>Inframodel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>InfraModel</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:attribute name="label" type="InframodelAlignmentsFeatureFeatureLabelUnionType" use="required">
-													<xs:annotation>
-														<xs:documentation>InfraModel</xs:documentation>
-													</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="value" type="xs:string" use="required"/>
-											</xs:complexType>
-										</xs:element>
-										<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-										<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-										<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-									</xs:sequence>
-									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="code" type="InframodelAlignmentsFeatureFeatureCodesType" use="required">
-										<xs:annotation>
-											<xs:documentation>Inframodel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="source"/>
-								</xs:complexType>
-							</xs:element>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelAlignmentsFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_stringlineLayers--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Alignment">
 		<xs:annotation>
-			<xs:documentation>Inframodel.
-
-geometric horizontal alignment, PGL or chain typically representing a road design center line</xs:documentation>
+			<xs:documentation>Geometric alignment</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
@@ -2814,37 +2797,7 @@ geometric horizontal alignment, PGL or chain typically representing a road desig
 											<xs:sequence>
 												<xs:element ref="Start"/>
 												<xs:element ref="End"/>
-												<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-													<xs:annotation>
-														<xs:documentation>Inframodel</xs:documentation>
-													</xs:annotation>
-													<xs:complexType>
-														<xs:sequence>
-															<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-																<xs:annotation>
-																	<xs:documentation>Inframodel</xs:documentation>
-																</xs:annotation>
-																<xs:complexType>
-																	<xs:attribute name="label" type="InframodelCoordGeomFeatureLabelUnionType" use="required">
-																		<xs:annotation>
-																			<xs:documentation>InfraModel</xs:documentation>
-																		</xs:annotation>
-																	</xs:attribute>
-																	<xs:attribute name="value" type="xs:string" use="required"/>
-																</xs:complexType>
-															</xs:element>
-															<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-															<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-														</xs:sequence>
-														<xs:attribute name="name" type="xs:string"/>
-														<xs:attribute name="code" type="InframodelCoordGeomFeatureCodesType" use="required">
-															<xs:annotation>
-																<xs:documentation>Inframodel</xs:documentation>
-															</xs:annotation>
-														</xs:attribute>
-														<xs:attribute name="source"/>
-													</xs:complexType>
-												</xs:element>
+												<xs:element ref="IM_switch--ltFeature--gt" minOccurs="0"/>
 											</xs:sequence>
 											<xs:attribute name="desc" type="xs:string"/>
 											<xs:attribute name="dir" type="direction"/>
@@ -2859,30 +2812,30 @@ geometric horizontal alignment, PGL or chain typically representing a road desig
 									<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
 									<xs:element ref="Curve" minOccurs="0" maxOccurs="unbounded"/>
 									<xs:element ref="Spiral" minOccurs="0" maxOccurs="unbounded"/>
-									<xs:element ref="Chain" minOccurs="0" maxOccurs="unbounded"/>
 								</xs:choice>
-								<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 							</xs:sequence>
-							<xs:attribute name="desc" type="xs:string"/>
 							<xs:attribute name="name" type="xs:string"/>
+							<xs:attribute name="desc" type="xs:string"/>
 							<xs:attribute name="state" type="stateType"/>
-							<xs:attribute name="oID" type="xs:string"/>
 						</xs:complexType>
 					</xs:element>
 					<xs:element ref="Cant" minOccurs="0"/>
 				</xs:choice>
 				<xs:element ref="StaEquation" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Inframodel.
-
-The "staInternal" value identifies the location of the station equation. It is the station value with no equations applied (staStart + dist). "staAhead" is the new station value and "staIncrement" indicates whether or not the station values increase or decrease.</xs:documentation>
+						<xs:documentation>Station equation  (KM-posting)</xs:documentation>
+						<xs:documentation>Hint:Inframodel</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Profile" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Profile" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>A profile (long section)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="CrossSects" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>
-Inframodel</xs:documentation>
+						<xs:documentation>Cross section definitions</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
@@ -2919,12 +2872,36 @@ Inframodel</xs:documentation>
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="length" type="xs:double" use="required"/>
-			<xs:attribute name="staStart" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="length" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Alignment length</xs:documentation>
+					<xs:documentation>Example:100.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Station offset</xs:documentation>
+					<xs:documentation>Example:10.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Descrioption</xs:documentation>
+					<xs:documentation>Example:ML-VT778</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+					<xs:documentation>Example:proposed</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:simpleType name="stationIncrementDirectionType">
@@ -2941,45 +2918,29 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelStaEquationFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelStaEquationFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_kmPostCoords--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="staAhead" type="xs:double" use="required"/>
-			<xs:attribute name="staBack" type="xs:double" use="required"/>
-			<xs:attribute name="staInternal" type="xs:double" use="required"/>
-			<xs:attribute name="staIncrement" type="stationIncrementDirectionType" use="optional"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
+			<xs:attribute name="staAhead" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>The "new" station value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staBack" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Distance to previous km-post station</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staInternal" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Internal stationiong</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Profile">
@@ -2989,15 +2950,34 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="ProfSurf" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="ProfAlign" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="ProfAlign" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Represents a vertical alignment for a profile.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="staStart" type="xs:double"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Station offset</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ProfSurf">
@@ -3027,16 +3007,35 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="PVI" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="ParaCurve" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="UnsymParaCurve" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="CircCurve" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="UnsymParaCurve" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A  Point of Vertical Intersection with a space delimited "station elevation" text value and a parabolic vertical curve defined by the "lengthIn" and "lenthgOut" attributes.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="CircCurve" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A  Point of Vertical Intersection with a space delimited "station elevation" text value and curvature definition</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 				<!--               <xs:element ref="PVI"/>  -->
 				<!--                 <xs:element ref="PVI"/> -->
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PVI">
@@ -3046,7 +3045,11 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
 				<xs:extension base="Point2dReq">
-					<xs:attribute name="desc" type="xs:string"/>
+					<xs:attribute name="desc" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Description</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
@@ -3058,8 +3061,16 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
 				<xs:extension base="Point2dReq">
-					<xs:attribute name="length" type="xs:double" use="required"/>
-					<xs:attribute name="desc" type="xs:string"/>
+					<xs:attribute name="length" type="xs:double" use="required">
+						<xs:annotation>
+							<xs:documentation>Curve length</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="desc" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Description</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
@@ -3072,9 +3083,21 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
 				<xs:extension base="Point2dReq">
-					<xs:attribute name="lengthIn" type="xs:double" use="required"/>
-					<xs:attribute name="lengthOut" type="xs:double" use="required"/>
-					<xs:attribute name="desc" type="xs:string"/>
+					<xs:attribute name="lengthIn" type="xs:double" use="required">
+						<xs:annotation>
+							<xs:documentation>Curve lenght</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="lengthOut" type="xs:double" use="required">
+						<xs:annotation>
+							<xs:documentation>Curve lenght</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="desc" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Description</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
@@ -3087,9 +3110,21 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
 				<xs:extension base="Point">
-					<xs:attribute name="length" type="xs:double" use="required"/>
-					<xs:attribute name="radius" type="xs:double" use="required"/>
-					<xs:attribute name="desc" type="xs:string"/>
+					<xs:attribute name="length" type="xs:double" use="required">
+						<xs:annotation>
+							<xs:documentation>Curve length</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="radius" type="xs:double" use="required">
+						<xs:annotation>
+							<xs:documentation>Curve radius</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="desc" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Description</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
@@ -3938,76 +3973,103 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 	</xs:element>
 	<xs:element name="Cant">
 		<xs:annotation>
-			<xs:documentation>The "Cant" element will typically represent a proposed railway cant / superelevation alignment.</xs:documentation>
-			<xs:documentation>It is defined by a sequential series of any combination of the cant stations and speed-only stations.
-The “name”, “desc” and “state” attributes are typical LandXML “alignment” attributes.
-The “equilibriumConstant” is a unitless optional double that is used as the equilibrium constant in the cant equilibrium equation (cant = constant * speed * speed / radius).
-The “appliedCantConstant” is a unitless optional double that is used as the applied cant constant in the cant equilibrium equation (cant = constant * speed * speed / radius).
-The “gauge” is a required double that is the rail to rail distance.  This value is expressed in meters or feet depending upon the units.
-The “rotationPoint” is an optional string that defines the rotation point.  Valid values are “insideRail”, “outsideRail”, “center”, “leftRail” and “rightRail”.
-</xs:documentation>
+			<xs:documentation>The "Cant" element represents a proposed railway cant / superelevation alignment definitions and railway design speed change stations.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="CantStation" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="SpeedStation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="optional"/>
-			<xs:attribute name="state" type="stateType" use="optional"/>
-			<xs:attribute name="equilibriumConstant" type="xs:double" use="optional"/>
-			<xs:attribute name="appliedCantConstant" type="xs:double" use="optional"/>
-			<xs:attribute name="gauge" type="xs:double" use="required"/>
-			<xs:attribute name="rotationPoint" type="xs:string"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType" use="optional">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="equilibriumConstant" type="xs:double" use="optional">
+				<xs:annotation>
+					<xs:documentation>Equillibrium constant</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="appliedCantConstant" type="xs:double" use="optional">
+				<xs:annotation>
+					<xs:documentation>Cant constant</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="gauge" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Track gauge</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rotationPoint">
+				<xs:annotation>
+					<xs:documentation>Rotation point</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="left"/>
+						<xs:enumeration value="center"/>
+						<xs:enumeration value="right"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CantStation">
 		<xs:annotation>
-			<xs:documentation>A cant station.
-            The “station” is a required double that is internal station value.
-The “equilibriumCant” is an optional double that is the equilibrium cant.  This value is expressed in millimeters or inches depending upon the units
-The “appliedCant” is a required double that is the applied cant.  This value is expressed in millimeters or inches depending upon the units.
-The “deficiencyCant” is an optional double that is the cant deficiency.  This value is expressed in millimeters or inches depending upon the units.
-The “cantExcess” is an optional double that is the cant excess.  This value is expressed in millimeters or inches upon the units.
-The “rateOfChangeOfAppliedCantOverTime” is an optional double that is the rate of change of applied cant as a function of time.  This value is in millimeters /seconds or inches/seconds depending upon the units.
-The “rateOfChangeOfAppliedCantOverLength” is an optional double that is the rate of change of applied cant as a function of length.  This value is in millimeters /meters or inches/feet depending upon the units.
-The “rateOfChangeOfCantDeficiencyOverTime” is an optional double that is the rate of change of cant deficiency as a function of time.  This value is in millimeters /seconds or inches/seconds depending upon the units.
-The “cantGradient” is an optional double that is the cant gradient.  This value is unitless.
-The “speed” is an optional double that is the design speed.  This value is in kmph or mph depending upon the units.
-The “transitionType” is an optional enumerated type.
-The “curvature” is a required enumerated type.
-The “adverse” is an optional Boolean that indicates whether the cant is adverse.
-		</xs:documentation>
+			<xs:documentation>A cant change station.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="station" type="xs:double" use="required"/>
-			<xs:attribute name="equilibriumCant" type="xs:double" use="optional"/>
-			<xs:attribute name="appliedCant" type="xs:double" use="required"/>
-			<xs:attribute name="cantDeficiency" type="xs:double" use="optional"/>
-			<xs:attribute name="cantExcess" type="xs:double" use="optional"/>
-			<xs:attribute name="rateOfChangeOfAppliedCantOverTime" type="xs:double" use="optional"/>
-			<xs:attribute name="rateOfChangeOfAppliedCantOverLength" type="xs:double" use="optional"/>
-			<xs:attribute name="rateOfChangeOfCantDeficiencyOverTime" type="xs:double" use="optional"/>
-			<xs:attribute name="cantGradient" type="xs:double" use="optional"/>
-			<xs:attribute name="speed" type="xs:double"/>
-			<xs:attribute name="transitionType" type="spiralType" use="optional"/>
-			<xs:attribute name="curvature" type="clockwise" use="required"/>
-			<xs:attribute name="adverse" type="xs:boolean" use="optional"/>
+			<xs:attribute name="station" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Cant change station</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="appliedCant" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Cant value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="speed" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Design speed at cant station</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="curvature" type="clockwise" use="required">
+				<xs:annotation>
+					<xs:documentation>Direction of the cant</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="SpeedStation">
 		<xs:annotation>
 			<xs:documentation>A cant speed-only station.
-            The “station” is a required double that is internal station value.
-	The “speed” is an optional double that is the design speed.  This value is in kmph or mph depending upon the units.
 </xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="station" type="xs:double" use="required"/>
-			<xs:attribute name="speed" type="xs:double"/>
+			<xs:attribute name="station" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Design speed change station</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="speed" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Design speed</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!--Typed Inframodel Feature definitions-->
@@ -4154,13 +4216,13 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_coding--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel type coding system definition  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel type coding  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="terrainCoding--ltProperty--gt__im_coding__" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>Sets terrain code</xs:documentation>
+						<xs:documentation>Terrain code</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="terrainCodingDesc--ltProperty--gt__im_coding__" minOccurs="0"/>
@@ -4221,7 +4283,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_proprietaryCoding--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel proprietary feature coding system definition  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel proprietary feature coding  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -4282,7 +4344,7 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:element name="IM_plan--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel user defined custom properties  --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel plan information  --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -4462,6 +4524,158 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_spatialZone">
 				<xs:annotation>
 					<xs:documentation>Fixed value, IM_spatialZone</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_stringlineLayer--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel strigline layer --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name--ltProperty--gt"/>
+				<xs:element ref="alignments-ltProperty--gt"/>
+				<xs:element ref="centreline--ltProperty--gt"/>
+				<xs:element ref="desc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_stringlineLayer">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_stringlineLayer</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_stringlineLayers--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel strigline layer collection--ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="IM_stringlineLayer--ltFeature--gt" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_stringlineLayers">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_stringlineLayers</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_switch--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel railway switch --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="switchType--ltProperty--gt"/>
+				<xs:element ref="switchHand--ltProperty--gt"/>
+				<xs:element ref="switchJoint--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_switch">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_switch</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_kmPostCoords--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel KM-post coordinates --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="northing--ltProperty--gt"/>
+				<xs:element ref="easting--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_kmPostCoords">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_kmPostCoords</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_crossSect--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel cross section details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pavementClass--ltProperty--gt"/>
+				<xs:element ref="pavementThickness--ltProperty--gt"/>
+				<xs:element ref="subgradeLoadCapacityClass--ltProperty--gt"/>
+				<xs:element ref="slope--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_kmPostCoords">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_crossSct</xs:documentation>
 					<xs:documentation>Example:IM_spatialZone</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -5988,6 +6202,225 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Rim load bearing capacity in kN</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_stringlineLayer-->
+	<xs:element name="name--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Unique name</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="name">
+				<xs:annotation>
+					<xs:documentation>Fixed value, name</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="desc--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="desc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, desc</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="alignments-ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>List of alignments which are used to form the surface (sorted from left to right)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="alignments">
+				<xs:annotation>
+					<xs:documentation>Fixed value, alignments</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Comma delimited list of --ltAlignment--gt.name references </xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="centreline--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Centre line of stringline layer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="centreline">
+				<xs:annotation>
+					<xs:documentation>Fixed value, centreline</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Centre line of stringline layer</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_switch-->
+	<xs:element name="switchType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Switch type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="switchType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, switchType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Type of switch</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="switchHand--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Switch hand</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="switchHand">
+				<xs:annotation>
+					<xs:documentation>Fixed value, switchHand</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Switch hand</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="left"/>
+						<xs:enumeration value="right"/>
+						<xs:enumeration value="both"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="switchJoint--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Switch joint</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="centreline">
+				<xs:annotation>
+					<xs:documentation>Fixed value, centreline</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Centre line of stringline layer</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_crossSect-->
+	<xs:element name="pavementClass--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pavement class</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pavementClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pavementClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pavement class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pavementThickness--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pamenent thickness</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pavementThickness">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pavementThickness</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pavement thickness</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="subgradeLoadCapacityClass--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Subgrade load capacity class</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="subgradeLoadCapacityClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, subgradeLoadCapacityClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Subgrade load capacity</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="slope--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Slope</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="centreline">
+				<xs:annotation>
+					<xs:documentation>Fixed value, slope</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Slope, %, left to right, space as value separator</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
