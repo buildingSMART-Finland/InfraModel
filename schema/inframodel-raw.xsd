@@ -109,7 +109,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:field xpath="@refPipe"/>
 		</xs:keyref>
 	</xs:element>
-	<!-- simpleType declarations-->
 	<!-- Special numeric types -->
 	<xs:simpleType name="ellipsoidHeightType">
 		<xs:annotation>
@@ -149,14 +148,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 	<xs:simpleType name="angle">
 		<xs:annotation>
 			<xs:documentation>Represents a normalized angular value in the specified Angular units. Assume 0 degrees = east</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:double"/>
-	</xs:simpleType>
-	<xs:simpleType name="zenithAngle">
-		<xs:annotation>
-			<xs:documentation>Represents zenith angles with the 0 origin as
-    straight up and measured in a clockwise direction in the specified
-    Angular units.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:double"/>
 	</xs:simpleType>
@@ -344,12 +335,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
-	<xs:simpleType name="waterShedNameRef">
-		<xs:annotation>
-			<xs:documentation>A reference name value referring to WaterShed.name attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="roadwayNameRef">
 		<xs:annotation>
 			<xs:documentation>A reference name value referring to Raodway.name attribute.</xs:documentation>
@@ -392,52 +377,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:enumeration value="control point"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="observationStatusType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="modified"/>
-			<xs:enumeration value="deleted"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="beaconProtectionType">
-		<xs:annotation>
-			<xs:documentation>Indicates any structure that protects the
-		monument, these enumerations may need expanding</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="cover"/>
-			<xs:enumeration value="cover and box"/>
-			<xs:enumeration value="fence enclosure"/>
-			<xs:enumeration value="marker post"/>
-			<xs:enumeration value="no protection"/>
-			<xs:enumeration value="other"/>
-			<xs:enumeration value="quadripod"/>
-			<xs:enumeration value="unknown"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="beaconType">
-		<xs:annotation>
-			<xs:documentation>Indicates whether there is any physical structure
-			for the monument - helps location, these enumerations may need expanding
-			</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="cairn"/>
-			<xs:enumeration value="chimney"/>
-			<xs:enumeration value="large quadripod"/>
-			<xs:enumeration value="lighthouse"/>
-			<xs:enumeration value="marine beacon"/>
-			<xs:enumeration value="mast"/>
-			<xs:enumeration value="mast with targets"/>
-			<xs:enumeration value="no beacon"/>
-			<xs:enumeration value="other"/>
-			<xs:enumeration value="pillar"/>
-			<xs:enumeration value="post"/>
-			<xs:enumeration value="small quadripod"/>
-			<xs:enumeration value="tower"/>
-			<xs:enumeration value="tripod"/>
-			<xs:enumeration value="unknown"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="clockwise">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="cw"/>
@@ -448,53 +387,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="arc"/>
 			<xs:enumeration value="chord"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DTMAttributeType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="determinebyfeature"/>
-			<xs:enumeration value="donotinclude"/>
-			<xs:enumeration value="spot"/>
-			<xs:enumeration value="spotandbreak"/>
-			<xs:enumeration value="void"/>
-			<xs:enumeration value="drapevoid"/>
-			<xs:enumeration value="breakvoid"/>
-			<xs:enumeration value="island"/>
-			<xs:enumeration value="boundary"/>
-			<xs:enumeration value="contour"/>
-			<xs:enumeration value="feature"/>
-			<xs:enumeration value="ground"/>
-			<xs:enumeration value="xsection"/>
-			<xs:enumeration value="user"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="GPSSolutionTypeEnum">
-		<xs:annotation>
-			<xs:documentation>The GPS solution type indicates the type of computed solution for a GPS vector or position</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Unknown"/>
-			<xs:enumeration value="Code"/>
-			<xs:enumeration value="Float"/>
-			<xs:enumeration value="Fixed"/>
-			<xs:enumeration value="Network Float"/>
-			<xs:enumeration value="Network Fixed"/>
-			<xs:enumeration value="WAAS Float"/>
-			<xs:enumeration value="WAAS Fixed"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="GPSSolutionFrequencyEnum">
-		<xs:annotation>
-			<xs:documentation>The GPS solution frequency indicates the GPS frequencies used in the computed solution for a GPS vector or position </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Unknown"/>
-			<xs:enumeration value="L1"/>
-			<xs:enumeration value="L2"/>
-			<xs:enumeration value="L2 Squared"/>
-			<xs:enumeration value="Wide Lane"/>
-			<xs:enumeration value="Narrow Lane"/>
-			<xs:enumeration value="Iono Free"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="impArea">
@@ -1107,16 +999,27 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 	<xs:complexType name="PointType3dReq">
 		<xs:simpleContent>
 			<xs:extension base="Point3dReq">
-				<xs:attribute name="name" type="xs:string"/>
-				<xs:attribute name="desc" type="xs:string"/>
-				<xs:attribute name="code" type="xs:string"/>
-				<xs:attribute name="state" type="stateType"/>
-				<xs:attribute name="pntRef" type="pointNameRef"/>
-				<xs:attribute name="featureRef" type="featureNameRef" use="optional"/>
-				<xs:attribute name="pointGeometry" type="pointGeometryType"/>
-				<xs:attribute name="DTMAttribute" type="DTMAttributeType"/>
-				<xs:attribute name="timeStamp" type="xs:dateTime" use="optional"/>
-				<xs:attribute name="role" type="surveyRoleType" use="optional"/>
+				<xs:attribute name="name" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Unique name</xs:documentation>
+						<xs:documentation>Example:--uid--</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="desc" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Description</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="code" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Feature code</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="state" type="stateType">
+					<xs:annotation>
+						<xs:documentation>State</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -1168,8 +1071,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:attribute name="name" type="xs:string"/>
 			<xs:attribute name="state" type="stateType"/>
 			<xs:attribute name="code" type="xs:string"/>
-			<xs:attribute name="zoneNumber" type="zoneNumberType"/>
-			<xs:attribute name="DTMAttribute" type="DTMAttributeType"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CgPoint">
@@ -1382,12 +1283,9 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					<xs:attribute name="code" type="xs:string"/>
 					<xs:attribute name="state" type="stateType"/>
 					<xs:attribute name="pointGeometry" type="pointGeometryType"/>
-					<xs:attribute name="DTMAttribute" type="DTMAttributeType"/>
 					<xs:attribute name="timeStamp" type="xs:dateTime" use="optional"/>
 					<xs:attribute name="role" type="surveyRoleType" use="optional"/>
 					<xs:attribute name="station" type="station"/>
-					<xs:attribute name="zone" type="xs:string"/>
-					<xs:attribute name="status" type="observationStatusType"/>
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
@@ -1794,27 +1692,6 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Imperial">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="areaUnit" type="impArea" use="required"/>
-			<xs:attribute name="linearUnit" type="impLinear" use="required"/>
-			<xs:attribute name="volumeUnit" type="impVolume" use="required"/>
-			<xs:attribute name="temperatureUnit" type="impTemperature" use="required"/>
-			<xs:attribute name="pressureUnit" type="impPressure" use="required"/>
-			<xs:attribute name="diameterUnit" type="impDiameter"/>
-			<xs:attribute name="widthUnit" type="impWidth"/>
-			<xs:attribute name="heightUnit" type="impHeight"/>
-			<xs:attribute name="velocityUnit" type="impVelocity"/>
-			<xs:attribute name="flowUnit" type="impFlow"/>
-			<xs:attribute name="angularUnit" type="angularType" default="radians"/>
-			<xs:attribute name="directionUnit" type="angularType" default="radians"/>
-			<xs:attribute name="latLongAngularUnit" type="latLongAngularType" default="decimal degrees"/>
-			<xs:attribute name="elevationUnit" type="elevationType" default="meter"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Anglular Units element definition-->
 	<xs:simpleType name="angularType">
 		<xs:annotation>
@@ -1986,20 +1863,11 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="SurveyMonument" minOccurs="0"/>
 					<xs:element ref="CgPoints" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Inframodel                       A collection of COGO points. (Cg = COGO = Cordinate Geometry)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="InstrumentSetup" minOccurs="0"/>
-					<xs:element ref="LaserSetup" minOccurs="0"/>
-					<xs:element ref="GPSSetup" minOccurs="0"/>
-					<xs:element ref="TargetSetup" minOccurs="0"/>
-					<xs:element ref="GPSVector"/>
-					<xs:element ref="GPSPosition"/>
-					<xs:element ref="ObservationGroup"/>
-					<xs:element ref="ControlChecks"/>
 					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
@@ -2021,17 +1889,9 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 		<xs:complexType mixed="true">
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element ref="Annotation" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="AdministrativeArea" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="AdministrativeDate" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="CoordinateSystem" minOccurs="0"/>
-				<xs:element ref="Units" minOccurs="0"/>
-				<xs:element ref="MapPoint" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Personnel" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="SurveyorCertificate" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="PurposeOfSurvey" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="HeadOfPower" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -2065,34 +1925,6 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 			<xs:attribute name="fieldReport" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Head Of Power Element -->
-	<xs:element name="HeadOfPower">
-		<xs:complexType>
-			<xs:attribute name="name" type="headOfPowerType" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- AdministrativeArea Element -->
-	<xs:element name="AdministrativeArea">
-		<xs:annotation>
-			<xs:documentation>This element stores the administrative boundaries for a survey</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="adminAreaType" type="adminAreaTypeType" use="required"/>
-			<xs:attribute name="adminAreaName" type="xs:string"/>
-			<xs:attribute name="adminAreaCode" type="xs:string"/>
-			<xs:attribute name="pclRef" type="parcelNameRefs"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- AdministrativeDate Element -->
-	<xs:element name="AdministrativeDate">
-		<xs:annotation>
-			<xs:documentation>This element stores a range of Administrative dates which may vary from jurisdiction to jurisdiction.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="adminDateType" type="adminDateTypeType" use="required"/>
-			<xs:attribute name="adminDate" type="xs:date" use="required"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Annotation Element-->
 	<xs:element name="Annotation">
 		<xs:annotation>
@@ -2105,49 +1937,10 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 			<xs:attribute name="pclRef" type="parcelNameRefs"/>
 		</xs:complexType>
 	</xs:element>
-	<!--SurveyorCertificate Element-->
-	<xs:element name="SurveyorCertificate">
-		<xs:complexType>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="certificateType" type="xs:string"/>
-			<xs:attribute name="textCertificate" type="xs:string"/>
-			<xs:attribute name="surveyDate" type="xs:date"/>
-		</xs:complexType>
-	</xs:element>
 	<!--Purpose Of Survey Element-->
 	<xs:element name="PurposeOfSurvey">
 		<xs:complexType>
 			<xs:attribute name="name" type="purpSurvType" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<!--Amendment-->
-	<xs:element name="Amendment">
-		<xs:annotation>
-			<xs:documentation>Records the dealing information to allow  audit trail between the survey document and the titling system</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="AmendmentItem" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="dealingNumber" type="xs:string"/>
-			<xs:attribute name="amendmentDate" type="xs:date"/>
-			<xs:attribute name="comments" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- AmendmentItem-->
-	<xs:element name="AmendmentItem">
-		<xs:complexType>
-			<xs:attribute name="elementName" type="xs:string"/>
-			<xs:attribute name="oldName" type="xs:string"/>
-			<xs:attribute name="newName" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Personnel">
-		<xs:complexType>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="role" type="surveyorRoleType"/>
-			<xs:attribute name="regType" type="registrationType"/>
-			<xs:attribute name="regNumber" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="FieldNote">
@@ -2174,7 +1967,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 							<xs:documentation>(Inframodel)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="LaserDetails"/>
 					<xs:element ref="GPSReceiverDetails"/>
 					<xs:element ref="GPSAntennaDetails"/>
 				</xs:choice>
@@ -2191,11 +1983,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Corrections">
-					<xs:annotation>
-						<xs:documentation>(Inframodel)</xs:documentation>
-					</xs:annotation>
-				</xs:element>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
@@ -2219,24 +2006,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			EDM instrument carrier wavelength (carrierWavelength) and the group refractive index
 			for the instrument (refractiveIndex). -->
 			<!-- To allow for older style top mounted EDM's -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="LaserDetails">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="laserVertOffset" type="xs:double"/>
-			<xs:attribute name="manufacturer" type="xs:string"/>
-			<xs:attribute name="model" type="xs:string"/>
-			<xs:attribute name="serialNumber" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="GPSAntennaDetails">
@@ -2279,605 +2048,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			<xs:attribute name="serialNumber" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Corrections">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Inframodel</xs:documentation>
-						</xs:annotation>
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-									<xs:annotation>
-										<xs:documentation>InfraModel</xs:documentation>
-									</xs:annotation>
-									<xs:complexType>
-										<xs:attribute name="label" type="InframodelSurveyCorrectionsFeatureLabelUnionType" use="required">
-											<xs:annotation>
-												<xs:documentation>InfraModel</xs:documentation>
-											</xs:annotation>
-										</xs:attribute>
-										<xs:attribute name="value" type="xs:string" use="required"/>
-									</xs:complexType>
-								</xs:element>
-								<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-								<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-								<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-							</xs:sequence>
-							<xs:attribute name="name" type="xs:string"/>
-							<xs:attribute name="code" type="InframodelSurveyCorrectionsFeatureCodesType" use="required">
-								<xs:annotation>
-									<xs:documentation>Inframodel</xs:documentation>
-								</xs:annotation>
-							</xs:attribute>
-							<xs:attribute name="source"/>
-						</xs:complexType>
-					</xs:element>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="refractionCoefficient" type="xs:double"/>
-			<xs:attribute name="applyRefractionCoefficient" type="xs:boolean"/>
-			<xs:attribute name="sphericity" type="xs:double"/>
-			<xs:attribute name="prismEccentricity" type="xs:double"/>
-			<!-- if 'true' then atmospheric corrections are to be applied to the measured distances read from the file -->
-			<!-- if 'true' then sea level corrections are to be applied to the measured distances read from the file -->
-			<!-- this is for recording the refraction coefficient used in the curvature and refraction correction of zenith angles -->
-			<!-- if 'true' then RefractionCoefficient should be applied to the measured zenith angles read from the file -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="SurveyMonument">
-		<xs:annotation>
-			<xs:documentation>This relates the new monument element to a survey - indicating its purpose in the survey and distrubed / replaced info as well</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="mntRef" type="monumentNameRef" use="required"/>
-			<xs:attribute name="purpose" type="monumentPurpose" use="required"/>
-			<xs:attribute name="state" type="monumentState"/>
-			<xs:attribute name="adoptedSurvey" type="xs:string"/>
-			<xs:attribute name="disturbedMonument" type="xs:string"/>
-			<xs:attribute name="disturbedDate" type="xs:date"/>
-			<xs:attribute name="disturbedAnnotation" type="xs:string"/>
-			<xs:attribute name="replacedMonument" type="xs:string"/>
-			<xs:attribute name="replacedDate" type="xs:date"/>
-			<xs:attribute name="replacedAnnotation" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="InstrumentSetup">
-		<xs:annotation>
-			<xs:documentation>The Instrument setup location is defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="InstrumentPoint" minOccurs="0"/>
-					<xs:element ref="Backsight" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="TargetSetup" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="RawObservation" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="ObservationGroup" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="ControlChecks" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="instrumentDetailsID" type="xs:IDREF"/>
-			<xs:attribute name="stationName" type="xs:string" use="required"/>
-			<xs:attribute name="instrumentHeight" type="xs:double" use="required"/>
-			<xs:attribute name="orientationAzimuth" type="direction"/>
-			<xs:attribute name="circleAzimuth" type="direction"/>
-			<xs:attribute name="status" type="observationStatusType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="LaserSetup">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="InstrumentPoint" minOccurs="0"/>
-				<xs:element ref="Backsight" minOccurs="0"/>
-				<xs:element ref="TargetSetup" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="RawObservation"/>
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="stationName" use="required"/>
-			<xs:attribute name="instrumentHeight" type="xs:double"/>
-			<xs:attribute name="laserDetailsID" type="xs:IDREF"/>
-			<xs:attribute name="magDeclination" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GPSSetup">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="TargetSetup" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="GPSPosition"/>
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="antennaHeight" type="xs:double" use="required"/>
-			<xs:attribute name="stationName" use="required"/>
-			<xs:attribute name="GPSAntennaDetailsID" type="xs:IDREF"/>
-			<xs:attribute name="GPSReceiverDetailsID" type="xs:IDREF"/>
-			<xs:attribute name="observationDataLink"/>
-			<xs:attribute name="stationDescription"/>
-			<xs:attribute name="startTime" type="GPSTime"/>
-			<xs:attribute name="stopTime" type="GPSTime"/>
-			<!--  GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week  -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TargetSetup">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID"/>
-			<xs:attribute name="targetHeight" type="xs:double"/>
-			<xs:attribute name="edmTargetVertOffset" type="xs:double"/>
-			<xs:attribute name="prismConstant" type="xs:double"/>
-			<!-- To allow for older style EDM's -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Backsight">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="BacksightPoint" minOccurs="0"/>
-				<xs:choice>
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID"/>
-			<xs:attribute name="azimuth" type="direction"/>
-			<xs:attribute name="targetHeight" type="xs:double"/>
-			<xs:attribute name="circle" type="angle" use="required"/>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:complexType name="RawObservationType">
-		<xs:sequence>
-			<xs:element ref="TargetPoint"/>
-			<xs:element ref="OffsetVals" minOccurs="0"/>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:sequence>
-		<xs:attribute name="setupID" type="xs:IDREF"/>
-		<xs:attribute name="targetSetupID" type="xs:IDREF"/>
-		<xs:attribute name="setID"/>
-		<xs:attribute name="purpose" type="purposeType"/>
-		<xs:attribute name="targetHeight" type="xs:double"/>
-		<xs:attribute name="horizAngle" type="angle" use="optional"/>
-		<xs:attribute name="slopeDistance" type="xs:double" use="optional"/>
-		<xs:attribute name="zenithAngle" type="zenithAngle" use="optional"/>
-		<xs:attribute name="horizDistance" type="xs:double"/>
-		<xs:attribute name="vertDistance" type="xs:double"/>
-		<xs:attribute name="azimuth" type="direction" use="optional"/>
-		<xs:attribute name="unused" type="xs:boolean"/>
-		<xs:attribute name="directFace" type="xs:boolean"/>
-		<xs:attribute name="coordGeomRefs" type="coordGeomNameRefs"/>
-		<xs:attribute name="timeStamp" type="xs:dateTime"/>
-		<xs:attribute name="alignRef" type="alignmentNameRef"/>
-		<xs:attribute name="alignStationName" type="xs:string"/>
-		<xs:attribute name="alignOffset" type="offsetDistance"/>
-		<xs:attribute name="upperStadia" type="xs:double"/>
-		<xs:attribute name="rod" type="xs:double"/>
-		<xs:attribute name="lowerStadia" type="xs:double"/>
-		<xs:attribute name="circlePositionSet" type="xs:double"/>
-		<xs:attribute name="status" type="observationStatusType"/>
-		<!-- FDOT SURVEY ADDTIONS -->
-		<!-- FDOT notes on RawObservations additions  
-			Where: 
-			 alignRef is the name of the alignment. 
-			 alignStationName is the station value where the rod reading is taken.
-			 alignOffset is the signed (+/-) distance from the CL of the referenced alignment.
-			 3-wire level loop attributes: 
-			 upperStadia is the upper stadia hair rod reading.
-			 rod is the middle hair rod reading. 
-			 lowerStadia is the lower stadia hair rod reading. 
-			 circlePositionSet represents the position of the reading circle.  
-               This optional attribute (assumed to be "1.0"), unless multiple reading 
-               circle positions were present from the same setup record.
-              ‘unused’ = boolean attribute to indicate the record is not used. 
-			'directFace' = indicates the scope is flipped – true if the scope is not flipped, false if it is. -->
-		<!-- coordGeomRefs identifies one or more 'name' values that link to specific <Line>, <Curve>, <Spiral> or <IrregularLine> in a <CoordGeom> element. This allows linking an survey observation to specific <Parcel>.<CoordGeom> based geometry. -->
-	</xs:complexType>
-	<xs:element name="RawObservation">
-		<xs:complexType mixed="false">
-			<xs:complexContent>
-				<xs:extension base="RawObservationType"/>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TestObservation">
-		<xs:complexType mixed="false">
-			<xs:complexContent>
-				<xs:extension base="RawObservationType">
-					<xs:attribute name="setup1RodA" type="xs:double"/>
-					<xs:attribute name="setup1RodB" type="xs:double"/>
-					<xs:attribute name="setup2RodA" type="xs:double"/>
-					<xs:attribute name="setup2RodB" type="xs:double"/>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TargetPoint" type="PointType">
-		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D location for the target</xs:documentation>
-			<xs:documentation>It is defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="BacksightPoint" type="PointType">
-		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D location for the backsight</xs:documentation>
-			<xs:documentation>It is defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="OffsetVals">
-		<xs:annotation>
-			<xs:documentation>offsetInOut:   -ve = offset in towards inst, +ve = offset away from inst </xs:documentation>
-			<xs:documentation>offsetLeftRight:   -ve = left, +ve = right (as viewed from instrument) </xs:documentation>
-			<xs:documentation>offsetUpDown:   -ve = down, +ve = up</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="offsetInOut" type="xs:double"/>
-			<xs:attribute name="offsetLeftRight" type="xs:double"/>
-			<xs:attribute name="offsetUpDown" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GPSVector">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TargetPoint"/>
-				<xs:element ref="GPSQCInfoLevel1" minOccurs="0"/>
-				<xs:element ref="GPSQCInfoLevel2" minOccurs="0"/>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="dX" type="xs:double" use="required"/>
-			<xs:attribute name="dY" type="xs:double" use="required"/>
-			<xs:attribute name="dZ" type="xs:double" use="required"/>
-			<xs:attribute name="setupID_A" type="xs:IDREF" use="required"/>
-			<xs:attribute name="setupID_B" type="xs:IDREF" use="required"/>
-			<xs:attribute name="startTime" type="xs:dateTime" use="optional"/>
-			<xs:attribute name="endTime" type="xs:dateTime" use="optional"/>
-			<xs:attribute name="horizontalPrecision" type="xs:double" use="optional"/>
-			<xs:attribute name="verticalPrecision" type="xs:double" use="optional"/>
-			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="setID"/>
-			<xs:attribute name="solutionDataLink"/>
-			<xs:attribute name="coordGeomRefs" type="coordGeomNameRefs"/>
-			<!-- coordGeomRefs identifies one or more 'name' values that link to specific <Line>, <Curve>, <Spiral> or <IrregularLine> in a <CoordGeom> element. This allows linking an survey observation to specific <Parcel>.<CoordGeom> based geometry. -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GPSPosition">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TargetPoint"/>
-				<xs:element ref="GPSQCInfoLevel1" minOccurs="0"/>
-				<xs:element ref="GPSQCInfoLevel2" minOccurs="0"/>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="setID"/>
-			<xs:attribute name="wgsHeight" type="xs:double" use="required"/>
-			<xs:attribute name="wgsLatitude" type="xs:double" use="required"/>
-			<xs:attribute name="wgsLongitude" type="xs:double" use="required"/>
-			<xs:attribute name="purpose"/>
-			<xs:attribute name="coordGeomRefs" type="coordGeomNameRefs"/>
-			<xs:attribute name="pntRef" type="pointNameRef"/>
-			<!-- coordGeomRefs identifies one or more 'name' values that link to specific <Line>, <Curve>, <Spiral> or <IrregularLine> in a <CoordGeom> element. This allows linking an survey observation to specific <Parcel>.<CoordGeom> based geometry. -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GPSQCInfoLevel1">
-		<xs:annotation>
-			<xs:documentation>GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week  			</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="GPSSolnType" type="GPSSolutionTypeEnum"/>
-			<xs:attribute name="GPSSolnFreq" type="GPSSolutionFrequencyEnum"/>
-			<xs:attribute name="nbrSatellites" type="xs:integer"/>
-			<xs:attribute name="RDOP" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GPSQCInfoLevel2">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="covarianceXX" type="xs:double"/>
-			<xs:attribute name="covarianceXY" type="xs:double"/>
-			<xs:attribute name="covarianceXZ" type="xs:double"/>
-			<xs:attribute name="covarianceYY" type="xs:double"/>
-			<xs:attribute name="covarianceYZ" type="xs:double"/>
-			<xs:attribute name="covarianceZZ" type="xs:double"/>
-			<xs:attribute name="GPSSolnType" type="GPSSolutionTypeEnum"/>
-			<xs:attribute name="GPSSolnFreq" type="GPSSolutionFrequencyEnum"/>
-			<xs:attribute name="RMS" type="xs:double"/>
-			<xs:attribute name="ratio" type="xs:double"/>
-			<xs:attribute name="referenceVariance" type="xs:double"/>
-			<xs:attribute name="nbrSatellites" type="xs:integer"/>
-			<xs:attribute name="startTime" type="GPSTime"/>
-			<xs:attribute name="stopTime" type="GPSTime"/>
-			<!--  GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week  -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ObservationGroup">
-		<xs:annotation>
-			<xs:documentation>All observations to the same point in a group should be averaged together (they have consistant orientation)</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TargetPoint" minOccurs="0"/>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="Backsight"/>
-					<xs:element ref="RawObservation" maxOccurs="unbounded"/>
-					<xs:element ref="ReducedObservation"/>
-					<xs:element ref="RedHorizontalPosition" minOccurs="0"/>
-					<xs:element ref="ReducedArcObservation" minOccurs="0"/>
-					<xs:element ref="RedVerticalObservation" minOccurs="0"/>
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="targetSetupID" type="xs:IDREF"/>
-			<xs:attribute name="setID"/>
-			<xs:attribute name="coordGeomRefs" type="coordGeomNameRefs"/>
-			<xs:attribute name="alignRef" type="alignmentNameRef"/>
-			<xs:attribute name="alignStationName" type="xs:string"/>
-			<xs:attribute name="alignOffset" type="offsetDistance"/>
-			<!-- coordGeomRefs identifies one or more 'name' values that link to specific <Line>, <Curve>, <Spiral> or <IrregularLine> in a <CoordGeom> element. This allows linking an survey observation to specific <Parcel>.<CoordGeom> based geometry. -->
-			<!-- alignRef is the name of the alignment. 
-			       alignStationName is the station value where the rod reading is taken.
-			       alignOffset is the signed (+/-) distance from the CL of the referenced alignment.  -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ControlChecks">
-		<xs:annotation>
-			<xs:documentation>Records check shots to known locations during field observations</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="TestObservation" minOccurs="0" maxOccurs="unbounded"/>
-					<!-- LandXML-1.2 schema note: Use of ObservationGroup is depricated and used for backward compatibility, 
-                          use multiple TestObservation elements -->
-					<xs:element ref="ObservationGroup" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="PointResults" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="PointResults">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TargetPoint" minOccurs="0"/>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="targetSetupID" type="xs:IDREF"/>
-			<xs:attribute name="meanHorizAngle" type="xs:double"/>
-			<xs:attribute name="horizStdDeviation" type="xs:double"/>
-			<xs:attribute name="meanzenithAngle" type="zenithAngle"/>
-			<xs:attribute name="vertStdDeviation" type="xs:double"/>
-			<xs:attribute name="meanSlopeDistance" type="xs:double"/>
-			<xs:attribute name="slopeDistanceStdDeviation" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- ReducedObservation Referenced to ObservedLine and Observation in UML datamodel-->
-	<xs:element name="ReducedObservation">
-		<xs:annotation>
-			<xs:documentation>This has been modified to include new fields such as accuracy, date, class and adoption. I've added in bearing (azimuth is in terms of true north whereas bearing is the projection north) </xs:documentation>
-			<xs:documentation> - maybe this doesn't matter, may need to discuss</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TargetPoint" minOccurs="0"/>
-				<xs:element ref="OffsetVals" minOccurs="0"/>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="targetSetupID" type="xs:IDREF"/>
-			<xs:attribute name="targetSetup2ID" type="xs:IDREF"/>
-			<xs:attribute name="setID"/>
-			<xs:attribute name="targetHeight" type="xs:double"/>
-			<xs:attribute name="azimuth" type="direction" use="optional"/>
-			<xs:attribute name="horizDistance" type="xs:double" use="optional"/>
-			<xs:attribute name="vertDistance" type="xs:double" use="optional"/>
-			<xs:attribute name="horizAngle" type="angle" use="optional"/>
-			<xs:attribute name="slopeDistance" type="xs:double" use="optional"/>
-			<xs:attribute name="zenithAngle" type="zenithAngle" use="optional"/>
-			<xs:attribute name="equipmentUsed" type="equipmentType"/>
-			<xs:attribute name="azimuthAccuracy" type="xs:double"/>
-			<xs:attribute name="distanceAccuracy" type="xs:double"/>
-			<xs:attribute name="angleAccuracy" type="xs:double"/>
-			<xs:attribute name="date" type="xs:date"/>
-			<xs:attribute name="distanceType" type="observationType"/>
-			<xs:attribute name="azimuthType" type="observationType"/>
-			<xs:attribute name="angleType" type="observationType"/>
-			<xs:attribute name="adoptedAzimuthSurvey" type="xs:string"/>
-			<xs:attribute name="adoptedDistanceSurvey" type="xs:string"/>
-			<xs:attribute name="adoptedAngleSurvey" type="xs:string"/>
-			<xs:attribute name="distanceAccClass" type="xs:string"/>
-			<xs:attribute name="azimuthAccClass" type="xs:string"/>
-			<xs:attribute name="angleAccClass" type="xs:string"/>
-			<xs:attribute name="azimuthAdoptionFactor" type="xs:double"/>
-			<xs:attribute name="distanceAdoptionFactor" type="xs:double"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="MSLDistance" type="xs:string"/>
-			<xs:attribute name="spherDistance" type="xs:string"/>
-			<xs:attribute name="coordGeomRefs" type="coordGeomNameRefs"/>
-			<xs:attribute name="alignRef" type="alignmentNameRef"/>
-			<xs:attribute name="alignStationName" type="xs:string"/>
-			<xs:attribute name="alignOffset" type="offsetDistance"/>
-			<!-- coordGeomRefs identifies one or more 'name' values that link to specific <Line>, <Curve>, <Spiral> or <IrregularLine> in a <CoordGeom> element. 
-                  This allows linking an survey observation to specific <Parcel>.<CoordGeom> based geometry. -->
-			<!-- alignRef is the name of the alignment. 
-			       alignStationName is the station value where the rod reading is taken.
-			       alignOffset is the signed (+/-) distance from the CL of the referenced alignment.  -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ReducedArcObservation">
-		<xs:annotation>
-			<xs:documentation>As we discussed this element is used to provide measured information for calculating boundary arcs. The definition information required is quite different to the curve element</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TargetPoint" minOccurs="0"/>
-				<xs:element ref="OffsetVals" minOccurs="0"/>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="targetSetupID" type="xs:IDREF"/>
-			<xs:attribute name="setID"/>
-			<xs:attribute name="chordAzimuth" type="direction" use="required"/>
-			<xs:attribute name="radius" type="xs:double" use="required"/>
-			<xs:attribute name="length" type="xs:double" use="required"/>
-			<xs:attribute name="rot" type="clockwise" use="required"/>
-			<xs:attribute name="equipmentUsed" type="equipmentType"/>
-			<xs:attribute name="arcAzimuthAccuracy" type="xs:double"/>
-			<xs:attribute name="arcLengthAccuracy" type="xs:double"/>
-			<xs:attribute name="date" type="xs:date"/>
-			<xs:attribute name="arcType" type="xs:string"/>
-			<xs:attribute name="adoptedSurvey" type="xs:string"/>
-			<xs:attribute name="lengthAccClass" type="xs:string"/>
-			<xs:attribute name="azimuthAccClass" type="xs:string"/>
-			<xs:attribute name="azimuthAdoptionFactor" type="xs:double"/>
-			<xs:attribute name="lengthAdoptionFactor" type="xs:double"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="coordGeomRefs" type="coordGeomNameRefs"/>
-			<xs:attribute name="alignRef" type="alignmentNameRef"/>
-			<xs:attribute name="alignStationName" type="xs:string"/>
-			<xs:attribute name="alignOffset" type="offsetDistance"/>
-			<!-- coordGeomRefs identifies one or more 'name' values that link to specific <Line>, <Curve>, <Spiral> or <IrregularLine> in a <CoordGeom> element. This allows linking  an survey observation to specific <Parcel>.<CoordGeom> based geometry. -->
-			<!-- alignRef is the name of the alignment. 
-  	     	       alignStationName is the station value where the rod reading is taken.
-			       alignOffset is the signed (+/-) distance from the CL of the referenced alignment.  -->
-		</xs:complexType>
-	</xs:element>
-	<!-- RedHorizontalPosition referenced to Observation & HorizontalPosition class in UML datamodel-->
-	<xs:element name="RedHorizontalPosition">
-		<xs:annotation>
-			<xs:documentation>This element is used to define the Reduced Horizontal Position. The coordinates given in Geographical Coordinates may come in variety of means.					</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="state" type="xs:string"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="date" type="xs:date"/>
-			<xs:attribute name="equipmentUsed" type="equipmentType"/>
-			<xs:attribute name="horizontalDatum" type="xs:string"/>
-			<xs:attribute name="horizontalAdjustment" type="xs:string"/>
-			<xs:attribute name="latitude" type="xs:string"/>
-			<xs:attribute name="longitude" type="xs:string"/>
-			<xs:attribute name="horizontalFix" type="xs:string"/>
-			<xs:attribute name="currencyDate" type="xs:string"/>
-			<xs:attribute name="localUncertainity" type="xs:double"/>
-			<xs:attribute name="class" type="xs:string"/>
-			<xs:attribute name="order" type="xs:string"/>
-			<xs:attribute name="positionalUncertainity" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- RedVerticalObservation referenced to Observation & verticalPostion class in UML datamodel -->
-	<xs:element name="RedVerticalObservation">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="state" type="xs:string"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="setupID" type="xs:IDREF"/>
-			<xs:attribute name="date" type="xs:date"/>
-			<xs:attribute name="equipmentUsed" type="equipmentType"/>
-			<xs:attribute name="height" type="xs:double"/>
-			<xs:attribute name="verticalAdjustment" type="xs:string"/>
-			<xs:attribute name="verticalFix" type="xs:string"/>
-			<xs:attribute name="geosphoid" type="xs:double"/>
-			<xs:attribute name="gsDatum" type="xs:string"/>
-			<xs:attribute name="gsModel" type="xs:string"/>
-			<xs:attribute name="gsMethod" type="xs:string"/>
-			<xs:attribute name="originMark" type="xs:string"/>
-			<xs:attribute name="verticalDatum" type="xs:string"/>
-			<xs:attribute name="localUncertainity" type="xs:double"/>
-			<xs:attribute name="class" type="xs:string"/>
-			<xs:attribute name="order" type="xs:string"/>
-			<xs:attribute name="positionalUncertainity" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Monuments collection -->
 	<xs:element name="Monuments">
 		<xs:annotation>
@@ -2906,11 +2076,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			<xs:attribute name="type" type="monumentType"/>
 			<xs:attribute name="condition" type="monumentCondition"/>
 			<xs:attribute name="category" type="monumentCategory"/>
-			<xs:attribute name="beacon" type="beaconType"/>
-			<xs:attribute name="beaconProtection" type="beaconProtectionType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="reference" type="xs:string"/>
-			<xs:attribute name="originSurvey" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<!-- Surfaces collection -->
@@ -2994,6 +2159,55 @@ SourceData is an optional collection of the points, contours, breaklines and bou
 			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="Definition">
+		<xs:annotation>
+			<xs:documentation>The collection of faces and points that defined the surface.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Pnts">
+					<xs:annotation>
+						<xs:documentation>The collection of points that define the surface.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="Faces" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The collection of faces that define the surface.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="surfType" type="surfTypeEnum" use="required" fixed="TIN">
+				<xs:annotation>
+					<xs:documentation>Surface definition type, fixed value "TIN"</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="area2DSurf" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>2D surface area</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="area3DSurf" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>3D surface area</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pnts">
+		<xs:annotation>
+			<xs:documentation>The collection of points that defined the surface. The "P" point id values are unique per surface.</xs:documentation>
+			<xs:documentation>The id values are referenced by the surface faces and breaklines.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="P" minOccurs="3" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="uSrfPntNum">
+			<xs:selector xpath="P"/>
+			<xs:field xpath="@id"/>
+		</xs:unique>
+	</xs:element>
 	<xs:element name="SourceData">
 		<xs:annotation>
 			<xs:documentation>(Inframodel)
@@ -3056,29 +2270,6 @@ The sub element PntList3D is group of points is defined by a 3D
 				</xs:annotation>
 			</xs:attribute>
 			<xs:anyAttribute namespace="##any"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="PointFiles">
-		<xs:annotation>
-			<xs:documentation>The collection of external point files that were used to define the surface.</xs:documentation>
-			<xs:documentation>Use is optional.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="PointFile" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="PointFile">
-		<xs:annotation>
-			<xs:documentation>A reference to an external file containing point information.</xs:documentation>
-			<xs:documentation>The format of the information is defined by the order and delimeter attributes.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="fileName" use="required"/>
-			<xs:attribute name="fileType" use="required"/>
-			<xs:attribute name="fileFormat" use="required"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Boundaries">
@@ -3211,110 +2402,6 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="RetWall">
-		<xs:annotation>
-			<xs:documentation>The retaining wall is defined by a sequential collection of points along the wall.</xs:documentation>
-			<xs:documentation>Each point has a location (northing/easting/elevation),  height of wall and offset to the wall point.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="RetWallPnt" minOccurs="2" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="RetWallPnt">
-		<xs:annotation>
-			<xs:documentation>A retaining wall point defined by a space delimited "northing easting elevation" text value with height and offset attributes to define the wall point</xs:documentation>
-			<xs:documentation>The height value is positive if the northing/easting/elevation point is at the bottom of the wall, negative if the point is at the top of the wall.</xs:documentation>
-			<xs:documentation>The offset value is negative for left and positive for right.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType mixed="true">
-			<xs:simpleContent>
-				<xs:extension base="PointType3dReq">
-					<xs:attribute name="height" type="xs:double" use="required"/>
-					<xs:attribute name="offset" type="xs:double" use="required"/>
-				</xs:extension>
-			</xs:simpleContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Contours">
-		<xs:annotation>
-			<xs:documentation>The collection of contours that were used to define the surface.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Contour" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Contour">
-		<xs:annotation>
-			<xs:documentation>The contour is defined by an elevation attribute and a 2D north/east list of points that define the geometry.</xs:documentation>
-			<xs:documentation>is identified by the "name" attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="PntList2D"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
-			</xs:sequence>
-			<xs:attribute name="elev" type="xs:double" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Definition">
-		<xs:annotation>
-			<xs:documentation>The collection of faces and points that defined the surface.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Pnts">
-					<xs:annotation>
-						<xs:documentation>The collection of points that define the surface.</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element ref="Faces" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>The collection of faces that define the surface.</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xs:sequence>
-			<xs:attribute name="surfType" type="surfTypeEnum" use="required" fixed="TIN">
-				<xs:annotation>
-					<xs:documentation>Surface definition type, fixed value "TIN"</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="area2DSurf" type="xs:double">
-				<xs:annotation>
-					<xs:documentation>2D surface area</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="area3DSurf" type="xs:double">
-				<xs:annotation>
-					<xs:documentation>3D surface area</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Pnts">
-		<xs:annotation>
-			<xs:documentation>The collection of points that defined the surface. The "P" point id values are unique per surface.</xs:documentation>
-			<xs:documentation>The id values are referenced by the surface faces and breaklines.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="P" minOccurs="3" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-		<xs:unique name="uSrfPntNum">
-			<xs:selector xpath="P"/>
-			<xs:field xpath="@id"/>
-		</xs:unique>
-	</xs:element>
 	<xs:element name="P">
 		<xs:annotation>
 			<xs:documentation>A surface point. it contains an id attribute and a space delimited "northing easting elevation" text value.</xs:documentation>
@@ -3363,6 +2450,12 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:simpleType name="TINFaceType" final="restriction">
+		<xs:restriction base="integer">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="integer">
 		<xs:list itemType="xs:integer"/>
 	</xs:simpleType>
@@ -3421,38 +2514,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Watersheds">
-		<xs:annotation>
-			<xs:documentation>The collection of watershed regions for the surface.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Watershed" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Watershed">
-		<xs:annotation>
-			<xs:documentation>The watershed region contains a 2D north/east or 3D north/east/elev list of points that define the boundary.</xs:documentation>
-			<xs:documentation>A watershed is identified by the "name" attribute.</xs:documentation>
-			<xs:documentation>It may have 1 or more Outlet elements.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice>
-					<xs:element ref="PntList2D"/>
-					<xs:element ref="PntList3D"/>
-					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
-				</xs:choice>
-				<xs:element ref="Outlet" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="area" type="xs:double"/>
-			<xs:attribute name="desc" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
 	<xs:element name="Outlet">
 		<xs:annotation>
 			<xs:documentation>Identifies a drain point from the watershed with a space delimited "northing easting elevation" value.</xs:documentation>
@@ -3460,9 +2521,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
-				<xs:extension base="PointType3dReq">
-					<xs:attribute name="refWS" type="waterShedNameRef"/>
-				</xs:extension>
+				<xs:extension base="PointType3dReq"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -3631,74 +2690,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:attribute name="oID" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Title">
-		<xs:annotation>
-			<xs:documentation>This may be expanded, but the LandXML schema is not really aimed at providing title information so I think name is sufficient</xs:documentation>
-		</xs:annotation>
-		<xs:complexType mixed="true">
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="titleType" type="xs:anySimpleType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Exclusions">
-		<xs:annotation>
-			<xs:documentation>An Exclusion is an area which has been reserved from a tenure for a specific purpose but may have no defined spatial extent for example 10ha for road. A single parcel could have more than one eclusion for different purposes.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType mixed="true">
-			<xs:attribute name="exclusionType" type="exclusType" use="required"/>
-			<xs:attribute name="area" type="xs:double" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="LocationAddress">
-		<xs:annotation>
-			<xs:documentation>This element is used to define the location or positional address of a parcel. The address record is not designed to be a postal address (ie it has not postcode or zipcode etc) The element also needs to be able to handle both primary addresses and aliases if required.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="ComplexName" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="RoadName" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="AdministrativeArea" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="AddressPoint" minOccurs="0" maxOccurs="unbounded"/>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0"/> -->
-			</xs:sequence>
-			<xs:attribute name="addressType" type="addressTypeType"/>
-			<xs:attribute name="flatType" type="flatTypeType"/>
-			<xs:attribute name="flatNumber" type="xs:string"/>
-			<xs:attribute name="floorLevelType" type="floorLevelTypeType"/>
-			<xs:attribute name="floorLevelNumber" type="xs:string"/>
-			<xs:attribute name="numberFirst" type="xs:int"/>
-			<xs:attribute name="numberSuffixFirst" type="xs:string"/>
-			<xs:attribute name="numberLast" type="xs:int"/>
-			<xs:attribute name="numberSuffixLast" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ComplexName">
-		<xs:complexType>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="priority" type="xs:int"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="RoadName">
-		<xs:complexType>
-			<xs:attribute name="roadNameType" type="roadNameTypeType"/>
-			<xs:attribute name="roadName" type="xs:string"/>
-			<xs:attribute name="roadNameSuffix" type="roadNameSuffixType"/>
-			<xs:attribute name="roadType" type="roadTypeType"/>
-			<xs:attribute name="pclRef" type="parcelNameRefs"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="AddressPoint">
-		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Address Point. The Address Point is the geocoded point with which to reference an address</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:simpleContent>
-				<xs:extension base="PointType">
-					<xs:attribute name="addressPointType" type="addressPointTypeType"/>
-				</xs:extension>
-			</xs:simpleContent>
-		</xs:complexType>
-	</xs:element>
 	<!-- Alignments collection -->
 	<xs:element name="Alignments">
 		<xs:annotation>
@@ -3790,7 +2781,6 @@ geometric horizontal alignment, PGL or chain typically representing a road desig
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
 				<xs:choice>
-					<xs:element ref="Start" minOccurs="0" maxOccurs="0"/>
 					<xs:element name="CoordGeom">
 						<xs:annotation>
 							<xs:documentation>Inframodel</xs:documentation>
@@ -3867,7 +2857,6 @@ geometric horizontal alignment, PGL or chain typically representing a road desig
 							<xs:attribute name="oID" type="xs:string"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element ref="AlignPIs" minOccurs="0" maxOccurs="0"/>
 					<xs:element ref="Cant" minOccurs="0"/>
 				</xs:choice>
 				<xs:element ref="StaEquation" minOccurs="0" maxOccurs="unbounded">
@@ -3884,7 +2873,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 Inframodel</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Superelevation" minOccurs="0" maxOccurs="0"/>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Inframodel</xs:documentation>
@@ -4725,240 +3713,6 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:attribute name="state" type="stateType"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- GradeModel class -->
-	<xs:simpleType name="zoneCategoryType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="road surface"/>
-			<xs:enumeration value="road subsurface"/>
-			<xs:enumeration value="road shoulder"/>
-			<xs:enumeration value="road foreSlope"/>
-			<xs:enumeration value="road backSlope"/>
-			<xs:enumeration value="road curb-gutter"/>
-			<xs:enumeration value="bridge surface"/>
-			<xs:enumeration value="bridge body"/>
-			<xs:enumeration value="sidewalk"/>
-			<xs:enumeration value="ground"/>
-			<xs:enumeration value="ditch"/>
-			<xs:enumeration value="wall"/>
-			<xs:enumeration value="channel"/>
-			<xs:enumeration value="bike facilities"/>
-			<xs:enumeration value="obstruction offset"/>
-			<xs:enumeration value="longitudinal barrier"/>
-			<xs:enumeration value="sound barrier"/>
-			<xs:enumeration value="bridge abutment"/>
-			<xs:enumeration value="vertical pillar"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="zoneVertType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="slope"/>
-			<xs:enumeration value="vertical distance"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="zoneSurfaceType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="finalSurface"/>
-			<xs:enumeration value="subgrade"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="zoneHingeType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="center"/>
-			<xs:enumeration value="left edge"/>
-			<xs:enumeration value="right edge"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="zoneMaterialType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="pavement-high-type"/>
-			<xs:enumeration value="pavement-intermediate-type"/>
-			<xs:enumeration value="pavement-low-type"/>
-			<xs:enumeration value="soil"/>
-			<xs:enumeration value="concrete"/>
-			<xs:enumeration value="stone"/>
-			<xs:enumeration value="riprap"/>
-			<xs:enumeration value="turf"/>
-			<xs:enumeration value="gravel"/>
-			<xs:enumeration value="paved"/>
-			<xs:enumeration value="metal"/>
-			<xs:enumeration value="metal grate"/>
-			<xs:enumeration value="composite"/>
-			<xs:enumeration value="timber"/>
-			<xs:enumeration value="other"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="GradeModel">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="GradeSurface" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GradeSurface">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="Start" minOccurs="0"/>
-				<xs:element ref="Zones" maxOccurs="2"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="alignmentRef" type="alignmentNameRef" use="required"/>
-			<xs:attribute name="stationAlignmentRef" type="alignmentNameRef"/>
-			<xs:attribute name="surfaceType" type="zoneSurfaceType" use="required"/>
-			<xs:attribute name="surfaceRef" type="surfaceNameRef"/>
-			<xs:attribute name="surfaceRefs" type="surfaceNameRefs"/>
-			<xs:attribute name="cgPointRefs" type="pointNameRefs"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Zones">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="Zone" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneHinge" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="side" type="sideofRoadType" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- Note:	The vertValue used in any Zone element is a double that indicates the cross slope (measure perpendicular to the referenced horizontal alignment OR a vertical distance offset. This is determined by the vertType attribute which is either "slope" or "vertDistance", the default is "slope".
--->
-	<xs:element name="Zone">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ZoneWidth" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneSlope" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneCutFill" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneMaterial" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneCrossSectStructure" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="priority" type="xs:int" use="required"/>
-			<xs:attribute name="category" type="zoneCategoryType" use="required"/>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="startWidth" type="xs:double" use="required"/>
-			<xs:attribute name="startVertValue" type="xs:double" use="required"/>
-			<xs:attribute name="startVertType" type="zoneVertType" use="required"/>
-			<xs:attribute name="endWidth" type="xs:double"/>
-			<xs:attribute name="endVertValue" type="xs:double"/>
-			<xs:attribute name="endVertType" type="zoneVertType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ZoneWidth">
-		<xs:complexType>
-			<xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station" use="required"/>
-			<xs:attribute name="startWidth" type="xs:double" use="required"/>
-			<xs:attribute name="endWidth" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ZoneSlope">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station" use="required"/>
-			<xs:attribute name="startVertValue" type="xs:double"/>
-			<xs:attribute name="startVertType" type="zoneVertType"/>
-			<xs:attribute name="endVertValue" type="xs:double" use="required"/>
-			<xs:attribute name="endVertType" type="zoneVertType" use="required"/>
-			<xs:attribute name="parabolicStartStation" type="station"/>
-			<xs:attribute name="parabolicEndStation" type="station"/>
-			<!-- changeType is a flag that indicates the use of slope or vertical change it can be either "slope" or "vertDistance"-->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ZoneHinge">
-		<xs:complexType>
-			<xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station" use="required"/>
-			<xs:attribute name="hingeType" type="zoneHingeType" use="required"/>
-			<xs:attribute name="zonePriorityRef" type="xs:int" use="required"/>
-		</xs:complexType>
-		<!-- This element describes the non-center hinge point for superelevated roadways
-	       The zonePriorityRef should contain the zone priority number (zone identifier) where the hinge point is located. The hingeType attribute identifies the left or right side of the zone to use as the hinge point.
-	-->
-	</xs:element>
-	<xs:element name="ZoneCutFill">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station" use="required"/>
-			<xs:attribute name="cutSlope" type="crossSlope"/>
-			<xs:attribute name="fillSlope" type="crossSlope"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ZoneMaterial">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station" use="required"/>
-			<xs:attribute name="material" type="zoneMaterialType" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:simpleType name="zoneTransitionType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="parallel"/>
-			<xs:enumeration value="linear"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="zoneOffsetType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="centerline"/>
-			<xs:enumeration value="zone"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="zonePlacementType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="dependent"/>
-			<xs:enumeration value="independent"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="ZoneCrossSectStructure">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:annotation>
-					<xs:documentation>
-			        The PntList2D contains space delimited offsetDistance / elevation pairs describing a crossectional shape, typically a closed shape representing a retaining wall, traffic barriers or vertical pillars. As is common with road cross sections the origin is the Profile Grade Line (PGL) of the design road. The offsetDistance measure is the 2D distance from the PGL and the elevation values are absolute (real world) elevations for the entire data set.</xs:documentation>
-				</xs:annotation>
-				<xs:element ref="PntList2D"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="innerConnectPnt" type="crossSectionPnt" use="required"/>
-			<xs:attribute name="outerConnectPnt" type="crossSectionPnt" use="required"/>
-			<xs:attribute name="offsetMode" type="zoneOffsetType" default="zone"/>
-			<xs:attribute name="startOffset" type="offsetDistance" default="0.0"/>
-			<xs:attribute name="startOffsetElev" type="offsetElevation" default="0.0"/>
-			<xs:attribute name="endOffset" type="offsetDistance" default="0.0"/>
-			<xs:attribute name="endOffsetElev" type="offsetElevation" default="0.0"/>
-			<xs:attribute name="transition" type="zoneTransitionType" default="parallel"/>
-			<xs:attribute name="placement" type="zonePlacementType" default="dependent"/>
-			<xs:attribute name="catalogReference" type="xs:anyURI" use="optional"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Roadway Elements Added 02-21-2002, Nathan Crews -->
 	<xs:annotation>
 		<xs:documentation>Proposed Road model elements for FHWA IHSDM project</xs:documentation>
@@ -4970,111 +3724,6 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:enumeration value="left"/>
 			<xs:enumeration value="both"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="roadTerrainType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="flat"/>
-			<xs:enumeration value="rolling"/>
-			<xs:enumeration value="mountainous"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="functionalClassType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="arterial"/>
-			<xs:enumeration value="collector "/>
-			<xs:enumeration value="local"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="adverseSEType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="non-adverse"/>
-			<xs:enumeration value="adverse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="pavementSurfaceType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="high-type"/>
-			<xs:enumeration value="intermediate-type"/>
-			<xs:enumeration value="low-type"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="shoulderMaterialType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="turf"/>
-			<xs:enumeration value="gravel"/>
-			<xs:enumeration value="paved"/>
-			<xs:enumeration value="composite"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="shoulderCategoryType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="usable"/>
-			<xs:enumeration value="graded"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="laneTaperType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="straight-line"/>
-			<xs:enumeration value="partial-tangent"/>
-			<xs:enumeration value="symmetrical-reverse-curve"/>
-			<xs:enumeration value="asymmetrical-reverse-curve"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="turnLaneType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="left"/>
-			<xs:enumeration value="right"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ditchBottomShape">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="true-V"/>
-			<xs:enumeration value="rounded-V"/>
-			<xs:enumeration value="rounded-trapezoidal"/>
-			<xs:enumeration value="flat-trapezoidal"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="trafficControlType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="none"/>
-			<xs:enumeration value="signal"/>
-			<xs:enumeration value="stop"/>
-			<xs:enumeration value="yield"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="trafficControlPosition">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="side"/>
-			<xs:enumeration value="overhead"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="trafficTurnRestriction">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="none"/>
-			<xs:enumeration value="no-left-turn"/>
-			<xs:enumeration value="no-right-turn"/>
-			<xs:enumeration value="no-U-turn "/>
-			<xs:enumeration value="no-turn "/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="intersectionConstructionType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="existing"/>
-			<xs:enumeration value="improvement"/>
-			<xs:enumeration value="new"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="curbType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="unknown"/>
-		</xs:restriction>
-		<!-- PLACEHOLDER NEED ENUMERATION VALUES ! -->
-	</xs:simpleType>
-	<xs:simpleType name="cornerType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="unknown"/>
-		</xs:restriction>
-		<!-- PLACEHOLDER NEED ENUMERATION VALUES ! -->
 	</xs:simpleType>
 	<!-- Road sign types and details from FHWA Manual on Traffic Control Devices (MUTCD) -->
 	<xs:simpleType name="roadSignType">
@@ -5088,32 +3737,6 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:enumeration value="emergencyManagement"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="crashSeverityType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="fatal"/>
-			<xs:enumeration value="nonfatal "/>
-			<xs:enumeration value="propery-damage-only"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="crashIntersectionRelation">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="unknown"/>
-			<xs:enumeration value="non-intersection-related"/>
-			<xs:enumeration value="intersection-related"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="maneuverType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="A-stop-on-rural-road"/>
-			<xs:enumeration value="C-speed-path-direction-change-on-rural-road"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="bridgeProjectType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="new"/>
-			<xs:enumeration value="existing"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="crossSectionPnt">
 		<xs:annotation>
 			<xs:documentation>Attribute that represents a space delimited, cross section offset/elevation pair. 
@@ -5122,20 +3745,6 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 		</xs:annotation>
 		<xs:restriction base="Point2dReq"/>
 	</xs:simpleType>
-	<!-- FHWA IHSDM types -->
-	<xs:simpleType name="drivewayDensity">
-		<xs:annotation>
-			<xs:documentation>This item is the driveway density for both sides of the roadway combined. The unit of measure for this item is driveways/kilometer for Metric units and driveways/mile for Imperial. </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:double"/>
-	</xs:simpleType>
-	<xs:simpleType name="speed">
-		<xs:annotation>
-			<xs:documentation>This item is the speed or velocity of travel. The unit of measure for this item is kilometers/hour for Metric units and miles/hour for Imperial. </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:double"/>
-	</xs:simpleType>
-	<!-- FHWA IHSDM elements -->
 	<xs:element name="Roadways">
 		<xs:annotation>
 			<xs:documentation>Roadways collection which contain planimetric features of a route, ie. signage</xs:documentation>
@@ -5193,19 +3802,11 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Classification" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="Lanes" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Roadside" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation/>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Speeds" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="NoPassingZone" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="TrafficVolume" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="CrashData" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="DecisionSightDistance" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="BridgeElement" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="PlanFeature" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
@@ -5244,281 +3845,10 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="alignmentRefs" type="alignmentNameRefs" use="required"/>
 			<xs:attribute name="surfaceRefs" type="surfaceNameRefs"/>
-			<xs:attribute name="gradeModelRefs" type="gradeModelNameRefs"/>
 			<xs:attribute name="staStart" type="station"/>
 			<xs:attribute name="staEnd" type="station"/>
 			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="roadTerrain" type="roadTerrainType"/>
 			<xs:attribute name="state" type="stateType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Classification">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="functionalClass" type="functionalClassType"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- Road design speed elements -->
-	<xs:element name="DesignSpeed">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="speed" type="speed"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="DesignSpeed85th">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-			<xs:attribute name="speed" type="speed"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Speeds">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="DesignSpeed" maxOccurs="unbounded"/>
-				<xs:element ref="DesignSpeed85th" maxOccurs="unbounded"/>
-				<xs:element ref="PostedSpeed" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<!-- Road Traffic Volume elements -->
-	<xs:element name="DailyTrafficVolume">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="ADT" type="xs:double"/>
-			<xs:attribute name="year" type="xs:date"/>
-			<xs:attribute name="escFactor" type="xs:double"/>
-			<!-- ADT, the average daily traffic for the specified year. This item specifies the average daily traffic for the specified year. No value needs to be specified for this item. The unit of measure for this item is vehicles/day.  -->
-			<!-- escFactor is the subsequent year annual traffic volume escalation factor. This item specifies the annual percent increase (or decrease) in traffic volume for subsequent traffic volume years. No value needs to be specified for this item. The unit of measure for this item is percent %. -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="DesignHour">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="volume" type="xs:double"/>
-		</xs:complexType>
-		<!-- Design Hour Volume - This item is the design hourly volume (DHV). The 30th highest volume of the year should be used as the DHV, which can be approximated as 15 percent of the average daily traffic (ADT). On two-lane rural highways, the DHV is the total traffic in both directions of travel. The unit of measure for this item is vehicles/hour. -->
-	</xs:element>
-	<xs:element name="PeakHour">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-			<xs:attribute name="volume" type="xs:double"/>
-		</xs:complexType>
-		<!-- Peak Hour Volume - This item is the peak hour volume (PHV). The 30th highest volume of the year should be used as the PHV, which can be approximated as 15 percent of the average daily traffic (ADT). On two-lane rural highways, the DHV is the total traffic in both directions of travel. The unit of measure for this item is vehicles/hour. -->
-	</xs:element>
-	<xs:element name="TrafficVolume">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="DailyTrafficVolume"/>
-				<xs:element ref="DesignHour"/>
-				<xs:element ref="PeakHour"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<xs:annotation>
-		<xs:documentation>BeginRunoutSta (NORMAL CROWN) - Entry Curve Beginning Runout Location - Unit of measure: STATION. Entry Curve Beginning Runout Location - This item is the station of entry curve beginning of runout. This item specifies the location for the entry curve of the start of tangent runout (location Entry A).
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="BeginRunoutSta" type="station" nillable="true"/>
-	<xs:annotation>
-		<xs:documentation>BeginRunoffSta (HALF CROWN) - Entry Curve Beginning Runoff Location - Unit of measure: STATION. Entry Curve Beginning Runoff Location - This item is the station of entry curve beginning of runoff location. This item specifies the location for the entry curve of the end of tangent runout and the start of runoff (location Entry B).
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="BeginRunoffSta" type="station" nillable="true"/>
-	<xs:annotation>
-		<xs:documentation>FullSuperSta - Full Superelevation Location - Unit of measure: STATION. Full Superelevation Location - This item is the station location at which full superelevation begins. This item specifies the location for the entry curve of the end of runout and the start of full superelevation (location Entry E)
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="FullSuperSta" type="station"/>
-	<xs:annotation>
-		<xs:documentation>FullSuperelev - Full Superelevation - Unit of measure: PERCENT. Full Superelevation - This item is the full superelevation rate on horizontal curve. This item specifies the rate of full superelevation for the superelevation element. The unit of measure for this item is percent.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="FullSuperelev" type="slope"/>
-	<xs:annotation>
-		<xs:documentation>RunoffSta - Runoff Location - Exiting Curve - Unit of measure: STATION. Runoff Location - Exiting Curve - This item is the location (station) of start of curve exit runoff. This item specifies the location for the exit curve of the end of full superelevation and the start of runoff (location Exit E).
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="RunoffSta" type="station" nillable="true"/>
-	<xs:annotation>
-		<xs:documentation>StartofRunoutSta (HALF CROWN) - Start of Tangent Runout - Exiting Curve - Unit of measure: STATION. Start of Tangent Runout - Exiting Curve - This item is the location of start of tangent runout when exiting curve. This item specifies the location for the exit curve of the end of runoff and the start of tangent runout (location Exit B).
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="StartofRunoutSta" type="station" nillable="true"/>
-	<xs:annotation>
-		<xs:documentation>EndofRunoutSta (FULL CROWN) - Exiting End of Tangent Runout - Unit of measure: STATION. Exiting End of Tangent Runout - This item is the location of end of tangent runout on exiting curve. This item specifies the location for the exit curve of the end of tangent runout (location Exit A). 
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="EndofRunoutSta" type="station" nillable="true"/>
-	<xs:annotation>
-		<xs:documentation>AdverseSE - Adverse SE - This item determines if superelevation is adverse. The enumeration values are: non-adverse and adverse.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="AdverseSE" type="adverseSEType"/>
-	<xs:annotation>
-		<xs:documentation>Superelevation - The superelevation rate should be steep enough to provide adequate drainage of the roadway surface, but not so steep as to cause vehicles to slide down the cross slope. To prevent vehicles from leaving the roadway as they travel around curve, curves are banked, or superelevated. One edge of the pavement is constructed higher than the other edge, so that the road surface slopes toward the inside of the curve. Superelevation is expressed as a decimal value or as a percentage, and is the amount of elevation difference per unit of horizontal unit of roadway width. A 6 meter wide road with a difference in elevation between pavement edges of 0.3 m has a superelevation of 0.05, or 5%.
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="Superelevation">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="BeginRunoutSta" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="BeginRunoffSta" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="FullSuperSta" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="FullSuperelev" maxOccurs="unbounded"/>
-				<xs:element ref="RunoffSta" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="StartofRunoutSta" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="EndofRunoutSta" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="AdverseSE" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- Pavement Type - This element determines the pavement type. Pavements are categorized as high, intermediate, and low. High-type pavements are smoother and more stable than lower types and have good skid resistance, which is important for braking and turning maneuvers. These qualities withstand heavy traffic volumes and all weather. Intermediate-type pavements also retain their good skid resistance and smooth riding properties in all weather, but they are designed for lighter traffic loads and volumes. Low-type pavements can be surface-treated earth or other stabilized materials, or loose aggregate. Low-type surfaces do not hold their shape or drain as well as higher types, and they tend to ravel at the edges, which can affect steering. The enumeration values are: high-type, intermediate-type and low-type.  -->
-	<!-- Road Lane elements -->
-	<xs:element name="Lanes">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ThruLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="PassingLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="TurnLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="TwoWayLeftTurnLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ClimbLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="OffsetLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="WideningLane" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ThruLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="PassingLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="beginFullWidthSta" type="station"/>
-			<xs:attribute name="endFullWidthSta" type="station"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TurnLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="beginFullWidthSta" type="station"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-			<xs:attribute name="type" type="turnLaneType"/>
-			<xs:attribute name="taperType" type="laneTaperType"/>
-			<xs:attribute name="taperTangentLength" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TwoWayLeftTurnLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="beginFullWidthSta" type="station"/>
-			<xs:attribute name="endFullWidthSta" type="station"/>
-			<xs:attribute name="startOffset" type="offsetDistance"/>
-			<xs:attribute name="endOffset" type="offsetDistance"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-		<!-- 
-* Start Centerline Offset - Unit of measure: SHORT_DIST. Start Centerline Offset - This item is the starting lateral offset of the TWLTL relative to the roadway centerline. This item specifies the lateral offset of the start of the two-way left turn lane from the centerline of the roadway. A poistive value represents an offset to the right side of the road (relative to the direction of increasing stations) and a negative value represent represents an offset to the left side of the road. The unit of measure for this item is meters (feet). 
-* Begin Full Width - Unit of measure: STATION. Begin Full Width - This item is the station location at which full lane width begins. It specifies the station at which the initial taper ends and the full width begins. 
-Lane Width - Unit of measure: SHORT_DIST. Lane Width - This item is the width of lane. The unit of measure for this item is meters (feet). 
-* End Full Width - Unit of measure: STATION. End Full Width - This item is the station location at which final taper begins. This item specifies the station at which the full width ends and the final taper begins. 
-* End Centerline Offset - Unit of measure: SHORT_DIST. End Centerline Offset - This item is the ending lateral offset of the TWLTL relative to the roadway centerline. This item specifies the lateral offset of the end of the two-way left turn lane from the centerline of the roadway. A poistive value represents an offset to the right side of the road (relative to the direction of increasing stations) and a negative value represent represents an offset to the left side of the road. The unit of measure for this item is meters (feet).  -->
-	</xs:element>
-	<xs:element name="ClimbLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="beginFullWidthSta" type="station"/>
-			<xs:attribute name="endFullWidthSta" type="station"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="OffsetLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="beginFullWidthSta" type="station"/>
-			<xs:attribute name="endFullWidthSta" type="station"/>
-			<xs:attribute name="fullOffset" type="offsetDistance"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="WideningLane">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="beginFullWidthSta" type="station"/>
-			<xs:attribute name="endFullWidthSta" type="station"/>
-			<xs:attribute name="offset" type="offsetDistance"/>
-			<xs:attribute name="widening" type="xs:double"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
 		</xs:complexType>
 	</xs:element>
 	<!-- Roadside elements -->
@@ -5540,39 +3870,6 @@ Lane Width - Unit of measure: SHORT_DIST. Lane Width - This item is the width of
 				<xs:element ref="Ditch" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Ditch">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station" use="required"/>
-			<xs:attribute name="staEnd" type="station" use="required"/>
-			<xs:attribute name="bottomWidth" type="xs:double" use="required"/>
-			<xs:attribute name="bottomShape" type="ditchBottomShape"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ObstructionOffset">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="offset" type="offsetDistance"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="BikeFacilities">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="RoadSign">
@@ -5625,282 +3922,12 @@ Lane Width - Unit of measure: SHORT_DIST. Lane Width - This item is the width of
 			<xs:attribute name="height" type="xs:double"/>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="DrivewayDensity">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="density" type="xs:int"/>
-			<!-- Driveway Density - Unit of measure: integer. The driveway density for both sides of the roadway combined. The unit of measure for this item is driveways/kilometer (driveways/mile). -->
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="HazardRating">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="rating" type="xs:int"/>
-			<!-- Unit of measure: INT. Roadside Hazard Rating - The roadside hazard rating for both sides of the road. The enumeration values are: 1, 2, 3, 4, 5, 6 and 7. -->
-		</xs:complexType>
-	</xs:element>
 	<!-- Intersection elements -->
-	<xs:element name="Intersections">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="Intersection" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Intersection">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="TrafficControl" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Timing" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Volume" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="TurnSpeed" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="TurnRestriction" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Curb" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Corner" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="roadwayRef" type="roadwayNameRef"/>
-			<xs:attribute name="roadwayPI" type="station"/>
-			<xs:attribute name="intersectingRoadwayRef" type="roadwayNameRef"/>
-			<xs:attribute name="intersectRoadwayPI" type="station"/>
-			<xs:attribute name="contructionType" type="intersectionConstructionType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TrafficControl">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="signalPeriod" type="xs:double"/>
-			<xs:attribute name="controlPosition" type="trafficControlPosition"/>
-			<xs:attribute name="controlType" type="trafficControlType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Timing">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="legNumber" type="xs:int"/>
-			<xs:attribute name="protectedTurnPercent" type="xs:double"/>
-			<xs:attribute name="unprotectedTurnPercent" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Volume">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="legNumber" type="xs:int"/>
-			<xs:attribute name="turnPercent" type="xs:double"/>
-			<xs:attribute name="percentTrucks" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TurnSpeed">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="legNumber" type="xs:int"/>
-			<xs:attribute name="speed" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TurnRestriction">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="legNumber" type="xs:int"/>
-			<xs:attribute name="type" type="trafficTurnRestriction"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Curb">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-			<xs:attribute name="type" type="curbType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Corner">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="type" type="cornerType"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- Crash data and other misc data -->
-	<!--
-* Year - Unit of measure: YEAR. Year - This is the year associated with the date of the crash. Note that the day and month are not required. 
-* Severity - Severity - This item is the severity level of the crash. The enumeration values are: Fatal or nonfatal injury and Propery damage only. 
-* Location(1) - Unit of measure: STATION. Location(1) - This item is the location (station) of the crash, or the start station of a range of locations. 
-* Location(2) - Unit of measure: STATION. Location(2) - This item is the end location (station) of a range for the location of the crash. No value needs to be specified for this item. 
-* Relation To Intersection - Relation To Intersection - This item is the relationship of a crash to an intersection. This item specifies the relationship of the crash to an intersection. If the value of this item is specified as Intersection-related, the Intersection Location data item must be specified. The enumeration values are: Unknown, Non-intersection-related and Intersection-related. 
-* Intersection Location - Unit of measure: STATION. Intersection Location - This item is the location of the related intersection. This item specifies the location (station) of the intersection related to the crash. This item must be specified in the intersection relationship is specified as Intersection-related. No value needs to be specified for this item. 
--->
-	<xs:element name="CrashData">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="CrashHistory" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="CrashHistory">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="year" type="xs:date"/>
-			<xs:attribute name="location-1" type="station"/>
-			<xs:attribute name="location-2" type="station"/>
-			<xs:attribute name="severity" type="crashSeverityType"/>
-			<xs:attribute name="intersectionRelation" type="crashIntersectionRelation"/>
-			<xs:attribute name="intersectionLocation" type="station"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="PostedSpeed">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-			<xs:attribute name="speedLimit" type="speed"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="NoPassingZone">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="DecisionSightDistance">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="maneuver" type="maneuverType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="BridgeElement">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="projectType" type="bridgeProjectType"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Support elments for AlignPIs -->
 	<xs:element name="Station" type="xs:double">
 		<xs:annotation>
 			<xs:documentation>Station Name</xs:documentation>
 		</xs:annotation>
-	</xs:element>
-	<xs:element name="InSpiral">
-		<xs:annotation>
-			<xs:documentation>In Spiral Definition</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="Spiral"/>
-			</xs:all>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Curve1">
-		<xs:annotation>
-			<xs:documentation>First Curve Definition</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="Curve"/>
-			</xs:all>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="ConnSpiral">
-		<xs:annotation>
-			<xs:documentation>Connecting Spiral Definition</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="Spiral"/>
-			</xs:all>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Curve2">
-		<xs:annotation>
-			<xs:documentation>Second Curve Definition</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="Curve"/>
-			</xs:all>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="OutSpiral">
-		<xs:annotation>
-			<xs:documentation>Out Spiral Definition</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="Spiral"/>
-			</xs:all>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="AlignPI">
-		<xs:annotation>
-			<xs:documentation>A Single Alignment PI Definition</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="Station"/>
-				<xs:element ref="PI"/>
-				<xs:element ref="InSpiral" minOccurs="0"/>
-				<xs:element ref="Curve1" minOccurs="0"/>
-				<xs:element ref="ConnSpiral" minOccurs="0"/>
-				<xs:element ref="Curve2" minOccurs="0"/>
-				<xs:element ref="OutSpiral" minOccurs="0"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="AlignPIs">
-		<xs:annotation>
-			<xs:documentation>A sequential list of Alignment PI Definitions</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence minOccurs="2" maxOccurs="unbounded">
-				<xs:element ref="AlignPI"/>
-			</xs:sequence>
-		</xs:complexType>
 	</xs:element>
 	<xs:element name="Cant">
 		<xs:annotation>
@@ -7961,11 +5988,5 @@ The “adverse” is an optional Boolean that indicates whether the cant is adve
 	</xs:element>
 	<xs:simpleType name="double">
 		<xs:list itemType="xs:double"/>
-	</xs:simpleType>
-	<xs:simpleType name="TINFaceType" final="restriction">
-		<xs:restriction base="integer">
-			<xs:minLength value="3"/>
-			<xs:maxLength value="3"/>
-		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
