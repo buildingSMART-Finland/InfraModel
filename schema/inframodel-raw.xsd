@@ -6136,99 +6136,6 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_struct-->
-	<xs:element name="structLabel--ltProperty--gt">
-		<xs:annotation>
-			<xs:documentation>Struct label</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="structLabel">
-				<xs:annotation>
-					<xs:documentation>Fixed value, structLabel</xs:documentation>
-					<xs:documentation>Example:structLabel</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="value" type="xs:string" use="required">
-				<xs:annotation>
-					<xs:documentation>Struct label</xs:documentation>
-					<xs:documentation>Example:abc123</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="rimType--ltProperty--gt">
-		<xs:annotation>
-			<xs:documentation>Rim type</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="rimType">
-				<xs:annotation>
-					<xs:documentation>Fixed value, rimType</xs:documentation>
-					<xs:documentation>Example:rimType</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="value" use="required">
-				<xs:annotation>
-					<xs:documentation>Rim type</xs:documentation>
-					<xs:documentation>Example:solid cover</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="solid cover"/>
-						<xs:enumeration value="grate "/>
-						<xs:enumeration value="atrium grate"/>
-						<xs:enumeration value="side inlet"/>
-						<xs:enumeration value="drain cap"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="rimMaterial--ltProperty--gt">
-		<xs:annotation>
-			<xs:documentation>Rim material</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="rimMaterial">
-				<xs:annotation>
-					<xs:documentation>Fixed value, rimMaterial</xs:documentation>
-					<xs:documentation>Example:rimMaterial</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="value" use="required">
-				<xs:annotation>
-					<xs:documentation>Rim material</xs:documentation>
-					<xs:documentation>Example:stainless steel</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="cast iron"/>
-						<xs:enumeration value="stainless steel"/>
-						<xs:enumeration value="concrete"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="rimLoad--ltProperty--gt">
-		<xs:annotation>
-			<xs:documentation>Rim load bearing capacity</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="rimLoad">
-				<xs:annotation>
-					<xs:documentation>Fixed value, rimLoad</xs:documentation>
-					<xs:documentation>Example:rimLoad</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="value" type="xs:string" use="required">
-				<xs:annotation>
-					<xs:documentation>Rim load bearing capacity in kN</xs:documentation>
-					<xs:documentation>Example:250</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
 	<!--Typed Inframodel Property definitions, IM_stringlineLayer-->
 	<xs:element name="name--ltProperty--gt">
 		<xs:annotation>
@@ -7226,6 +7133,98 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		</xs:complexType>
 	</xs:element>
 	<!--Typed Inframodel Property definitions, IM_struct-->
+	<xs:element name="structLabel--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Struct label</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="structLabel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, structLabel</xs:documentation>
+					<xs:documentation>Example:structLabel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Struct label</xs:documentation>
+					<xs:documentation>Example:abc123</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimType</xs:documentation>
+					<xs:documentation>Example:rimType</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim type, alternatives include [solid cover | grate | atrium grate | side inlet | drain cap ]</xs:documentation>
+					<xs:documentation>Example:solid cover</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="solid cover"/>
+						<xs:enumeration value="grate "/>
+						<xs:enumeration value="atrium grate"/>
+						<xs:enumeration value="side inlet"/>
+						<xs:enumeration value="drain cap"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimMaterial--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim material</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimMaterial">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimMaterial</xs:documentation>
+					<xs:documentation>Example:rimMaterial</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim material,alternatives include [ stainless steel | concrete]</xs:documentation>
+					<xs:documentation>Example:stainless steel</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="cast iron"/>
+						<xs:enumeration value="stainless steel"/>
+						<xs:enumeration value="concrete"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimLoad--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim load bearing capacity</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimLoad">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimLoad</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim load bearing capacity in kN, alternatives include e.g. [250kN | 400kN]</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="rimDiameter--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Rim diameter</xs:documentation>
@@ -7353,7 +7352,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Renewal description</xs:documentation>
+					<xs:documentation>Renewal description, ie. cleansing</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
