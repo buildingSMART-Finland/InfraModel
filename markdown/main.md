@@ -5,6 +5,7 @@ geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 xnos-warning-level: 1
 xnos-number-by-section: True
 ---
+\maketitle
 \clearpage
 
 {{include headers.md}}
