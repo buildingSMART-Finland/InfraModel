@@ -966,13 +966,11 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	<xs:element name="Center" type="PointType">
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Center Point</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="PI" type="PointType">
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Point of Intersection</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="MapPoint" type="PointType">
@@ -990,7 +988,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	<xs:element name="Location" type="PointType">
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Point location for a PlanFeature.</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="IrregularLine">
@@ -2801,7 +2798,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
-				<xs:extension base="Point">
+				<xs:extension base="Point2dReq">
 					<xs:attribute name="length" type="xs:double" use="required">
 						<xs:annotation>
 							<xs:documentation>Curve length</xs:documentation>
@@ -3404,6 +3401,9 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element name="CoordGeom">
+					<xs:annotation>
+						<xs:documentation>Geometry</xs:documentation>
+					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
 							<xs:choice maxOccurs="unbounded">
@@ -3431,12 +3431,11 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					</xs:complexType>
 				</xs:element>
 				<xs:element ref="Location" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_cable--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_footing--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_railing--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_fence--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_surfaceStructure-ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_surfaceStructure--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_planfeature--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
@@ -3545,7 +3544,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="Roadway">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)</xs:documentation>
+			<xs:documentation>Roadway contains planimetric features of a route, ie. signage</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -3603,7 +3602,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	<!-- Roadside elements -->
 	<xs:element name="Roadside">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)</xs:documentation>
+			<xs:documentation>Road signs</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -3619,7 +3618,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="RoadSign">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Road sign</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -3628,14 +3627,41 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-			<xs:attribute name="MUTCDCode" type="xs:string"/>
-			<xs:attribute name="station" type="station"/>
-			<xs:attribute name="offset" type="offsetDistance"/>
-			<xs:attribute name="sideofRoad" type="sideofRoadType"/>
-			<xs:attribute name="type" type="roadSignType"/>
-			<xs:attribute name="mountHeight" type="xs:double"/>
-			<xs:attribute name="width" type="xs:double"/>
-			<xs:attribute name="height" type="xs:double"/>
+			<xs:attribute name="station" type="station" use="required">
+				<xs:annotation>
+					<xs:documentation>Station number</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="offset" type="offsetDistance" use="required">
+				<xs:annotation>
+					<xs:documentation>Distance from main alignment</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="sideofRoad" type="sideofRoadType" use="required">
+				<xs:annotation>
+					<xs:documentation>Side of the road</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="width" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Sign width</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="height" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Sign height</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="mountHeight" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Mounting height</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="type" type="roadSignType">
+				<xs:annotation>
+					<xs:documentation>Road sign type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!-- Intersection elements -->
@@ -4632,7 +4658,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="IM_surfaceStructure-ltFeature--gt">
+	<xs:element name="IM_surfaceStructure--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel surface structure --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
@@ -4705,17 +4731,26 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tracks--ltProperty--gt"/>
-				<xs:element ref="trackDist--ltProperty--gt">
+				<xs:element ref="signName--ltProperty--gt"/>
+				<xs:element ref="description--ltProperty--gt" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>Material of the plan feature</xs:documentation>
+						<xs:documentation>Description</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="thickness--ltProperty--gt">
+				<xs:element ref="signCode--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="sizeDesignation--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="location--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="mountType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="material--ltProperty--gt" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>Total thickness</xs:documentation>
+						<xs:documentation>Sign material</xs:documentation>
 					</xs:annotation>
 				</xs:element>
+				<xs:element ref="reflection--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="shape--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="background--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="state--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="note--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_roadSign">
 				<xs:annotation>
@@ -7021,6 +7056,197 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Type of plan feature</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_roadSign-->
+	<xs:element name="signName--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sign name</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="signName">
+				<xs:annotation>
+					<xs:documentation>Fixed value, signName</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sign name</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="signCode--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sign code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="signCode">
+				<xs:annotation>
+					<xs:documentation>Fixed value, signCode</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sign code</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sizeDesignation--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sign size designation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="sizeDesignation">
+				<xs:annotation>
+					<xs:documentation>Fixed value, sizeDesignation</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sign size designation</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="location--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sing location</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="location">
+				<xs:annotation>
+					<xs:documentation>Fixed value, location</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sing location as space delimited northing,easting and elevation</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mountType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Mounting type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="mountType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, mountType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Mounting type</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reflection--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Reflection type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="reflection">
+				<xs:annotation>
+					<xs:documentation>Fixed value, reflection</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Reflection type</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="shape--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sign shape</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="shape">
+				<xs:annotation>
+					<xs:documentation>Fixed value, shape</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sign shape</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="background--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sign background</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="background">
+				<xs:annotation>
+					<xs:documentation>Fixed value, background</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sign background</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="state--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Sign state</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="state">
+				<xs:annotation>
+					<xs:documentation>Fixed value, state</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Sign state</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="note--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Note</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="note">
+				<xs:annotation>
+					<xs:documentation>Fixed value, note</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Note</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
