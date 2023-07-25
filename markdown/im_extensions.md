@@ -12,33 +12,33 @@ NB: In addition to these extensions, Inframodel specifies many restrctions on th
 
 Local coordinate system may be defined as set of control points sourceCRS-targetCRS point pairs under "IM_coordTransformation" \<Feature> extension.
 
-{{xtabulate IM_coordTransformation--ltFeature--gt}}
+{{xtabulatef IM_coordTransformation--ltFeature--gt}}
 
 Where:
 
-{{xtabulate sourceCRSname--ltProperty--gt}}
+{{xtabulatef sourceCRSname--ltProperty--gt}}
 
-{{xtabulate sourceEPSGcode--ltProperty--gt}}
+{{xtabulatef sourceEPSGcode--ltProperty--gt}}
 
-{{xtabulate IM_controlPoint--ltFeature--gt}}
+{{xtabulatef IM_controlPoint--ltFeature--gt}}
 
 where:
 
-{{xtabulate useHorizontal--ltProperty--gt}}
+{{xtabulatef useHorizontal--ltProperty--gt}}
 
-{{xtabulate useVertical--ltProperty--gt}}
+{{xtabulatef useVertical--ltProperty--gt}}
 
-{{xtabulate latitude--ltProperty--gt}}
+{{xtabulatef latitude--ltProperty--gt}}
 
-{{xtabulate longitude--ltProperty--gt}}
+{{xtabulatef longitude--ltProperty--gt}}
 
-{{xtabulate altitude--ltProperty--gt}}
+{{xtabulatef altitude--ltProperty--gt}}
 
-{{xtabulate northing--ltProperty--gt}}
+{{xtabulatef northing--ltProperty--gt}}
 
-{{xtabulate easting--ltProperty--gt}}
+{{xtabulatef easting--ltProperty--gt}}
 
-{{xtabulate elevation--ltProperty--gt}}
+{{xtabulatef elevation--ltProperty--gt}}
 
 
 ## Type coding systems {#sec:typecodingsystemsext}
@@ -58,43 +58,43 @@ It is possible to set the same system for several categories. It is also possibl
 
 4. Optional, alternative or additional type coding systems (individually named **proprietaryInfraCoding**) set by defining one or more "IM_proprietaryCodings" \<Feature>.
 
-{{xtabulate IM_codings--ltFeature--gt}}
+{{xtabulatef IM_codings--ltFeature--gt}}
 
 where:
 
-{{xtabulate terrainCoding--ltProperty--gt}}
+{{xtabulatef terrainCoding--ltProperty--gt}}
 
-{{xtabulate terrainCodingDesc--ltProperty--gt}}
+{{xtabulatef terrainCodingDesc--ltProperty--gt}}
 
-{{xtabulate terrainCodingSourceRef--ltProperty--gt}}
+{{xtabulatef terrainCodingSourceRef--ltProperty--gt}}
 
-{{xtabulate surfaceCoding--ltProperty--gt}}
+{{xtabulatef surfaceCoding--ltProperty--gt}}
 
-{{xtabulate surfaceCodingDesc--ltProperty--gt}}
+{{xtabulatef surfaceCodingDesc--ltProperty--gt}}
 
-{{xtabulate surfaceCodingSourceRef--ltProperty--gt}}
+{{xtabulatef surfaceCodingSourceRef--ltProperty--gt}}
 
-{{xtabulate infraCoding--ltProperty--gt}}
+{{xtabulatef infraCoding--ltProperty--gt}}
 
-{{xtabulate infraCodingDesc--ltProperty--gt}}
+{{xtabulatef infraCodingDesc--ltProperty--gt}}
 
-{{xtabulate infraCodingSourceRef--ltProperty--gt}}
+{{xtabulatef infraCodingSourceRef--ltProperty--gt}}
 
 Proprietary codelists are defined using "IM_proprietaryCodings" \<Feature>
 
-{{xtabulate IM_proprietaryCodings--ltFeature--gt}}
+{{xtabulatef IM_proprietaryCodings--ltFeature--gt}}
 
 where:
 
-{{xtabulate proprietaryInfraCoding--ltProperty--gt}}
+{{xtabulatef proprietaryInfraCoding--ltProperty--gt}}
 
-{{xtabulate proprietaryInfraCodingDesc--ltProperty--gt}}
+{{xtabulatef proprietaryInfraCodingDesc--ltProperty--gt}}
 
-{{xtabulate proprietaryInfraCodingSourceRef--ltProperty--gt}} 
+{{xtabulatef proprietaryInfraCodingSourceRef--ltProperty--gt}} 
 
-{{xtabulate IM_coding--ltFeature--gt}}
+{{xtabulatef IM_coding--ltFeature--gt}}
 
-{{xtabulate IM_proprietaryCoding--ltFeature--gt}}
+{{xtabulatef IM_proprietaryCoding--ltFeature--gt}}
 
 More information can be found from {{refsec typecodingsystems}} 
 
@@ -129,17 +129,17 @@ Individual type codes are set in the individual element, or in the parent elemen
 
 Custom properties may be defined by using "IM_userDefinedProperties" \<Feature>
 
-{{xtabulate IM_userDefinedProperties--ltFeature--gt}}
+{{xtabulatef IM_userDefinedProperties--ltFeature--gt}}
 
 where:
 
-{{xtabulate propertyLabel--ltProperty--gt}}
+{{xtabulatef propertyLabel--ltProperty--gt}}
 
-{{xtabulate propertyValue--ltProperty--gt}}
+{{xtabulatef propertyValue--ltProperty--gt}}
 
-{{xtabulate propertyDescription--ltProperty--gt}}
+{{xtabulatef propertyDescription--ltProperty--gt}}
 
-{{xtabulate propertySource--ltProperty--gt}}
+{{xtabulatef propertySource--ltProperty--gt}}
 
 
 ## Plan information {#sec:planinformationext}
@@ -152,7 +152,7 @@ The details of a plan are described for each project part:
 
 If the project consists of sub-projects that have different rates of progress, the plan contents of the file are divided into sub-projects according to the same division. The plan information contains the **planName**, **planCode**, the **planState** and the plan description **planDesc**. The plan state is described according to a scheme agreed on by the parties of the project.
 
-{{xtabulate IM_plan--ltFeature--gt}}
+{{xtabulatef IM_plan--ltFeature--gt}}
 
 **Details:**  
 
@@ -166,14 +166,14 @@ If the project consists of sub-projects that have different rates of progress, t
 
 Calculated area of a surface (**\<Surface>**) or the volume below (between two surfaces) can be transferred using "IM_quantity" extension. These quanties may also be assingned to a part of a surface (**\<Surface>**.**\<SourceData>**.**\<Boundaries>**.**\<Boundary>**) or an area defined as a **\<Parcel>**.
 
-{{xtabulate IM_quantity--ltFeature--gt}}
+{{xtabulatef IM_quantity--ltFeature--gt}}
 
 
 ## Soil properties {#sec:soilpropertiesext}
 
 Soil properties of terrain model or ground layer model are captured in "IM_soil" feature extension.
 
-{{xtabulate IM_soil--ltFeature--gt}}
+{{xtabulatef IM_soil--ltFeature--gt}}
 
 **Details:**  
 
@@ -188,9 +188,9 @@ The string line model is composed of *line string alignments* **\<IrregularLine>
 
 The string line model is defined under an **\<Alignment>** in the **"IM\_stringlineLayers"** extension. The constituent line strings and their locations are set by layer in the **"IM_stringlineLayer"** child element.  The order of description of the line strings does not matter, the alignments are identified by their unique name **\<Alignment>.** name, which are listed in the element, separated by commas. A layer is assigned a **name** and optionally a **centerline**. When describing a layered structure the layers of the string line model are assigned surface codes **SurfaceCoding**. The same line string may belong to several different layers. Layer are listed starting from the top downwards.
 
-{{xtabulate IM_stringlineLayers--ltFeature--gt}}
+{{xtabulatef IM_stringlineLayers--ltFeature--gt}}
 
-{{xtabulate IM_stringlineLayer--ltFeature--gt}}
+{{xtabulatef IM_stringlineLayer--ltFeature--gt}}
 
 **Details:**
 
@@ -201,7 +201,7 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 *Cross-section parameters* contain parametric information considered crucial for each route type. They are set for the *stationing reference alignment* in the **\<CrossSects>**.**\<CrossSect>** "IM_crossSect" extension under the **\<Alignment>** element. The chosen cross-section parameters are set in fields (**\<Property>**). It is advisable to describe all parameters for each cross-section. If the some parameters change, the cross-section where the parameter begins to change and the end of the transition are described.
 
-{{xtabulate IM_CrossSect--ltFeature--gt}}
+{{xtabulatef IM_CrossSect--ltFeature--gt}}
 
 **Details:**
 
@@ -216,7 +216,7 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 Material properties of layers in road, street or railway structual model are captured in "IM_structLayer" feature extension.
 
-{{xtabulate IM_structLayer--ltFeature--gt}}
+{{xtabulatef IM_structLayer--ltFeature--gt}}
 
 **Details:**  
 
@@ -228,13 +228,13 @@ Material properties of layers in road, street or railway structual model are cap
 
 Road signs belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<Roadside>**.**\<RoadSign>**, with detailed properties captured in "IM_roadSign" feature extension:
 
-{{xtabulate IM_roadSign--ltFeature--gt}}
+{{xtabulatef IM_roadSign--ltFeature--gt}}
 
 ## Railway design - KM post coordinates {#sec:kmpostcoordinatesext}
 
 To assign northing and easting coordinates to railway **\<Alignment>**.**\<StationEquation>**, the parameters are:
 
-{{xtabulate IM_kmPostCoords--ltFeature--gt}}
+{{xtabulatef IM_kmPostCoords--ltFeature--gt}}
 
 **Details:**
 
@@ -246,7 +246,7 @@ To assign northing and easting coordinates to railway **\<Alignment>**.**\<Stati
 
 Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, the parameters are:
 
-{{xtabulate IM_switch--ltFeature--gt}}
+{{xtabulatef IM_switch--ltFeature--gt}}
 
 **Details:**
 
@@ -257,13 +257,13 @@ Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, t
 
 When the attribute pipeNetType in \>PipeNetwork> element is set to 'other', the type of utility network may be speficied in "IM_pipeNetworkType" extension:
 
-{{xtabulate IM_pipeNetworkType--ltFeature--gt}}
+{{xtabulatef IM_pipeNetworkType--ltFeature--gt}}
 
 ## Utility networks - structure details {#sec:structuredetailsext}
 
 It is possible to describe additional details of network structures described in inframodel file transfers. The parameters in "IM_struct" are:
 
-{{xtabulate IM_struct--ltFeature--gt}}
+{{xtabulatef IM_struct--ltFeature--gt}}
 
 **Details:**
 
@@ -281,7 +281,7 @@ It is possible to describe additional details of network structures described in
 
 It is possible to describe additional details of pipes of a network described in inframodel file transfers. The parameters in "IM_pipe" are:
 
-{{xtabulate5 IM_pipe--ltFeature--gt}}
+{{xtabulatef5 IM_pipe--ltFeature--gt}}
 
 **Details:**
 
@@ -299,7 +299,7 @@ It is possible to describe additional details of pipes of a network described in
 
 It is possible to describe additional details of cables of a network described in inframodel file transfers. The parameters in "IM_cable" are:
 
-{{xtabulate IM_cable--ltFeature--gt}}
+{{xtabulatef IM_cable--ltFeature--gt}}
 
 **Details:**
 
@@ -309,15 +309,15 @@ It is possible to describe additional details of cables of a network described i
 
 Planimetric features belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<PlanFeature>**, or in other cases in **\<PlanFeatures>**.**\<PlanFeature>**. In addition of capability of being classified using "IM_coding" extension (and/or "IM_proprietaryCoding") and having custom properties using "IM_userDefinedProperties", detailed propeties may be assigned by the type of plan feature:
 
-{{xtabulate IM_footing--ltFeature--gt}}
+{{xtabulatef IM_footing--ltFeature--gt}}
 
-{{xtabulate IM_railing--ltFeature--gt}}
+{{xtabulatef IM_railing--ltFeature--gt}}
 
-{{xtabulate IM_fence--ltFeature--gt}}
+{{xtabulatef IM_fence--ltFeature--gt}}
 
-{{xtabulate IM_surfaceStructure--ltFeature--gt}}
+{{xtabulatef IM_surfaceStructure--ltFeature--gt}}
 
-{{xtabulate IM_planFeature--ltFeature--gt}}
+{{xtabulatef IM_planFeature--ltFeature--gt}}
 
 **Details:**
 
@@ -333,7 +333,7 @@ Planimetric features belonging to a particular route design are described in **\
 
 Inframodel enables transfering both planned control points with tolerances (**\<Cgpoints>** as top-level collection), and the measured values (**\<Survey>**.**\<Cgpoints>**), both having detailed properties assign to the collection as "IM_cgpoints":
 
-{{xtabulate IM_cgpoints--ltFeature--gt}}
+{{xtabulatef IM_cgpoints--ltFeature--gt}}
 
 **Details:**
 
@@ -344,7 +344,7 @@ Inframodel enables transfering both planned control points with tolerances (**\<
 
 An area or a space allocated for some specific use, or a perimeter around an object to be avoided can be defined using "IM_spatialZone" extension, applicable to  **\<PlanFeature>**, **\<Parcel>**, **\<Pipe>** or **\<Struct>**.
 
-{{xtabulate IM_spatialZone--ltFeature--gt}}
+{{xtabulatef IM_spatialZone--ltFeature--gt}}
 
 **Details:**
 
