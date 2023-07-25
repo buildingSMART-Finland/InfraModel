@@ -389,82 +389,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:enumeration value="chord"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="impArea">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="acre"/>
-			<xs:enumeration value="squareFoot"/>
-			<xs:enumeration value="squareInch"/>
-			<xs:enumeration value="squareMiles"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impLinear">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="foot"/>
-			<xs:enumeration value="USSurveyFoot"/>
-			<xs:enumeration value="inch"/>
-			<xs:enumeration value="mile"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impPressure">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="inchHG"/>
-			<xs:enumeration value="inHG"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impTemperature">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="fahrenheit"/>
-			<xs:enumeration value="kelvin"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impDiameter">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="foot"/>
-			<xs:enumeration value="USSurveyFoot"/>
-			<xs:enumeration value="inch"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impWidth">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="foot"/>
-			<xs:enumeration value="USSurveyFoot"/>
-			<xs:enumeration value="inch"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impHeight">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="foot"/>
-			<xs:enumeration value="USSurveyFoot"/>
-			<xs:enumeration value="inch"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impFlow">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="US_gallonPerDay"/>
-			<xs:enumeration value="IMP_gallonPerDay"/>
-			<xs:enumeration value="cubicFeetDay"/>
-			<xs:enumeration value="US_gallonPerMinute"/>
-			<xs:enumeration value="IMP_gallonPerMinute"/>
-			<xs:enumeration value="acreFeetDay"/>
-			<xs:enumeration value="cubicFeetSecond"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impVolume">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="US_gallon"/>
-			<xs:enumeration value="IMP_gallon"/>
-			<xs:enumeration value="cubicInch"/>
-			<xs:enumeration value="cubicFeet"/>
-			<xs:enumeration value="cubicYard"/>
-			<xs:enumeration value="acreFeet"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="impVelocity">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="feetPerSecond"/>
-			<xs:enumeration value="milesPerHour"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="inOut">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="in"/>
@@ -611,22 +535,8 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 	</xs:simpleType>
 	<xs:simpleType name="spiralType">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="biquadratic"/>
-			<xs:enumeration value="bloss"/>
 			<xs:enumeration value="clothoid"/>
-			<xs:enumeration value="cosine"/>
 			<xs:enumeration value="cubic"/>
-			<xs:enumeration value="sinusoid"/>
-			<xs:enumeration value="revBiquadratic"/>
-			<xs:enumeration value="revBloss"/>
-			<xs:enumeration value="revCosine"/>
-			<xs:enumeration value="revSinusoid"/>
-			<xs:enumeration value="sineHalfWave"/>
-			<xs:enumeration value="biquadraticParabola"/>
-			<xs:enumeration value="cubicParabola"/>
-			<xs:enumeration value="japaneseCubic"/>
-			<xs:enumeration value="radioid"/>
-			<xs:enumeration value="weinerBogen"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="stateType">
@@ -701,39 +611,15 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:enumeration value="administrative"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="xsVolCalcMethodType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="AverageEndArea"/>
-			<xs:enumeration value="Prismoidal"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="parcelFormat">
 		<xs:annotation>
 			<xs:documentation>Parcel Format describes how the parcel is described , ie Standard (2D), Volumertric (3D)</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
-	<xs:simpleType name="useOfParcelType">
-		<xs:annotation>
-			<xs:documentation>Describes what the parcel is used for.  This would be a jurisdictionally specific list.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="titleTypeType">
-		<xs:annotation>
-			<xs:documentation>Describes the type of title interest this parcel represents, the list will be jurisdictionally specific</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="surveyFormatType">
 		<xs:annotation>
 			<xs:documentation>Describes the format of the survey and is a jurisdictionally specific list for example a stand format survey, Building Format Survey.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="headOfPowerType">
-		<xs:annotation>
-			<xs:documentation>Details the legislation or regulation under which the survey was conducted, for example the Land Title Act2003 This list will be juridictionnally specific.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
@@ -749,45 +635,11 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
-	<xs:simpleType name="adminAreaTypeType">
-		<xs:annotation>
-			<xs:documentation>This is a jurdictionally specific list of types and may include parish, town, local government, locality etc</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="annotationType">
 		<xs:annotation>
 			<xs:documentation>An Annotation will be a specific type within a jurisdiction. </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="jurisdictionType">
-		<xs:annotation>
-			<xs:documentation>This is the name of the juridiction in which the Survey Lies (ie which state)</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="zoneNumberType">
-		<xs:restriction base="xs:positiveInteger">
-			<xs:minInclusive value="1"/>
-			<xs:maxInclusive value="99"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="adminDateTypeType">
-		<xs:annotation>
-			<xs:documentation>This is the name of the admin date type for the Survey</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="designLocationType">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Final Surface"/>
-			<xs:enumeration value="Datum"/>
-			<xs:enumeration value="Intermediate"/>
-		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="dataFormatType">
 		<xs:annotation>
@@ -808,51 +660,9 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:enumeration value="dayLight"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="addressTypeType">
-		<xs:annotation>
-			<xs:documentation>This Type is to define a ljurisdictional specific list of address types such a primary addres, alias, secondary, historical etc.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="flatTypeType">
 		<xs:annotation>
 			<xs:documentation>To define a Jurisdictional specific list of address living unit types for addressing</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="roadNameSuffixType">
-		<xs:annotation>
-			<xs:documentation>to Allow a list of specific road suffixes to be specified, ie east, upper etc (ie Fred Street East)</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="roadTypeType">
-		<xs:annotation>
-			<xs:documentation>To define if the road is a public or private road.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="roadNameTypeType">
-		<xs:annotation>
-			<xs:documentation>to define a jurisdictionally specific list of Road name types such a street, road, avenue etc.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="floorLevelTypeType">
-		<xs:annotation>
-			<xs:documentation>To define a jurisdictionally specific list of floo level types for example, Lower Ground Floor</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="addressPointTypeType">
-		<xs:annotation>
-			<xs:documentation>This is a string to define the type of Geocode that the address point is for examplecentroid of parcel, Access Point etc.  This will be a jurisdictionally based list.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="registrationType">
-		<xs:annotation>
-			<xs:documentation>This is a jurisdictionally based list of classes of registration for a surveyor.  This allows validation of the surveyors role in the survey for legal traceablity.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
@@ -1089,7 +899,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<xs:attribute name="oID" type="xs:string"/>
 					<xs:attribute name="surveyOrder" type="xs:string"/>
 					<xs:attribute name="pntSurv" type="survPntType"/>
-					<xs:attribute name="zoneNumber" type="zoneNumberType"/>
 					<xs:attribute name="surveyHorizontalOrder" type="xs:string"/>
 					<xs:attribute name="surveyVerticalOrder" type="xs:string"/>
 					<xs:attribute name="localUncertainity" type="xs:double"/>
@@ -1253,15 +1062,36 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="dir" type="direction"/>
-			<xs:attribute name="length" type="xs:double"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="staStart" type="xs:double"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="source" type="xs:string"/>
-			<xs:attribute name="note" type="xs:string"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Station offset</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="length" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Line length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dir" type="direction">
+				<xs:annotation>
+					<xs:documentation>Line direction</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:simpleType name="ChainType">
@@ -1307,23 +1137,66 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 				<xs:element ref="End"/>
 				<xs:element ref="PI" minOccurs="0"/>
 			</xs:choice>
-			<xs:attribute name="rot" type="clockwise" use="required"/>
-			<xs:attribute name="chord" type="xs:double" use="required"/>
-			<xs:attribute name="crvType" type="curveType"/>
-			<xs:attribute name="delta" type="angle"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="dirEnd" type="direction"/>
-			<xs:attribute name="dirStart" type="direction"/>
-			<xs:attribute name="external" type="xs:double"/>
-			<xs:attribute name="length" type="xs:double" use="required"/>
-			<xs:attribute name="midOrd" type="xs:double"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="radius" type="xs:double" use="required"/>
-			<xs:attribute name="staStart" type="xs:double" use="optional"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="tangent" type="xs:double"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="note" type="xs:string"/>
+			<xs:attribute name="rot" type="clockwise" use="required">
+				<xs:annotation>
+					<xs:documentation>Rotation direction</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="chord" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Chord length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="length" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Curve length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="radius" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Curve radius</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="crvType" type="curveType">
+				<xs:annotation>
+					<xs:documentation>Curve type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dirStart" type="direction">
+				<xs:annotation>
+					<xs:documentation>Direction at start of the curve</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dirEnd" type="direction">
+				<xs:annotation>
+					<xs:documentation>Direction at end of the curve</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="xs:double" use="optional">
+				<xs:annotation>
+					<xs:documentation>Station offset</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="tangent" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Tangent length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Spiral">
@@ -1339,25 +1212,71 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					<xs:element ref="End"/>
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="length" type="xs:double" use="required"/>
-			<xs:attribute name="radiusEnd" type="xs:double" use="required"/>
-			<xs:attribute name="radiusStart" type="xs:double" use="required"/>
-			<xs:attribute name="rot" type="clockwise" use="required"/>
-			<xs:attribute name="spiType" type="spiralType" use="required"/>
-			<xs:attribute name="chord" type="xs:double"/>
-			<xs:attribute name="constant" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="dirEnd" type="direction"/>
-			<xs:attribute name="dirStart" type="direction"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="theta" type="angle"/>
-			<xs:attribute name="totalY" type="xs:double"/>
-			<xs:attribute name="totalX" type="xs:double"/>
-			<xs:attribute name="staStart" type="xs:double" use="optional"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="tanLong" type="xs:double"/>
-			<xs:attribute name="tanShort" type="xs:double"/>
-			<xs:attribute name="oID" type="xs:string"/>
+			<xs:attribute name="length" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Spiral length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="radiusStart" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Radius at start of the spiral, use "INF" for infinite</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="radiusEnd" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Radius at end of the spiral, use "INF" for infinite</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rot" type="clockwise" use="required">
+				<xs:annotation>
+					<xs:documentation>Rotation direction</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="spiType" type="spiralType" use="required">
+				<xs:annotation>
+					<xs:documentation>Spiral type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="constant" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Spiral constant</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="chord" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Chord length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dirStart" type="direction">
+				<xs:annotation>
+					<xs:documentation>Direction at start of the spiral</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dirEnd" type="direction">
+				<xs:annotation>
+					<xs:documentation>Direction at end of the spiral</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="xs:double" use="optional">
+				<xs:annotation>
+					<xs:documentation>Station offset</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CoordGeom">
@@ -1907,29 +1826,13 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 			<xs:attribute name="endTime" type="xs:dateTime"/>
 			<xs:attribute name="surveyor" type="xs:string"/>
 			<xs:attribute name="surveyorFirm" type="xs:string"/>
-			<xs:attribute name="surveyorReference" type="xs:string"/>
-			<xs:attribute name="surveyorRegistration" type="xs:string"/>
 			<xs:attribute name="surveyPurpose" type="xs:string"/>
 			<xs:attribute name="type" type="surveyType"/>
 			<xs:attribute name="class" type="xs:string"/>
-			<xs:attribute name="county" type="xs:string"/>
-			<xs:attribute name="applyAtmosphericCorrection" type="xs:boolean"/>
-			<xs:attribute name="pressure" type="xs:double"/>
-			<xs:attribute name="temperature" type="xs:double"/>
-			<xs:attribute name="applySeaLevelCorrection" type="xs:boolean"/>
-			<xs:attribute name="scaleFactor" type="xs:double"/>
-			<xs:attribute name="seaLevelCorrectionFactor" type="xs:double"/>
-			<xs:attribute name="combinedFactor" type="xs:double"/>
-			<xs:attribute name="jurisdiction" type="jurisdictionType"/>
 			<xs:attribute name="submissionDate" type="xs:date"/>
 			<xs:attribute name="documentStatus" type="documentStatusType"/>
 			<xs:attribute name="surveyFormat" type="surveyFormatType"/>
 			<xs:attribute name="surveyStatus" type="surveyStatusType"/>
-			<xs:attribute name="communityTitleSchemeNo" type="xs:int"/>
-			<xs:attribute name="communityTitleSchemeName" type="xs:string"/>
-			<xs:attribute name="fieldNoteFlag" type="xs:boolean"/>
-			<xs:attribute name="fieldNoteReference" type="xs:string"/>
-			<xs:attribute name="fieldReport" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<!-- Annotation Element-->
@@ -2625,11 +2528,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="Center" minOccurs="0"/>
 					<xs:element ref="CoordGeom"/>
-					<xs:element ref="VolumeGeom" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="Parcels" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="Title" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="Exclusions" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="LocationAddress" minOccurs="0" maxOccurs="0"/>
 				</xs:choice>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
@@ -2673,20 +2571,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:attribute name="distClosure" type="xs:double"/>
 			<xs:attribute name="owner" type="xs:string"/>
 			<xs:attribute name="parcelType" type="xs:string"/>
-			<xs:attribute name="setbackFront" type="xs:double"/>
-			<xs:attribute name="setbackRear" type="xs:double"/>
-			<xs:attribute name="setbackSide" type="xs:double"/>
 			<xs:attribute name="state" type="parcelStateType"/>
-			<xs:attribute name="taxId" type="xs:string"/>
-			<xs:attribute name="class" type="parcelClass"/>
-			<xs:attribute name="useOfParcel" type="useOfParcelType"/>
-			<xs:attribute name="parcelFormat" type="parcelFormat"/>
-			<xs:attribute name="buildingNo" type="xs:string"/>
-			<xs:attribute name="buildingLevelNo" type="xs:string"/>
-			<xs:attribute name="volume" type="xs:string"/>
-			<xs:attribute name="pclRef" type="parcelNameRef"/>
-			<xs:attribute name="lotEntitlements" type="xs:string"/>
-			<xs:attribute name="liabilityApportionment" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="VolumeGeom">
@@ -2766,14 +2651,36 @@ A collection of horizontal Alignments</xs:documentation>
 												<xs:element ref="End"/>
 												<xs:element ref="IM_switch--ltFeature--gt" minOccurs="0"/>
 											</xs:sequence>
-											<xs:attribute name="desc" type="xs:string"/>
-											<xs:attribute name="dir" type="direction"/>
-											<xs:attribute name="length" type="xs:double"/>
-											<xs:attribute name="name" type="xs:string"/>
-											<xs:attribute name="staStart" type="xs:double"/>
-											<xs:attribute name="state" type="stateType"/>
-											<xs:attribute name="oID" type="xs:string"/>
-											<xs:attribute name="note" type="xs:string"/>
+											<xs:attribute name="name" type="xs:string">
+												<xs:annotation>
+													<xs:documentation>Unique name</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="desc" type="xs:string">
+												<xs:annotation>
+													<xs:documentation>Description</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="staStart" type="xs:double">
+												<xs:annotation>
+													<xs:documentation>Station offset</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="length" type="xs:double">
+												<xs:annotation>
+													<xs:documentation>Line length</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="dir" type="direction">
+												<xs:annotation>
+													<xs:documentation>Line direction</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="state" type="stateType">
+												<xs:annotation>
+													<xs:documentation>State</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
 										</xs:complexType>
 									</xs:element>
 									<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
@@ -2782,9 +2689,21 @@ A collection of horizontal Alignments</xs:documentation>
 								</xs:choice>
 								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
 							</xs:sequence>
-							<xs:attribute name="name" type="xs:string"/>
-							<xs:attribute name="desc" type="xs:string"/>
-							<xs:attribute name="state" type="stateType"/>
+							<xs:attribute name="name" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Unique name</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="desc" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Description</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="state" type="stateType">
+								<xs:annotation>
+									<xs:documentation>State</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
 						</xs:complexType>
 					</xs:element>
 					<xs:element ref="Cant" minOccurs="0"/>
