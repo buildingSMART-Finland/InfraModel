@@ -28,8 +28,7 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 				<xs:element ref="Project"/>
 				<xs:element ref="Application" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Identifies the software and author(s) of the file creator and editor(s).
-</xs:documentation>
+						<xs:documentation>Identifies the software and author(s) of the file creator and editor(s).</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="Alignments" minOccurs="0" maxOccurs="unbounded">
@@ -293,18 +292,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		</xs:annotation>
 		<xs:list itemType="xs:string"/>
 	</xs:simpleType>
-	<xs:simpleType name="coordGeomNameRef">
-		<xs:annotation>
-			<xs:documentation>A reference name value referring to CoordGeom.name attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="coordGeomNameRefs">
-		<xs:annotation>
-			<xs:documentation>A list of reference names values refering to one or more CoordGeom.name attributes.</xs:documentation>
-		</xs:annotation>
-		<xs:list itemType="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="pipeNameRef">
 		<xs:annotation>
 			<xs:documentation>A reference name value referring to Pipe.name attribute.</xs:documentation>
@@ -328,42 +315,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:documentation>A list of reference names values refering to one or more Struct.name attributes.</xs:documentation>
 		</xs:annotation>
 		<xs:list itemType="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="monumentNameRef">
-		<xs:annotation>
-			<xs:documentation>A reference name value referring to monument.name attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="roadwayNameRef">
-		<xs:annotation>
-			<xs:documentation>A reference name value referring to Raodway.name attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="roadwayNameRefs">
-		<xs:annotation>
-			<xs:documentation>A list of reference names values refering to one or more Roadway.name attributes.				</xs:documentation>
-		</xs:annotation>
-		<xs:list itemType="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="gradeModelNameRef">
-		<xs:annotation>
-			<xs:documentation>A reference name value referring to GradeModel.name attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="gradeModelNameRefs">
-		<xs:annotation>
-			<xs:documentation>A list of reference names values refering to one or more GradeModel.name attributes.</xs:documentation>
-		</xs:annotation>
-		<xs:list itemType="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="featureNameRef">
-		<xs:annotation>
-			<xs:documentation>A Feature element name attribute reference value refering to one Feature.name attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
 	<!-- LandXML enumeration types -->
 	<xs:simpleType name="surveyRoleType">
@@ -733,14 +684,12 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:annotation>
 		<xs:list itemType="xs:double"/>
 	</xs:simpleType>
-	<!-- 3d Point in all 3 coors are optional -->
 	<xs:simpleType name="Point3dOpt">
 		<xs:restriction base="Point">
 			<xs:minLength value="0"/>
 			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!-- 3d point in all 3 coors are required -->
 	<xs:simpleType name="Point3dReq">
 		<xs:annotation>
 			<xs:documentation>3d point</xs:documentation>
@@ -750,7 +699,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!-- 2d Point in which all coors are required -->
 	<xs:simpleType name="Point2dReq">
 		<xs:annotation>
 			<xs:documentation>2d point</xs:documentation>
@@ -773,7 +721,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:enumeration value="nondestructive"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!-- The base point base class -->
 	<xs:complexType name="PointType" mixed="true">
 		<xs:annotation>
 			<xs:documentation>All elements derived from PointType will either contain a coordinate text value ( "north east" or "north east elev"), a "pntRef" attribute value, or both. The "pntRef" attribute contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. If this element has a "pntRef" value, then it's coordinates will be retrieved from the referenced element. If an element contains both a coordinate value and a pntRef, the coordinate value should be used as the point location and the referenced point is either ignored or is used for point attributes such as number or desc.</xs:documentation>
@@ -811,7 +758,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<!-- 2d Point in which all coors are required -->
 	<xs:complexType name="PointType3dReq">
 		<xs:simpleContent>
 			<xs:extension base="Point3dReq">
@@ -1277,53 +1223,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="CoordGeom">
-		<xs:annotation>
-			<xs:documentation>A sequential list of Line and/or Curve and/or Spiral elements.</xs:documentation>
-			<xs:documentation>After the sequential list of elements an optional vertical geometry 
-			may be defined as a profile, which may be as simple as a list of PVIs (point to point 3D line string).</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="Line" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Inframodel Used to record lines that are irregular such as river boudaries etc. It has Start and End point elements and a list of intermediate points. Point list should also include the start and end points.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="Curve" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Spiral" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Chain" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Line">
-		<xs:annotation>
-			<xs:documentation>Modified to include official ID, as with all CoordGeom elements</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Start"/>
-				<xs:element ref="End"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="dir" type="direction" use="required"/>
-			<xs:attribute name="length" type="xs:double" use="required"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="staStart" type="xs:double" use="required"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="note" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CrossSects">
@@ -1980,7 +1879,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 		<xs:complexType>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="pntRef" type="pointNameRef"/>
-			<xs:attribute name="featureRef" type="featureNameRef" use="optional"/>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="state" type="monumentState"/>
 			<xs:attribute name="type" type="monumentType"/>
@@ -2527,7 +2425,33 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="Center" minOccurs="0"/>
-					<xs:element ref="CoordGeom"/>
+					<xs:element name="CoordGeom">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:choice maxOccurs="unbounded">
+									<xs:element ref="Line" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element ref="Curve" minOccurs="0"/>
+								</xs:choice>
+								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+							</xs:sequence>
+							<xs:attribute name="name" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Unique name</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="desc" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Description</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="state" type="stateType">
+								<xs:annotation>
+									<xs:documentation>State</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
 				</xs:choice>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
@@ -2574,20 +2498,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:attribute name="state" type="parcelStateType"/>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="VolumeGeom">
-		<xs:annotation>
-			<xs:documentation>Defines the properties of 3Dcoordinate Geometry Collection</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:choice minOccurs="4" maxOccurs="unbounded">
-				<xs:element ref="CoordGeom"/>
-			</xs:choice>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="oID" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Alignments collection -->
 	<xs:element name="Alignments">
 		<xs:annotation>
@@ -2628,83 +2538,10 @@ A collection of horizontal Alignments</xs:documentation>
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
 				<xs:choice>
-					<xs:element name="CoordGeom">
+					<xs:element ref="CoordGeom">
 						<xs:annotation>
-							<xs:documentation>Inframodel</xs:documentation>
+							<xs:documentation>Geometry</xs:documentation>
 						</xs:annotation>
-						<xs:complexType>
-							<xs:annotation>
-								<xs:documentation>Inframodel: Coordgeomtype including Inframodel's switch definition</xs:documentation>
-							</xs:annotation>
-							<xs:sequence>
-								<xs:choice maxOccurs="unbounded">
-									<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
-										<xs:annotation>
-											<xs:documentation>Inframodel</xs:documentation>
-										</xs:annotation>
-										<xs:complexType>
-											<xs:annotation>
-												<xs:documentation>Inframodel: LineType specific for Inframodel including IM_switch properties</xs:documentation>
-											</xs:annotation>
-											<xs:sequence>
-												<xs:element ref="Start"/>
-												<xs:element ref="End"/>
-												<xs:element ref="IM_switch--ltFeature--gt" minOccurs="0"/>
-											</xs:sequence>
-											<xs:attribute name="name" type="xs:string">
-												<xs:annotation>
-													<xs:documentation>Unique name</xs:documentation>
-												</xs:annotation>
-											</xs:attribute>
-											<xs:attribute name="desc" type="xs:string">
-												<xs:annotation>
-													<xs:documentation>Description</xs:documentation>
-												</xs:annotation>
-											</xs:attribute>
-											<xs:attribute name="staStart" type="xs:double">
-												<xs:annotation>
-													<xs:documentation>Station offset</xs:documentation>
-												</xs:annotation>
-											</xs:attribute>
-											<xs:attribute name="length" type="xs:double">
-												<xs:annotation>
-													<xs:documentation>Line length</xs:documentation>
-												</xs:annotation>
-											</xs:attribute>
-											<xs:attribute name="dir" type="direction">
-												<xs:annotation>
-													<xs:documentation>Line direction</xs:documentation>
-												</xs:annotation>
-											</xs:attribute>
-											<xs:attribute name="state" type="stateType">
-												<xs:annotation>
-													<xs:documentation>State</xs:documentation>
-												</xs:annotation>
-											</xs:attribute>
-										</xs:complexType>
-									</xs:element>
-									<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
-									<xs:element ref="Curve" minOccurs="0" maxOccurs="unbounded"/>
-									<xs:element ref="Spiral" minOccurs="0" maxOccurs="unbounded"/>
-								</xs:choice>
-								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
-							</xs:sequence>
-							<xs:attribute name="name" type="xs:string">
-								<xs:annotation>
-									<xs:documentation>Unique name</xs:documentation>
-								</xs:annotation>
-							</xs:attribute>
-							<xs:attribute name="desc" type="xs:string">
-								<xs:annotation>
-									<xs:documentation>Description</xs:documentation>
-								</xs:annotation>
-							</xs:attribute>
-							<xs:attribute name="state" type="stateType">
-								<xs:annotation>
-									<xs:documentation>State</xs:documentation>
-								</xs:annotation>
-							</xs:attribute>
-						</xs:complexType>
 					</xs:element>
 					<xs:element ref="Cant" minOccurs="0"/>
 				</xs:choice>
@@ -3563,53 +3400,39 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	<!-- PlanFeature class -->
 	<xs:element name="PlanFeature">
 		<xs:annotation>
-			<xs:documentation>
-Inframodel.
-
-A planimetric feature not otherwise defined by the schema, such as building footprints, guard rails, tree lines, lightpoles or signage.</xs:documentation>
+			<xs:documentation>A planimetric feature, such as building footprints, guard rails, tree lines, lightpoles or signage.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="CoordGeom">
-					<xs:annotation>
-						<xs:documentation>(Inframodel) A sequential list of Line and/or Curve and/or Spiral elements.</xs:documentation>
-					</xs:annotation>
+				<xs:element name="CoordGeom">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice maxOccurs="unbounded">
+								<xs:element ref="Line" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element ref="Curve" minOccurs="0"/>
+							</xs:choice>
+							<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Unique name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="desc" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Description</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="state" type="stateType">
+							<xs:annotation>
+								<xs:documentation>State</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
 				</xs:element>
 				<xs:element ref="Location" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelPlanFeatureFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelPlanFeatureFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
 				<xs:element ref="IM_cable--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_footing--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_railing--ltFeature--gt" minOccurs="0"/>
@@ -3908,6 +3731,85 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:attribute name="speed" type="xs:double">
 				<xs:annotation>
 					<xs:documentation>Design speed</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="double">
+		<xs:list itemType="xs:double"/>
+	</xs:simpleType>
+	<xs:element name="CoordGeom">
+		<xs:annotation>
+			<xs:documentation>Geometry</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element ref="Line" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="Curve" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="Spiral" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:choice>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Line">
+		<xs:annotation>
+			<xs:documentation>Line element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>Inframodel: LineType specific for Inframodel including IM_switch properties</xs:documentation>
+			</xs:annotation>
+			<xs:sequence>
+				<xs:element ref="Start"/>
+				<xs:element ref="End"/>
+				<xs:element ref="IM_switch--ltFeature--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Station offset</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="length" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Line length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dir" type="direction">
+				<xs:annotation>
+					<xs:documentation>Line direction</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -6911,7 +6813,4 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="double">
-		<xs:list itemType="xs:double"/>
-	</xs:simpleType>
 </xs:schema>
