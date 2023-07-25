@@ -3386,44 +3386,24 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 						<xs:documentation>(Inframodel)</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Intersections" minOccurs="0" maxOccurs="0"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelRoadwaysFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelRoadwaysFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Roadway">
