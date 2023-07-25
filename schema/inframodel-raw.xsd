@@ -1338,6 +1338,9 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>File units</xs:documentation>
+				</xs:annotation>
 				<xs:element ref="Metric">
 					<xs:annotation>
 						<xs:documentation>Fixed metric units</xs:documentation>
@@ -2814,7 +2817,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string">
 				<xs:annotation>
-					<xs:documentation>Human readable description</xs:documentation>
+					<xs:documentation>Description</xs:documentation>
 					<xs:documentation>Example:Storm drains, area52</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -3052,6 +3055,9 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:sequence>
 				<xs:element ref="Center"/>
 				<xs:choice>
+					<xs:annotation>
+						<xs:documentation>Struct</xs:documentation>
+					</xs:annotation>
 					<xs:element ref="CircStruct"/>
 					<xs:element ref="RectStruct"/>
 					<xs:element ref="InletStruct"/>
@@ -3059,7 +3065,6 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					<xs:element ref="Connection"/>
 				</xs:choice>
 				<xs:element ref="Invert" maxOccurs="unbounded"/>
-				<xs:element ref="StructFlow" minOccurs="0"/>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Inframodel</xs:documentation>
@@ -3093,13 +3098,37 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 						<xs:attribute name="source"/>
 					</xs:complexType>
 				</xs:element>
+				<xs:element ref="IM_struct--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="elevRim" type="xs:double"/>
-			<xs:attribute name="elevSump" type="xs:double" use="required"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="state" type="stateType" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="elevRim" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Rim elevation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="elevSump" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Sump elevation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType" use="required">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CircStruct">
@@ -3107,19 +3136,26 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:documentation>Circukar struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="diameter" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
-			<xs:attribute name="inletCase"/>
-			<xs:attribute name="lossCoeff" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="diameter" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Diameter</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="desc" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="thickness" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="RectStruct">
@@ -3127,62 +3163,78 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:documentation>Rectangular struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="length" type="xs:double" use="required"/>
-			<xs:attribute name="lengthDir" type="direction" use="required"/>
-			<xs:attribute name="width" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
-			<xs:attribute name="inletCase"/>
-			<xs:attribute name="lossCoeff" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="length" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Length</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="lengthDir" type="direction" use="required">
+				<xs:annotation>
+					<xs:documentation>Direction</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="width" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Width</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="thickness" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="InletStruct">
 		<xs:annotation>
 			<xs:documentation>Inlet struct</xs:documentation>
 		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
 	</xs:element>
 	<xs:element name="OutletStruct">
 		<xs:annotation>
 			<xs:documentation>Outlet struct</xs:documentation>
 		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
 	</xs:element>
 	<xs:element name="Connection">
 		<xs:annotation>
 			<xs:documentation>Pipe connection</xs:documentation>
 		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
 	</xs:element>
 	<xs:element name="Invert">
 		<xs:annotation>
 			<xs:documentation>Invert</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="elev" type="xs:double" use="required"/>
-			<xs:attribute name="flowDir" type="inOut" use="required"/>
-			<xs:attribute name="refPipe" type="pipeNameRef" use="required"/>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="elev" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Elevation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="flowDir" type="inOut" use="required">
+				<xs:annotation>
+					<xs:documentation>Flow direction</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="refPipe" type="pipeNameRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Reference to pipe</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="StructFlow">
@@ -3190,9 +3242,6 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:documentation>Struct flow details</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
 			<xs:attribute name="lossIn" type="xs:double" use="required"/>
 			<xs:attribute name="lossOut" type="xs:double" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -4602,15 +4651,53 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="IM_pipeNetworkType--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel generic planimetric feature --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel additional pipe network type --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="pipeNetworkType--ltProperty--gt"/>
 			</xs:sequence>
-			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_roadSign">
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_pipeNetworkType">
 				<xs:annotation>
-					<xs:documentation>Fixed value, IM_roadSign</xs:documentation>
+					<xs:documentation>Fixed value, IM_pipeNetworkType</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_struct--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel struct details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="structLabel--ltProperty--gt"/>
+				<xs:element ref="rimType--ltProperty--gt"/>
+				<xs:element ref="rimMaterial--ltProperty--gt"/>
+				<xs:element ref="rimLoad--ltProperty--gt"/>
+				<xs:element ref="rimDiameter--ltProperty--gt"/>
+				<xs:element ref="rimCenter--ltProperty--gt"/>
+				<xs:element ref="heightDeposit--ltProperty--gt"/>
+				<xs:element ref="volumeDeposit--ltProperty--gt"/>
+				<xs:element ref="constructionDate--ltProperty--gt"/>
+				<xs:element ref="renewalDate--ltProperty--gt"/>
+				<xs:element ref="renewalDesc--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_struct</xs:documentation>
 					<xs:documentation>Example:IM_spatialZone</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -7135,6 +7222,140 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 						<xs:enumeration value="telecommunication"/>
 					</xs:restriction>
 				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_struct-->
+	<xs:element name="rimDiameter--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim diameter</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimDiameter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimDiameter</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim diameter</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rimCenter--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Rim centerpoint location</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="rimCenter">
+				<xs:annotation>
+					<xs:documentation>Fixed value, rimCenter</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Rim centerpoint location as space delimited northing,east and elevation</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="heightDeposit--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Deposit height</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="heightDeposit">
+				<xs:annotation>
+					<xs:documentation>Fixed value, heightDeposit</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Deposit height</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="volumeDeposit--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Deposit volume</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="volumeDeposit">
+				<xs:annotation>
+					<xs:documentation>Fixed value, volumeDeposit</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Deposit volume</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="constructionDate--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Construction date</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="constructionDate">
+				<xs:annotation>
+					<xs:documentation>Fixed value, constructionDate</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Construction date, yyyy or yyyymm or yyyymmdd</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="renewalDate--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Renewal date</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="renewalDate">
+				<xs:annotation>
+					<xs:documentation>Fixed value, renewalDate</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Renewal  date, yyyy or yyyymm or yyyymmdd</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="renewalDesc--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Renewal description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="renewalDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, renewalDesc</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Renewal description</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>

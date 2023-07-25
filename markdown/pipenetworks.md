@@ -42,10 +42,9 @@ The *plan information* of a *network group* is set in the optional "IM_plan" ext
 
 Individual networks are described in **\<PipeNetwork>** elements, organized under their parent element **\<PipeNetworks>**, the *network group*. The number of *networks* in one *network group* is unlimited. The *pipe network* defines a topological model, with mandatory **name** and **pipeNetType**. The **state** and *description* **desc** are optional.
 
-{{xtabulate pipeNetType}}
-
 {{xtabulate PipeNetwork}}
 
+{{xtabulate pipeNetworkType}}
 ### Pipe network type extensions
 
 When the *network type* is not one of those covered by the **pipeNetType** (attribute set to "other"), the "IM_pipeNetworkType" extension can be used to specify the type.
