@@ -94,6 +94,7 @@ where:
 
 {{xtabulate IM_coding--ltFeature--gt}}
 
+{{xtabulate IM_proprietaryCoding--ltFeature--gt}}
 
 More information can be found from {{refsec typecodingsystems}} 
 
@@ -200,8 +201,6 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 *Cross-section parameters* contain parametric information considered crucial for each route type. They are set for the *stationing reference alignment* in the **\<CrossSects>**.**\<CrossSect>** "IM_crossSect" extension under the **\<Alignment>** element. The chosen cross-section parameters are set in fields (**\<Property>**). It is advisable to describe all parameters for each cross-section. If the some parameters change, the cross-section where the parameter begins to change and the end of the transition are described.
 
-{{xtabulate CrossSect--ltFeature--gt}}
-
 {{xtabulate IM_CrossSect--ltFeature--gt}}
 
 **Details:**
@@ -213,7 +212,7 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 {{refsec crosssectionparameters}}
 
 
-## Strcutural layer properties {#sec:structureallayerpropertiesext}
+## Structural layer properties {#sec:structureallayerpropertiesext}
 
 Material properties of layers in road, street or railway structual model are captured in "IM_structLayer" feature extension.
 
@@ -309,8 +308,6 @@ It is possible to describe additional details of cables of a network described i
 ## Plan features {#sec:planfeaturesext}
 
 Planimetric features belonging to a particular route design are described in **\<Roadways>**.**\<Roadway>**.**\<PlanFeature>**, or in other cases in **\<PlanFeatures>**.**\<PlanFeature>**. In addition of capability of being classified using "IM_coding" extension (and/or "IM_proprietaryCoding") and having custom properties using "IM_userDefinedProperties", detailed propeties may be assigned by the type of plan feature:
-
-{{xtabulate IM_cable--ltFeature--gt}}
 
 {{xtabulate IM_footing--ltFeature--gt}}
 

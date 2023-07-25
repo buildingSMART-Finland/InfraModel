@@ -1377,7 +1377,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:sequence>
 				<xs:element ref="DesignCrossSectSurf" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Design cross sectiopn definition</xs:documentation>
+						<xs:documentation>Design cross section definition</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="IM_crossSect--ltFeature--gt" minOccurs="0"/>
@@ -3610,6 +3610,16 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 						<xs:attribute name="source"/>
 					</xs:complexType>
 				</xs:element>
+				<xs:element ref="IM_cable--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_footing--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_railing--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_fence--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_surfaceStructure-ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_planfeature--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:choice>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="name" type="xs:string"/>
@@ -3710,40 +3720,14 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 						<xs:documentation/>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="PlanFeature" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="PlanFeature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>A planimetric feature, such as building footprints, guard rails, tree lines, lightpoles or signage.</xs:documentation>
 					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelRoadwayFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelRoadwayFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
 				</xs:element>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="alignmentRefs" type="alignmentNameRefs" use="required"/>
@@ -4336,6 +4320,37 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="IM_crossSect--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel cross section details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pavementClass--ltProperty--gt"/>
+				<xs:element ref="pavementThickness--ltProperty--gt"/>
+				<xs:element ref="subgradeLoadCapacityClass--ltProperty--gt"/>
+				<xs:element ref="slope--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_crossSect</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="IM_cable--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel cable properties  --ltFeature--gt extension</xs:documentation>
@@ -4518,20 +4533,173 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="IM_crossSect--ltFeature--gt">
+	<xs:element name="IM_footing--ltFeature--gt">
 		<xs:annotation>
-			<xs:documentation>Inframodel cross section details --ltFeature--gt extension</xs:documentation>
+			<xs:documentation>Inframodel footing --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="pavementClass--ltProperty--gt"/>
-				<xs:element ref="pavementThickness--ltProperty--gt"/>
-				<xs:element ref="subgradeLoadCapacityClass--ltProperty--gt"/>
-				<xs:element ref="slope--ltProperty--gt"/>
+				<xs:element ref="footingHeight--ltProperty--gt"/>
+				<xs:element ref="radiusAround--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="length--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="lengthDir--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="width--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="label--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Footing label</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="footingMaterial--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="foundationType--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_kmPostCoords">
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_footing">
 				<xs:annotation>
-					<xs:documentation>Fixed value, IM_crossSct</xs:documentation>
+					<xs:documentation>Fixed value, IM_footing</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_railing--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel railing --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="label--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Railing label</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="railingType--ltProperty--gt"/>
+				<xs:element ref="purpose--ltProperty--gt"/>
+				<xs:element ref="shockResistanceClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="snowPlowingDurabilityCategory--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="normalizedWorkingWidth--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="railingHeight--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="railHeight--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="railingMaterial--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="startType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="endType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_railing">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_railing</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_fence--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel fence --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="label--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Fence label</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="fenceType--ltProperty--gt"/>
+				<xs:element ref="fenceHeight--ltProperty--gt"/>
+				<xs:element ref="postMaterial--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="postShape--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_fence">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_fence</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_surfaceStructure-ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel surface structure --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="material--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Surface material name</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="thickness--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="surfaceRef--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_surfaceStructure">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_surfaceStructure</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_planfeature--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel generic planimetric feature --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="type--ltProperty--gt"/>
+				<xs:element ref="material--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Material of the plan feature</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_planfeature">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_planfeature</xs:documentation>
 					<xs:documentation>Example:IM_spatialZone</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -5849,7 +6017,7 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Cable label</xs:documentation>
+					<xs:documentation>Label or other identifier</xs:documentation>
 					<xs:documentation>Example:??</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -6268,7 +6436,7 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:documentation>Slope</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="centreline">
+			<xs:attribute name="label" type="xs:string" use="required" fixed="slope">
 				<xs:annotation>
 					<xs:documentation>Fixed value, slope</xs:documentation>
 					<xs:documentation>Example:rimLoad</xs:documentation>
@@ -6277,6 +6445,467 @@ A planimetric feature not otherwise defined by the schema, such as building foot
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Slope, %, left to right, space as value separator</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_footing-->
+	<xs:element name="footingHeight--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Footing height</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="footingHeight">
+				<xs:annotation>
+					<xs:documentation>Fixed value, footingHeight</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Footing height</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="footingMaterial--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Footing material</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="footingMaterial">
+				<xs:annotation>
+					<xs:documentation>Fixed value, footingMaterial</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="foundationType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Foundation type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="foundationType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, foundationType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Foundation type</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="radiusAround--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Footing radius</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="radiusAround">
+				<xs:annotation>
+					<xs:documentation>Fixed value, radiusAround</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Radius</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="length--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Footing lentgh</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="length">
+				<xs:annotation>
+					<xs:documentation>Fixed value, length</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Length</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lengthDir--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Footing direction</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="lengthDir">
+				<xs:annotation>
+					<xs:documentation>Fixed value, lengthDir</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Direction</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="width--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Footing width</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="width">
+				<xs:annotation>
+					<xs:documentation>Fixed value, width</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Width</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_railing-->
+	<xs:element name="railingType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Railing type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="railingType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, railingType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Railing type ie. tubular spar railing</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="purpose--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Purpose of railing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="purpose">
+				<xs:annotation>
+					<xs:documentation>Fixed value, purpose</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Purpose, ie. handrail</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="shockResistanceClass--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Shock resistance class</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="shockResistaceClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, shockResistaceClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Shock resistance class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="snowPlowingDurabilityCategory--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Category of snow plowing durability of the railing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="snowPlowingDurabilityCategory">
+				<xs:annotation>
+					<xs:documentation>Fixed value, snowPlowingDurabilityCategory</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Snow plowing durability class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="normalizedWorkingWidth--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Normalized working widht of the railing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="normalizedWorkingWidht">
+				<xs:annotation>
+					<xs:documentation>Fixed value, normalizedWorkingWidht</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Normalized working  widht of the railing</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="railingHeight--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Height of the railing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="railingHeight">
+				<xs:annotation>
+					<xs:documentation>Fixed value, railingHeight</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Height of the railing</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="railHeight--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Height of the guard rail or guide bar</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="railHeight">
+				<xs:annotation>
+					<xs:documentation>Fixed value, railHeight</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Height of the guard rail or guide bar</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="railingMaterial--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Material of the railing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="railingMaterial">
+				<xs:annotation>
+					<xs:documentation>Fixed value, railingMaterial</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Material of the railing</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="startType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Type of railing start element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="startType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, startType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Type of railing start element</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="endType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Type of railing end element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="endType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, endType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Type of railing end element</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_fence-->
+	<xs:element name="fenceType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Type of fence</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="fenceType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, fenceType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Type of fence</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fenceHeight--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Height of the fence</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="fenceHeight">
+				<xs:annotation>
+					<xs:documentation>Fixed value, fenceHeight</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Height of the fence</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="postMaterial--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Material of fence posts</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="postMaterial">
+				<xs:annotation>
+					<xs:documentation>Fixed value, postMaterial</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Material of fence posts</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="postShape--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Shape of fence posts</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="postShape">
+				<xs:annotation>
+					<xs:documentation>Fixed value, postShape</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Shape of fence posts</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_surfaceStructure-->
+	<xs:element name="thickness--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Surface material thickness</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="postShape">
+				<xs:annotation>
+					<xs:documentation>Fixed value, postShape</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Shape of fence posts</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="surfaceRef--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Reference to the name of --ltSurface--gt element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="postShape">
+				<xs:annotation>
+					<xs:documentation>Fixed value, postShape</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Shape of fence posts</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_planFeature-->
+	<xs:element name="type--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Type of plan feature</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="type">
+				<xs:annotation>
+					<xs:documentation>Fixed value, type</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Type of plan feature</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

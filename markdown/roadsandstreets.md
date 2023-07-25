@@ -67,10 +67,6 @@ The superelevation is defined at the transition points, when a transition in the
 
 ![Superelevation]({{figure Road_slope.png}} "Superelevation"){{figst superelevation}}
 
-{{xtabulate CrossSect}}
-
-{{xtabulate IM_crossSect--ltFeature--gt}}
-
 ## Terrain model and structural model of road or street {#sec:roadsandstreetsterrainmodel}
 
 The process of constructing a terrain model or structural model is described in detail in {{refsec terrainmodel}} and {{refsec structuralmodel}} of a route. The terrain model only contains a triangle mesh of the visible surfaces. The structural model contains all the structure boundaries. All layers in the terrain model and the structural model may be assigned a *type code* (**surfaceCoding**).

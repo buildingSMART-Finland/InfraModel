@@ -155,6 +155,8 @@ A line string may belong to several different layers. It is recommended to descr
 
 {{xtabulate IM_stringlineLayers--ltFeature--gt}}
 
+{{xtabulate IM_stringlineLayer--ltFeature--gt}}
+
 ## Terrain model {#sec:terrainmodel}
 
 The *route terrain model* (**\<Surfaces>**) contains a description of the topmost surface (one or more **\<Surface>**) of the route (Digital Elevation Model). It consists of the vertices of the component faces **\<Pnts>** and the faces **\<Faces>** as explained in {{refsec sourcedata}} Also, random points and breaklines of the surface can be described as explained in {{refsec sourcedata}}. The route terrain model shall have the same name as the route alignments group, i.e. **\<Surfaces>.name** shall match the corresponding **\<Alignments>.name**
