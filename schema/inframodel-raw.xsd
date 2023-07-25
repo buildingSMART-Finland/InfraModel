@@ -109,12 +109,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		</xs:keyref>
 	</xs:element>
 	<!-- Special numeric types -->
-	<xs:simpleType name="ellipsoidHeightType">
-		<xs:annotation>
-			<xs:documentation>Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:double"/>
-	</xs:simpleType>
 	<xs:simpleType name="elevationType">
 		<xs:annotation>
 			<xs:documentation>Represents the elevation unit for elevation attribute values, such as ellipsoidHeight</xs:documentation>
@@ -211,13 +205,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:documentation>This item is the  slope. Unit of measure for this item is PERCENT %.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:double"/>
-	</xs:simpleType>
-	<xs:simpleType name="GPSTime">
-		<xs:annotation>
-			<xs:documentation> GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:double"/>
-		<!--  GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week  -->
 	</xs:simpleType>
 	<!-- Specific attribute types for non-ID based referencing to LandXML elements -->
 	<xs:simpleType name="pointNameRef">
@@ -419,19 +406,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 			<xs:enumeration value="cubicMeterSecond"/>
 			<xs:enumeration value="literPerSecond"/>
 			<xs:enumeration value="literPerMinute"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="monumentCategory">
-		<xs:annotation>
-			<xs:documentation>This indicates the category of a geodetic Monument</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="benchmark"/>
-			<xs:enumeration value="central"/>
-			<xs:enumeration value="reference"/>
-			<xs:enumeration value="rural"/>
-			<xs:enumeration value="standard traverse"/>
-			<xs:enumeration value="urban standard traverse"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="parcelStateType">
@@ -636,27 +610,9 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
-	<xs:simpleType name="monumentPurpose">
-		<xs:annotation>
-			<xs:documentation>This is a list of purposes that the monument was used for on this survey.  The desired list may be based on local regulations. </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="monumentState">
-		<xs:annotation>
-			<xs:documentation>This is a list of states for a monument each  jurisdiction may haqve a list defined by regulation. </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
 	<xs:simpleType name="parcelClass">
 		<xs:annotation>
 			<xs:documentation>This is a list of parcel classes which may be jurisdictionally specific defined by regulation and legislation.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="monumentType">
-		<xs:annotation>
-			<xs:documentation>This is a list of allowable monument types that can be used or identified for a survey, ie peg, spike, pillar etc. Local custom will define this list.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
@@ -669,12 +625,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 	<xs:simpleType name="equipmentType">
 		<xs:annotation>
 			<xs:documentation>This gives a list of equipment used for the observation this list of equipment is used to estimate the accuracy of the observation.. </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	<xs:simpleType name="monumentCondition">
-		<xs:annotation>
-			<xs:documentation>This gives a list of allowable local conditions defined by regulation can be defined by the jurisdiction. </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
@@ -973,18 +923,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:documentation>Represents a 2D or 3D Point of Intersection</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="MapPoint" type="PointType">
-		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Point location for general Survey location</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a PointType number reference "pntRef" attribute.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="InstrumentPoint" type="PointType">
-		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Point location for Survey instrument location</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a PointType number reference "pntRef" attribute.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="Location" type="PointType">
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Point location for a PlanFeature.</xs:documentation>
@@ -1226,7 +1164,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	</xs:element>
 	<xs:element name="CrossSects">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Collection of cross sections</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -1269,7 +1207,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	</xs:element>
 	<xs:element name="CrossSect">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Invidual cross section</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -1318,7 +1256,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	</xs:element>
 	<xs:element name="CrossSectPnt">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Cross section point</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
@@ -1328,7 +1266,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	</xs:element>
 	<xs:element name="DesignCrossSectSurf">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Cross section surface</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -1396,7 +1334,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	<!-- Units element -->
 	<xs:element name="Units">
 		<xs:annotation>
-			<xs:documentation>All angular and direction values default to radians unless otherwise noted. Angular values, expressed in the specified Units.angleUnit are measured counter-clockwise from east=0. Horizontal directions, expressed in the specified Units.directionUnit are measured counter-clockwise from 0 degrees = north</xs:documentation>
+			<xs:documentation>File units</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice>
@@ -1406,7 +1344,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 						<xs:documentation>Hint:Inframodel</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Imperial" minOccurs="0" maxOccurs="0"/>
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
@@ -1533,10 +1470,7 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 	<!-- CoordinateSystem element -->
 	<xs:element name="CoordinateSystem">
 		<xs:annotation>
-			<xs:documentation>
-			    Simplified coordinate systems definitions to reuse work done by
-				EPSG (European Petroleum Survey Group)
-				Inframodel: JHS 153, 154
+			<xs:documentation>Simplified coordinate systems definitions to reuse work done by EPSG (European Petroleum Survey Group),JHS 153, 154
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1810,10 +1744,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			<xs:attribute name="horizCollimation" type="xs:double"/>
 			<xs:attribute name="vertCollimation" type="xs:double"/>
 			<xs:attribute name="stadiaFactor" type="xs:double"/>
-			<!-- In order to compute the atmospheric corrections correctly record the 
-			EDM instrument carrier wavelength (carrierWavelength) and the group refractive index
-			for the instrument (refractiveIndex). -->
-			<!-- To allow for older style top mounted EDM's -->
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="GPSAntennaDetails">
@@ -1823,7 +1753,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="Monument" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
@@ -1857,34 +1786,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 		</xs:complexType>
 	</xs:element>
 	<!-- Monuments collection -->
-	<xs:element name="Monuments">
-		<xs:annotation>
-			<xs:documentation>This list of monuments allows them to be grouped at a file level like parcels and points etc</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Monument" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Monument">
-		<xs:annotation>
-			<xs:documentation>This is a new element that represents a physical monument placed to mark a CgPoint within a survey</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="pntRef" type="pointNameRef"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="monumentState"/>
-			<xs:attribute name="type" type="monumentType"/>
-			<xs:attribute name="condition" type="monumentCondition"/>
-			<xs:attribute name="category" type="monumentCategory"/>
-		</xs:complexType>
-	</xs:element>
 	<!-- Surfaces collection -->
 	<xs:element name="Surfaces">
 		<xs:annotation>
@@ -1924,11 +1825,7 @@ A collection of surface models.</xs:documentation>
 	</xs:element>
 	<xs:element name="Surface">
 		<xs:annotation>
-			<xs:documentation>Inframodel.
-
-SourceData is an optional collection of the points, contours, breaklines and boundaries that were used to create the surface.</xs:documentation>
-			<xs:documentation>Definition is a collection of points and faces that define the surface.</xs:documentation>
-			<xs:documentation>Watersheds is a collection the watershed boundaries for the surface.</xs:documentation>
+			<xs:documentation>Surface mesh</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -2960,7 +2857,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 	</xs:element>
 	<xs:element name="Pipes">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)</xs:documentation>
+			<xs:documentation>Collection of pipes</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -2972,13 +2869,8 @@ The "staInternal" value identifies the location of the station equation. It is t
 	</xs:element>
 	<xs:element name="Pipe">
 		<xs:annotation>
-			<xs:documentation>Inframodel
-
-Each Pipe within a Pipes collection element will have a unique  "name" attribute.</xs:documentation>
-			<xs:documentation>The pipe type is determined by the existance of one of the following elements: CircPipe, ElliPipe or RectPipe.</xs:documentation>
-			<xs:documentation>The "startRef and "endRef" attributes reference Struct "name" values.</xs:documentation>
-			<xs:documentation>The start and end invert elevations for the pipe are defined in the Invert elements of referenced structures.</xs:documentation>
-			<xs:documentation>Since a struct may have more than one Invert element, the Invert "pipeRef" attribute is used to select the correct invert element.</xs:documentation>
+			<xs:documentation>Invidual pipe
+</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3038,7 +2930,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="CircPipe">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Circular pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3058,7 +2950,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="ElliPipe">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Elliptic pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3079,7 +2971,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="EggPipe">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Egg shaped pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3100,7 +2992,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="RectPipe">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Rectangular pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3121,7 +3013,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="Channel">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Channel or ditch</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3143,7 +3035,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="PipeFlow">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Pipe flow direction</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3164,7 +3056,7 @@ Each Pipe within a Pipes collection element will have a unique  "name" attribute
 	</xs:element>
 	<xs:element name="Structs">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)</xs:documentation>
+			<xs:documentation>Collection of structs</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3182,12 +3074,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="Struct">
 		<xs:annotation>
-			<xs:documentation>Inframodel.
-
-Each Struct within a Structs collection element must have a unique  "name" attribute.</xs:documentation>
-			<xs:documentation>The structure type is determined by the existance of one of the following elements: CircStruct or RectStruct.</xs:documentation>
-			<xs:documentation>The Center element will contain the "north east" coordinate text value or a CgPoint "refPnt" attribute.</xs:documentation>
-			<xs:documentation>Each Invert element contains a "refPipe" attribute to reference a Pipe element  "name"</xs:documentation>
+			<xs:documentation>Invidual struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3245,7 +3132,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="CircStruct">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Circukar struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3265,7 +3152,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="RectStruct">
 		<xs:annotation>
-			<xs:documentation>Inframodel</xs:documentation>
+			<xs:documentation>Rectangular struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3287,7 +3174,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="InletStruct">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Inlet struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3297,7 +3184,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="OutletStruct">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Outlet struct</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3307,7 +3194,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="Connection">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Pipe connection</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3317,7 +3204,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="Invert">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Invert</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -3328,7 +3215,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	</xs:element>
 	<xs:element name="StructFlow">
 		<xs:annotation>
-			<xs:documentation/>
+			<xs:documentation>Struct flow details</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -3459,11 +3346,6 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- Roadway Elements Added 02-21-2002, Nathan Crews -->
-	<xs:annotation>
-		<xs:documentation>Proposed Road model elements for FHWA IHSDM project</xs:documentation>
-	</xs:annotation>
-	<!-- enumeration types -->
 	<xs:simpleType name="sideofRoadType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="right"/>
@@ -3471,7 +3353,6 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:enumeration value="both"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!-- Road sign types and details from FHWA Manual on Traffic Control Devices (MUTCD) -->
 	<xs:simpleType name="roadSignType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="regulatory"/>
@@ -3655,11 +3536,6 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:attribute name="mountHeight" type="xs:double">
 				<xs:annotation>
 					<xs:documentation>Mounting height</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="type" type="roadSignType">
-				<xs:annotation>
-					<xs:documentation>Road sign type</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
