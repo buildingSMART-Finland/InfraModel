@@ -281,7 +281,7 @@ It is possible to describe additional details of network structures described in
 
 It is possible to describe additional details of pipes of a network described in inframodel file transfers. The parameters in "IM_pipe" are:
 
-{{xtabulatef5 IM_pipe--ltFeature--gt}}
+{{xtabulatef IM_pipe--ltFeature--gt}}
 
 **Details:**
 
