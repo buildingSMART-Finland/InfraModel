@@ -1529,7 +1529,10 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:sequence>
-				<xs:choice>
+				<xs:choice minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Author information</xs:documentation>
+					</xs:annotation>
 					<xs:element ref="Author" minOccurs="0" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>Identifies the author(s)  of the file.</xs:documentation>
