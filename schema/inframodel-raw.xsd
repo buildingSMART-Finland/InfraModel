@@ -955,14 +955,12 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	<xs:element name="Start" type="PointType">
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Starting or beginning Point</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
 			<xs:documentation>Example:0.0 0.0 0.0</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="End" type="PointType">
 		<xs:annotation>
 			<xs:documentation>Represents a 2D or 3D Ending Point</xs:documentation>
-			<xs:documentation>Defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="Center" type="PointType">
@@ -1286,7 +1284,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 				<xs:element ref="IM_crossSect--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="sta" type="xs:double" use="required">
 				<xs:annotation>
@@ -1906,7 +1904,7 @@ A collection of surface models.</xs:documentation>
 				</xs:element>
 				<xs:element ref="SurfVolumes" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
@@ -1950,7 +1948,7 @@ SourceData is an optional collection of the points, contours, breaklines and bou
 				<xs:element ref="IM_structLayer--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required">
@@ -2064,7 +2062,7 @@ The sub element PntList3D is group of points is defined by a 3D
 				</xs:element>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string">
 				<xs:annotation>
@@ -2122,7 +2120,7 @@ The sub element PntList3D is group of points is defined by a 3D
 				<xs:element ref="IM_structLayer--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="bndType" type="surfBndType" use="required">
@@ -2192,7 +2190,7 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 				</xs:element>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:any namespace="##local"/>
 			</xs:sequence>
 			<xs:attribute name="brkType" type="breakLineType">
@@ -2437,7 +2435,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 									<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
 									<xs:element ref="Curve" minOccurs="0"/>
 								</xs:choice>
-								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 							<xs:attribute name="name" type="xs:string">
 								<xs:annotation>
@@ -2514,7 +2512,7 @@ A collection of horizontal Alignments</xs:documentation>
 			<xs:sequence>
 				<xs:element ref="Alignment" maxOccurs="unbounded"/>
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_stringlineLayers--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
@@ -2567,7 +2565,7 @@ A collection of horizontal Alignments</xs:documentation>
 				</xs:element>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="name" type="xs:string" use="required">
 				<xs:annotation>
@@ -2615,7 +2613,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_kmPostCoords--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="staAhead" type="xs:double" use="required">
@@ -2653,7 +2651,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 						</xs:annotation>
 					</xs:element>
 				</xs:choice>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string">
 				<xs:annotation>
@@ -2697,7 +2695,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 	<xs:element name="ProfAlign">
 		<xs:annotation>
 			<xs:documentation>The "ProfAlign" element will typically represent a proposed vertical alignment for a profile.</xs:documentation>
-			<xs:documentation>It is defined by a sequential series of any combination of the four "PVI" element types.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -2715,8 +2712,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 						</xs:annotation>
 					</xs:element>
 				</xs:choice>
-				<!--               <xs:element ref="PVI"/>  -->
-				<!--                 <xs:element ref="PVI"/> -->
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required">
 				<xs:annotation>
@@ -3416,7 +3411,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 								<xs:element ref="IrregularLine" minOccurs="0" maxOccurs="unbounded"/>
 								<xs:element ref="Curve" minOccurs="0"/>
 							</xs:choice>
-							<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+							<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
 						<xs:attribute name="name" type="xs:string">
 							<xs:annotation>
@@ -3448,9 +3443,21 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:choice>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!-- Roadway Elements Added 02-21-2002, Nathan Crews -->
@@ -3544,7 +3551,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element ref="Roadside" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation/>
+						<xs:documentation>Roadside, contains road signs</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="PlanFeature" minOccurs="0" maxOccurs="unbounded">
@@ -3556,13 +3563,41 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="alignmentRefs" type="alignmentNameRefs" use="required"/>
-			<xs:attribute name="surfaceRefs" type="surfaceNameRefs"/>
-			<xs:attribute name="staStart" type="station"/>
-			<xs:attribute name="staEnd" type="station"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="alignmentRefs" type="alignmentNameRefs" use="required">
+				<xs:annotation>
+					<xs:documentation>Reference to --ltAlignment--gt.name defining the geometry of road,railway or waterway </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="surfaceRefs" type="surfaceNameRefs">
+				<xs:annotation>
+					<xs:documentation>Reference to --ltSurface--gt.name(s) defining the structural model of road,railway or waterway </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staStart" type="station">
+				<xs:annotation>
+					<xs:documentation>Station start</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="staEnd" type="station">
+				<xs:annotation>
+					<xs:documentation>Station end</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!-- Roadside elements -->
@@ -3578,6 +3613,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
@@ -3587,39 +3623,10 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelRoadSignFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelRoadSignFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_roadSign--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="MUTCDCode" type="xs:string"/>
 			<xs:attribute name="station" type="station"/>
@@ -3647,7 +3654,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="CantStation" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="SpeedStation" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+					<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required">
@@ -3754,7 +3761,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					<xs:element ref="Curve" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="Spiral" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string">
 				<xs:annotation>
@@ -4398,7 +4405,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:element ref="centreline--ltProperty--gt"/>
 				<xs:element ref="desc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
-				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_stringlineLayer">

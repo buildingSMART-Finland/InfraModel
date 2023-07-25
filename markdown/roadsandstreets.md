@@ -93,8 +93,6 @@ The road signs and planimetric features such as fences, guard rails, lightpole o
 
 Attributes of the *roadways collection* **\<Roadways>** are not used in inframodel.
 
-Attributes of a *roadway* **\<Roadway>**:
-
 {{xtabulate Roadway}}
 
 ### Plan features
@@ -125,8 +123,6 @@ The individual *road signs* are each described under **\<RoadSign>** (placed und
 Attributes of **\<RoadSign>**:
 
 {{xtabulate RoadSign}}
-
-Details in "IM_roadSign" extension:
 
 {{xtabulate IM_roadSign--ltFeature--gt}}
 

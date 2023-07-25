@@ -58,9 +58,12 @@ The individual *plan features* are each described under **\<PlanFeature>**, havi
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
- -{{refsec cabledetailsext}} "IM_cable" extension
- -{{refsec planfeaturesext}} "IM_footing", "IM_railing", "IM_fence", "IM_surfaceStructure", "IM_planfeature" extensions
- -{{refsec roadsignext}} "IM_roadSign" extension
+1. {{refsec cable}} in "IM_cable" extension
+2. {{refsec footing}} in "IM_footing" extension
+3. {{refsec railing}} in "IM_railing" extension
+4. {{refsec fence}} in "IM_fence" extension
+5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeature}} in "IM_planfeature" extension
 
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
