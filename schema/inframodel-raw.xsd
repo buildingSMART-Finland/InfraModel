@@ -2726,39 +2726,8 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="PipeNetwork" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelPipeNetworksFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelPipeNetworksFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string">
 				<xs:annotation>
@@ -4610,6 +4579,34 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:element ref="background--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="state--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="note--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_roadSign">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_roadSign</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_pipeNetworkType--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel generic planimetric feature --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pipeNetworkType--ltProperty--gt"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_roadSign">
 				<xs:annotation>
@@ -7108,6 +7105,36 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					<xs:documentation>Note</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_pipeNetworkType-->
+	<xs:element name="pipeNetworkType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pipe network type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pipeNetworkType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pipeNetworkType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe network type</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="districtheating "/>
+						<xs:enumeration value="districtcooling"/>
+						<xs:enumeration value="gas"/>
+						<xs:enumeration value="waste transport piping"/>
+						<xs:enumeration value="electric"/>
+						<xs:enumeration value="telecommunication"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
