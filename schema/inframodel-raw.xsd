@@ -488,6 +488,7 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="clothoid"/>
 			<xs:enumeration value="cubic"/>
+			<xs:enumeration value="biquadraticParabola"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="stateType">
@@ -1003,6 +1004,9 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 				<xs:element ref="Start"/>
 				<xs:element ref="End"/>
 				<xs:choice>
+					<xs:annotation>
+						<xs:documentation>Point list</xs:documentation>
+					</xs:annotation>
 					<xs:element ref="PntList2D"/>
 					<xs:element ref="PntList3D"/>
 					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
@@ -4253,6 +4257,75 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="IM_crossSect--ltFeature--gt__rail">
+		<xs:annotation>
+			<xs:documentation>Inframodel railway cross section details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tracks--ltProperty--gt"/>
+				<xs:element ref="trackDist--ltProperty--gt"/>
+				<xs:element ref="thickness--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Total thickness</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bedWidth--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_crossSect</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_crossSect--ltFeature--gt__water">
+		<xs:annotation>
+			<xs:documentation>Inframodel railway cross section details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="depth--ltProperty--gt"/>
+				<xs:element ref="width--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Waterway width</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="waterLevel--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_crossSect</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="IM_cable--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel cable properties  --ltFeature--gt extension</xs:documentation>
@@ -4602,6 +4675,44 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_planfeature">
 				<xs:annotation>
 					<xs:documentation>Fixed value, IM_planfeature</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_roadSign--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel generic planimetric feature --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tracks--ltProperty--gt"/>
+				<xs:element ref="trackDist--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Material of the plan feature</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="thickness--ltProperty--gt">
+					<xs:annotation>
+						<xs:documentation>Total thickness</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_roadSign">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_roadSign</xs:documentation>
 					<xs:documentation>Example:IM_spatialZone</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -6347,6 +6458,101 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Slope, %, left to right, space as value separator</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tracks--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Number of tracks</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="tracks">
+				<xs:annotation>
+					<xs:documentation>Fixed value, tracks</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Number of tracks</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="trackDist--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Track distance</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="trackDist">
+				<xs:annotation>
+					<xs:documentation>Fixed value, trackDist</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Track distance</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bedWidth--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Bed width</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="bedWidth">
+				<xs:annotation>
+					<xs:documentation>Fixed value, bedWidth</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Bed width</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="depth--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Waterway minimum depth</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="depth">
+				<xs:annotation>
+					<xs:documentation>Fixed value, depth</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Waterway minimum depth</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="waterLevel--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Dimensioning water level</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="waterLevel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, waterLevel</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Dimensioning water level</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

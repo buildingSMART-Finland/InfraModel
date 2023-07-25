@@ -21,9 +21,9 @@ The cross-section parameters of an *alignment group* describe the values of cros
 
 The *cross-section parameters* are set for the *stationing reference alignment* cross-sections **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the "IM_crossSects" extension **\<Feature>**. The first cross-section of the alignment is defined by describing all parameters of the cross-section. The parameters of the following cross-sections are only described if a value begins or stops changing.
 
-{{xtabulate CrossSect}}
+{{xtabulatef CrossSect}}
 
-{{xtabulate IM_CrossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt__water}}
 
 ## String line model
 
@@ -46,23 +46,21 @@ It is possible to attach source data point and breakline information to surfaces
 
 The waterway planimetric features such as guard rails, lightpole or signage footings that are assigned to a particular waterway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeatures>**.
 
-{{xtabulate  Roadway}}
+{{xtabulate Roadway}}
 
 ### Plan features
 
 The individual *plan features* are each described under **\<PlanFeature>**, having a mandatory and unique **name** and optionally **\<Location>** and *geometry* as **\<CoordGeom>**.
 
-{{xtabulate  PlanFeature}}
+{{xtabulate PlanFeature}}
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using **line strings** for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
-     1. {{refsec cable}} in "IM_cable" extension
-     2. {{refsec footing}} in "IM_footing" extension
-     3. {{refsec railing}} in "IM_railing" extension
-     4. {{refsec fence}} in "IM_fence" extension
-     5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
-     6. {{refsec genericplanfeature}} in "IM_planfeature" extension
+ -{{refsec cabledetailsext}} "IM_cable" extension
+ -{{refsec planfeaturesext}} "IM_footing", "IM_railing", "IM_fence", "IM_surfaceStructure", "IM_planfeature" extensions
+ -{{refsec roadsignext}} "IM_roadSign" extension
+
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.

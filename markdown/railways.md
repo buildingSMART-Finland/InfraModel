@@ -42,7 +42,7 @@ The cross-sections for KM-posting reference track are defined by the element **\
 
 ![Cross section]({{figure Rail_crossSect_cant.png}} "Cross section"){{figst crosssection}}
 
-{{xtabulate CrossSect}}
+{{xtabulatef CrossSect}}
 
 The following information must be defined in the extension "IM_crossSect" for an individual cross-section:
 
@@ -51,7 +51,7 @@ The following information must be defined in the extension "IM_crossSect" for an
 - the total thichness of track bed layers **thickness**
 - track bed or cut width **bedWidth**
 
-{{xtabulate IM_crossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt__rail}}
 
 ### Track information
 
