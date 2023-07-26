@@ -18,7 +18,7 @@ Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja Inf
 
 Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Yleisten inframallivaatimusten liitteessä: Luovutusaineiston tiedonsiirron vaatimukset.
 
-![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previous_inframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
+![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previousinframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
 
 **Inframodel 4.1 tiedonsiirron uusia ominaisuuksia ovat**
 

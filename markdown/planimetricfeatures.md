@@ -93,7 +93,7 @@ When no specific **\<Feature>** extension defined above can be applied, these ge
 
 {{xtabulate IM_planfeature--ltFeature--gt}}
 
-#### Type coding {#sec:imcoding}
+#### Type coding {#sec:planimetricfeaturestypecoding}
 
 Type coding is defined in {{refsec typecodingsystemsext}}
 
