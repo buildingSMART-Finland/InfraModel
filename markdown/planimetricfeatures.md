@@ -54,7 +54,7 @@ Details of **\<PlanFeature>** in "IM_cable" **\<Feature>**
 
 {{xtabulate IM_cable--ltFeature--gt}}
 
-![Plan Feature cable]({{figure PlanFeature_cable.png}} "Plan Feature cable"){{figst planFeaturecable}}
+![Plan Feature cable]({{figure PlanFeaturecable.png}} "Plan Feature cable"){{figst planFeaturecable}}
 
 #### Footing {#sec:footing}
 
@@ -62,7 +62,7 @@ Details of **\<PlanFeature>** in "IM_footing" **\<Feature>**
 
 {{xtabulate IM_footing--ltFeature--gt}}
 
-![Plan Feature footing]({{figure PlanFeature_footing.png}} "Plan Feature footing"){{figst plafFeaturefooting}}
+![Plan Feature footing]({{figure PlanFeaturefooting.png}} "Plan Feature footing"){{figst plafFeaturefooting}}
 
 
 #### Railing {#sec:railing}
@@ -71,7 +71,7 @@ In Inframodel, this type of planfeature covers guardrails and guide bars, as wel
 
 {{xtabulate IM_railing--ltFeature--gt}}
 
-![Plan Feature railing]({{figure PlanFeature_railing.png}} "Plan Feature railing"){{figst planFeaturerailing}}
+![Plan Feature railing]({{figure PlanFeaturerailing.png}} "Plan Feature railing"){{figst planFeaturerailing}}
 
 #### Fence {#sec:fence}
 
@@ -79,7 +79,7 @@ In Inframodel, this type of planfeature covers fences, booms and barriers, as we
 
 {{xtabulate IM_fence--ltFeature--gt}}
 
-![Plan Feature fence]({{figure PlanFeature_fence.png}} "Plan Feature fence"){{figst planFeaturefence}}
+![Plan Feature fence]({{figure PlanFeaturefence.png}} "Plan Feature fence"){{figst planFeaturefence}}
 
 #### Surface structure {#sec:surfacestructure}
 

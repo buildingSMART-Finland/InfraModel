@@ -17,7 +17,7 @@ The order the individual **\<Alignment>** elements are described in under the **
 
 The cross-section parameters of an *alignment group* describe the values of cross-sectional parameters from a the given station onwards. The cross-section parameters are set in the extension "IM_crossSect". The extension is implemented in a fashion similar to road and street design. The parameters are *minimum* **depth** of the route, the *minimum* **width** and the dimensioning **waterLevel**. The dimensioning water level is situation-specific and might be e.g. average daily low or average daily mean water level. The described Cross-section parameters are valid from the set station onwards.
 
-![Waterway cross sections]({{figure Water_crossSects.png}} "Waterway cross sections]"){{figst waterwaycrosssections]}}
+![Waterway cross sections]({{figure WatercrossSects.png}} "Waterway cross sections]"){{figst waterwaycrosssections]}}
 
 The *cross-section parameters* are set for the *stationing reference alignment* cross-sections **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the "IM_crossSects" extension **\<Feature>**. The first cross-section of the alignment is defined by describing all parameters of the cross-section. The parameters of the following cross-sections are only described if a value begins or stops changing.
 
@@ -31,7 +31,7 @@ The string line model of an *alignment group* **\<Alignments>** is defined in th
 
 The *line string model* of routes is described in further detail in {{refsec stringlinemodel}} The constituent *line strings* **\<Alignment>** of the *string line model* adhere to the *terrain codes* (**terrainCoding**) defined for the line strings. The layers of the line string model are defined by assigning them a *surface code*.
 
-![Waterway string line representation]({{figure Water_stringlinemodel.png}} "Waterway string line representation"){{figst waterwaystringlinerepresentation]}}
+![Waterway string line representation]({{figure Waterstringlinemodel.png}} "Waterway string line representation"){{figst waterwaystringlinerepresentation]}}
 
 
 ## Surface and structural model
@@ -40,7 +40,7 @@ The structural model of a waterway is described in detail in {{refsec structural
 
 It is possible to attach source data point and breakline information to surfaces. The process is described in further detail in {{refsec sourcedata}}.
 
-![Waterway structural model]({{figure Water_structuremodel.png}} "Waterway structural model"){{figst waterwaystructuralmodel}}
+![Waterway structural model]({{figure Waterstructuremodel.png}} "Waterway structural model"){{figst waterwaystructuralmodel}}
 
 ## Waterway plan features {#sec:waterwayplanfeatures}
 

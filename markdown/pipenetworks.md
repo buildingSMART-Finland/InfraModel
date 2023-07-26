@@ -19,7 +19,7 @@ The networks are presented in the parent element **\<PipeNetworks>** whose child
     - the exact length may be calculated as the distance between the coordinates of the pipe start and end given in the extension "IM_pipe".    
     - pressurized pipes can be described in Inframodel extension "IM_pipe" using the property "pressureClass".
 
-![Pipe networks]({{figure Pipenetworks_general.png}} "Pipe networks"){{figst pipenetworks}}
+![Pipe networks]({{figure Pipenetworksgeneral.png}} "Pipe networks"){{figst pipenetworks}}
 
 The pipe network is, depending on the situation, usually described in its entirety. LandXML schema exposes some limitations on how a network can be delimited. E.g. describing the inverts of a delimiting storm drain requires additional pipes and corresponding terminal structures to be in the model. The process of delimiting the network is described in further detail in {{refsec structures}} and {{refsec pipes}}.
    
@@ -135,7 +135,7 @@ The figure below illustrates the representation of a drain well, including a sum
 
 The *body* **diameter** at the bottom of the well, the *description* **desc**, the **material** and the **thickness** of the shell material. The well cone and sump are described in further detail in the extension "IM_struct"
 
-![Circular structures]({{figure Pipenetwork_CircStruct.png}} "Circular structures"){{figst circularstructures}}
+![Circular structures]({{figure PipenetworkCircStruct.png}} "Circular structures"){{figst circularstructures}}
 
 {{xtabulate CircStruct}}
 
@@ -152,7 +152,7 @@ The illustration demonstrates the method of description of a rectangular well, i
 
 The mandatory attributes of a rectangular structure are the **length** the direction of the long edge **lenghtDir**, the **width** of the short edge width, the **material** of the structure and the **thickness** of the surface structure.
 
-![Rectangular structures]({{figure Pipenetwork_RectStruct.png}} "Rectangular structures"){{figst rectangularstructures}}
+![Rectangular structures]({{figure PipenetworkRectStruct.png}} "Rectangular structures"){{figst rectangularstructures}}
 
 {{xtabulate RectStruct}}
 
@@ -170,7 +170,7 @@ The illustration below demonstrates how pipe inlets and outlets are described. T
 
 *Inlets* **\<InletStruct>** and *outlets* **\<OutletStruct>** have no attributes.
 
-![Inlets and outlets]({{figure Pipenetwork_InletOutletStruct.png}} "Inlets and outlets"){{figst inletsandoutlets}}
+![Inlets and outlets]({{figure PipenetworkInletOutletStruct.png}} "Inlets and outlets"){{figst inletsandoutlets}}
 
 ### Pipe connections {#sec:pipeconnection}
 
@@ -190,7 +190,7 @@ When the element describes a delimiting element, all attributes are not used. Th
 When a **\<Connection>** is used for modeling a bend (inflexion) of a flexible pipe of cable (being actually continuous), its name and description desc should indicate that it is not a physical conncection.  
 Connections, joints or points of intersection are defined using the **\<Connection>** element, that has no attributes.
 
-![Pipe connections]({{figure Pipenetwork_Connection1.png}} "Pipe connections"){{figst pipeconnections}}
+![Pipe connections]({{figure PipenetworkConnection1.png}} "Pipe connections"){{figst pipeconnections}}
 
 {{xtabulate Connection}}
 
@@ -206,7 +206,7 @@ Equipment is defined using the **\<Connection>** element. The illustration bello
 
 The illustration demonstrates the mode of description of a valve:
 
-![Equipment]({{figure Pipenetwork_Connection2.png}} "Equipment"){{figst equipment}}
+![Equipment]({{figure PipenetworkConnection2.png}} "Equipment"){{figst equipment}}
 
 A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment is defined in the extension "IM_struct".
 
@@ -258,7 +258,7 @@ The jointType sets the type of joints and connections used for the pipe. When th
 When the start and end coordinates are given with elevation values, elevation type shall be given as one of the enumerated elevTypes shown below.
 
 
-![Elevation type]({{figure Pipenetwork_elevType.png}} "Elevation type"){{figst elevationtype}}
+![Elevation type]({{figure PipenetworkelevType.png}} "Elevation type"){{figst elevationtype}}
 
 {{xtabulate IM_pipe--ltFeature--gt}}
     
@@ -282,7 +282,7 @@ The following illustation descibes the definition of a round pipe  The definitio
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
 
-![Circular pipe]({{figure Pipenetwork_CircPipe.png}} "Circular pipe"){{figst circularpipe}}
+![Circular pipe]({{figure PipenetworkCircPipe.png}} "Circular pipe"){{figst circularpipe}}
 
 When defining a network-limiting pipe the **diameter** is the only defined attribute. Other attributes are not defined.
 
@@ -313,11 +313,11 @@ The following illustation descibes the definition of an elliptical pipe. The def
 3. Center **\<Center>**
 4. Pipe details **\<Feature>** "IM_pipe" extension
 
-![Circular pipe]({{figure Pipenetwork_CircPipe.png}} "Circular pipe"){{figst circularpipe}}
+![Circular pipe]({{figure PipenetworkCircPipe.png}} "Circular pipe"){{figst circularpipe}}
 
 When defining a network mandatory attributes are *height* **height** ja *width* **span**. Other attributes are not set.
 
-![Elliptic pipe]({{figure Pipenetwork_ElliPipe.png}} "Elliptic pipe"){{figst ellipticpipe}}
+![Elliptic pipe]({{figure PipenetworkElliPipe.png}} "Elliptic pipe"){{figst ellipticpipe}}
 
 {{xtabulate ElliPipe}}
 
@@ -332,7 +332,7 @@ The following illustation descibes the definition of a rectangular pipe.  The de
 
 When defining a network-limiting pipe the **height** and **width** are mandatory attributes. Other attributes are not set.
 
-![Rectangular pipe]({{figure Pipenetwork_RectPipe.png}} "Rectangular pipe"){{figst rectpipe}}
+![Rectangular pipe]({{figure PipenetworkRectPipe.png}} "Rectangular pipe"){{figst rectpipe}}
 
 {{xtabulate RectPipe}}
 
@@ -347,7 +347,7 @@ The following illustation descibes the definition of a channel pipe. The definit
 
 Illustration of channel description:
 
-![Channel]({{figure Pipenetwork_Channel.png}} "Channel"){{figst channel}}
+![Channel]({{figure PipenetworkChannel.png}} "Channel"){{figst channel}}
 
 When defining a network mandatory attributes are *height* **height**, *top width* **widthTop** and *bottom width* **widthBottom**. Other attributes are not set.
 
