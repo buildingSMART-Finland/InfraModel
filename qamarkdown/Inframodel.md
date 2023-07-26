@@ -118,7 +118,7 @@ Tiedoston ja objektin nimi ei saa sisältää välilyöntejä, erikois- tai skan
 
 #### Codings
 
-Linkki dokumentaatioon {{refsec typecodingsystems}} ja {{refsec imcoding}}
+Linkki dokumentaatioon {{refsec typecodingsystems}} ja {{refsec typecodingsystemsext}}
 
 ##### Lajiluokitukset ja nimikkeistöt
 
