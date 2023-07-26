@@ -5,7 +5,7 @@ author: "RYTV 22003_1 working group"
 geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 xnos-warning-level: 1
 xnos-number-by-section: True
-logo: "inframodel-cover.jpg"
+titlepage-logo: "figures/inframodel.png"
 titlepage: true
 ---
 \clearpage
