@@ -1,9 +1,10 @@
 ---
-title: "InfraModel 4.1 Draft -- {{draft-version}}"
+title: "Inframodel 4.1 Draft -- {{draft-version}}"
 author: RYTV 22003_1 working group
 geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 xnos-warning-level: 1
 xnos-number-by-section: True
+logo: ../figures/inframodel-cover.jpg
 titlepage: true
 ---
 \clearpage
@@ -20,4 +21,5 @@ titlepage: true
 {{include asbuilt.md}}
 {{include deepfoundations.md}}
 {{include im_extensions.md}}
+\clearpage
 {{include ../qamarkdown/Inframodel.md}}
