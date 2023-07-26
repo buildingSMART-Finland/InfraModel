@@ -7,6 +7,7 @@ xnos-warning-level: 1
 xnos-number-by-section: True
 titlepage: true
 logo: "inframodel.png"
+logo-width: "100mm"
 ---
 \clearpage
 
