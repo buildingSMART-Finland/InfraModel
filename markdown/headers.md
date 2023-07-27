@@ -35,14 +35,14 @@ The following schema locations can be set to access online:
 The Inframodel enumerations schema inframodelEnumerations.xsd location is set automatically by being included by the default schema
 
 
-The root element (\<LandXML>) of the transfer file is used by software to check the validity of the file structure.
+The root element (\<LandXML\>) of the transfer file is used by software to check the validity of the file structure.
 
 {{xtabulate4 LandXML}}
 
 
 ## Units {#sec:units}
 
-The units used in the file are defined by the \<Units> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>.
+The units used in the file are defined by the \<Units\> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>.
 
 {{xtabulate Units}}
 

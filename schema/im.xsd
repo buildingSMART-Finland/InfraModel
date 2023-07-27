@@ -673,8 +673,16 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="im:CreateTimestamp"/>
-				<xs:element ref="im:ModifiedTimestamp" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="im:CreateTimestamp">
+					<xs:annotation>
+						<xs:documentation>Creation timestamp</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="im:ModifiedTimestamp" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Modification timestamp(s)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

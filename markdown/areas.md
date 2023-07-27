@@ -18,9 +18,9 @@ Optional surface information
 - random points <**DataPoints**>
 - breaklines <**BreakLines**>
  
-![Surface model]({{figure Surfaces_Pintamalli.png}} "Surface model"){{figst surfacemodel}}
+![Surface model]({{figure SurfacesPintamalli.png}} "Surface model"){{figst surfacemodel}}
  
-![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
+![Ground layer model]({{figure SurfacesMaaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
 
 
 ## Noise barriers {#sec:noisebarriers}
@@ -55,9 +55,9 @@ Optional surface information
 - random points <DataPoints>
 - breaklines <BreakLines>
  
-![Surface model]({{figure Surfaces_Pintamalli.png}} "Surface model"){{figst surfacemodel}}
+![Surface model]({{figure SurfacesPintamalli.png}} "Surface model"){{figst surfacemodel}}
 
-![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
+![Ground layer model]({{figure SurfacesMaaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
  
 ## Surface structures {#sec:surfacetructures}
 

@@ -18,7 +18,7 @@ Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja Inf
 
 Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Yleisten inframallivaatimusten liitteessä: Luovutusaineiston tiedonsiirron vaatimukset.
 
-![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previous_inframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
+![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previousinframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
 
 **Inframodel 4.1 tiedonsiirron uusia ominaisuuksia ovat**
 
@@ -118,7 +118,7 @@ Tiedoston ja objektin nimi ei saa sisältää välilyöntejä, erikois- tai skan
 
 #### Codings
 
-Linkki dokumentaatioon {{refsec typecodingsystems}} ja {{refsec imcoding}}
+Linkki dokumentaatioon {{refsec typecodingsystems}} ja {{refsec typecodingsystemsext}}
 
 ##### Lajiluokitukset ja nimikkeistöt
 
@@ -251,7 +251,7 @@ Linkki dokumentaatioon {{refsec footing}}
 
 Jalusta on pistemäinen PlanFeatures- kohde, jolla on InfraBIM-luokitus. Lisäksi jalustalle voicdaan antaa lisätietoja kuten korkeus, materiaali, perustustapa, numero ja tilavaraus. Korkeus esitetään tietomallin *Units* asetusten mukaisesti. Jalustan tilavaraus määritetään joko säteenä tai suorakulmion nurkkapisteinä suhteessa jalustan keskipisteeseen.
 
-![Esimerkkikuva jalustat]({{figure PlanFeature_footing.png}} "Esimerkkikuva jalustat"){{figst jalustat}}
+![Esimerkkikuva jalustat]({{figure PlanFeaturefooting.png}} "Esimerkkikuva jalustat"){{figst jalustat}}
 
 #### Johto- ja kaapelireitit
 
@@ -267,9 +267,9 @@ Linkki dokumentaatioon {{refsec railing}} ja {{refsec fence}}
 
 Kaide ja aitarakenteet on kuvattu Inframodelissa PlanFeature-objekteina. Kohteet ovat murtoviivaa, jolla on InfraBIM-luokitus. Objektin asennuskohdan XYZ ilmaistaan ylimmän yhdistelmäpinnan (yyp) koordinaatteina. Lisäinformaatio voi sisältää esim. kaidetyyppi, käyttötarkoitus, törmäyskestävyys, joustovara, aurauskestävyys, toimintaleveys, korkeus, kaiteen aloitus ja lopetus
 
-![Esimerkkikuva kaiteet]({{figure PlanFeature_railing.png}} "Esimerkkikuva kaiteet"){{figst kaiteet}}
+![Esimerkkikuva kaiteet]({{figure PlanFeaturerailing.png}} "Esimerkkikuva kaiteet"){{figst kaiteet}}
 
-![Esimerkkikuva aidat]({{figure PlanFeature_fence.png}} "Esimerkkikuva aidat"){{figst aidat}}
+![Esimerkkikuva aidat]({{figure PlanFeaturefence.png}} "Esimerkkikuva aidat"){{figst aidat}}
 
 #### Q&A
 

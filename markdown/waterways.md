@@ -17,13 +17,13 @@ The order the individual **\<Alignment>** elements are described in under the **
 
 The cross-section parameters of an *alignment group* describe the values of cross-sectional parameters from a the given station onwards. The cross-section parameters are set in the extension "IM_crossSect". The extension is implemented in a fashion similar to road and street design. The parameters are *minimum* **depth** of the route, the *minimum* **width** and the dimensioning **waterLevel**. The dimensioning water level is situation-specific and might be e.g. average daily low or average daily mean water level. The described Cross-section parameters are valid from the set station onwards.
 
-![Waterway cross sections]({{figure Water_crossSects.png}} "Waterway cross sections]"){{figst waterwaycrosssections]}}
+![Waterway cross sections]({{figure WatercrossSects.png}} "Waterway cross sections]"){{figst waterwaycrosssections]}}
 
 The *cross-section parameters* are set for the *stationing reference alignment* cross-sections **\<Alignment>**.**\<CrossSects>**.**\<CrossSect>** in the "IM_crossSects" extension **\<Feature>**. The first cross-section of the alignment is defined by describing all parameters of the cross-section. The parameters of the following cross-sections are only described if a value begins or stops changing.
 
-{{xtabulate CrossSect}}
+{{xtabulatef CrossSect}}
 
-{{xtabulate IM_CrossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt__water}}
 
 ## String line model
 
@@ -31,7 +31,7 @@ The string line model of an *alignment group* **\<Alignments>** is defined in th
 
 The *line string model* of routes is described in further detail in {{refsec stringlinemodel}} The constituent *line strings* **\<Alignment>** of the *string line model* adhere to the *terrain codes* (**terrainCoding**) defined for the line strings. The layers of the line string model are defined by assigning them a *surface code*.
 
-![Waterway string line representation]({{figure Water_stringlinemodel.png}} "Waterway string line representation"){{figst waterwaystringlinerepresentation]}}
+![Waterway string line representation]({{figure Waterstringlinemodel.png}} "Waterway string line representation"){{figst waterwaystringlinerepresentation]}}
 
 
 ## Surface and structural model
@@ -40,29 +40,30 @@ The structural model of a waterway is described in detail in {{refsec structural
 
 It is possible to attach source data point and breakline information to surfaces. The process is described in further detail in {{refsec sourcedata}}.
 
-![Waterway structural model]({{figure Water_structuremodel.png}} "Waterway structural model"){{figst waterwaystructuralmodel}}
+![Waterway structural model]({{figure Waterstructuremodel.png}} "Waterway structural model"){{figst waterwaystructuralmodel}}
 
 ## Waterway plan features {#sec:waterwayplanfeatures}
 
 The waterway planimetric features such as guard rails, lightpole or signage footings that are assigned to a particular waterway are described under *roadways*. A *roadways collection* **\<Roadways>** may consist of several *roadway* **\<Roadway>** elements. Each *roadway* has a reference to its *stationing reference line* **\<Alignment>**, and it can hold a number of **\<PlanFeatures>**.
 
-{{xtabulate  Roadway}}
+{{xtabulate Roadway}}
 
 ### Plan features
 
 The individual *plan features* are each described under **\<PlanFeature>**, having a mandatory and unique **name** and optionally **\<Location>** and *geometry* as **\<CoordGeom>**.
 
-{{xtabulate  PlanFeature}}
+{{xtabulate PlanFeature}}
 
 **\<PlanFeature>** *geometry* is described in **\<CoordGeom>** using **line strings** for linear features, e.g. *cables*, *railings* and *fences*. For point features, such as *footings*, location is given in **\<Location>** element as a two or three dimensional point:
 
 Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined for each type as follows:
 
-     1. {{refsec cable}} in "IM_cable" extension
-     2. {{refsec footing}} in "IM_footing" extension
-     3. {{refsec railing}} in "IM_railing" extension
-     4. {{refsec fence}} in "IM_fence" extension
-     5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
-     6. {{refsec genericplanfeature}} in "IM_planfeature" extension
+1. {{refsec cable}} in "IM_cable" extension
+2. {{refsec footing}} in "IM_footing" extension
+3. {{refsec railing}} in "IM_railing" extension
+4. {{refsec fence}} in "IM_fence" extension
+5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
+6. {{refsec genericplanfeature}} in "IM_planfeature" extension
+
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.

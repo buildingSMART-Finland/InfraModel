@@ -66,7 +66,7 @@ Source data consists of:
  - Source data points \<DataPoints> and
  - Breaklines \<BreakLines>
 
-![Source data]({{figure Surfaces_Pinnat-perus.png}} "Source data"){{figst sourcedata}}
+![Source data]({{figure SurfacesPinnat-perus.png}} "Source data"){{figst sourcedata}}
 
 ### Data points {#sec:datapoints}
 
@@ -110,7 +110,7 @@ A triangular mesh is defined in two steps:
 The surface points used as vertices are assigned unique identifiers id within the same surface definition \<Surface>.\<Definition> element. 
 The face definitions are done by referring to the id numbers id of the vertice points.
 
-![Triangular mesh]({{figure Surfaces_kolmioverkko.png}} "Triangular mesh"){{figst triangularmesh}}
+![Triangular mesh]({{figure Surfaceskolmioverkko.png}} "Triangular mesh"){{figst triangularmesh}}
 
 {{xtabulate Definition}}
 
@@ -135,7 +135,7 @@ Each face is defined by referencing three vertex id numbers.
 
 {{xtabulate F}}
 
-![Triangle face definition]({{figure Surfaces_kolmiokuvaus.png}} "Triangle face definition"){{figst trianglefaces}}
+![Triangle face definition]({{figure Surfaceskolmiokuvaus.png}} "Triangle face definition"){{figst trianglefaces}}
 
 ## Terrain model {#sec:terrainmodel}
 
@@ -145,7 +145,7 @@ In inframodel file transfers it is also possible to assign source data points an
 An "IM_coding" \<Feature> extension enables surface classifications, and "IM_soil" \<Feature> extension allows to add the technical properties. 
 Terrain model may be part of a optional plan described in "IM_plan" \<Feature>. 
 
-![Terrain model]({{figure Surfaces_terrain.png}} "Terrain model"){{figst terrainmodel}}
+![Terrain model]({{figure Surfacesterrain.png}} "Terrain model"){{figst terrainmodel}}
  
 ### Soil properties {#sec:soilproperties}
 
@@ -161,7 +161,7 @@ A surface may be part of a plan described in "IM_plan" \<Feature>.
 A "IM_coding" \<Feature> extension provides surface classifications. 
 The technical properties of each soil layer between two surfaces may be given in "IM_soil" <Feature> extension described above. 
 
-![Ground layer model]({{figure Surfaces_Maaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
+![Ground layer model]({{figure SurfacesMaaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
 
 
 
