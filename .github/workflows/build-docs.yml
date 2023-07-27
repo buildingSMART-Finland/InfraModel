@@ -24,10 +24,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
         uses: actions/checkout@v3
-      - name: Cache Docker images.
-        uses: ScribeMD/docker-cache@0.3.3
-        with:
-          key: docker-${{ runner.os }}
+      #- name: Cache Docker images.
+      #  uses: ScribeMD/docker-cache@0.3.3
+      #  with:
+      #    key: docker-${{ runner.os }}
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
