@@ -1,16 +1,14 @@
 ---
 title: "Inframodel 4.1 - DRAFT"
 subtitle: "{{draft-version}}"
-author: "RYTV 22003_1 working group"
+author: "buildingSMART Finland, RYTV 22003_1 working group"
 geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 xnos-warning-level: 1
 xnos-number-by-section: True
 header-right: "\\headerlogo"
-header-includes:
-- |
-  ```{=latex}
-  \newcommand{\headerlogo}{\includegraphics[width=3.5cm]{figures/bsf.png}}
-  ```
+header-includes: |
+    \usepackage{draftwatermark}
+    \newcommand{\headerlogo}{\includegraphics[width=3.5cm]{figures/bsf.png}}
 titlepage: true
 logo: "inframodel.png"
 logo-width: "100mm"
