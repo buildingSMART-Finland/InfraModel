@@ -5,7 +5,7 @@ author: "buildingSMART Finland, RYTV 22003_1 working group"
 geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 xnos-warning-level: 1
 xnos-number-by-section: true
-header-left: "\includegraphics{bsf.png}"
+header-left: '`\includegraphics{bsf.png}`{=latex}'
 titlepage: true
 logo: "inframodel.png"
 logo-width: "10cm"
