@@ -2,6 +2,13 @@
 title: "Inframodel 4.1 - DRAFT"
 subtitle: "{{draft-version}}"
 author: "buildingSMART Finland, RYTV 22003_1 working group"
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+xnos-warning-level: 1
+xnos-number-by-section: true
+header-right: "`\includegraphics[height=1cm,right,keepaspectratio]{bsf.png}`"
+titlepage: true
+logo: "inframodel.png"
+logo-width: "10cm"
 ---
 \clearpage
 
