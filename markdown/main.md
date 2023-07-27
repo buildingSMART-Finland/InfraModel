@@ -11,8 +11,8 @@ header-includes:
 - |
   ```{=latex}
   \usepackage{draftwatermark}
-  \newcommand{\bsflogo}{\includegraphics[width=3.5cm]{figures/bsf.png}}
   ```
+# \newcommand{\bsflogo}{\includegraphics[width=3.5cm]{figures/bsf.png}}
 titlepage: true
 logo: "inframodel.png"
 logo-width: "100mm"
