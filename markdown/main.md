@@ -8,7 +8,7 @@ xnos-number-by-section: True
 header-right: "\\headerlogo"
 header-includes: |
     \usepackage{draftwatermark}
-    \newcommand{\headerlogo}{\includegraphics[width=3.5cm]{figures/bsf.png}}
+    \newcommand{\headerlogo}{\includegraphics[width=3.5cm]{"figures/bsf.png"}}
 titlepage: true
 logo: "inframodel.png"
 logo-width: "100mm"
