@@ -8,9 +8,9 @@ xnos-number-by-section: true
 header-right:
   - |
   ```{=latex}
-  \begin{flushright}
-  \includegraphics[height=1cm,keepaspectratio]{bsf.png}
-  \end{flushright}
+    \begin{flushright}
+    \includegraphics[height=1cm,keepaspectratio]{bsf.png}
+    \end{flushright}
   ```
 titlepage: true
 logo: "inframodel.png"
