@@ -7,9 +7,12 @@ xnos-warning-level: 1
 xnos-number-by-section: True
 header-right: "\\bsflogo"
 # header-right: figures/bsf.png
-header-includes: |
+header-includes:
+-|
+  ```{=latex}
   \usepackage{draftwatermark}
   \newcommand{\bsflogo}{\includegraphics[width=3.5cm]{figures/bsf.png}}
+  ```
 titlepage: true
 logo: "inframodel.png"
 logo-width: "100mm"
