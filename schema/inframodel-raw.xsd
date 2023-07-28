@@ -910,22 +910,22 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 	</xs:element>
 	<xs:element name="End" type="PointType">
 		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Ending Point</xs:documentation>
+			<xs:documentation>Represents a 2D or 3D ending Point</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="Center" type="PointType">
 		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Center Point</xs:documentation>
+			<xs:documentation>Represents a 2D or 3D center Point</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="PI" type="PointType">
 		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Point of Intersection</xs:documentation>
+			<xs:documentation>Represents a 2D or 3D point of Intersection</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="Location" type="PointType">
 		<xs:annotation>
-			<xs:documentation>Represents a 2D or 3D Point location for a PlanFeature.</xs:documentation>
+			<xs:documentation>Represents a 2D or 3D point location for a PlanFeature.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="IrregularLine">
@@ -2732,21 +2732,21 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Human readable description of the collection</xs:documentation>
-					<xs:documentation>Example:Storm drains and drainage</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
 			<xs:attribute name="name" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+					<xs:documentation>Example:Storm drains and drainage</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="state" type="stateType">
 				<xs:annotation>
-					<xs:documentation>Pipe network collwection state</xs:documentation>
+					<xs:documentation>State</xs:documentation>
 					<xs:documentation>Example:proposed</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -2755,7 +2755,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 	<xs:element name="PipeNetwork">
 		<xs:annotation>
 			<xs:documentation>Pipe network, defined by --ltStructs--gt and --ltPipes--gt</xs:documentation>
-			<xs:documentation>keyRef is a Schema validation mechanism that ensures that the "structRef" and "pipeRef" attribute values have corresponding Pipe and Struct "name" values"</xs:documentation>
+			<xs:documentation/>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -2766,42 +2766,12 @@ The "staInternal" value identifies the location of the station equation. It is t
 				</xs:element>
 				<xs:element ref="Pipes">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>Pipes of pipe network</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelPipeNetworkFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelPipeNetworkFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_pipeNetworkType--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required">
 				<xs:annotation>
@@ -2823,7 +2793,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="state" type="stateType">
 				<xs:annotation>
-					<xs:documentation>Pipe network state</xs:documentation>
+					<xs:documentation>State</xs:documentation>
 					<xs:documentation>Example:proposed</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -2836,9 +2806,8 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Units" minOccurs="0"/>
 				<xs:element ref="Pipe" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -2856,51 +2825,54 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:element ref="RectPipe"/>
 					<xs:element ref="Channel"/>
 				</xs:choice>
-				<xs:element ref="PipeFlow" minOccurs="0"/>
-				<xs:element ref="Center" minOccurs="0"/>
-				<!-- <Center> point of the Pipe is the point of center on the curved pipe arc.  If this optional element is specified, then the pipe starts at refStart, passes through the <Center> point, and end at refEnd. -->
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="Center" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>3D Center Point</xs:documentation>
 					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelPipeFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelPipeFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
 				</xs:element>
+				<!-- <Center> point of the Pipe is the point of center on the curved pipe arc.  If this optional element is specified, then the pipe starts at refStart, passes through the <Center> point, and end at refEnd. -->
+				<xs:element ref="IM_cable--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_pipe--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
-			<xs:attribute name="refEnd" type="structNameRef" use="required"/>
-			<xs:attribute name="refStart" type="structNameRef" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="length" type="xs:double"/>
-			<xs:attribute name="oID" type="xs:string"/>
-			<xs:attribute name="slope" type="xs:double" use="required"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="refEnd" type="structNameRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Reference to struct or connection where the pipe endpoint is connected.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="refStart" type="structNameRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Reference to struct or connection where the pipe startpoint is connected.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="slope" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe slope</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="length" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Pipe length</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CircPipe">
@@ -2908,19 +2880,26 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Circular pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="diameter" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="hazenWilliams" type="xs:double"/>
-			<xs:attribute name="mannings" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="diameter" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Diameter</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="thickness" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ElliPipe">
@@ -2928,20 +2907,31 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Elliptic pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="height" type="xs:double" use="required"/>
-			<xs:attribute name="span" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
-			<xs:attribute name="hazenWilliams" type="xs:double"/>
-			<xs:attribute name="mannings" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="height" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Height</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="span" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Span</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="thickness" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="EggPipe">
@@ -2949,20 +2939,31 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Egg shaped pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="height" type="xs:double" use="required"/>
-			<xs:attribute name="span" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
-			<xs:attribute name="hazenWilliams" type="xs:double"/>
-			<xs:attribute name="mannings" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="height" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Height</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="span" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Span</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="thickness" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="RectPipe">
@@ -2970,20 +2971,31 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Rectangular pipe</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="height" type="xs:double" use="required"/>
-			<xs:attribute name="width" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
-			<xs:attribute name="hazenWilliams" type="xs:double"/>
-			<xs:attribute name="mannings" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="height" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Height</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="width" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Width</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="required">
+				<xs:annotation>
+					<xs:documentation>Material</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="thickness" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Channel">
@@ -2991,21 +3003,36 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Channel or ditch</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="height" type="xs:double" use="required"/>
-			<xs:attribute name="widthTop" type="xs:double" use="required"/>
-			<xs:attribute name="widthBottom" type="xs:double" use="required"/>
-			<xs:attribute name="desc" type="xs:string" use="required"/>
-			<xs:attribute name="hazenWilliams" type="xs:double"/>
-			<xs:attribute name="mannings" type="xs:double"/>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="height" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Height</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="widthTop" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Width at top</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="widthBottom" type="xs:double" use="required">
+				<xs:annotation>
+					<xs:documentation>Width at bottom</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="thickness" type="xs:double" use="required"/>
+			<xs:attribute name="thickness" type="xs:double" use="optional">
+				<xs:annotation>
+					<xs:documentation>Wall thickness</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PipeFlow">
@@ -3035,15 +3062,11 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Units" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Struct" minOccurs="2" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Inframodel.
-
-Each Struct within a Structs collection element must have a unique  "name" attribute.</xs:documentation>
+						<xs:documentation>Structure</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -3053,51 +3076,26 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Center"/>
+				<xs:element ref="Center">
+					<xs:annotation>
+						<xs:documentation>3D Center Point</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:choice>
 					<xs:annotation>
-						<xs:documentation>Struct</xs:documentation>
+						<xs:documentation>One of structure types or pipe connection</xs:documentation>
 					</xs:annotation>
-					<xs:element ref="CircStruct"/>
+					<xs:element ref="CircStruct">
+						<xs:annotation>
+							<xs:documentation>Circular struct</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:element ref="RectStruct"/>
 					<xs:element ref="InletStruct"/>
 					<xs:element ref="OutletStruct"/>
 					<xs:element ref="Connection"/>
 				</xs:choice>
 				<xs:element ref="Invert" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelStructFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelStructFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
 				<xs:element ref="IM_struct--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
@@ -3146,7 +3144,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					<xs:documentation>Description</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="required">
 				<xs:annotation>
 					<xs:documentation>Material</xs:documentation>
 				</xs:annotation>
@@ -3183,7 +3181,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 					<xs:documentation>Description</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="material" type="InframodelPipeNetworkMaterialType" use="required">
+			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="required">
 				<xs:annotation>
 					<xs:documentation>Material</xs:documentation>
 				</xs:annotation>
@@ -3262,43 +3260,26 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="PlanFeature" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelPlanFeaturesFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelPlanFeaturesFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!-- PlanFeature class -->
@@ -4478,6 +4459,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				<xs:element ref="railingMaterial--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="startType--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="endType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="postSpacing--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_railing">
 				<xs:annotation>
@@ -4512,8 +4494,17 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 				</xs:element>
 				<xs:element ref="fenceType--ltProperty--gt"/>
 				<xs:element ref="fenceHeight--ltProperty--gt"/>
-				<xs:element ref="postMaterial--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="postShape--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="postMaterial--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Material of posts</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="postShape--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Shape of posts</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="postSpacing--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_fence">
 				<xs:annotation>
@@ -4683,21 +4674,58 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="structLabel--ltProperty--gt"/>
-				<xs:element ref="rimType--ltProperty--gt"/>
-				<xs:element ref="rimMaterial--ltProperty--gt"/>
-				<xs:element ref="rimLoad--ltProperty--gt"/>
-				<xs:element ref="rimDiameter--ltProperty--gt"/>
-				<xs:element ref="rimCenter--ltProperty--gt"/>
-				<xs:element ref="heightDeposit--ltProperty--gt"/>
-				<xs:element ref="volumeDeposit--ltProperty--gt"/>
-				<xs:element ref="constructionDate--ltProperty--gt"/>
-				<xs:element ref="renewalDate--ltProperty--gt"/>
-				<xs:element ref="renewalDesc--ltProperty--gt"/>
+				<xs:element ref="structLabel--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimMaterial--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimLoad--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimDiameter--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimCenter--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="heightDeposit--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="volumeDeposit--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="constructionDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="bottomThickness--ltProperty--gt"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
 				<xs:annotation>
 					<xs:documentation>Fixed value, IM_struct</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_pipe--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel pipe details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pipeLabel--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="elevType--ltProperty--gt"/>
+				<xs:element ref="pipeStart--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="pipeEnd--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="jointType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="constructionDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="strengthClass--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_pipe">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_pipe</xs:documentation>
 					<xs:documentation>Example:IM_spatialZone</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -6852,6 +6880,25 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="postSpacing--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Post spacing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="postSpacing">
+				<xs:annotation>
+					<xs:documentation>Fixed value, postSpacing</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Post spacing</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<!--Typed Inframodel Property definitions, IM_surfaceStructure-->
 	<xs:element name="thickness--ltProperty--gt">
 		<xs:annotation>
@@ -7135,7 +7182,7 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 	<!--Typed Inframodel Property definitions, IM_struct-->
 	<xs:element name="structLabel--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Struct label</xs:documentation>
+			<xs:documentation>Struct name or identifier</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="structLabel">
@@ -7358,4 +7405,180 @@ Each Struct within a Structs collection element must have a unique  "name" attri
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="bottomThickness--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Well bottom thickness</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="bottomThickness">
+				<xs:annotation>
+					<xs:documentation>Fixed value, bottomThickness</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Well bottom thickness</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_pipe-->
+	<xs:element name="pipeLabel--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pipe name or identifier</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pipeLabel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pipeLabel</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe name or identifier</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="elevType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Elevation type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="elevType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, elevType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Eleavation type</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="crown level"/>
+						<xs:enumeration value="obvert level"/>
+						<xs:enumeration value="center level"/>
+						<xs:enumeration value="invert level"/>
+						<xs:enumeration value="bottom level"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pipeStart--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pipe start location. Note, this field is informational, actual pipe start point is set by --ltStruct--gt refrerenced by --ltPipe--gt.refStart</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pipeStart">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pipeStart</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Location as space delimited northing, easting, elevation</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pipeEnd--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pipe end location. Note, this field is informational, actual pipe end point is set by --ltStruct--gt refrerenced by --ltPipe--gt.refEnd</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="pipeEnd">
+				<xs:annotation>
+					<xs:documentation>Fixed value, pipeEnd</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Location as space delimited northing, easting, elevation</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="jointType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pipe joint type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="jointType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, jointType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe joint type, alternatives include: rubber seal,flange, connector,weld</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="strengthClass--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Pipe strength class</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="IMPipeNetworkMaterialType">
+		<xs:annotation>
+			<xs:documentation>List of materials in Inframodel Pipe Network Structs and Pipes (@material)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="wood"/>
+			<xs:enumeration value="brick"/>
+			<xs:enumeration value="rock"/>
+			<xs:enumeration value="cement"/>
+			<xs:enumeration value="aluminium"/>
+			<xs:enumeration value="copper"/>
+			<xs:enumeration value="lead"/>
+			<xs:enumeration value="steel"/>
+			<xs:enumeration value="acidResistantSteel"/>
+			<xs:enumeration value="stainlessSteel"/>
+			<xs:enumeration value="castIron"/>
+			<xs:enumeration value="grayCastIron"/>
+			<xs:enumeration value="sphericalGraphiteCastIron"/>
+			<xs:enumeration value="asbestCement"/>
+			<xs:enumeration value="vitrifiedClay"/>
+			<xs:enumeration value="plastic"/>
+			<xs:enumeration value="PE"/>
+			<xs:enumeration value="PEH"/>
+			<xs:enumeration value="PEL"/>
+			<xs:enumeration value="PEM"/>
+			<xs:enumeration value="PP"/>
+			<xs:enumeration value="PVC"/>
+			<xs:enumeration value="fiberComposite"/>
+			<xs:enumeration value="rubber"/>
+			<xs:enumeration value="bitum"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
