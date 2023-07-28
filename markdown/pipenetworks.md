@@ -51,9 +51,11 @@ When the *network type* is not one of those covered by the **pipeNetType** (attr
 
 {{xtabulate IM_pipeNetworkType--ltFeature--gt}}
 
+{{xtabulate pipeNetworkType--ltProperty--gt}}
+
 ## Units
 
-In Inframodel, the same metric units (as specified in {{refsec fileheaders}}) shall always be used. The LandXML capability to assing separate units for structures and pipes in networks shall not be used in Inframodel.
+In Inframodel, the units as specified in {{refsec fileheaders}} shall always be used. The LandXML capability to assing separate units for structures and pipes in networks is not allowed.
 
 ## Structures {#sec:structures}
 
@@ -71,13 +73,13 @@ LandXML standard structure types:
 - Pipe joints, extensions and inflexions
 - Equipment (as specified in Inframodel extension)
 
-Delimiting the network is a special case of using connection, described in further detail in the section covering the **\<Connection>** element.
+Delimiting the network is a special case of using connection, described in further detail in the {{refsec pipeconnection}}.
 
 {{xtabulate IM_struct--ltFeature--gt}}
 
 #### General data
 
-All structural elements in the file are assigned individual names.
+All structural elements in the file are assigned with unique names.
 
 {{xtabulate Struct}}
 
@@ -102,7 +104,7 @@ The inlets and outlets in a structure for adjoining pipes are described using th
 
 It is possible to set additional properties for structures in "IM_struct" extension. 
 
-Common properties applicable to all types of structures are **structLabel** and the dates of different actions, such as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute.- 
+Common properties applicable to all types of structures are **structLabel** and the dates of different actions, such as the **constructionDate** and the **renewalDate**. The dates of the actions are typically give in years. It is also possible to describe the renewal in further detail, e.g. the method used, using the **renowalDesc** attribute. 
 
 Additionally, common to the three structure types below are **rimType** and the rim load bearing class **rimLoad**, as well as **bottomThickness**.
 
@@ -120,6 +122,8 @@ It is possible to define more detailed type information of a piece of equipment 
 Related to structure geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the structure geometry definition as a radius around the vertical line defined by structure \<Center> 3D coordinates at the bottom level and @elevRim.
 
 ![Spatial Zone Pipe]({{figure SpatialZonePipe.png}} "Spatial Zone Pipe"){{figst SpatialZonePipe}}
+
+More information about the IM_spatialZone \<Feature> extension can be found from {{refsec spatialallocationandavoidanceext}}.
 
 ### Circular structures {#sec:circularstructures}
 
@@ -168,7 +172,9 @@ Pipe inlets and outlets are end of the pipe network pipes. The following illustr
 
 The illustration below demonstrates how pipe inlets and outlets are described. The example demonstrates an outlet.
 
-*Inlets* **\<InletStruct>** and *outlets* **\<OutletStruct>** have no attributes.
+{{xtabulate InletStruct}}
+
+{{xtabulate OutletStruct}}
 
 ![Inlets and outlets]({{figure PipenetworkInletOutletStruct.png}} "Inlets and outlets"){{figst inletsandoutlets}}
 
@@ -192,7 +198,7 @@ Connections, joints or points of intersection are defined using the **\<Connecti
 
 ![Pipe connections]({{figure PipenetworkConnection1.png}} "Pipe connections"){{figst pipeconnections}}
 
-{{xtabulate Connection}}
+Connection element has no attributes or child elements.
 
 ### Equipment {#sec:equipment}
 
@@ -226,6 +232,8 @@ Available pipe types in the LandXML standard:
 - Elliptic pipe
 - Rectangular pipe
 - Channel
+
+{{xtabulate Pipes}}
 
 ### Pipe
 
