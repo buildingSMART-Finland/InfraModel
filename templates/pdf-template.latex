@@ -940,7 +940,7 @@ $else$
   \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
   $if(version)$
   \vskip 2em
-  {\Small \textsf{$version$}}
+  {\footnotesize \textsf{$version$}}
   $endif$
   \vfill
 }
