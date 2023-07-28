@@ -309,7 +309,7 @@ Where:
 
 {{xtabulatef material--ltProperty--gt}}
 
-{{xtabulatef grainSizeMin--ltProperty--gt
+{{xtabulatef grainSizeMin--ltProperty--gt}}
 
 {{xtabulatef grainSizeMax--ltProperty--gt}}
 
