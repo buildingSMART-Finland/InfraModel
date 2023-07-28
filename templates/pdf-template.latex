@@ -919,6 +919,10 @@ $if(titlepage-background)$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
   $endif$
+  $if(version)$
+  \vskip 1em
+  {\Large \textsf{$version$}}
+  $endif$
   \vskip 2em
   \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
   \vfill
@@ -931,6 +935,10 @@ $else$
   $if(subtitle)$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
+  $endif$
+  $if(version)$
+  \vskip 1em
+  {\Large \textsf{$version$}}
   $endif$
   \vskip 2em
   \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
