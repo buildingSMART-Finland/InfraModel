@@ -4476,6 +4476,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="railingMaterial--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="startType--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="endType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="postSpacing--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_railing">
 				<xs:annotation>
@@ -4510,8 +4511,17 @@ The "staInternal" value identifies the location of the station equation. It is t
 				</xs:element>
 				<xs:element ref="fenceType--ltProperty--gt"/>
 				<xs:element ref="fenceHeight--ltProperty--gt"/>
-				<xs:element ref="postMaterial--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="postShape--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="postMaterial--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Material of posts</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="postShape--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Shape of posts</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="postSpacing--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_fence">
 				<xs:annotation>
@@ -6882,6 +6892,25 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Shape of fence posts</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="postSpacing--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Post spacing</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="postSpacing">
+				<xs:annotation>
+					<xs:documentation>Fixed value, postSpacing</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Post spacing</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

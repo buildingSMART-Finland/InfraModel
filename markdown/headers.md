@@ -72,7 +72,7 @@ See {{refsec localcoordinatetransfromationbypointpairsext}} for detailed informa
 
 ### Local coordinate transformation by transformation parameters {#sec:localcoordinatetransfromationbytransformationparameters}
 
-The exact parameters of a particular local coordinate transformation may be given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under \<LandXML>. 
+The exact parameters of a local coordinate transformation may be given using \<im:LocalCoordinateTransformation> element in im-extension schema as \<any> element under \<LandXML>. 
 The im namespace xml schema (im.xsd) for the extension schema elements is available at Inframodel schema page.
 
 {{xtabulate im:LocalCoordinateTransformation ../schema/im.xsd}}
