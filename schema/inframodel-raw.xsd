@@ -4750,6 +4750,83 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="IM_cgpoints--ltFeature--gt__control">
+		<xs:annotation>
+			<xs:documentation>Inframodel pipe details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="toleranceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceAmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceAmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceBmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceBmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceZmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceZmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirDifferenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceB--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceZ--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="alignmentRef--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="geometryType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_cgpoints">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_cgpoints</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_cgpoints--ltFeature--gt__survey">
+		<xs:annotation>
+			<xs:documentation>Inframodel pipe details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="differenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirDifferenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceB--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceZ--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="alignmentRef--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="geometryType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_cgpoints">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_cgpoints</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="IM_survey--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel survey equipment coding --ltFeature--gt extension</xs:documentation>
@@ -7764,6 +7841,101 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="toleranceXY--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Tolerance in horizontal plane from set northing easting in distance units (non-negative number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceXY--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal difference between planned and measured point</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dirDifferenceXY--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Direction of horizontal difference between planned and measured point</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceA--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal difference in direction dirA between planned and measured point</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceB--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Tolerance in horizontal plane from set northing easting in distance units (non-negative number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceZ--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Tolerance in horizontal plane from set northing easting in distance units (non-negative number)</xs:documentation>
 		</xs:annotation>

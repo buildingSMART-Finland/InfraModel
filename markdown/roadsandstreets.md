@@ -59,7 +59,7 @@ It is recommended that all parameters are described along with the cross-section
 
 {{xtabulate CrossSect}}
 
-{{xtabulate IM_crossSect--ltFeature--gt}}
+{{xtabulate IM_crossSect--ltFeature--gt__road}}
 
 ### Transitions in superelevation
 

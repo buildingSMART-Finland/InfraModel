@@ -110,7 +110,27 @@ Individual type codes are set in the individual element, or in the parent elemen
 
 {{xtabulatef IM_coding--ltFeature--gt}}
 
+where:
+
+{{xtabulatef terrainCoding--ltProperty--gt__im_coding__}}
+
+{{xtabulatef terrainCodingDesc--ltProperty--gt__im_coding__}}
+
+{{xtabulatef surfaceCoding--ltProperty--gt__im_coding__}}
+
+{{xtabulatef surfaceCodingDesc--ltProperty--gt__im_coding__}}
+
+{{xtabulatef infraCoding--ltProperty--gt__im_coding__}}
+
+{{xtabulatefinfraCodingDesc--ltProperty--gt__im_coding__}}
+
 {{xtabulatef IM_proprietaryCoding--ltFeature--gt}}
+
+where:
+
+{{xtabulatef proprietaryInfraCoding--ltProperty--gt__im_proprietarycoding__}}
+
+{{xtabulatef proprietaryInfraCodingDesc--ltProperty--gt__im_proprietarycoding__}}
 
 **Details:**
 
@@ -154,6 +174,16 @@ If the project consists of sub-projects that have different rates of progress, t
 
 {{xtabulatef IM_plan--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef planName--ltProperty--gt}}
+
+{{xtabulatef planCode--ltProperty--gt}}
+
+{{xtabulatef planState--ltProperty--gt}}
+
+{{xtabulatef planDesc--ltProperty--gt}}
+
 **Details:**  
 
 {{refsec planinformation}}
@@ -168,12 +198,39 @@ Calculated area of a surface (**\<Surface>**) or the volume below (between two s
 
 {{xtabulatef IM_quantity--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef areaQuantity--ltProperty--gt}}
+
+{{xtabulatef volumeQuantity--ltProperty--gt}}
+
+{{xtabulatef quantityCoding--ltProperty--gt}}
+
+{{xtabulatef quantityCodingDescription--ltProperty--gt}}
+
+{{xtabulatef quantityCodingSource--ltProperty--gt}}
 
 ## Soil properties {#sec:soilpropertiesext}
 
 Soil properties of terrain model or ground layer model are captured in "IM_soil" feature extension.
 
 {{xtabulatef IM_soil--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef soiltypeGEO--ltProperty--gt}}
+
+{{xtabulatef soiltypeISO--ltProperty--gt}}
+
+{{xtabulatef qualificationClass--ltProperty--gt}}
+
+{{xtabulatef frostSwellingFactorWet--ltProperty--gt}}
+
+{{xtabulatef frostSwellingFactorDry--ltProperty--gt}}
+
+{{xtabulatef elasticModulusWet--ltProperty--gt}}
+
+{{xtabulatef elasticModulusDry--ltProperty--gt}}
 
 **Details:**  
 
@@ -192,6 +249,16 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 {{xtabulatef IM_stringlineLayer--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef name--ltProperty--gt}}
+
+{{xtabulatef desc--ltProperty--gt}}
+
+{{xtabulatef alignments-ltProperty--gt}}
+
+{{xtabulatef centreline--ltProperty--gt}}
+
 **Details:**
 
 {{refsec stringlinemodel}}
@@ -203,13 +270,33 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 
 {{xtabulatef IM_CrossSect--ltFeature--gt}}
 
+Where:
+
+{{xtabulate pavementClass--ltProperty--gt}}
+
+{{xtabulate pavementThickness--ltProperty--gt}}
+
+{{xtabulate subgradeLoadCapacityClass--ltProperty--gt}}
+
+{{xtabulate slope--ltProperty--gt}}
+
+{{xtabulate tracks--ltProperty--gt}}
+
+{{xtabulate trackDist--ltProperty--gt}}
+
+{{xtabulate bedWidth--ltProperty--gt}}
+
+{{xtabulate depth--ltProperty--gt}}
+
+{{xtabulate waterLevel--ltProperty--gt}}
+
 **Details:**
 
 {{refsec crosssectparameters}}
 
 {{refsec crosssectionsandtrackinformation}}
 
-{{refsec crosssectionparameters}}
+{{refsec crosssectionparameterswater}}
 
 
 ## Structural layer properties {#sec:structureallayerpropertiesext}
@@ -217,6 +304,36 @@ The string line model is defined under an **\<Alignment>** in the **"IM\_stringl
 Material properties of layers in road, street or railway structual model are captured in "IM_structLayer" feature extension.
 
 {{xtabulatef IM_structLayer--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef material--ltProperty--gt}}
+
+{{xtabulatef grainSizeMin--ltProperty--gt
+
+{{xtabulatef grainSizeMax--ltProperty--gt}}
+
+{{xtabulatef nominalThickness--ltProperty--gt}}
+
+{{xtabulatef strength--ltProperty--gt}}
+
+{{xtabulatef E-module--ltProperty--gt}}
+
+{{xtabulatef loadCapacity--ltProperty--gt}}
+
+{{xtabulatef pavementType--ltProperty--gt}}
+
+{{xtabulatef surfacingMethod--ltProperty--gt}}
+
+{{xtabulatef stoneStructureType--ltProperty--gt}}
+
+{{xtabulatef stoneType--ltProperty--gt}}
+
+{{xtabulatef stabilizationMethod--ltProperty--gt}}
+
+{{xtabulatef lightweightFillMaterial--ltProperty--gt}}
+
+{{xtabulatef lightweightFillMaterialProperty--ltProperty--gt}}
 
 **Details:**  
 
@@ -230,23 +347,57 @@ Road signs belonging to a particular route design are described in **\<Roadways>
 
 {{xtabulatef IM_roadSign--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef signName--ltProperty--gt}}
+
+{{xtabulatef signCode--ltProperty--gt}}
+
+{{xtabulatef sizeDesignation--ltProperty--gt}}
+
+{{xtabulatef location--ltProperty--gt}}
+
+{{xtabulatef mountType--ltProperty--gt}}
+
+{{xtabulatef reflection--ltProperty--gt}}
+
+{{xtabulatef shape--ltProperty--gt}}
+
+{{xtabulatef background--ltProperty--gt}}
+
+{{xtabulatef state--ltProperty--gt}}
+
+{{xtabulatef note--ltProperty--gt}}
+
 ## Railway design - KM post coordinates {#sec:kmpostcoordinatesext}
 
 To assign northing and easting coordinates to railway **\<Alignment>**.**\<StationEquation>**, the parameters are:
 
 {{xtabulatef IM_kmPostCoords--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef northing--ltProperty--gt}}
+
+{{xtabulatef easting--ltProperty--gt}}
+
 **Details:**
 
 {{refsec kmposting}}
-
-
 
 ## Railway design - switches {#sec:switchesext}
 
 Switch details at railway track **\<Alignment>**.**\<CoordGeom>**.**\<Line>**, the parameters are:
 
 {{xtabulatef IM_switch--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef switchType--ltProperty--gt}}
+
+{{xtabulatef switchHand--ltProperty--gt}}
+
+{{xtabulatef switchJoint--ltProperty--gt}}
 
 **Details:**
 
@@ -259,11 +410,41 @@ When the attribute pipeNetType in \>PipeNetwork> element is set to 'other', the 
 
 {{xtabulatef IM_pipeNetworkType--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef pipeNetworkType--ltProperty--gt}}
+
 ## Utility networks - structure details {#sec:structuredetailsext}
 
 It is possible to describe additional details of network structures described in inframodel file transfers. The parameters in "IM_struct" are:
 
 {{xtabulatef IM_struct--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef structLabel--ltProperty--gt}}
+
+{{xtabulatef rimType--ltProperty--gt}}
+
+{{xtabulatef rimMaterial--ltProperty--gt}}
+
+{{xtabulatef rimLoad--ltProperty--gt}}
+
+{{xtabulatef rimDiameter--ltProperty--gt}}
+
+{{xtabulatef rimCenter--ltProperty--gt}}
+
+{{xtabulatef heightDeposit--ltProperty--gt}}
+
+{{xtabulatef volumeDeposit--ltProperty--gt}}
+
+{{xtabulatef constructionDate--ltProperty--gt}}
+
+{{xtabulatef renewalDate--ltProperty--gt}}
+
+{{xtabulatef renewalDesc--ltProperty--gt}}
+
+{{xtabulatef bottomThickness--ltProperty--gt}}
 
 **Details:**
 
@@ -283,6 +464,20 @@ It is possible to describe additional details of pipes of a network described in
 
 {{xtabulatef IM_pipe--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef pipeLabel--ltProperty--gt}}
+
+{{xtabulatef elevType--ltProperty--gt}}
+
+{{xtabulatef pipeStart--ltProperty--gt}}
+
+{{xtabulatef pipeEnd--ltProperty--gt}}
+
+{{xtabulatef jointType--ltProperty--gt}}
+
+{{xtabulatef strengthClass--ltProperty--gt}}
+
 **Details:**
 
 {{refsec circularpipes}}
@@ -301,6 +496,16 @@ It is possible to describe additional details of cables of a network described i
 
 {{xtabulatef IM_cable--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef label--ltProperty--gt}}
+
+{{xtabulatef owner--ltProperty--gt}}
+
+{{xtabulatef networkType--ltProperty--gt}}
+
+{{xtabulatef cableType--ltProperty--gt}}
+
 **Details:**
 
 {{refsec cable}}
@@ -311,13 +516,73 @@ Planimetric features belonging to a particular route design are described in **\
 
 {{xtabulatef IM_footing--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef footingHeight--ltProperty--gt}}
+
+{{xtabulatef footingMaterial--ltProperty--gt}}
+
+{{xtabulatef foundationType--ltProperty--gt}}
+
+{{xtabulatef radiusAround--ltProperty--gt}}
+
+{{xtabulatef length--ltProperty--gt}}
+
+{{xtabulatef lengthDir--ltProperty--gt}}
+
+{{xtabulatef width--ltProperty--gt}}
+
 {{xtabulatef IM_railing--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef railingType--ltProperty--gt}}
+
+{{xtabulatef purpose--ltProperty--gt}}
+
+{{xtabulatef shockResistanceClass--ltProperty--gt}}
+
+{{xtabulatef snowPlowingDurabilityCategory--ltProperty--gt}}
+
+{{xtabulatef normalizedWorkingWidth--ltProperty--gt}}
+
+{{xtabulatef railingHeight--ltProperty--gt}}
+
+{{xtabulatef railHeight--ltProperty--gt}}
+
+{{xtabulatef railingMaterial--ltProperty--gt}}
+
+{{xtabulatef startType--ltProperty--gt}}
+
+{{xtabulatef endType--ltProperty--gt}}
 
 {{xtabulatef IM_fence--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef fenceType--ltProperty--gt}}
+
+{{xtabulatef fenceHeight--ltProperty--gt}}
+
+{{xtabulatef postMaterial--ltProperty--gt}}
+
+{{xtabulatef postShape--ltProperty--gt}}
+
+{{xtabulatef postSpacing--ltProperty--gt}}
+
 {{xtabulatef IM_surfaceStructure--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef thickness--ltProperty--gt}}
+
+{{xtabulatef surfaceRef--ltProperty--gt}}
+
 {{xtabulatef IM_planFeature--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef type--ltProperty--gt}}
 
 **Details:**
 
@@ -335,9 +600,47 @@ Inframodel enables transfering both planned control points with tolerances (**\<
 
 {{xtabulatef IM_cgpoints--ltFeature--gt}}
 
+Where:
+
+{{xtabulatef vtoleranceAmin--ltProperty--gt}}
+
+{{xtabulatef toleranceAmax--ltProperty--gt}}
+
+{{xtabulatef toleranceBmin--ltProperty--gt}}
+
+{{xtabulatef toleranceBmax--ltProperty--gt}}
+
+{{xtabulatef toleranceZmin--ltProperty--gt}}
+
+{{xtabulatef toleranceZmax--ltProperty--gt}}
+
+{{xtabulatef alignmentRef--ltProperty--gt}}
+
+{{xtabulatef dirA--ltProperty--gt}}
+
+{{xtabulatef geometryType--ltProperty--gt}}
+
+{{xtabulatef toleranceXY--ltProperty--gt}}
+
+{{xtabulatef differenceXY--ltProperty--gt}}
+
+{{xtabulatef dirDifferenceXY--ltProperty--gt}}
+
+{{xtabulatef differenceA--ltProperty--gt}}
+
+{{xtabulatef differenceB--ltProperty--gt}}
+
+{{xtabulatef differenceZ--ltProperty--gt}}
+
 Instrument accuracy code may be set with "IM_survey" \<Feature> extension
 
 {{xtabulatef IM_survey--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef accuracyType--ltProperty--gt}}
+
+{{xtabulatef accuracyDescription--ltProperty--gt}}
 
 **Details:**
 
@@ -350,6 +653,14 @@ Instrument accuracy code may be set with "IM_survey" \<Feature> extension
 An area or a space allocated for some specific use, or a perimeter around an object to be avoided can be defined using "IM_spatialZone" extension, applicable to  **\<PlanFeature>**, **\<Parcel>**, **\<Pipe>** or **\<Struct>**.
 
 {{xtabulatef IM_spatialZone--ltFeature--gt}}
+
+Where:
+
+{{xtabulatef description--ltProperty--gt}}
+
+{{xtabulatef spatialAllocation--ltProperty--gt}}
+
+{{xtabulatef spatialAvoidance--ltProperty--gt}}
 
 **Details:**
 

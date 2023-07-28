@@ -13,7 +13,7 @@ The alignment group must contain at least one continuous geometric alignment as 
 
 The order the individual **\<Alignment>** elements are described in under the **\<Alignments>** element does not matter. The *type coding* of individual *alignments* defines the purpose of the *alignment*. A **terrainCoding**-compliant *terrain code* is set in the extension "IM\_coding". Selected alignments are included in the *line string model*, defined in the extension "IM\_stringLineLayers". The *line string model* consists of alignments structured into surfaces using a **surfaceCoding**. The *surface model* and *structural model* of the design are defined as triangle meshes. The plan information is optionally set in the "IM_plan" extension.
 
-## Cross section parameters {#sec:crosssectionparameters}
+## Cross section parameters {#sec:crosssectionparameterswater}
 
 The cross-section parameters of an *alignment group* describe the values of cross-sectional parameters from a the given station onwards. The cross-section parameters are set in the extension "IM_crossSect". The extension is implemented in a fashion similar to road and street design. The parameters are *minimum* **depth** of the route, the *minimum* **width** and the dimensioning **waterLevel**. The dimensioning water level is situation-specific and might be e.g. average daily low or average daily mean water level. The described Cross-section parameters are valid from the set station onwards.
 
