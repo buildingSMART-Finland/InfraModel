@@ -9,7 +9,7 @@ This section describes deep foundations (such as pile groups) transferred using 
 
 Collection of **pile groups** in a soil stabilization plan.
 
-{{xtabulate im_PileGroups--ltFeature--gt}}
+{{xtabulate im:PileGroups ../schema/im.xsd}}
 
 ## Pile group {#sec:pilegroup}
 
@@ -18,15 +18,13 @@ Each individual pile group in a pile groups collection representing a stabilizat
 
 ![Pile group]({{figure pilegroup.png}} "Pile group"){{figst pilegroup}}
 
-Attributes of \<im:PileGroup>:
-
-{{xtabulate im_PileGroup--ltFeature--gt}}
+{{xtabulate im:PileGroup ../schema/im.xsd}}
 
 The size of an individual pile in a pile group is set in \<im:CircPile>\ or \<im:SquarePile>\, respectively. All piles in a group are expetected to share the same shape and size.
 
-{{xtabulate im_CircPile--ltFeature--gt}}
+{{xtabulate im:CircPile ../schema/im.xsd}}
 
-{{xtabulate im_SquarePile--ltFeature--gt}}
+{{xtabulate im:SquarePile ../schema/im.xsd}}
 
 The top and bottom boundaries of a pile group are given in **\<im:TopBoundary>** and **\<im:BottomBoundary>** elements as irregular lines, defined by point lists (min. 3 points with 2D northing easting coordinates separated by spaces); the delimiting surfaces at the top and at the bottom may set by reference in **surfaceRef** attribute to the **\<Surface>** element with geometry definition, or the coding of the initial and target surfaces may be given in "IM_coding" **\<im:Feature>**.
 
@@ -34,10 +32,6 @@ The top and bottom boundaries of a pile group are given in **\<im:TopBoundary>**
 
 Individual piles in a pile group are described under **\<im:Pile>** element. Each pile shall have an individual identifier **oID** and **status**, as well as optional **topPoint**, **bottomPoint**, **horizontalDirection** and **slope**.
 
-Attributes of \<im:Pile>:
+{{xtabulate im:Pile ../schema/im.xsd}}
 
-{{xtabulate im_Pile--ltFeature--gt}}
-
-Attributes of \<im:GroutLayer>:
-
-{{xtabulate im_GroutLayer--ltFeature--gt}}
+{{xtabulate im:GroutLayer ../schema/im.xsd}}

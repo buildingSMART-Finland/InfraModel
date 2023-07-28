@@ -95,6 +95,6 @@ When no specific **\<Feature>** extension defined above can be applied, these ge
 
 #### Type coding {#sec:planimetricfeaturestypecoding}
 
-Type coding is defined in {{refsec typecodingsystemsext}}
+Objects could be type coded by using "IM_coding" or "IM_proprietaryCoding" \<Feature> extensions.
+"IM_coding" and "IM_proprietaryCoding" are defined in {{refsec typecodingsystemsext}}. 
 
-{{xtabulate IM_coding--ltFeature--gt}}

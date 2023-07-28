@@ -41,9 +41,6 @@ Each element which has Inframodel specific implementation has a text Inframodel 
 						<xs:documentation>A collection of COGO points. (Cg = COGO = Cordinate Geometry)</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Amendment" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="GradeModel" minOccurs="0" maxOccurs="0"/>
-				<xs:element ref="Monuments" minOccurs="0" maxOccurs="0"/>
 				<xs:element ref="Parcels" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="PlanFeatures" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="PipeNetworks" minOccurs="0" maxOccurs="unbounded"/>
@@ -743,63 +740,36 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="CgPoint" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="CgPoints" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="CgPoint" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
+						<xs:documentation>Coordinate geometry (COGO) point.</xs:documentation>
 					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelCgpointsFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelCgPointsFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
 				</xs:element>
 				<!-- Allow nested CgPoints collections -->
+				<xs:element ref="IM_cgpoints--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="code" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="CgPoint">
 		<xs:annotation>
-			<xs:documentation>Represents a COrdinate GeOmetry Point. The Point is identified by the "name" attr and the data value will be a sequence of space delimented, two or three double numberic values: (Northing Easting) or (Northing Easting Elevation).</xs:documentation>
+			<xs:documentation>Coordinate geometry point.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
 				<xs:extension base="PointType">
-					<xs:attribute name="oID" type="xs:string"/>
-					<xs:attribute name="surveyOrder" type="xs:string"/>
-					<xs:attribute name="pntSurv" type="survPntType"/>
-					<xs:attribute name="surveyHorizontalOrder" type="xs:string"/>
-					<xs:attribute name="surveyVerticalOrder" type="xs:string"/>
-					<xs:attribute name="localUncertainity" type="xs:double"/>
-					<xs:attribute name="positionalUncertainity" type="xs:double"/>
+					<xs:attribute name="surveyOrder" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation>Survey sequence number</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="pntRef" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation>Reference to control --ltcgPoint--gt.name</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
@@ -1620,29 +1590,46 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="SurveyHeader"/>
+				<xs:element ref="SurveyHeader">
+					<xs:annotation>
+						<xs:documentation>Survey details</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="Equipment" minOccurs="0">
 					<xs:annotation>
-						<xs:documentation>(Inframodel)</xs:documentation>
+						<xs:documentation>Survey equipment</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="CgPoints" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Inframodel                       A collection of COGO points. (Cg = COGO = Cordinate Geometry)</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="CgPoints" minOccurs="0"/>
+					<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="date" type="xs:date"/>
-			<xs:attribute name="startTime" type="xs:dateTime"/>
-			<xs:attribute name="endTime" type="xs:dateTime"/>
-			<xs:attribute name="state" type="stateType"/>
-			<xs:attribute name="horizontalAccuracy" type="xs:string"/>
-			<xs:attribute name="verticalAccuracy" type="xs:string"/>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="date" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Survey date</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="startTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Survey start time</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="endTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Survey end time</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="state" type="stateType">
+				<xs:annotation>
+					<xs:documentation>State</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!--SurveyHeader Element-->
@@ -1651,26 +1638,14 @@ Angles are represented counter-clockwise from east=0.  </xs:documentation>
 			<xs:documentation>We seemed to have doubled up on the survey purpose here, but the two are quite different - maybe need a different name</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="Annotation" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="PurposeOfSurvey" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="purpose" type="purposeType"/>
-			<xs:attribute name="startTime" type="xs:dateTime"/>
-			<xs:attribute name="endTime" type="xs:dateTime"/>
 			<xs:attribute name="surveyor" type="xs:string"/>
 			<xs:attribute name="surveyorFirm" type="xs:string"/>
 			<xs:attribute name="surveyPurpose" type="xs:string"/>
 			<xs:attribute name="type" type="surveyType"/>
-			<xs:attribute name="class" type="xs:string"/>
 			<xs:attribute name="submissionDate" type="xs:date"/>
-			<xs:attribute name="documentStatus" type="documentStatusType"/>
-			<xs:attribute name="surveyFormat" type="surveyFormatType"/>
-			<xs:attribute name="surveyStatus" type="surveyStatusType"/>
 		</xs:complexType>
 	</xs:element>
 	<!-- Annotation Element-->
@@ -1709,19 +1684,11 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:choice>
-					<xs:element ref="InstrumentDetails">
-						<xs:annotation>
-							<xs:documentation>(Inframodel)</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="GPSReceiverDetails"/>
-					<xs:element ref="GPSAntennaDetails"/>
-				</xs:choice>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
+				<xs:element ref="InstrumentDetails">
+					<xs:annotation>
+						<xs:documentation>Survey instrument details</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1731,25 +1698,28 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
+				<xs:element ref="IM_survey--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="edmAccuracyConstant" type="xs:double"/>
-			<xs:attribute name="edmAccuracyppm" type="xs:double"/>
-			<xs:attribute name="edmVertOffset" type="xs:double"/>
-			<xs:attribute name="horizAnglePrecision" type="xs:double"/>
-			<xs:attribute name="manufacturer" type="xs:string"/>
-			<xs:attribute name="model" type="xs:string"/>
-			<xs:attribute name="serialNumber" type="xs:string"/>
-			<xs:attribute name="zenithAnglePrecision" type="xs:double"/>
-			<xs:attribute name="carrierWavelength" type="xs:double"/>
-			<xs:attribute name="refractiveIndex" type="xs:double"/>
-			<xs:attribute name="horizCollimation" type="xs:double"/>
-			<xs:attribute name="vertCollimation" type="xs:double"/>
-			<xs:attribute name="stadiaFactor" type="xs:double"/>
+			<xs:attribute name="id" type="xs:ID" use="required">
+				<xs:annotation>
+					<xs:documentation>Identifier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="manufacturer" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Manufacturer</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="model" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Model</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="serialNumber" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Serial number</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="GPSAntennaDetails">
@@ -4743,6 +4713,149 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="IM_cgpoints--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel pipe details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="toleranceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceAmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceAmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceBmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceBmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceZmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceZmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="alignmentRef--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="geometryType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_cgpoints">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_cgpoints</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_cgpoints--ltFeature--gt__control">
+		<xs:annotation>
+			<xs:documentation>Inframodel pipe details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="toleranceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceAmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceAmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceBmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceBmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceZmin--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="toleranceZmax--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirDifferenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceB--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceZ--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="alignmentRef--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="geometryType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_cgpoints">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_cgpoints</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_cgpoints--ltFeature--gt__survey">
+		<xs:annotation>
+			<xs:documentation>Inframodel pipe details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="differenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirDifferenceXY--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceB--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="differenceZ--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="alignmentRef--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="dirA--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="geometryType--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_cgpoints">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_cgpoints</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_survey--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel survey equipment coding --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="accuracyType--ltProperty--gt"/>
+				<xs:element ref="accuracyDescription--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_survey">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_survey</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<!--Typed Inframodel Property definitions, IM_coordTransformation-->
 	<xs:element name="sourceCRSname--ltProperty--gt">
 		<xs:annotation>
@@ -7543,6 +7656,338 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_cgpoints-->
+	<xs:element name="toleranceAmin--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal mininum tolerance in direction dirA (e.g. along referenced alignment, behind = non-positive number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="toleranceAmin">
+				<xs:annotation>
+					<xs:documentation>Fixed value, toleranceAmin</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Horizontal mininum tolerance in direction dirA (e.g. along referenced alignment, behind = non-positive number)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="toleranceAmax--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal maxinum tolerance in direction dirA (e.g. along referenced alignment, behind = non-positive number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="toleranceAmax">
+				<xs:annotation>
+					<xs:documentation>Fixed value, toleranceAmax</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Horizontal maxinum tolerance in direction dirA (e.g. along referenced alignment, behind = non-positive number)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="toleranceBmin--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal mininum tolerance in direction perpendicular to dirA (e.g. towards/from referenced alignment, left = non-positive number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="toleranceBmin">
+				<xs:annotation>
+					<xs:documentation>Fixed value, toleranceBmin</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Horizontal mininum tolerance in direction perpendicular to dirA (e.g. towards/from referenced alignment, left = non-positive number)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="toleranceBmax--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal maxinum tolerance in direction perpendicular to dirA (e.g. towards/from referenced alignment, left = non-positive number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="toleranceBmax">
+				<xs:annotation>
+					<xs:documentation>Fixed value, toleranceBmax</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Horizontal maxinum tolerance in direction perpendicular to dirA (e.g. towards/from referenced alignment, left = non-positive number)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="toleranceZmin--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Height mininum tolerance below set elevation (non-positive number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="toleranceZmin">
+				<xs:annotation>
+					<xs:documentation>Fixed value, toleranceZmin</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Height mininum tolerance below set elevation (non-positive number)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="toleranceZmax--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Height maxinum tolerance below set elevation (non-positive number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="toleranceZmax">
+				<xs:annotation>
+					<xs:documentation>Fixed value, toleranceZmax</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Height maxinum tolerance below set elevation (non-positive number)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="alignmentRef--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Reference to --ltAlignment--gt.name</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="alignmentRef">
+				<xs:annotation>
+					<xs:documentation>Fixed value, alignmentRef</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Reference to --ltAlignment--gt.name</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dirA--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Direction of positive A tolerance, derived from direction of referenced alignment</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="dirA">
+				<xs:annotation>
+					<xs:documentation>Fixed value, dirA</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Direction of positive A tolerance, derived from direction of referenced alignment</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="geometryType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Type of geometry that the control point is part of</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="geometryType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, geometryType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required">
+				<xs:annotation>
+					<xs:documentation>Type of geometry that the control point is part of</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="pointGroup "/>
+						<xs:enumeration value="polyline"/>
+						<xs:enumeration value="closedPolyline"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="toleranceXY--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Tolerance in horizontal plane from set northing easting in distance units (non-negative number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceXY--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal difference between planned and measured point</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dirDifferenceXY--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Direction of horizontal difference between planned and measured point</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceA--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Horizontal difference in direction dirA between planned and measured point</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceB--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Tolerance in horizontal plane from set northing easting in distance units (non-negative number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="differenceZ--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Tolerance in horizontal plane from set northing easting in distance units (non-negative number)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="strengthClass">
+				<xs:annotation>
+					<xs:documentation>Fixed value, strengthClass</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pipe strength class</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!--Typed Inframodel Property definitions, IM_survey-->
+	<xs:element name="accuracyType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Survey method and its accuracy (from Finnish RAK survey code list)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="accuracyType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, accuracyType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Survey method and its accuracy (from Finnish RAK survey code list)</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="accuracyDescription--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Survey method and its accuracy description, ie. "gnss guided excavator"</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="accuracyDescription">
+				<xs:annotation>
+					<xs:documentation>Fixed value, accuracyDescription</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Survey method and its accuracy description, ie. "gnss guided excavator"</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
