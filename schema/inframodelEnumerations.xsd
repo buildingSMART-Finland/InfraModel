@@ -843,37 +843,4 @@
 	<!--
 		Value lists to be used in Inframodel per attribute of LandXML element 
 -->
-	<xs:simpleType name="InframodelPipeNetworkMaterialType">
-		<xs:annotation>
-			<xs:documentation>List of materials in Inframodel Pipe Network Structs and Pipes (@material)</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="wood"/>
-			<xs:enumeration value="brick"/>
-			<xs:enumeration value="rock"/>
-			<xs:enumeration value="cement"/>
-			<xs:enumeration value="aluminium"/>
-			<xs:enumeration value="copper"/>
-			<xs:enumeration value="lead"/>
-			<xs:enumeration value="steel"/>
-			<xs:enumeration value="acidResistantSteel"/>
-			<xs:enumeration value="stainlessSteel"/>
-			<xs:enumeration value="castIron"/>
-			<xs:enumeration value="grayCastIron"/>
-			<xs:enumeration value="sphericalGraphiteCastIron"/>
-			<xs:enumeration value="asbestCement"/>
-			<xs:enumeration value="vitrifiedClay"/>
-			<xs:enumeration value="plastic"/>
-			<xs:enumeration value="PE"/>
-			<xs:enumeration value="PEH"/>
-			<xs:enumeration value="PEL"/>
-			<xs:enumeration value="PEM"/>
-			<xs:enumeration value="PP"/>
-			<xs:enumeration value="PVC"/>
-			<xs:enumeration value="fiberComposite"/>
-			<xs:enumeration value="rubber"/>
-			<xs:enumeration value="bitum"/>
-			<xs:enumeration value="other"/>
-		</xs:restriction>
-	</xs:simpleType>
 </xs:schema>

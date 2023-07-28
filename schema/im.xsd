@@ -6,221 +6,14 @@
 	<xs:element name="PileGroups">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="PileGroup" maxOccurs="unbounded">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="TopBoundary">
-								<xs:annotation>
-									<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points (6 values).</xs:documentation>
-								</xs:annotation>
-								<xs:complexType mixed="true">
-									<xs:sequence>
-										<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
-												<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
-													<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-													<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
-													<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-												</xs:sequence>
-												<xs:attribute name="name" type="xs:string" use="optional"/>
-												<xs:attribute name="code" type="xs:string"/>
-												<xs:attribute name="source" use="optional"/>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="surfaceRef" type="xs:string"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="BottomBoundary">
-								<xs:annotation>
-									<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points (6 values).</xs:documentation>
-								</xs:annotation>
-								<xs:complexType mixed="true">
-									<xs:sequence>
-										<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
-												<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
-													<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-													<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
-													<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-												</xs:sequence>
-												<xs:attribute name="name" type="xs:string" use="optional"/>
-												<xs:attribute name="code" type="xs:string"/>
-												<xs:attribute name="source" use="optional"/>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="surfaceRef" type="xs:string"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:choice minOccurs="0">
-								<xs:element name="CircPile">
-									<xs:complexType>
-										<xs:attribute name="diameter" type="xs:string" use="required"/>
-									</xs:complexType>
-								</xs:element>
-								<xs:element name="SquarePile">
-									<xs:complexType>
-										<xs:attribute name="width" type="xs:string" use="required"/>
-									</xs:complexType>
-								</xs:element>
-							</xs:choice>
-							<xs:element name="Pile" minOccurs="0" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="GroutLayer" minOccurs="0" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>Pile grout layers</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:attribute name="startLevel" type="xs:string">
-													<xs:annotation>
-														<xs:documentation>start level of grout layer in elevationUnits</xs:documentation>
-													</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="endLevel" type="xs:string">
-													<xs:annotation>
-														<xs:documentation>end level of grout layer in elevationUnits</xs:documentation>
-													</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="groutIntensity" type="xs:string">
-													<xs:annotation>
-														<xs:documentation>grout intensity of piles in this pile group, as measure of weight by volume (kg/m3)</xs:documentation>
-													</xs:annotation>
-												</xs:attribute>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="oID" type="xs:string" use="required">
-										<xs:annotation>
-											<xs:documentation>Pile ID</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="status" type="xs:string" use="required">
-										<xs:annotation>
-											<xs:documentation>Pile status (started, finished, under construction, …)</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="topPoint" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>top centre point of pile</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="bottomPoint" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>bottom centre point of pile</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="horizontalDirection" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Pile horizontal direction. Unit deg.</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="slope" type="xs:string">
-										<xs:annotation>
-											<xs:documentation>Pile slope. Unit deg.</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
-									<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
-										<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-										<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
-										<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-									</xs:sequence>
-									<xs:attribute name="name" type="xs:string" use="optional"/>
-									<xs:attribute name="code" type="xs:string"/>
-									<xs:attribute name="source" use="optional"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="oID" type="xs:string" use="required">
-							<xs:annotation>
-								<xs:documentation>Pile ID</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="desc" type="xs:string"/>
-						<xs:attribute name="targetShearResistance" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Pile target shear resistance. Unit Kpa.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="groutType" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Pile grout type</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="groutIntensity" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Pile grout intensity. Unit kg/m3.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="withdrawalRate" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Pile withdrawal augering rate. Unit mm/r.
-</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="minRotationRate" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Minimum rotation rate. Unit r/min.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="maxRotationRate" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Maximum rotation rate. Unit r/min.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="minInjectionPressure" type="xs:decimal">
-							<xs:annotation>
-								<xs:documentation>Minimum grout injection pressure. Unit bar.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="maxInjectionPressure" type="xs:decimal">
-							<xs:annotation>
-								<xs:documentation>Maximum grout injection pressure. Unit bar.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="airInjectionRate" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Air injection pressure. Unit l/min.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="pileSpacing" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>Pile spacing (center to center). Unit m.</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
+				<xs:element ref="im:PileGroup" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Group of piles</xs:documentation>
+					</xs:annotation>
 				</xs:element>
 				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+						<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema. </xs:documentation>
 						<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -237,8 +30,16 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string"/>
-			<xs:attribute name="desc" type="xs:string"/>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="LocalCoordinateTransformation">
@@ -800,6 +601,249 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 			<xs:attribute name="Description" type="xs:string">
 				<xs:annotation>
 					<xs:documentation>Desription</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PileGroup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TopBoundary">
+					<xs:annotation>
+						<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points (6 values).</xs:documentation>
+					</xs:annotation>
+					<xs:complexType mixed="true">
+						<xs:sequence>
+							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema.</xs:documentation>
+									<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+										<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+									</xs:sequence>
+									<xs:attribute name="name" type="xs:string" use="optional"/>
+									<xs:attribute name="code" type="xs:string"/>
+									<xs:attribute name="source" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="surfaceRef" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Reference to --tlSurface--gt.name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="BottomBoundary">
+					<xs:annotation>
+						<xs:documentation>A sequential space delimited list of 2D coordinates with a minimum of 3 points (6 values).</xs:documentation>
+					</xs:annotation>
+					<xs:complexType mixed="true">
+						<xs:sequence>
+							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema.</xs:documentation>
+									<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+										<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+									</xs:sequence>
+									<xs:attribute name="name" type="xs:string" use="optional"/>
+									<xs:attribute name="code" type="xs:string"/>
+									<xs:attribute name="source" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="surfaceRef" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Reference to --tlSurface--gt.name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Circular of square pile</xs:documentation>
+					</xs:annotation>
+					<xs:element ref="im:CircPile"/>
+					<xs:element ref="im:SquarePile"/>
+				</xs:choice>
+				<xs:element ref="im:Pile" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Invidual pile</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema.</xs:documentation>
+						<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="im:Property" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="im:DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="im:Feature" minOccurs="0" maxOccurs="unbounded"/>
+							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+-->
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="optional"/>
+						<xs:attribute name="code" type="xs:string"/>
+						<xs:attribute name="source" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="oID" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pile ID</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="desc" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="targetShearResistance" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile target shear resistance. Unit Kpa.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="groutType" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile grout type</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="groutIntensity" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile grout intensity. Unit kg/m3.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="withdrawalRate" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile withdrawal augering rate. Unit mm/r.
+</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="minRotationRate" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Minimum rotation rate. Unit r/min.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maxRotationRate" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Maximum rotation rate. Unit r/min.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="minInjectionPressure" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Minimum grout injection pressure. Unit bar.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maxInjectionPressure" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Maximum grout injection pressure. Unit bar.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="airInjectionRate" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Air injection pressure. Unit l/min.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="pileSpacing" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile spacing (center to center). Unit m.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CircPile">
+		<xs:complexType>
+			<xs:attribute name="diameter" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Diameter</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SquarePile">
+		<xs:complexType>
+			<xs:attribute name="width" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Width</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="im:GroutLayer" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="oID" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pile ID</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="status" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Pile status (started, finished, under construction, …)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="topPoint" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>top centre point of pile</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="bottomPoint" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>bottom centre point of pile</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="horizontalDirection" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile horizontal direction. Unit deg.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="slope" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pile slope. Unit deg.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GroutLayer">
+		<xs:annotation>
+			<xs:documentation>Pile grout layers</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="startLevel" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>start level of grout layer in elevationUnits</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="endLevel" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>end level of grout layer in elevationUnits</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="groutIntensity" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>grout intensity of piles in this pile group, as measure of weight by volume (kg/m3)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
