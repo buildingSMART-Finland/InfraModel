@@ -7,8 +7,8 @@ xnos-warning-level: 1
 xnos-number-by-section: true
 header-left: '`\includegraphics{bsf.png}`{=latex}'
 titlepage: true
-logo: "inframodel.png"
-logo-width: "10cm"
+logo: "inframodel.jpg"
+logo-width: "11cm"
 ---
 \clearpage
 
