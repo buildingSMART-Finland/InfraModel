@@ -122,7 +122,7 @@ where:
 
 {{xtabulatef infraCoding--ltProperty--gt__im_coding__}}
 
-{{xtabulatefinfraCodingDesc--ltProperty--gt__im_coding__}}
+{{xtabulatef infraCodingDesc--ltProperty--gt__im_coding__}}
 
 {{xtabulatef IM_proprietaryCoding--ltFeature--gt}}
 
