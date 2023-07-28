@@ -602,7 +602,7 @@ Inframodel enables transfering both planned control points with tolerances (**\<
 
 Where:
 
-{{xtabulatef vtoleranceAmin--ltProperty--gt}}
+{{xtabulatef toleranceAmin--ltProperty--gt}}
 
 {{xtabulatef toleranceAmax--ltProperty--gt}}
 
