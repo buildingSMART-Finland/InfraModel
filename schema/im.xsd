@@ -616,8 +616,7 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 						<xs:sequence>
 							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
-									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema.</xs:documentation>
 									<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -634,7 +633,11 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="surfaceRef" type="xs:string"/>
+						<xs:attribute name="surfaceRef" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Reference to --tlSurface--gt.name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="BottomBoundary">
@@ -645,8 +648,7 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 						<xs:sequence>
 							<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
-									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
+									<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema.</xs:documentation>
 									<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -663,7 +665,11 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="surfaceRef" type="xs:string"/>
+						<xs:attribute name="surfaceRef" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Reference to --tlSurface--gt.name</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 				<xs:choice minOccurs="0">
