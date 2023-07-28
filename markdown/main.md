@@ -2,6 +2,7 @@
 title: "Inframodel 4.1 - DRAFT"
 subtitle: "{{draft-version}}"
 author: "buildingSMART Finland, RYTV 22003_1 working group"
+abstract: "Finnish Inframodel application documentation for LandXML version 1.2"
 geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 xnos-warning-level: 1
 xnos-number-by-section: true
