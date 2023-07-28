@@ -11,7 +11,7 @@ Example:
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-NB: even if it is possible to use scandic characters in Inframodel XML files, they should not be used in **name**-attribute values, e.g. "väylä 2" should be spelled "vayla 2".
+Note, even if it is possible to use scandic or other special unicode characters in Inframodel XML files, they should not be used in **name**-attribute values for compatibility reasons. 
 
 
 ## LandXML container {#sec:landxmlcontainer}
