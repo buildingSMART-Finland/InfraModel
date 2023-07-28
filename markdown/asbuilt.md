@@ -27,7 +27,7 @@ Horizontal tolerance is given either
 
 In both cases, horizontal tolerances can be coupled with vertical tolerance values *toleranceZmin* and *toleranceZmax*. The required combination of tolerance values to be set in IM_cgpoints **\<Feature>** must be agreed for each use case separately (in Common InfraBIM Requirements or other such guidelines).
 
-{{xtabulate IM_cgpoints--ltFeature--gt}}
+{{xtabulate IM_cgpoints--ltFeature--gt__control}}
 
 ![As-built plan]({{figure AsBuiltplan.png}} "As-built plan"){{figst asbuiltplan}}
 
@@ -35,11 +35,15 @@ In both cases, horizontal tolerances can be coupled with vertical tolerance valu
 
 Measured as-built data is grouped in survey collection for each surface under **\<Survey>** element. 
 
+{{xtabulate Survey}}
+
 {{xtabulate SurveyHeader}}
 
 ### Survey equipment {#sec:surveyequipment}
 
 Under each **\<Survey>** element, an **\<Equipment>** element (no attributes) shall specify the details of the survey instrument used as **\<InstrumentDetails>**, with attributes **id** (mandatory identification) and optional **manufacturer**, **model** and **serialNumber**. These details are extended further under **\<Corrections>** element (no attributes used in Inframodel) in "IM_survey" extension **\<Feature>**.
+
+{{xtabulate Equipment}}
 
 {{xtabulate InstrumentDetails}}
 
@@ -48,8 +52,14 @@ Under each **\<Survey>** element, an **\<Equipment>** element (no attributes) sh
 ### Survey points {#sec:surveypoints}
 
 The survey points belonging to the survey are grouped under <Survey>.<CgPoints> element with attributes described above in {{refsec asbuiltsurvey}} the name is used to identify the correspoding collection of control points, and code can be set to "survey" at the root of nested collections.
-Within the survey points collection, another <CgPoints> element is used as a wrapper, to pair <CgPoint> elements with an "IM_cgpoints" <Feature>, and optionally also an "IM_coding" <Feature>. Each survey point <CgPoint> shall have a unique name, and pntRef shall be used to identify the corresponding control point (set as explained in {{refsec surveyequipment}}), as well as timeStamp when surveyed (always as UTC) and surveyOrder (sequence number).
+Each survey point may use pntRef to identify the corresponding control point (set as explained in {{refsec surveyequipment}}).
+It is also recommended to set surveyOrder to survey sequence number (if known).
+Deviation values may be set with "IM_cgpoints" \<Feature> extension
+
+{{xtabulate CgPoints}}
 
 {{xtabulate CgPoint}}
+
+{{xtabulate IM_cgpoints--ltFeature--gt__survey}}
 
 ![As-built survey]({{figure AsBuiltsurvey.png}} "As-built survey"){{figst asbuiltsurvey}}

@@ -92,10 +92,6 @@ where:
 
 {{xtabulatef proprietaryInfraCodingSourceRef--ltProperty--gt}} 
 
-{{xtabulatef IM_coding--ltFeature--gt}}
-
-{{xtabulatef IM_proprietaryCoding--ltFeature--gt}}
-
 More information can be found from {{refsec typecodingsystems}} 
 
 
@@ -111,6 +107,10 @@ Individual type codes are set for the following elements in inframodel file tran
 - other infrastructures in appropriate elements, such as **\<PlanFeature>**, **\<Pipe>** or **\<Struct>**
 
 Individual type codes are set in the individual element, or in the parent element, whose children inherit the values. Type codes are set using the "IM_coding" feature extension, either as *terrain codes* **terrainCoding**, *surface codes* **surfaceCoding** or *object/feature codes* **infraCoding**. Alternative or additional type codes are set using the "IM_proprietaryCoding", where the proprietary code is in **proprietaryInfraCoding** and the name of the coding system in **proprietaryInfraCodingSource** (as declared in **proprietaryInfraCoding** in "IM_proprietaryCodings").
+
+{{xtabulatef IM_coding--ltFeature--gt}}
+
+{{xtabulatef IM_proprietaryCoding--ltFeature--gt}}
 
 **Details:**
 
@@ -335,9 +335,14 @@ Inframodel enables transfering both planned control points with tolerances (**\<
 
 {{xtabulatef IM_cgpoints--ltFeature--gt}}
 
+Instrument accuracy code may be set with "IM_survey" \<Feature> extension
+
+{{xtabulatef IM_survey--ltFeature--gt}}
+
 **Details:**
 
 {{refsec controlpoints}}
+
 {{refsec asbuiltsurvey}}
 
 ## Spatial allocation and spatial avoidance {#sec:spatialallocationandavoidanceext}
