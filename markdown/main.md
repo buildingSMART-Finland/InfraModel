@@ -1,7 +1,7 @@
 ---
 title: "Inframodel 4.1 - DRAFT"
 subtitle: "Finnish Inframodel application documentation for LandXML version 1.2"
-version: "{{draft-version}}"
+version: "Build:{{draft-version}}"
 author: "buildingSMART Finland, RYTV 22003_1 working group"
 #abstract: "Finnish Inframodel application documentation for LandXML version 1.2"
 #abstract-title: "Abstract"

@@ -936,12 +936,12 @@ $else$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
   $endif$
-  $if(version)$
-  \vskip 1em
-  {\Large \textsf{$version$}}
-  $endif$
   \vskip 2em
   \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
+  $if(version)$
+  \vskip 2em
+  {\Small \textsf{$version$}}
+  $endif$
   \vfill
 }
 $endif$
