@@ -1812,7 +1812,6 @@ A collection of surface models.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element ref="Definition" minOccurs="0"/>
-					<xs:element ref="Watersheds" minOccurs="0" maxOccurs="0"/>
 				</xs:choice>
 				<xs:element ref="IM_soil--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_structLayer--ltFeature--gt" minOccurs="0"/>
@@ -1894,17 +1893,17 @@ A collection of surface models.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="Boundaries">
+				<xs:element ref="Boundaries" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Boundaries that was used to define the surface.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Breaklines">
+				<xs:element ref="Breaklines" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Breaklines that was used to define the surface.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="DataPoints">
+				<xs:element ref="DataPoints" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Data points that was used to define the surface.</xs:documentation>
 					</xs:annotation>
