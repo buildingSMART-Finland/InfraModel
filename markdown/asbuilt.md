@@ -47,7 +47,7 @@ Under each **\<Survey>** element, an **\<Equipment>** element (no attributes) sh
 
 {{xtabulate InstrumentDetails}}
 
-{{xtabulate IM_surveyFeature--ltFeature--gt}}
+{{xtabulate IM_survey--ltFeature--gt}}
 
 ### Survey points {#sec:surveypoints}
 
