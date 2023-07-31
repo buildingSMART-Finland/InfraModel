@@ -63,10 +63,13 @@ Calculated area or volume quantities may be assinged to entire \<Surface>, or pa
 The source data is described by the element \<SourceData>. This element has no attributes.
 Source data consists of:
 
- - Source data points \<DataPoints> and
- - Breaklines \<BreakLines>
+ - Source data points as \<DataPoints> and
+ - Source breaklines as \<BreakLines>
+ - Source boundaries as \<Boundaries>
 
 ![Source data]({{figure SurfacesPinnat-perus.png}} "Source data"){{figst sourcedata}}
+
+{{xtabulate SourceData}}
 
 ### Data points {#sec:datapoints}
 

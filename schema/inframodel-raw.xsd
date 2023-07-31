@@ -1890,30 +1890,26 @@ A collection of surface models.</xs:documentation>
 	</xs:element>
 	<xs:element name="SourceData">
 		<xs:annotation>
-			<xs:documentation>(Inframodel)
-
-The collection of data that was used to create the surface.</xs:documentation>
+			<xs:documentation>The collection of point, line and boundary data that was used to define the surface.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence maxOccurs="unbounded">
-				<xs:choice>
-					<xs:element ref="Chain" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="PointFiles" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="Boundaries" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Breaklines" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>The collection of breaklines that were used to define the surface.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="Contours" minOccurs="0" maxOccurs="0"/>
-					<xs:element ref="DataPoints" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Collection of data points that were used to define the surface </xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:choice>
-				<xs:any namespace="##local"/>
-			</xs:sequence>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="Boundaries">
+					<xs:annotation>
+						<xs:documentation>Boundaries that was used to define the surface.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="Breaklines">
+					<xs:annotation>
+						<xs:documentation>Breaklines that was used to define the surface.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="DataPoints">
+					<xs:annotation>
+						<xs:documentation>Data points that was used to define the surface.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="DataPoints">
@@ -3896,7 +3892,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:sequence>
 				<xs:element ref="proprietaryInfraCoding--ltProperty--gt__im_proprietarycoding__"/>
 				<xs:element ref="proprietaryInfraCodingDesc--ltProperty--gt__im_proprietarycoding__"/>
-				<xs:element ref="proprietaryInfraCodingSource--ltProperty--gt"/>
+				<xs:element ref="proprietaryInfraCodingSource--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="optional">
 				<xs:annotation>
@@ -3986,7 +3982,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="soiltypeGEO--ltProperty--gt"/>
+				<xs:element ref="soiltypeGEO--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="soiltypeISO--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="qualificationClass--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="frostSwellingFactorWet--ltProperty--gt" minOccurs="0"/>
@@ -4093,10 +4089,10 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="pavementClass--ltProperty--gt"/>
-				<xs:element ref="pavementThickness--ltProperty--gt"/>
-				<xs:element ref="subgradeLoadCapacityClass--ltProperty--gt"/>
-				<xs:element ref="slope--ltProperty--gt"/>
+				<xs:element ref="pavementClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="pavementThickness--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="subgradeLoadCapacityClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="slope--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
 				<xs:annotation>
@@ -4124,14 +4120,14 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tracks--ltProperty--gt"/>
-				<xs:element ref="trackDist--ltProperty--gt"/>
-				<xs:element ref="thickness--ltProperty--gt">
+				<xs:element ref="tracks--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="trackDist--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="thickness--ltProperty--gt" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Total thickness</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="bedWidth--ltProperty--gt"/>
+				<xs:element ref="bedWidth--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
 				<xs:annotation>
@@ -4159,13 +4155,13 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="depth--ltProperty--gt"/>
-				<xs:element ref="width--ltProperty--gt">
+				<xs:element ref="depth--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="width--ltProperty--gt" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Waterway width</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="waterLevel--ltProperty--gt"/>
+				<xs:element ref="waterLevel--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
 				<xs:annotation>
@@ -4316,9 +4312,9 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="switchType--ltProperty--gt"/>
-				<xs:element ref="switchHand--ltProperty--gt"/>
-				<xs:element ref="switchJoint--ltProperty--gt"/>
+				<xs:element ref="switchType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="switchHand--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="switchJoint--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_switch">
 				<xs:annotation>
