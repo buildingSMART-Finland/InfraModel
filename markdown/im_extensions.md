@@ -578,7 +578,7 @@ Where:
 
 {{xtabulatef surfaceRef--ltProperty--gt}}
 
-{{xtabulatef IM_planFeature--ltFeature--gt}}
+{{xtabulatef IM_planfeature--ltFeature--gt}}
 
 Where:
 
