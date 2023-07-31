@@ -5101,7 +5101,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCodingDesc">
 				<xs:annotation>
-					<xs:documentation>Fixed value, terrainCodinSourceRef</xs:documentation>
+					<xs:documentation>Fixed value, terrainCodingDesc</xs:documentation>
 					<xs:documentation>Example:terrainCodingSourceRef</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
