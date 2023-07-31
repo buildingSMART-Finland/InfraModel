@@ -7952,7 +7952,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 	<!--Typed Inframodel Property definitions, IM_survey-->
 	<xs:element name="accuracyType--ltProperty--gt">
 		<xs:annotation>
-			<xs:documentation>Survey method and its accuracy (from Finnish RAK survey code list)</xs:documentation>
+			<xs:documentation>Survey method and its accuracy (from Finnish "Infra Rakentajakoodaus" code list)</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="accuracyType">
@@ -7963,7 +7963,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Survey method and its accuracy (from Finnish RAK survey code list)</xs:documentation>
+					<xs:documentation>Survey method and its accuracy (from Finnish "Infra Rakentajakoodaus" code list)</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
