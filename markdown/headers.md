@@ -43,6 +43,7 @@ The root element (\<LandXML\>) of the transfer file is used by software to check
 ## Units {#sec:units}
 
 The units used in the file are defined by the \<Units\> element. Only certain metric SI system units are allowed, and those are defined under the sub-element \<Units>\<Metric>.
+Angular (angularUnit) and direction (directionUnit) units are defined counter-clockwise from the base direction. In angular definitions the base direction is east, and in direction definitions it is north.
 
 {{xtabulate Units}}
 
@@ -109,7 +110,7 @@ Transverse Mercator Map projection \<im:Projection>.\<im:TransverseMercator> tra
 
 #### Local transformation
 
-In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (x,y,z) is z_corrected = z + (a*x + b*y +c).
+In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (northing,easting,elevation) is elevation_corrected = elevation + (a*northing + b*easting +c).
 
 {{xtabulate im:Helmert2D ../schema/im.xsd}}
 

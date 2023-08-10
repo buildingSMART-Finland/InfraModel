@@ -92,13 +92,17 @@ Additionally, it is also possible to define boundaries of the source data in the
 {{xtabulate Boundaries}}
 
 {{xtabulate Boundary}}
- 
+
+Where:
+
+{{xtabulate surfBndType}}
+
 {{xtabulate IM_surfaceStructure--ltFeature--gt}}
- 
+
 {{xtabulate IM_structLayer--ltFeature--gt}}
- 
+
 {{xtabulate IM_soil--ltFeature--gt}}
- 
+
 {{xtabulate IM_quantity--ltFeature--gt}}
 
 ## Triangular mesh surface {#sec:triangulatedmeshsurface}

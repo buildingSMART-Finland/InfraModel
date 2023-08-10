@@ -67,3 +67,7 @@ Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined
 
 
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
+
+# Waterway signs
+The individual *waterway signs* can be described as **\<RoadSign>** elements.
+See {{refsec roadsigns}} for details.

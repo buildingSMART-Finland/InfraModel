@@ -75,7 +75,7 @@ LandXML standard structure types:
 
 Delimiting the network is a special case of using connection, described in further detail in the {{refsec pipeconnection}}.
 
-{{xtabulate IM_struct--ltFeature--gt}}
+{{xtabulate IM_struct--ltFeature--gt__well}}
 
 #### General data
 
@@ -117,6 +117,8 @@ When describing a conical well the **diameter** attribute describes the inner di
 ***Equipment:***
 It is possible to define more detailed type information of a piece of equipment between two pipes, e.g. a Valve using the attributes **equipmentType**, **equipmentCode** and an equipment description **equipmentDesc**. 
 
+
+
 #### Spatial allocation and avoidance
 
 Related to structure geometry an area or a volume for spatial allocation or avoidance may be defined as "IM_spatialZone" extension. Both spatialAllocation and spatialAvoidance are given as single metric value (in file length units). The allocation and avoidance geometry is interpreted according to the structure geometry definition as a radius around the vertical line defined by structure \<Center> 3D coordinates at the bottom level and @elevRim.
@@ -143,6 +145,8 @@ The *body* **diameter** at the bottom of the well, the *description* **desc**, t
 
 {{xtabulate CircStruct}}
 
+{{xtabulate IMPipeNetworkMaterialType}}
+
 ### Rectangular structures {#sec:rectangularstructures}
 
 The illustration below describes the description method of a rectangular structure. The structure is defined using the **\<Struct>** element and its child elements:
@@ -159,6 +163,8 @@ The mandatory attributes of a rectangular structure are the **length** the direc
 ![Rectangular structures]({{figure PipenetworkRectStruct.png}} "Rectangular structures"){{figst rectangularstructures}}
 
 {{xtabulate RectStruct}}
+
+{{xtabulate IMPipeNetworkMaterialType}}
 
 ### Pipe inlets and outlets {#sec:pipeinletsandoutlets}
 
@@ -214,9 +220,9 @@ The illustration demonstrates the mode of description of a valve:
 
 ![Equipment]({{figure PipenetworkConnection2.png}} "Equipment"){{figst equipment}}
 
-A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment is defined in the extension "IM_struct".
+A *piece of equipment* is defined using the element **\<Connection>**, that has no attributes. Details of the equipment are defined in the extension "IM_struct".
 
-{{xtabulate Connection}}
+{{xtabulate IM_struct--ltFeature--gt__equipment}}
 
 
 ## Pipes {#sec:pipes}
@@ -296,6 +302,7 @@ When defining a network-limiting pipe the **diameter** is the only defined attri
 
 {{xtabulate CircPipe}}
 
+{{xtabulate IMPipeNetworkMaterialType}}
 
 ### Egg pipes {#sec:eggpipes}
 
@@ -311,6 +318,8 @@ Illustration of egg-shaped pipe represenation.
 When defining a network-limiting pipe the *height* **height** and *width* **span** are set. Other attributes are not set.
 
 {{xtabulate EggPipe}}
+
+{{xtabulate IMPipeNetworkMaterialType}}
 
 ### Elliptic pipes {#sec:ellipticpipe}
 
@@ -329,6 +338,8 @@ When defining a network mandatory attributes are *height* **height** ja *width* 
 
 {{xtabulate ElliPipe}}
 
+{{xtabulate IMPipeNetworkMaterialType}}
+
 ### Rectangular pipes {#sec:rectangularpipe}
 
 The following illustation descibes the definition of a rectangular pipe.  The definition employs the element \<Pipe> and its child elements.
@@ -343,6 +354,8 @@ When defining a network-limiting pipe the **height** and **width** are mandatory
 ![Rectangular pipe]({{figure PipenetworkRectPipe.png}} "Rectangular pipe"){{figst rectpipe}}
 
 {{xtabulate RectPipe}}
+
+{{xtabulate IMPipeNetworkMaterialType}}
 
 ### Channels {#sec:channels}
 
@@ -360,3 +373,6 @@ Illustration of channel description:
 When defining a network mandatory attributes are *height* **height**, *top width* **widthTop** and *bottom width* **widthBottom**. Other attributes are not set.
 
 {{xtabulate Channel}}
+
+{{xtabulate IMPipeNetworkMaterialType}}
+

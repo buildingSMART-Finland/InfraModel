@@ -745,7 +745,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 						<xs:documentation>Coordinate geometry (COGO) point.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<!-- Allow nested CgPoints collections -->
 				<xs:element ref="IM_cgpoints--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
@@ -794,7 +793,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:complexType>
 	</xs:element>
 	<!-- shared elements  -->
-	<xs:element name="Property">
+	<!--<xs:element name="Property">
 		<xs:annotation>
 			<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema. Each Property element defines one piece of data.</xs:documentation>
 			<xs:documentation>The "label" attribute defines the name of the value held in the "value" attribute.</xs:documentation>
@@ -815,17 +814,16 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 				<xs:element ref="Property" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-				<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
+
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="optional"/>
 			<xs:attribute name="code" type="xs:string"/>
 			<xs:attribute name="source" use="optional"/>
 		</xs:complexType>
-	</xs:element>
+	</xs:element> -->
 	<xs:element name="FeatureDictionary">
 		<xs:annotation>
-			<xs:documentation>Defines the extension sets used by --ltfeature--gt under other elements. </xs:documentation>
+			<xs:documentation>Defines the extension sets used by other elements. </xs:documentation>
 			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1217,7 +1215,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="PntList2D" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -1397,15 +1394,14 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			</xs:attribute>
 			<xs:attribute name="angularUnit" type="angularType" use="required" fixed="radians">
 				<xs:annotation>
-					<xs:documentation>Fixed value, radians.  
-Angles are represented counter-clockwise from east=0.  </xs:documentation>
+					<xs:documentation>Fixed value, radians.   </xs:documentation>
 					<xs:documentation>Example:radians</xs:documentation>
 					<xs:documentation>Hint:Inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="directionUnit" type="angularType" use="required" fixed="radians">
 				<xs:annotation>
-					<xs:documentation>Fixed value, radians. Directions are represented counter-clockwise from 0 degrees = north</xs:documentation>
+					<xs:documentation>Fixed value, radians.</xs:documentation>
 					<xs:documentation>Example:Radians</xs:documentation>
 					<xs:documentation>Hint:Inframodel</xs:documentation>
 				</xs:annotation>
@@ -1730,7 +1726,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			<xs:sequence>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:ID" use="required"/>
@@ -1752,7 +1747,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			<xs:sequence>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:ID" use="required"/>
@@ -2213,7 +2207,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="SurfVolume" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="name" type="xs:string"/>
@@ -2225,9 +2218,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:documentation>volume calculation results between two surfaces</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
 			<xs:attribute name="surfBase" type="surfaceNameRef" use="required"/>
 			<xs:attribute name="surfCompare" type="surfaceNameRef" use="required"/>
 			<xs:attribute name="volCut" type="xs:double" use="required"/>
@@ -2245,39 +2235,9 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Parcel" maxOccurs="unbounded"/>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelParcelsFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelParcelsFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="name" type="xs:string"/>
@@ -2320,39 +2280,12 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 						</xs:complexType>
 					</xs:element>
 				</xs:choice>
-				<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Inframodel</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>InfraModel</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:attribute name="label" type="InframodelParcelFeatureLabelUnionType" use="required">
-										<xs:annotation>
-											<xs:documentation>InfraModel</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="value" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-							<!--				<xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
--->
-						</xs:sequence>
-						<xs:attribute name="name" type="xs:string"/>
-						<xs:attribute name="code" type="InframodelParcelFeatureCodesType" use="required">
-							<xs:annotation>
-								<xs:documentation>Inframodel</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="source"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="IM_surfaceStructure--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="oID" type="xs:string"/>
@@ -2550,7 +2483,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="PntList2D" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -2795,7 +2727,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 						<xs:documentation>3D Center Point</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<!-- <Center> point of the Pipe is the point of center on the curved pipe arc.  If this optional element is specified, then the pipe starts at refStart, passes through the <Center> point, and end at refEnd. -->
 				<xs:element ref="IM_cable--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_pipe--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
@@ -3005,9 +2936,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Pipe flow direction</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
 			<xs:attribute name="flowIn" type="xs:double" use="required"/>
 			<xs:attribute name="areaCatchment" type="xs:double"/>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -3439,7 +3367,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 						<xs:documentation/>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 		</xs:complexType>
@@ -3455,32 +3382,32 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-			<xs:attribute name="station" type="station" use="required">
+			<xs:attribute name="station" type="station" use="optional">
 				<xs:annotation>
 					<xs:documentation>Station number</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="offset" type="offsetDistance" use="required">
+			<xs:attribute name="offset" type="offsetDistance" use="optional">
 				<xs:annotation>
 					<xs:documentation>Distance from main alignment</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="sideofRoad" type="sideofRoadType" use="required">
+			<xs:attribute name="sideofRoad" type="sideofRoadType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Side of the road</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="width" type="xs:double">
+			<xs:attribute name="width" type="xs:double" use="required">
 				<xs:annotation>
 					<xs:documentation>Sign width</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="height" type="xs:double">
+			<xs:attribute name="height" type="xs:double" use="required">
 				<xs:annotation>
 					<xs:documentation>Sign height</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="mountHeight" type="xs:double">
+			<xs:attribute name="road" type="xs:double">
 				<xs:annotation>
 					<xs:documentation>Mounting height</xs:documentation>
 				</xs:annotation>
@@ -3697,7 +3624,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:IM_coordTransformation</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="source" use="required" fixed="inframodel">
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
 				<xs:annotation>
 					<xs:documentation>FIxed value, inframodel</xs:documentation>
 					<xs:documentation>Example:inframodel</xs:documentation>
@@ -3764,7 +3691,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:IM_controlPoint</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="source" use="required" fixed="inframodel">
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
 				<xs:annotation>
 					<xs:documentation>Fixed value, inframodel</xs:documentation>
 					<xs:documentation>Example:inframodel</xs:documentation>
@@ -4061,6 +3988,16 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="quantityCoding--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="quantityCodingDescription--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="quantityCodingSource--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="description--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Description or note</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="surfaceRef--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Reference to the name of --ltSurface--gt element (applicable if volume calculation is performed between two surface elements)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_quantity">
 				<xs:annotation>
@@ -4083,6 +4020,52 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="IM_crossSect--ltFeature--gt">
+		<xs:annotation>
+			<xs:documentation>Inframodel cross section details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pavementClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="pavementThickness--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="subgradeLoadCapacityClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="slope--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="tracks--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="trackDist--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="thickness--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Total thickness</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bedWidth--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="depth--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="width--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Waterway width</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="waterLevel--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_crossSect">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_crossSect</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_crossSect--ltFeature--gt__road">
 		<xs:annotation>
 			<xs:documentation>Inframodel cross section details --ltFeature--gt extension</xs:documentation>
 		</xs:annotation>
@@ -4564,15 +4547,19 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="signName--ltProperty--gt"/>
+				<xs:element ref="signName--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="description--ltProperty--gt" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Description</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element ref="signCode--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="signCode--ltProperty--gt"/>
 				<xs:element ref="sizeDesignation--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="location--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="location--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sing location, space delimited 3d coordinate</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="mountType--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="material--ltProperty--gt" minOccurs="0">
 					<xs:annotation>
@@ -4650,7 +4637,89 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="constructionDate--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="bottomThickness--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_struct</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_struct--ltFeature--gt__well">
+		<xs:annotation>
+			<xs:documentation>Inframodel struct details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="structLabel--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimMaterial--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimLoad--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimDiameter--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimCenter--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="heightDeposit--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="volumeDeposit--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="constructionDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="bottomThickness--ltProperty--gt"/>
+			</xs:sequence>
+			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
+				<xs:annotation>
+					<xs:documentation>Fixed value, IM_struct</xs:documentation>
+					<xs:documentation>Example:IM_spatialZone</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="source" type="xs:string" use="required" fixed="inframodel">
+				<xs:annotation>
+					<xs:documentation>Fixed value, inframodel</xs:documentation>
+					<xs:documentation>Example:inframodel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Optional unique name</xs:documentation>
+					<xs:documentation>Example:--uid--</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IM_struct--ltFeature--gt__equipment">
+		<xs:annotation>
+			<xs:documentation>Inframodel struct details --ltFeature--gt extension</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="structLabel--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="rimLoad--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="constructionDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentType--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
 				<xs:annotation>
@@ -7192,11 +7261,22 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:rimLoad</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="value" type="xs:string" use="required">
+			<xs:attribute name="value" use="required">
 				<xs:annotation>
 					<xs:documentation>Sign shape</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="inverted triangular"/>
+						<xs:enumeration value="triangular"/>
+						<xs:enumeration value="circular"/>
+						<xs:enumeration value="octagonal"/>
+						<xs:enumeration value="rectangular"/>
+						<xs:enumeration value="rhombic"/>
+						<xs:enumeration value="other"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
@@ -7527,6 +7607,101 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Well bottom thickness</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="equipmentType--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Equipment type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="equipmentType">
+				<xs:annotation>
+					<xs:documentation>Fixed value, equipmentType</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Equipment type</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="equipmentDesc-ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Eqiuiment description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="equipmentDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, equipmentDesc</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Equipment description</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="equipmentCode--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Equipment code</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="equipmentCode">
+				<xs:annotation>
+					<xs:documentation>Fixed value, equipmentCode</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Equipment code</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="equipmentCodeDesc--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Equipment code description</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="equipmentCodeDesc">
+				<xs:annotation>
+					<xs:documentation>Fixed value, equipmentCodeDesc</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Equipment code description</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="equipmentCodeSource--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Equipment code source</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="equipmentCodeSource">
+				<xs:annotation>
+					<xs:documentation>Fixed value, equipmentCodeSource</xs:documentation>
+					<xs:documentation>Example:rimLoad</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Equipment code source</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
