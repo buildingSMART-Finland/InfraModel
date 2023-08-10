@@ -7255,14 +7255,11 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Sign shape</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="label" use="required" fixed="shape">
+			<xs:attribute name="label" type="xs:string" use="required" fixed="shape">
 				<xs:annotation>
 					<xs:documentation>Fixed value, shape</xs:documentation>
 					<xs:documentation>Example:rimLoad</xs:documentation>
 				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string"/>
-				</xs:simpleType>
 			</xs:attribute>
 			<xs:attribute name="value" use="required">
 				<xs:annotation>

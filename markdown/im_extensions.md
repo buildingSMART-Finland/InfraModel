@@ -268,7 +268,7 @@ Where:
 
 *Cross-section parameters* contain parametric information considered crucial for each route type. They are set for the *stationing reference alignment* in the **\<CrossSects>**.**\<CrossSect>** "IM_crossSect" extension under the **\<Alignment>** element. The chosen cross-section parameters are set in fields (**\<Property>**). It is advisable to describe all parameters for each cross-section. If the some parameters change, the cross-section where the parameter begins to change and the end of the transition are described.
 
-{{xtabulatef IM_CrossSect--ltFeature--gt}}
+{{xtabulatef IM_crossSect--ltFeature--gt}}
 
 Where:
 
