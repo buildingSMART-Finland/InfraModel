@@ -64,15 +64,18 @@ The following transitions are described by the track information sub-element:
 - **\<CantStation>** is used at cant events, typically: 0-value at the start and end of straight track segments, same value at the start and end of circular curve segments, and different values at start and end of transition curve segments (interpolated according to the horizontal spiral curvature change)
 - **\<SpeedStation>** is used when the design speed changes
 
-![Railway cant({{figure Railcant.png}} "Railway cant"){{figst railwaycant}}
+
+![Railway cant]({{figure Railcant.png}} "Railway cant"){{figst railwaycant}}
 
 1. When the *cant* changes in the **\<CantStation>**:
 
 {{xtabulate CantStation}}
 
-2. When the *design speed* changes in the **\<SpeedStation>**
+2. When only the *design speed* changes in the **\<SpeedStation>**
 
 {{xtabulate SpeedStation}}
+
+The **station** attribute of **\<CantStation>** and **\<SpeedStation>** shall have an stationing value where **\<Alignment>.staStart** is taken in account.
 
 ### Switch information {#sec:switchinformation}
 
@@ -113,4 +116,9 @@ Details of **\<PlanFeature>** are described as **\<Feature>** extension, defined
 5. {{refsec surfacestructure}} in "IM_surfaceStructure" extension
 6. {{refsec genericplanfeature}} in "IM_planfeature" extension
 
+
 Additionally, all plan features may be type coded in **\<Feature>** using {{refsec typecodingext}} in "IM_coding" extension.
+
+# Railway signs
+The individual *railway signs* can be described as **\<RoadSign>** elements.
+See {{refsec roadsigns}} for details.

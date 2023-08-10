@@ -384,19 +384,19 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 			<xs:documentation>Vertical height adjustment with sloping plane</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="constantAdjustment" type="xs:double" use="required">
+			<xs:attribute name="a" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Adjustment constant value</xs:documentation>
+					<xs:documentation>Northing slope coefficient in ppm </xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="originNorthing" type="xs:double" use="required">
+			<xs:attribute name="b" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>North origin</xs:documentation>
+					<xs:documentation>Easting slope coefficient in ppm  </xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="originEasting" type="xs:double" use="required">
+			<xs:attribute name="c" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>East origin</xs:documentation>
+					<xs:documentation>Constant adjustment (height offset)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>

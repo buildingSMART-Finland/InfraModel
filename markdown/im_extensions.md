@@ -446,6 +446,16 @@ Where:
 
 {{xtabulatef bottomThickness--ltProperty--gt}}
 
+{{xtabulatef equipmentType--ltProperty--gt}}
+
+{{xtabulatef equipmentDesc-ltProperty--gt}}
+
+{{xtabulatef equipmentCode--ltProperty--gt}}
+
+{{xtabulatef equipmentCodeDesc--ltProperty--gt}}
+
+{{xtabulatef equipmentCodeSource--ltProperty--gt}}
+
 **Details:**
 
 {{refsec circularstructures}}
