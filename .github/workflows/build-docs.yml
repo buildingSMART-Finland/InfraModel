@@ -35,7 +35,7 @@ jobs:
           options: -v ${{ github.workspace }}:/git
           run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
       - name: Copy im.xsd to artefact folder
-        run: cp ${{ github.workspace }}/schema/im.xsd ${{ github.workspace }}/artefact/im.xsd
+        run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v3
         with:
