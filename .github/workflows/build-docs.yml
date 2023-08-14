@@ -28,6 +28,8 @@ jobs:
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
       #    key: docker-${{ runner.os }}
+      - name: Copy im.xsd to artefact folder
+        run: mkdir ${{github.workspace}}/artefact
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
