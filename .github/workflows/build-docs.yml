@@ -34,16 +34,12 @@ jobs:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}:/git
           run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
-      - name: collect pdf artefat 
+      - name: Copy im.xsd to artefact folder
+        run: cp ${{ github.workspace }}/schema/im.xsd ${{ github.workspace }}/artefact/im.xsd
+      - name: Collect  artefacts 
         uses: actions/upload-artifact@v3
         with:
-          name: Inframodel (PDF)
-          path: ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
-      - name: collect md artefact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Inframodel schemas (inframodel.xsd+im.xsd)
+          name: Inframodel (PDF+XSD)
           path: |
-            ${{ github.workspace }}/artefact/inframodel.xsd
-            ${{ github.workspace }}/schema/im.xsd
-      
+            ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
+            ${{ github.workspace }}/artefact/*.xsd
