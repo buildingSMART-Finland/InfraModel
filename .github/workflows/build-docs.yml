@@ -42,6 +42,8 @@ jobs:
       - name: collect md artefact
         uses: actions/upload-artifact@v3
         with:
-          name: Inframodel (md)
-          path: ${{ github.workspace }}/artefact/inframodel.md
+          name: Inframodel schemas (inframodel.xsd+im.xsd)
+          path: |
+            ${{ github.workspace }}/artefact/inframodel.xsd
+            ${{ github.workspace }}/schema/im.xsd
       
