@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
-<!-- 4.1 Release Candidate WORKING DRAFT-->
-<!-- Date Posted: 01/04/2023 -->
+<!-- Inframodel 4.1 Release Candidate -->
 <xs:schema xmlns="http://buildingsmart.fi/inframodel/410" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/inframodel/410" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
-	<xs:include schemaLocation="inframodelEnumerations.xsd"/>
 	<xs:element name="LandXML">
 		<xs:annotation>
-			<xs:documentation>Inframodel subset of LandXML schema.
-
-Each element which has Inframodel specific implementation has a text Inframodel in annotation text. This should make it easier to find out location where there is Inframodel specific definitions.
-</xs:documentation>
+			<xs:documentation>Inframodel, subset of LandXML 1.2</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
@@ -733,7 +727,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<!-- CgPoints collection -->
 	<xs:element name="CgPoints">
 		<xs:annotation>
 			<xs:documentation>A collection of COGO points. (Cg = COGO = Cordinate Geometry)</xs:documentation>
@@ -792,35 +785,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:attribute name="fileFormat" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- shared elements  -->
-	<!--<xs:element name="Property">
-		<xs:annotation>
-			<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema. Each Property element defines one piece of data.</xs:documentation>
-			<xs:documentation>The "label" attribute defines the name of the value held in the "value" attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required"/>
-			<xs:attribute name="value" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Feature">
-		<xs:annotation>
-			<xs:documentation>Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. 
-NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use.</xs:documentation>
-			<xs:documentation>Each Property element defines one piece of data.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="Property" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="DocFileRef" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
-
-			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional"/>
-			<xs:attribute name="code" type="xs:string"/>
-			<xs:attribute name="source" use="optional"/>
-		</xs:complexType>
-	</xs:element> -->
 	<xs:element name="FeatureDictionary">
 		<xs:annotation>
 			<xs:documentation>Defines the extension sets used by other elements. </xs:documentation>
@@ -1265,7 +1229,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- Project element -->
 	<xs:element name="Project">
 		<xs:annotation>
 			<xs:documentation>Defines project base data, ie. classification system definitions </xs:documentation>
@@ -1298,7 +1261,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- Units element -->
 	<xs:element name="Units">
 		<xs:annotation>
 			<xs:documentation>File units</xs:documentation>
@@ -1422,7 +1384,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- Anglular Units element definition-->
 	<xs:simpleType name="angularType">
 		<xs:annotation>
 			<xs:documentation>angular values expressed in "decimal dd.mm.ss" units have the numeric
@@ -1436,7 +1397,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:enumeration value="decimal dd.mm.ss"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!-- CoordinateSystem element -->
 	<xs:element name="CoordinateSystem">
 		<xs:annotation>
 			<xs:documentation>Simplified coordinate systems definitions to reuse work done by EPSG (European Petroleum Survey Group),JHS 153, 154
@@ -1447,11 +1407,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 				<xs:element ref="Start" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Represents the base point of coordinate system</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element ref="FieldNote" minOccurs="0" maxOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Note as a text content of element</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="IM_coordTransformation--ltFeature--gt" minOccurs="0"/>
@@ -1490,7 +1445,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Application element -->
 	<xs:element name="Application">
 		<xs:annotation>
 			<xs:documentation>Element which identifies the software and author(s) of the file creator and editor(s).
@@ -1579,7 +1533,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:anyAttribute/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Survey collection -->
 	<xs:element name="Survey">
 		<xs:annotation>
 			<xs:documentation>Survey collection, contains the surveyed as-built data</xs:documentation>
@@ -1628,7 +1581,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--SurveyHeader Element-->
 	<xs:element name="SurveyHeader">
 		<xs:annotation>
 			<xs:documentation>We seemed to have doubled up on the survey purpose here, but the two are quite different - maybe need a different name</xs:documentation>
@@ -1644,7 +1596,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:attribute name="submissionDate" type="xs:date"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Annotation Element-->
 	<xs:element name="Annotation">
 		<xs:annotation>
 			<xs:documentation>Annotation is a descriptive string use to describe an action on survey</xs:documentation>
@@ -1656,7 +1607,6 @@ NOTE: to allow any valid content, the explicit definitions for Property, DocFile
 			<xs:attribute name="pclRef" type="parcelNameRefs"/>
 		</xs:complexType>
 	</xs:element>
-	<!--Purpose Of Survey Element-->
 	<xs:element name="PurposeOfSurvey">
 		<xs:complexType>
 			<xs:attribute name="name" type="purpSurvType" use="required"/>
@@ -1718,45 +1668,6 @@ You may also place any valid XML structure inside this tag.</xs:documentation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="GPSAntennaDetails">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="manufacturer" type="xs:string"/>
-			<xs:attribute name="model" type="xs:string"/>
-			<xs:attribute name="serialNumber" type="xs:string"/>
-			<xs:attribute name="latitude" type="xs:double"/>
-			<xs:attribute name="longitude" type="xs:double"/>
-			<xs:attribute name="altitude" type="xs:double"/>
-			<xs:attribute name="ellipsiodalHeight" type="xs:double"/>
-			<xs:attribute name="orthometricHeight" type="xs:double"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="GPSReceiverDetails">
-		<xs:annotation>
-			<xs:documentation/>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="FieldNote" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
-			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-			<xs:attribute name="manufacturer" type="xs:string"/>
-			<xs:attribute name="model" type="xs:string"/>
-			<xs:attribute name="serialNumber" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	<!-- Monuments collection -->
-	<!-- Surfaces collection -->
 	<xs:element name="Surfaces">
 		<xs:annotation>
 			<xs:documentation>Infamodel
@@ -2227,7 +2138,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:attribute name="name" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Parcels collection -->
 	<xs:element name="Parcels">
 		<xs:annotation>
 			<xs:documentation>A collection of Parcels</xs:documentation>
@@ -2298,7 +2208,6 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:attribute name="state" type="parcelStateType"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Alignments collection -->
 	<xs:element name="Alignments">
 		<xs:annotation>
 			<xs:documentation>
@@ -2397,12 +2306,6 @@ A collection of horizontal Alignments</xs:documentation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="stationIncrementDirectionType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="increasing"/>
-			<xs:enumeration value="decreasing"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:element name="StaEquation">
 		<xs:annotation>
 			<xs:documentation>Inframodel
@@ -2618,7 +2521,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
-	<!-- PipeNetworks collection -->
 	<xs:element name="PipeNetworks">
 		<xs:annotation>
 			<xs:documentation>Pipe network collection</xs:documentation>
@@ -3144,7 +3046,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="widthGutter" type="xs:double"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- PlanFeatures collection -->
 	<xs:element name="PlanFeatures">
 		<xs:annotation>
 			<xs:documentation>A collection of planimetric features, ie. footings</xs:documentation>
@@ -3175,7 +3076,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- PlanFeature class -->
 	<xs:element name="PlanFeature">
 		<xs:annotation>
 			<xs:documentation>A planimetric feature, such as building footprints, guard rails, tree lines, lightpoles or signage.</xs:documentation>
@@ -3246,17 +3146,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:enumeration value="right"/>
 			<xs:enumeration value="left"/>
 			<xs:enumeration value="both"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="roadSignType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="regulatory"/>
-			<xs:enumeration value="guide"/>
-			<xs:enumeration value="warning"/>
-			<xs:enumeration value="specificService"/>
-			<xs:enumeration value="tourist"/>
-			<xs:enumeration value="recreation-cultural"/>
-			<xs:enumeration value="emergencyManagement"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="crossSectionPnt">
@@ -3355,7 +3244,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- Roadside elements -->
 	<xs:element name="Roadside">
 		<xs:annotation>
 			<xs:documentation>Road signs</xs:documentation>
@@ -3414,8 +3302,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- Intersection elements -->
-	<!-- Support elments for AlignPIs -->
 	<xs:element name="Station" type="xs:double">
 		<xs:annotation>
 			<xs:documentation>Station Name</xs:documentation>
@@ -3601,7 +3487,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Feature definitions-->
+	<!--Inframodel-->
 	<xs:element name="IM_coordTransformation--ltFeature--gt">
 		<xs:annotation>
 			<xs:documentation>Inframodel localization --ltFeature--gt extension</xs:documentation>
@@ -4233,7 +4119,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="name--ltProperty--gt"/>
-				<xs:element ref="alignments-ltProperty--gt"/>
+				<xs:element ref="alignments--ltProperty--gt"/>
 				<xs:element ref="centreline--ltProperty--gt"/>
 				<xs:element ref="desc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
@@ -4920,7 +4806,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_coordTransformation-->
 	<xs:element name="sourceCRSname--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Name of the source geographic coordinate system</xs:documentation>
@@ -4959,7 +4844,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_controlPoint-->
 	<xs:element name="useHorizontal--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Use point for calculating the horizontal transformation</xs:documentation>
@@ -5123,7 +5007,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_codings-->
 	<xs:element name="terrainCoding--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Terrain coding system</xs:documentation>
@@ -5295,7 +5178,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_coding-->
 	<xs:element name="terrainCoding--ltProperty--gt__im_coding__">
 		<xs:annotation>
 			<xs:documentation>Terrain code</xs:documentation>
@@ -5410,7 +5292,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_proprietaryCodings-->
 	<xs:element name="proprietaryInfraCoding--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Proprietary feature coding system</xs:documentation>
@@ -5468,7 +5349,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_proprietaryCoding-->
 	<xs:element name="proprietaryInfraCoding--ltProperty--gt__im_proprietarycoding__">
 		<xs:annotation>
 			<xs:documentation>Proprietary feature code</xs:documentation>
@@ -5526,7 +5406,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_userDefinedProperties-->
 	<xs:element name="propertyLabel--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>User defined property name</xs:documentation>
@@ -5603,7 +5482,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_plan-->
 	<xs:element name="planName--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Plan name</xs:documentation>
@@ -5692,7 +5570,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_soil-->
 	<xs:element name="soiltypeGEO--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Soil type classification according to Geotekninen maaluokitus (VTT 1974)</xs:documentation>
@@ -5826,7 +5703,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_structLayer-->
 	<xs:element name="material--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Material name of the structural layer</xs:documentation>
@@ -6108,7 +5984,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_quantity-->
 	<xs:element name="areaQuantity--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Area</xs:documentation>
@@ -6206,7 +6081,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_cable-->
 	<xs:element name="label--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Cable label</xs:documentation>
@@ -6283,7 +6157,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_spatialZone-->
 	<xs:element name="description--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Spatial zone description</xs:documentation>
@@ -6341,7 +6214,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_stringlineLayer-->
 	<xs:element name="name--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Unique name</xs:documentation>
@@ -6380,7 +6252,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="alignments-ltProperty--gt">
+	<xs:element name="alignments--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>List of alignments which are used to form the surface (sorted from left to right)</xs:documentation>
 		</xs:annotation>
@@ -6418,7 +6290,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_switch-->
 	<xs:element name="switchType--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Switch type</xs:documentation>
@@ -6483,7 +6354,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_crossSect-->
 	<xs:element name="pavementClass--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Pavement class</xs:documentation>
@@ -6655,7 +6525,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_footing-->
 	<xs:element name="footingHeight--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Footing height</xs:documentation>
@@ -6789,7 +6658,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_railing-->
 	<xs:element name="railingType--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Railing type</xs:documentation>
@@ -6980,7 +6848,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_fence-->
 	<xs:element name="fenceType--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Type of fence</xs:documentation>
@@ -7076,7 +6943,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_surfaceStructure-->
 	<xs:element name="thickness--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Surface material thickness</xs:documentation>
@@ -7115,7 +6981,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_planFeature-->
 	<xs:element name="type--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Type of plan feature</xs:documentation>
@@ -7135,7 +7000,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_roadSign-->
 	<xs:element name="signName--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Sign name</xs:documentation>
@@ -7337,7 +7201,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_pipeNetworkType-->
 	<xs:element name="pipeNetworkType--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Pipe network type</xs:documentation>
@@ -7367,7 +7230,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_struct-->
 	<xs:element name="structLabel--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Struct name or identifier</xs:documentation>
@@ -7707,7 +7569,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_pipe-->
 	<xs:element name="pipeLabel--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Pipe name or identifier</xs:documentation>
@@ -7831,7 +7692,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_cgpoints-->
 	<xs:element name="toleranceAmin--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Horizontal mininum tolerance in direction dirA (e.g. along referenced alignment, behind = non-positive number)</xs:documentation>
@@ -8124,7 +7984,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!--Typed Inframodel Property definitions, IM_survey-->
 	<xs:element name="accuracyType--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Survey method and its accuracy (from Finnish "Infra Rakentajakoodaus" code list)</xs:documentation>
