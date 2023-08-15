@@ -45,3 +45,12 @@ jobs:
           path: |
             ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
             ${{ github.workspace }}/artefact/*.xsd
+      - name: Release files
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
+            ${{ github.workspace }}/artefact/inframodel.xsd
+            ${{ github.workspace }}/artefact/im.xsd
+        
