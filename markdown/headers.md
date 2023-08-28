@@ -110,7 +110,7 @@ Transverse Mercator Map projection \<im:Projection>.\<im:TransverseMercator> tra
 
 #### Local transformation
 
-In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (northing,easting,elevation) is elevation_corrected = elevation + (a*northing + b*easting +c).
+In LocalTransformation \<im:LocalTransformation>, Helmert2D \<im:Helmert2D> transforms the projected (x,y,z) coordinates to the local coordinate system. FittedPlane \<im:FittedPlane> corrects height values using a plane as the geoid model. The corrected height at point (northing,easting,elevation) is elevation\_corrected = elevation + (a\*northing + b\*easting + c).
 
 {{xtabulate im:Helmert2D ../schema/im.xsd}}
 
