@@ -1,7 +1,7 @@
 {{schemafile ../schema/inframodel-raw.xsd}}
 # Inframodel \<Feature> extensions {#sec:inframodelfeatureextensions}
 
-Inframodel transfer files fully conform to the LandXML v1.2 schema (with one exeption\*), but some extensions have been made using the Feature-mechanism. 
+Inframodel transfer files fully conform to the LandXML v1.2 schema (with one exception\*), but some extensions have been made using the Feature-mechanism. 
 This section lists these Inframodel extensions, providing an index to the Inframodel Feature Dictionary: the **\<FeatureDictionary>** element in Inframodel transfer file with the **name** *'inframodel'* (specifying the **\<Feature>** elements in the file with attribute **source** as *'inframodel'* and the attribute **code** being labeled with ''*IM_*' -prefix).
 
 NB: In addition to these extensions, Inframodel specifies many restrctions on the use of LandXML elements and their attributes. These restrictions are described in this document. Also, further extensions have been specified in separate schema (im.xsd) for 1) Local Coordinate Transformation ({{refsec typecodingsystems}}) 2) Metadata ({{refsec metadata}}) and 3) Deep Foundations ({{refsec deepfoundations}}).
