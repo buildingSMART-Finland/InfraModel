@@ -54,10 +54,10 @@ Angular (angularUnit) and direction (directionUnit) units are defined counter-cl
 The height and coordinate system information is defined in the element \<CoordinateSystem>. 
 Exactly one coordinate system shall be defined:
 
-- By defining the \<CoordinateSystem>.epsgCode using the European Petrol Survey Group (EPSG) naming system without a prefix.
-- Or by defining local system(s) with \<CoordinateSystem>.horizontalCoordinateSystemName (and optionally the \<CoordinateSystem>.verticalCoordinateSystemName)  
+- by defining the \<CoordinateSystem>.epsgCode using the European Petrol Survey Group (EPSG) naming system without a prefix.
+- or by defining local system(s) with \<CoordinateSystem>.horizontalCoordinateSystemName (and optionally the \<CoordinateSystem>.verticalCoordinateSystemName).
 
-\<CoordinateSystem>.desc attribute may provide informal information about the system used).
+\<CoordinateSystem>.desc attribute may provide informal information about the system used.
 
 It is also possible to set a rotationAngle for the coordinate system.
 
