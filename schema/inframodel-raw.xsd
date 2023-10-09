@@ -8036,7 +8036,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:enumeration value="wood"/>
 			<xs:enumeration value="brick"/>
 			<xs:enumeration value="rock"/>
-			<xs:enumeration value="cement"/>
+			<xs:enumeration value="concrete"/>
 			<xs:enumeration value="aluminium"/>
 			<xs:enumeration value="copper"/>
 			<xs:enumeration value="lead"/>
