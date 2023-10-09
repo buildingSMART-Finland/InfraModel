@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
 <!-- Inframodel 4.1 Release Candidate -->
 <xs:schema xmlns="http://buildingsmart.fi/inframodel/410" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart.fi/inframodel/410" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
 	<xs:element name="LandXML">
@@ -1452,17 +1453,11 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:sequence>
-				<xs:choice minOccurs="0">
+				<xs:element ref="Author" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Author information</xs:documentation>
 					</xs:annotation>
-					<xs:element ref="Author" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Identifies the author(s)  of the file.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:choice>
+				</xs:element>
 			</xs:sequence>
 			<xs:attribute name="name" type="xs:string" use="required">
 				<xs:annotation>
@@ -4925,7 +4920,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:float" use="required">
 				<xs:annotation>
-					<xs:documentation>Logitude value in radians</xs:documentation>
+					<xs:documentation>Longitude value in radians</xs:documentation>
 					<xs:documentation>Example:0.0</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

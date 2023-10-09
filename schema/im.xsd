@@ -48,8 +48,16 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="im:SourceCRS"/>
-				<xs:element ref="im:TargetCRS"/>
+				<xs:element ref="im:SourceCRS">
+					<xs:annotation>
+						<xs:documentation>SourceCRS describes the source coordinate reference system</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="im:TargetCRS">
+					<xs:annotation>
+						<xs:documentation>TargetCRS describes parameters for the target coordinate reference system</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="im:DatumTransformation" minOccurs="0"/>
 				<xs:element ref="im:Projection">
 					<xs:annotation>
@@ -251,12 +259,12 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 			</xs:attribute>
 			<xs:attribute name="semiMajorAxis" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Ellipsoid semi-major axis</xs:documentation>
+					<xs:documentation>Ellipsoid semi-major axis, meters</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="inverseFlattening" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Ellipsoid flattening</xs:documentation>
+					<xs:documentation>Ellipsoid inverse flattening</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -273,7 +281,7 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Prime meridian value</xs:documentation>
+					<xs:documentation>Prime meridian value, decimal degrees</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -327,22 +335,22 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 		<xs:complexType>
 			<xs:attribute name="falseEasting" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>False easting value</xs:documentation>
+					<xs:documentation>False easting value,meters</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="falseNorthing" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>False northing value</xs:documentation>
+					<xs:documentation>False northing value,meters</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="longitude0" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Projection center longitude</xs:documentation>
+					<xs:documentation>Projection center longitude,decimal degrees</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="latitude0" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Projection center latitude</xs:documentation>
+					<xs:documentation>Projection center latitude,decimal degrees</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="scale0" type="xs:double" use="required">
@@ -544,9 +552,9 @@ aUIID=924a68ba-665f-4ea0-a830-26e80112b5dc</xs:documentation>
 					<xs:documentation>Date</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="Type" type="xs:string" use="required">
+			<xs:attribute name="Datasource" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Type</xs:documentation>
+					<xs:documentation>Source of this data</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
