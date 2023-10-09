@@ -192,12 +192,6 @@
 		</xs:annotation>
 		<xs:restriction base="xs:double"/>
 	</xs:simpleType>
-	<xs:simpleType name="slope">
-		<xs:annotation>
-			<xs:documentation>This item is the  slope. Unit of measure for this item is PERCENT %.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:double"/>
-	</xs:simpleType>
 	<!-- Specific attribute types for non-ID based referencing to LandXML elements -->
 	<xs:simpleType name="pointNameRef">
 		<xs:annotation>
@@ -216,6 +210,12 @@
 			<xs:documentation>A reference name value referring to a CgPoints name attribute. An attribute if this type contains the value of a CgPoints element "name" attribute that exists elsewhere the instance data.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="slope">
+		<xs:annotation>
+			<xs:documentation>This item is the  slope. Unit of measure for this item is PERCENT %.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double"/>
 	</xs:simpleType>
 	<xs:simpleType name="cgPointsNameRefs">
 		<xs:annotation>
@@ -656,6 +656,16 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:enumeration value="curve"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="nameType">
+		<xs:annotation>
+			<xs:documentation>Limit use of special characters and unicode characters outside of basic latin range.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+			<xs:pattern value="[a-zA-Z0-9 \-,\._]"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="breakLineType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="standard"/>
@@ -673,7 +683,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="Point3dOpt">
-				<xs:attribute name="name" type="xs:string">
+				<xs:attribute name="name" type="nameType">
 					<xs:annotation>
 						<xs:documentation>Unique name</xs:documentation>
 					</xs:annotation>
@@ -704,7 +714,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 	<xs:complexType name="PointType3dReq">
 		<xs:simpleContent>
 			<xs:extension base="Point3dReq">
-				<xs:attribute name="name" type="xs:string">
+				<xs:attribute name="name" type="nameType">
 					<xs:annotation>
 						<xs:documentation>Unique name</xs:documentation>
 						<xs:documentation>Example:--uid--</xs:documentation>
@@ -799,7 +809,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Feature dictionary name</xs:documentation>
 				</xs:annotation>
@@ -878,7 +888,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<!-- Here PntList2D represents 2D planametric coordinate pairs expressed as space delimited Northing Easting pairs. -->
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -929,7 +939,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		<xs:complexType mixed="true">
 			<xs:simpleContent>
 				<xs:extension base="ChainType">
-					<xs:attribute name="name" type="xs:string"/>
+					<xs:attribute name="name" type="nameType"/>
 					<xs:attribute name="desc" type="xs:string"/>
 					<xs:attribute name="code" type="xs:string"/>
 					<xs:attribute name="state" type="stateType"/>
@@ -973,7 +983,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<xs:documentation>Curve radius</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1058,7 +1068,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<xs:documentation>Spiral constant</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1107,7 +1117,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1159,7 +1169,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<xs:documentation>Cross section station</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1181,7 +1191,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:sequence>
 				<xs:element ref="PntList2D" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="nameType" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="state" type="stateType"/>
 		</xs:complexType>
@@ -1208,7 +1218,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1242,7 +1252,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
 			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Project name</xs:documentation>
 					<xs:documentation>Example:E66</xs:documentation>
@@ -1459,7 +1469,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Application name</xs:documentation>
 				</xs:annotation>
@@ -1581,7 +1591,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:documentation>We seemed to have doubled up on the survey purpose here, but the two are quite different - maybe need a different name</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
-			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="name" type="nameType" use="optional"/>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="purpose" type="purposeType"/>
 			<xs:attribute name="surveyor" type="xs:string"/>
@@ -1597,14 +1607,14 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="type" type="annotationType" use="required"/>
-			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="name" type="nameType"/>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="pclRef" type="parcelNameRefs"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PurposeOfSurvey">
 		<xs:complexType>
-			<xs:attribute name="name" type="purpSurvType" use="required"/>
+			<xs:attribute name="name" type="nameType" use="required"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="FieldNote">
@@ -1687,7 +1697,7 @@ A collection of surface models.</xs:documentation>
 					<xs:documentation>Description</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1720,7 +1730,7 @@ A collection of surface models.</xs:documentation>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1829,7 +1839,7 @@ The sub element PntList3D is group of points is defined by a 3D
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1908,7 +1918,7 @@ The sub element PntList3D is group of points is defined by a 3D
 					<xs:documentation>Description</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -1968,7 +1978,7 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 					<xs:documentation>Description</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -2016,7 +2026,7 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 					<xs:documentation>Description</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -2115,7 +2125,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 				<xs:element ref="SurfVolume" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="name" type="nameType"/>
 			<xs:attribute name="surfVolCalcMethod" type="surfVolCMethodType" use="required"/>
 		</xs:complexType>
 	</xs:element>
@@ -2130,7 +2140,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 			<xs:attribute name="volFill" type="xs:double" use="required"/>
 			<xs:attribute name="volTotal" type="xs:double" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="name" type="nameType"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Parcels">
@@ -2145,7 +2155,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="desc" type="xs:string"/>
-			<xs:attribute name="name" type="xs:string"/>
+			<xs:attribute name="name" type="nameType"/>
 			<xs:attribute name="state" type="stateType"/>
 		</xs:complexType>
 	</xs:element>
@@ -2167,7 +2177,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 								</xs:choice>
 								<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
-							<xs:attribute name="name" type="xs:string">
+							<xs:attribute name="name" type="nameType">
 								<xs:annotation>
 									<xs:documentation>Unique name</xs:documentation>
 								</xs:annotation>
@@ -2192,7 +2202,7 @@ For example b="5" has breakline data on TIN face sides 1 and 3.
 				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="nameType" use="required"/>
 			<xs:attribute name="oID" type="xs:string"/>
 			<xs:attribute name="area" type="xs:double"/>
 			<xs:attribute name="desc" type="xs:string"/>
@@ -2218,7 +2228,7 @@ A collection of horizontal Alignments</xs:documentation>
 				<xs:element ref="IM_stringlineLayers--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -2269,7 +2279,7 @@ A collection of horizontal Alignments</xs:documentation>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -2349,7 +2359,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				</xs:choice>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -2382,7 +2392,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:sequence>
 				<xs:element ref="PntList2D" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="nameType" use="required"/>
 			<xs:attribute name="desc" type="xs:string"/>
 			<xs:attribute name="state" type="stateType"/>
 		</xs:complexType>
@@ -2408,7 +2418,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					</xs:element>
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -2526,7 +2536,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -2567,7 +2577,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_pipeNetworkType--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -2631,7 +2641,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -2892,7 +2902,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3054,7 +3064,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3090,7 +3100,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 							</xs:choice>
 							<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
-						<xs:attribute name="name" type="xs:string">
+						<xs:attribute name="name" type="nameType">
 							<xs:annotation>
 								<xs:documentation>Unique name</xs:documentation>
 							</xs:annotation>
@@ -3119,7 +3129,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_spatialZone--ltFeature--gt" minOccurs="0"/>
 			</xs:choice>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3165,7 +3175,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3202,7 +3212,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3314,7 +3324,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required">
+			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3420,7 +3430,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				</xs:choice>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3450,7 +3460,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="End"/>
 				<xs:element ref="IM_switch--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string">
+			<xs:attribute name="name" type="nameType">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 				</xs:annotation>
@@ -3493,7 +3503,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="sourceEPSGcode--ltProperty--gt"/>
 				<xs:element ref="IM_controlPoint--ltFeature--gt" minOccurs="3" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3560,7 +3570,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optiona uniquel name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3604,7 +3614,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="infraCodingDesc--ltProperty--gt"/>
 				<xs:element ref="infraCodingSourceRef--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3641,7 +3651,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="infraCoding--ltProperty--gt__im_coding__" minOccurs="0"/>
 				<xs:element ref="infraCodingDesc--ltProperty--gt__im_coding__" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3671,7 +3681,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="proprietaryInfraCodingDesc--ltProperty--gt"/>
 				<xs:element ref="proprietaryInfraCodingSourceRef--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3701,7 +3711,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="proprietaryInfraCodingDesc--ltProperty--gt__im_proprietarycoding__"/>
 				<xs:element ref="proprietaryInfraCodingSource--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3732,7 +3742,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="propertyDescription--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="propertySource--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3775,7 +3785,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3809,7 +3819,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3850,7 +3860,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3892,7 +3902,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3938,7 +3948,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -3969,7 +3979,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4004,7 +4014,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4038,7 +4048,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4069,7 +4079,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4099,7 +4109,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4133,7 +4143,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4161,7 +4171,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4191,7 +4201,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4220,7 +4230,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4259,7 +4269,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4302,7 +4312,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4347,7 +4357,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4381,7 +4391,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4414,7 +4424,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4465,7 +4475,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4493,7 +4503,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4537,7 +4547,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4576,7 +4586,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4614,7 +4624,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4650,7 +4660,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4687,7 +4697,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4729,7 +4739,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4764,7 +4774,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -4793,7 +4803,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:inframodel</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Optional unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>

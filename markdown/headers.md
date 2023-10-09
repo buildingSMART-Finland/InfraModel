@@ -11,8 +11,6 @@ Example:
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-Note, even if it is possible to use scandic or other special unicode characters in Inframodel XML files, they should not be used in **name**-attribute values for compatibility reasons. 
-
 
 ## LandXML container {#sec:landxmlcontainer}
 
