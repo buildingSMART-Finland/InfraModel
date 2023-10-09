@@ -1897,6 +1897,7 @@ The sub element PntList3D is group of points is defined by a 3D
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_quantity--ltFeature--gt" minOccurs="0"/>
+				<xs:element ref="IM_surfaceStructure--ltFeature--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="bndType" type="surfBndType" use="required">
 				<xs:annotation>
