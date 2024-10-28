@@ -1861,7 +1861,6 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Boundary" maxOccurs="unbounded"/>
-				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1942,7 +1941,6 @@ The collection of breaklines that were used to define the surface.</xs:documenta
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="RetWall" minOccurs="0" maxOccurs="0"/>
-				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1963,7 +1961,6 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:any namespace="##local"/>
 			</xs:sequence>
 			<xs:attribute name="brkType" type="breakLineType">
 				<xs:annotation>
