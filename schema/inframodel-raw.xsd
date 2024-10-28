@@ -47,7 +47,7 @@
 				</xs:element>
 				<xs:element ref="Survey" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="FeatureDictionary" maxOccurs="unbounded"/>
-				<xs:any namespace="##other" processContents="skip" minOccurs="0">
+				<xs:any namespace="im" processContents="strict" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Objects in "im" namespace as  Metadata, Local Coordinate Transformations and Pile groups can be transfered in this section</xs:documentation>
 					</xs:annotation>
