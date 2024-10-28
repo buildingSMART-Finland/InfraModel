@@ -2688,7 +2688,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string">
@@ -2720,7 +2720,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string" use="optional">
@@ -2752,7 +2752,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string" use="optional">
@@ -2784,7 +2784,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string" use="optional">
@@ -2821,12 +2821,12 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="optional">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Material</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="optional">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -2944,7 +2944,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -2981,7 +2981,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -4531,6 +4531,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="surfaceProfile--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
 				<xs:annotation>
@@ -4644,6 +4645,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="strengthClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="surfaceProfile--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_pipe">
 				<xs:annotation>
@@ -8031,6 +8033,25 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="surfaceProfile--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Surface profile of struct/pipe</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceProfile">
+				<xs:annotation>
+					<xs:documentation>Fixed value,surfaceProfile</xs:documentation>
+					<xs:documentation>Example:surfaceProfile</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="IMPipeNetworkMaterialProfile" use="required">
+				<xs:annotation>
+					<xs:documentation>Surface profile of struct/pipe</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:simpleType name="IMPipeNetworkMaterialType">
 		<xs:annotation>
 			<xs:documentation>List of materials in Inframodel Pipe Network Structs and Pipes (@material)</xs:documentation>
@@ -8061,6 +8082,16 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:enumeration value="fiberComposite"/>
 			<xs:enumeration value="rubber"/>
 			<xs:enumeration value="bitum"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IMPipeNetworkMaterialProfile">
+		<xs:annotation>
+			<xs:documentation>List of pipe surface profiles in Inframodel Pipe Network Structs and Pipes (@surfaceProfile property)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="flat"/>
+			<xs:enumeration value="corrugated"/>
 			<xs:enumeration value="other"/>
 		</xs:restriction>
 	</xs:simpleType>
