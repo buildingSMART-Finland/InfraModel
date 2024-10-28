@@ -4523,7 +4523,11 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="bottomThickness--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentType--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="equipmentDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentDesc--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Eqiuipment description</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
@@ -4600,7 +4604,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentType--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="equipmentDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
@@ -7491,7 +7495,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="equipmentDesc-ltProperty--gt">
+	<xs:element name="equipmentDesc--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Eqiuiment description</xs:documentation>
 		</xs:annotation>
