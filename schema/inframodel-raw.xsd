@@ -662,7 +662,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="255"/>
-			<xs:pattern value="[a-zA-Z0-9 \-,\._]"/>
+			<xs:pattern value="([a-zA-Z0-9 -,._])+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="breakLineType">
