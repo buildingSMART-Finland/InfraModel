@@ -71,7 +71,6 @@
 					<xs:documentation>Example:1.2</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 		<!-- All name-attributes must have unique value within Inframodel-file -->
 		<xs:unique name="uName">
@@ -1453,7 +1452,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<xs:documentation>Example:0.0</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Application">
@@ -1745,7 +1743,6 @@ A collection of surface models.</xs:documentation>
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Definition">
@@ -1854,7 +1851,6 @@ The sub element PntList3D is group of points is defined by a 3D
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Boundaries">
@@ -2602,7 +2598,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:proposed</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Pipes">
