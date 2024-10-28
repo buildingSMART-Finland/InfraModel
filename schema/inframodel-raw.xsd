@@ -6576,11 +6576,18 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:rimLoad</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="value" type="xs:string" use="required">
+			<xs:attribute name="value" use="required">
 				<xs:annotation>
 					<xs:documentation>Foundation type</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Shallow"/>
+						<xs:enumeration value="Deep"/>
+						<xs:enumeration value="Other"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
