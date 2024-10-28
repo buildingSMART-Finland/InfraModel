@@ -2530,7 +2530,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="nameType" use="required">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
