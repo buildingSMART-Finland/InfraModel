@@ -2915,7 +2915,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Sump elevation</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="state" type="stateType" use="required">
+			<xs:attribute name="state" type="stateType" use="optional">
 				<xs:annotation>
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
