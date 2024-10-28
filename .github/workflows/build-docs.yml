@@ -52,7 +52,7 @@ jobs:
           view_top: 1
       - name: "Print result"
         run: |
-          echo "Latest release info:
+          echo "Latest release info:"
           echo "id: ${{ steps.last_release.outputs.id }}"
           echo "name: ${{ steps.last_release.outputs.name }}"
           echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
