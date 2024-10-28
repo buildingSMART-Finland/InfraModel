@@ -29,6 +29,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
         uses: actions/checkout@v3
+      - name: Check latest release tag (if one exists)
+        id: last_release
+        uses: InsonusK/get-latest-release@v1.1.0
+        with:
+          myToken: ${{ github.token }}
+          exclude_types: "prerelease,draft"
+          view_top: 1
+      - name: Check out release tag
+        if: ${{ steps.last_release.outputs.tag_name }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.last_release.outputs.tag_name }}
+          path: lastrelease
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
@@ -42,25 +55,7 @@ jobs:
           options: -v ${{ github.workspace }}:/git
           run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
       - name: Copy im.xsd to artefact folder
-        run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
-      - name: "get latest release"
-        id: last_release
-        uses: InsonusK/get-latest-release@v1.1.0
-        with:
-          myToken: ${{ github.token }}
-          exclude_types: "prerelease,draft"
-          view_top: 1
-      - name: "Print result"
-        run: |
-          echo "Latest release info:"
-          echo "id: ${{ steps.last_release.outputs.id }}"
-          echo "name: ${{ steps.last_release.outputs.name }}"
-          echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
-          echo "created_at: ${{ steps.last_release.outputs.created_at }}"
-          echo "draft: ${{ steps.last_release.outputs.draft }}"
-          echo "prerelease: ${{ steps.last_release.outputs.prerelease }}"
-          echo "url: ${{ steps.last_release.outputs.url }}"
-          echo "html_url: ${{ steps.last_release.outputs.html_url }}"
+        run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd  
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v3
         with:
