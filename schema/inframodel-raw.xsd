@@ -3826,7 +3826,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="material--ltProperty--gt"/>
+				<xs:element ref="material--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="grainSizeMin--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="grainSizeMax--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="nominalThickness--ltProperty--gt" minOccurs="0"/>
@@ -5720,8 +5720,8 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Material name of the structural layer according to applicable guideline, i.e:
-- Asfalttinormit 2011 (PANK Ry. 2011)
-- Tierakenteen suunnittelu (Tiehallinto 2005)
+- Asfalttinormit 2023 (PANK Ry. 2023)
+- Tierakenteen suunnittelu (Väylä 2018)
 - Tietoa tiensuunnitteluun 71D (Tiehallinto 2005)
 - Paallysrakenteen stabilointi (Tiehallinto 2007)
 - Kevennysrakenteiden suunnittelu (Liikennevirasto 2011)</xs:documentation>
