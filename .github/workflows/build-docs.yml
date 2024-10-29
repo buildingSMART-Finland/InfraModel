@@ -28,7 +28,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: main
           fetch-depth: 0
@@ -39,15 +39,21 @@ jobs:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
           view_top: 1
-      - name: Print release tag name
-        run: |  
-          echo "release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
       - name: Check out release tag
         if: ${{ steps.last_release.outputs.tag_name }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ steps.last_release.outputs.tag_name }}
           path: lastrelease
+      - name: Print release tag name
+        run: |  
+          echo "release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
+          cd /lastrelease
+          echo "last release branch:"
+          git branch --show-current
+          cd /git
+          echo "current branch:"
+          git branch --show-current
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
