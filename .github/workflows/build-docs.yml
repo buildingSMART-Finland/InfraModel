@@ -91,7 +91,7 @@ jobs:
         run: |
             cp ${{github.workspace}}/main/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
             cp ${{github.workspace}}/main/artefact/*.* ${{github.workspace}}/artefact/
-            cp ${{github.workspace}}/lastrelease/staging/main.diff ${{github.workspace}}/artefact/diff.md
+            cp ${{github.workspace}}/lastrelease/staging/diff.md ${{github.workspace}}/artefact/diff.md
             cp ${{github.workspace}}/lastrelease/staging/git.log ${{github.workspace}}/artefact/git.log
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v3
@@ -110,5 +110,6 @@ jobs:
           files: |
             ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
             ${{ github.workspace }}/artefact/inframodel.xsd
+            ${{ github.workspace }}/artefact/Inframodel_diff.pdf
             ${{ github.workspace }}/artefact/im.xsd
         
