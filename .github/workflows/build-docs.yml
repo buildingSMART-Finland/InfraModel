@@ -59,15 +59,16 @@ jobs:
           run: |
             /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
             git config --global --add safe.directory /lastrelease
+            mkdir /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md /lastrelease/schema/inframodel-raw.xsd inframodel.xsd
             git diff --no-index --word-diff --patch-with-stat --minimal --patience /git/staging/main.md /lastrelease/staging/main.md > /lastrelease/staging/main.diff
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/git.log
       - name: Copy im.xsd to artefact folder
         run: |
-            cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
-            cp /lastrelease/staging/main.diff ${{github.workspace}}/artefact/main.diff
-            cp /lastrelease/staging/git.log ${{github.workspace}}/artefact/git.log
+            cp ${{github.workspace}}/main/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
+            cp ${{github.workspace}}/lastrelease/staging/main.diff ${{github.workspace}}/artefact/main.diff
+            cp ${{github.workspace}}/lastrelease/staging/git.log ${{github.workspace}}/artefact/git.log
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v3
         with:
