@@ -39,6 +39,9 @@ jobs:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
           view_top: 1
+      - name: Print release tag name
+        run: |  
+          echo "release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
       - name: Check out release tag
         if: ${{ steps.last_release.outputs.tag_name }}
         uses: actions/checkout@v3
