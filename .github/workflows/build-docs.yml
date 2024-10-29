@@ -50,10 +50,10 @@ jobs:
           echo "release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
           cd ${{ github.workspace }}/lastrelease
           echo "last release branch:"
-          git branch --show-current
-          cd ${{ github.workspace }}/git
+          git rev-parse --abbrev-ref HEAD
+          cd ${{ github.workspace }}/main
           echo "current branch:"
-          git branch --show-current
+          git rev-parse --abbrev-ref HEAD
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
