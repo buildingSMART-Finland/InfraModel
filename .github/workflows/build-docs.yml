@@ -81,7 +81,7 @@ jobs:
             mkdir /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md
             cp -r /docbuild/staging/. /lastrelease/staging
-            wdiff -w '==' -x '==' -y '~~' -z '~~' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
+            wdiff -n -w "<strike>" -x "</strike>" -y "<mark>" -z "</mark>" /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
             # diff --new-line-format='==%l==' --old-line-format='~~%l~~' --unchanged-line-format='%L' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
