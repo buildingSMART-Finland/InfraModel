@@ -66,9 +66,7 @@ jobs:
             mkdir /lastrelease/staging
             cp -r /docbuild/staging/. /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md /lastrelease/schema/inframodel-raw.xsd inframodel.xsd
-            git diff --no-index --word-diff /git/staging/main.md /lastrelease/staging/main.md > /lastrelease/staging/main.diff
-            cat /git/staging/main.md 
-            cat /lastrelease/staging/main.md
+            diff --u /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
       - name: Copy im.xsd to artefact folder
