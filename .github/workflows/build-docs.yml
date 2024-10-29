@@ -50,7 +50,9 @@ jobs:
       #  with:
       #    key: docker-${{ runner.os }}
       - name: Create artefact folder
-        run: mkdir ${{github.workspace}}/main/artefact
+        run: |
+          mkdir ${{github.workspace}}/main/artefact
+          mkdir ${{github.workspace}}/artefact       
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
@@ -67,6 +69,7 @@ jobs:
       - name: Copy im.xsd to artefact folder
         run: |
             cp ${{github.workspace}}/main/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
+            cp ${{github.workspace}}/main/artefact/*.* ${{github.workspace}}/artefact/
             cp ${{github.workspace}}/lastrelease/staging/main.diff ${{github.workspace}}/artefact/main.diff
             cp ${{github.workspace}}/lastrelease/staging/git.log ${{github.workspace}}/artefact/git.log
       - name: Collect  artefacts 
