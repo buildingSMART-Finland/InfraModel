@@ -48,16 +48,22 @@ jobs:
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
       #    key: docker-${{ runner.os }}
-      - name: Copy im.xsd to artefact folder
-        run: mkdir ${{github.workspace}}/artefact
+      - name: Create artefact folder
+        run: mkdir ${{github.workspace}}/main/artefact
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}/main:/git -v ${{ github.workspace }}/lastrelease:/lastrelease
-          run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
+          run: |
+            /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
+            /docbuild/default-build.sh /lastrelease/markdown/main.md /lastrelease/schema/inframodel-raw.xsd inframodel.xsd
+            git diff --no-index --word-diff --patch-with-stat --minimal --patience /git/staging/main.md /lastrelease/staging/main.md > /lastrelease/staging/main.diff
+            
       - name: Copy im.xsd to artefact folder
-        run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd  
+        run: |
+            cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
+            cp /lastrelease/staging/main.diff ${{github.workspace}}/artefact/main.diff
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v3
         with:
@@ -65,6 +71,7 @@ jobs:
           path: |
             ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
             ${{ github.workspace }}/artefact/*.xsd
+            ${{ github.workspace }}/artefact/main.diff
       - name: Release files
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
