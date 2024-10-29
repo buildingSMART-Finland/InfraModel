@@ -60,12 +60,15 @@ jobs:
           options: -v ${{ github.workspace }}/main:/git -v ${{ github.workspace }}/lastrelease:/lastrelease
           run: |
             /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
+            mkdir /git/staging
+            cp /docbuild/staging /git/staging
             git config --global --add safe.directory /lastrelease
             mkdir /lastrelease/staging
+            cp /docbuild/staging /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md /lastrelease/schema/inframodel-raw.xsd inframodel.xsd
             git diff --no-index --word-diff --patch-with-stat --minimal --patience /git/staging/main.md /lastrelease/staging/main.md > /lastrelease/staging/main.diff
             cd /git
-            git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/git.log
+            git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
       - name: Copy im.xsd to artefact folder
         run: |
             cp ${{github.workspace}}/main/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
