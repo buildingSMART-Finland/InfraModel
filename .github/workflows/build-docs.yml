@@ -79,8 +79,8 @@ jobs:
             cp -r /docbuild/staging/. /git/staging 
             git config --global --add safe.directory /lastrelease
             mkdir /lastrelease/staging
+            /docbuild/default-build.sh /lastrelease/markdown/main.md
             cp -r /docbuild/staging/. /lastrelease/staging
-            /docbuild/default-build.sh /lastrelease/markdown/main.md /lastrelease/schema/inframodel-raw.xsd inframodel.xsd
             diff -u /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
