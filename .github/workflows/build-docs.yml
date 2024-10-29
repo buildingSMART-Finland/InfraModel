@@ -48,10 +48,10 @@ jobs:
       - name: Print release tag name
         run: |  
           echo "release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
-          cd /lastrelease
+          cd ${{ github.workspace }}/lastrelease
           echo "last release branch:"
           git branch --show-current
-          cd /git
+          cd ${{ github.workspace }}/git
           echo "current branch:"
           git branch --show-current
       #- name: Cache Docker images.
