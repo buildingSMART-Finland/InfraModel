@@ -61,10 +61,10 @@ jobs:
           run: |
             /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
             mkdir /git/staging
-            cp /docbuild/staging /git/staging
+            cp -r /docbuild/staging /git/staging 
             git config --global --add safe.directory /lastrelease
             mkdir /lastrelease/staging
-            cp /docbuild/staging /lastrelease/staging
+            cp -r /docbuild/staging /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md /lastrelease/schema/inframodel-raw.xsd inframodel.xsd
             git diff --no-index --word-diff --patch-with-stat --minimal --patience /git/staging/main.md /lastrelease/staging/main.md > /lastrelease/staging/main.diff
             cd /git
