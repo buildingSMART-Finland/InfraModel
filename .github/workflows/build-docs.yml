@@ -45,6 +45,10 @@ jobs:
         with:
           ref: ${{ steps.last_release.outputs.tag_name }}
           path: lastrelease
+      - name: switch branch 
+        run: |
+          cd ${{ github.workspace }}/lastrelease
+          git checkout -b  ${{ steps.last_release.outputs.tag_name }}
       - name: Print release tag name
         run: |  
           echo "release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
