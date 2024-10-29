@@ -81,10 +81,12 @@ jobs:
             mkdir /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md
             cp -r /docbuild/staging/. /lastrelease/staging
-            wdiff -n -w "<strike>" -x "</strike>" -y "<mark>" -z "</mark>" /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
-            # diff --new-line-format='==%l==' --old-line-format='~~%l~~' --unchanged-line-format='%L' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
+            wdiff -v
+            wdiff -n -w "<strike>" -x "</strike>" -y "<mark>" -z "</mark>" /lastrelease/staging/main.md /git/staging/main.md
+            wdiff /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
+      # diff --new-line-format='==%l==' --old-line-format='~~%l~~' --unchanged-line-format='%L' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
       - name: Copy im.xsd to artefact folder
         run: |
             cp ${{github.workspace}}/main/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
