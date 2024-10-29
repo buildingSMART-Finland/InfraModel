@@ -83,7 +83,7 @@ jobs:
             cp -r /docbuild/staging/. /lastrelease/staging
             wdiff -v
             wdiff -n -w "<strike>" -x "</strike>" -y "<mark>" -z "</mark>" /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/diff.md
-            /docbuild/pandoc-gen.py /lastrelease/staging/diff.md Inframodel_diff.pdf
+            python /docbuild/pandoc-gen.py /lastrelease/staging/diff.md Inframodel_diff.pdf
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
       # diff --new-line-format='==%l==' --old-line-format='~~%l~~' --unchanged-line-format='%L' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
@@ -101,7 +101,7 @@ jobs:
             ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
             ${{ github.workspace }}/artefact/*.xsd
             ${{ github.workspace }}/artefact/Inframodel_diff.pdf
-            ${{ github.workspace }}/artefact/main.diff
+            ${{ github.workspace }}/artefact/diff.md
             ${{ github.workspace }}/artefact/git.log
       - name: Release files
         uses: softprops/action-gh-release@v1
