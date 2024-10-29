@@ -81,7 +81,7 @@ jobs:
             mkdir /lastrelease/staging
             /docbuild/default-build.sh /lastrelease/markdown/main.md
             cp -r /docbuild/staging/. /lastrelease/staging
-            diff --new-line-format='==%L==' --old-line-format='~~%L~~' --unchanged-line-format='%L' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
+            diff --new-line-format='==%l==' --old-line-format='~~%l~~' --unchanged-line-format='%l' /lastrelease/staging/main.md /git/staging/main.md > /lastrelease/staging/main.diff
             cd /git
             git log --oneline ${{ steps.last_release.outputs.tag_name }}..HEAD > /lastrelease/staging/git.log
       - name: Copy im.xsd to artefact folder
