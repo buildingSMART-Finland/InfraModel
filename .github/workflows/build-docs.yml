@@ -83,6 +83,7 @@ jobs:
             ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
             ${{ github.workspace }}/artefact/*.xsd
             ${{ github.workspace }}/artefact/main.diff
+            ${{ github.workspace }}/artefact/git.log
       - name: Release files
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
