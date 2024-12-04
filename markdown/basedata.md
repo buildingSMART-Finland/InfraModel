@@ -150,7 +150,7 @@ The *terrain model* contains the description of the topmost terrain surface (als
 It consists of the vertices of the component faces <Pnts> and the faces <Faces> as explained above. 
 In inframodel file transfers it is also possible to assign source data points and breaklines to the surface.
 An "IM_coding" \<Feature> extension enables surface classifications, and "IM_soil" \<Feature> extension allows to add the technical properties. 
-Terrain model may be part of a optional plan described in "IM_plan" \<Feature>. 
+Terrain model may be part of a optional plan described in "IM_plan" \<Feature> defined in {{refsec planinformationext}}. 
 
 ![Terrain model]({{figure Surfacesterrain.png}} "Terrain model"){{figst terrainmodel}}
  
@@ -166,7 +166,7 @@ The *ground layer model* contains a description of all the surfaces between diff
 It is recommended that surfaces are described top-down. Individual layer surfaces are constructed as explained above.
 A surface may be part of a plan described in "IM_plan" \<Feature>. 
 A "IM_coding" \<Feature> extension provides surface classifications. 
-The technical properties of each soil layer between two surfaces may be given in "IM_soil" <Feature> extension described above. 
+The technical properties of each soil layer between two surfaces may be given in "IM_soil" \<Feature> defined in {{refsec soilpropertiesext}}.
 
 ![Ground layer model]({{figure SurfacesMaaperamalli.png}} "Ground layer model"){{figst groundlayermodel}}	
 
