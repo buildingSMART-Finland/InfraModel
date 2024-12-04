@@ -47,7 +47,7 @@
 				</xs:element>
 				<xs:element ref="Survey" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="FeatureDictionary" maxOccurs="unbounded"/>
-				<xs:any namespace="##other" processContents="skip" minOccurs="0">
+				<xs:any namespace="im" processContents="strict" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Objects in "im" namespace as  Metadata, Local Coordinate Transformations and Pile groups can be transfered in this section</xs:documentation>
 					</xs:annotation>
@@ -71,7 +71,6 @@
 					<xs:documentation>Example:1.2</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 		<!-- All name-attributes must have unique value within Inframodel-file -->
 		<xs:unique name="uName">
@@ -663,7 +662,7 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="255"/>
-			<xs:pattern value="[a-zA-Z0-9 \-,\._]"/>
+			<xs:pattern value="([a-zA-Z0-9 -,._])+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="breakLineType">
@@ -1453,7 +1452,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 					<xs:documentation>Example:0.0</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Application">
@@ -1745,7 +1743,6 @@ A collection of surface models.</xs:documentation>
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Definition">
@@ -1854,7 +1851,6 @@ The sub element PntList3D is group of points is defined by a 3D
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Boundaries">
@@ -1865,7 +1861,6 @@ The sub element PntList3D is group of points is defined by a 3D
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Boundary" maxOccurs="unbounded"/>
-				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1946,7 +1941,6 @@ The collection of breaklines that were used to define the surface.</xs:documenta
 					</xs:annotation>
 				</xs:element>
 				<xs:element ref="RetWall" minOccurs="0" maxOccurs="0"/>
-				<xs:any namespace="##local"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1967,7 +1961,6 @@ The breakline is defined by a 2D north/east or 3D north/east/elev list of points
 				<xs:element ref="IM_coding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_proprietaryCoding--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:any namespace="##local"/>
 			</xs:sequence>
 			<xs:attribute name="brkType" type="breakLineType">
 				<xs:annotation>
@@ -2537,7 +2530,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="IM_plan--ltFeature--gt" minOccurs="0"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute name="name" type="nameType" use="required">
+			<xs:attribute name="name" type="nameType" use="optional">
 				<xs:annotation>
 					<xs:documentation>Unique name</xs:documentation>
 					<xs:documentation>Example:--uid--</xs:documentation>
@@ -2602,7 +2595,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:proposed</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:anyAttribute namespace="##any"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Pipes">
@@ -2696,7 +2688,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string">
@@ -2728,7 +2720,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string" use="optional">
@@ -2760,7 +2752,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string" use="optional">
@@ -2792,7 +2784,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="desc" type="xs:string" use="optional">
@@ -2829,12 +2821,12 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="material" type="IMPipeNetworkMaterialType" use="optional">
 				<xs:annotation>
-					<xs:documentation>Inframodel</xs:documentation>
+					<xs:documentation>Material</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="optional">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -2923,7 +2915,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Sump elevation</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="state" type="stateType" use="required">
+			<xs:attribute name="state" type="stateType" use="optional">
 				<xs:annotation>
 					<xs:documentation>State</xs:documentation>
 				</xs:annotation>
@@ -2952,7 +2944,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -2989,7 +2981,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="thickness" type="xs:double" use="required">
 				<xs:annotation>
-					<xs:documentation>Wall thickness</xs:documentation>
+					<xs:documentation>Wall thickness(total thickness including the profile in case of corrugated materials)</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -3301,7 +3293,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Sign height</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="road" type="xs:double">
+			<xs:attribute name="mountHeight" type="xs:double">
 				<xs:annotation>
 					<xs:documentation>Mounting height</xs:documentation>
 				</xs:annotation>
@@ -3834,7 +3826,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="material--ltProperty--gt"/>
+				<xs:element ref="material--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="grainSizeMin--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="grainSizeMax--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="nominalThickness--ltProperty--gt" minOccurs="0"/>
@@ -4531,10 +4523,15 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="bottomThickness--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentType--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="equipmentDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentDesc--ltProperty--gt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Eqiuipment description</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="surfaceProfile--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_struct">
 				<xs:annotation>
@@ -4608,7 +4605,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentType--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="equipmentDesc-ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="equipmentDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCode--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="equipmentCodeSource--ltProperty--gt" minOccurs="0"/>
@@ -4648,6 +4645,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="renewalDate--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="renewalDesc--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="strengthClass--ltProperty--gt" minOccurs="0"/>
+				<xs:element ref="surfaceProfile--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_pipe">
 				<xs:annotation>
@@ -5059,7 +5057,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="label" type="xs:string" use="required" fixed="terrainCodingDesc">
 				<xs:annotation>
 					<xs:documentation>Fixed value, terrainCodingDesc</xs:documentation>
-					<xs:documentation>Example:terrainCodingSourceRef</xs:documentation>
+					<xs:documentation>Example:terrainCodingDesc</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
@@ -5115,8 +5113,8 @@ The "staInternal" value identifies the location of the station equation. It is t
 		<xs:complexType>
 			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceCodingDesc">
 				<xs:annotation>
-					<xs:documentation>Fixed value, surfaceCoding</xs:documentation>
-					<xs:documentation>Example:surfaceCoding</xs:documentation>
+					<xs:documentation>Fixed value, surfaceCodingDesc</xs:documentation>
+					<xs:documentation>Example:surfaceCodingDesc</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
@@ -5724,8 +5722,8 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Material name of the structural layer according to applicable guideline, i.e:
-- Asfalttinormit 2011 (PANK Ry. 2011)
-- Tierakenteen suunnittelu (Tiehallinto 2005)
+- Asfalttinormit 2023 (PANK Ry. 2023)
+- Tierakenteen suunnittelu (Väylä 2018)
 - Tietoa tiensuunnitteluun 71D (Tiehallinto 2005)
 - Paallysrakenteen stabilointi (Tiehallinto 2007)
 - Kevennysrakenteiden suunnittelu (Liikennevirasto 2011)</xs:documentation>
@@ -6580,11 +6578,18 @@ The "staInternal" value identifies the location of the station equation. It is t
 					<xs:documentation>Example:rimLoad</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="value" type="xs:string" use="required">
+			<xs:attribute name="value" use="required">
 				<xs:annotation>
 					<xs:documentation>Foundation type</xs:documentation>
 					<xs:documentation>Example:250</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Shallow"/>
+						<xs:enumeration value="Deep"/>
+						<xs:enumeration value="Other"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
@@ -7499,7 +7504,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="equipmentDesc-ltProperty--gt">
+	<xs:element name="equipmentDesc--ltProperty--gt">
 		<xs:annotation>
 			<xs:documentation>Eqiuiment description</xs:documentation>
 		</xs:annotation>
@@ -8028,6 +8033,25 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="surfaceProfile--ltProperty--gt">
+		<xs:annotation>
+			<xs:documentation>Surface profile of struct/pipe</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required" fixed="surfaceProfile">
+				<xs:annotation>
+					<xs:documentation>Fixed value,surfaceProfile</xs:documentation>
+					<xs:documentation>Example:surfaceProfile</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="IMPipeNetworkMaterialProfile" use="required">
+				<xs:annotation>
+					<xs:documentation>Surface profile of struct/pipe</xs:documentation>
+					<xs:documentation>Example:250</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
 	<xs:simpleType name="IMPipeNetworkMaterialType">
 		<xs:annotation>
 			<xs:documentation>List of materials in Inframodel Pipe Network Structs and Pipes (@material)</xs:documentation>
@@ -8058,6 +8082,16 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:enumeration value="fiberComposite"/>
 			<xs:enumeration value="rubber"/>
 			<xs:enumeration value="bitum"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IMPipeNetworkMaterialProfile">
+		<xs:annotation>
+			<xs:documentation>List of pipe surface profiles in Inframodel Pipe Network Structs and Pipes (@surfaceProfile property)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="flat"/>
+			<xs:enumeration value="corrugated"/>
 			<xs:enumeration value="other"/>
 		</xs:restriction>
 	</xs:simpleType>
