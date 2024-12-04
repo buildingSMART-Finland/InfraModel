@@ -114,7 +114,7 @@ Inframodel tukee LandXML-versiota 1.2 Inframodel- ja LandXML-versio näkyy aina 
     - sähköpostiosoite
     - tulostuksen aikaleima
 
-Tiedoston ja objektin nimi ei saa sisältää välilyöntejä, erikois- tai skandinaavisia merkkejä.
+Tiedoston ja objektin nimi ei saa sisältää erikois- tai skandinaavisia merkkejä.
 
 #### Codings
 
