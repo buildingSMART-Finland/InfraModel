@@ -5836,11 +5836,11 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:documentation>Load-bearing capacity or the structure</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="pavementType">
+			<xs:attribute name="label" type="xs:string" use="required" fixed="loadCapacity">
 				<xs:annotation>
-					<xs:documentation>Fixed value, pavementType
+					<xs:documentation>Fixed value, loadCapacity
 </xs:documentation>
-					<xs:documentation>Example:pavementType</xs:documentation>
+					<xs:documentation>Example:loadCapacity</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
@@ -5865,7 +5865,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Pavement type</xs:documentation>
+					<xs:documentation>Pavement type, ie. AB</xs:documentation>
 					<xs:documentation>Example:Concrete</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -5885,7 +5885,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Surfacing method</xs:documentation>
+					<xs:documentation>Surfacing method, ie. REM</xs:documentation>
 					<xs:documentation>Example:??</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -5905,7 +5905,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Stone structure type</xs:documentation>
+					<xs:documentation>Stone laying pattern, ie. Suora ladonta</xs:documentation>
 					<xs:documentation>Example:??</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -5924,7 +5924,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Stone type</xs:documentation>
+					<xs:documentation>Stone type, ie. nupukivi</xs:documentation>
 					<xs:documentation>Example:??</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -5962,7 +5962,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
-					<xs:documentation>Lightweight fill material</xs:documentation>
+					<xs:documentation>Lightweight fill material, ie. vaahtolasi</xs:documentation>
 					<xs:documentation>Example:??</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
