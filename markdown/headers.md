@@ -16,27 +16,44 @@ Example:
 
 The namespaces in Inframodel file shall be the following:
 
-- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall be set in the root element.
-- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall be set in the root element
-- The types in Inframodel enumerations schema inframodelEnumerations.xsd are included in the default namespace
+- The default namespace to be used without prefix for all LandXML elements specialized for Inframodel in schema inframodel.xsd shall be set in the root element as "http://buildingsmart.fi/inframodel/420"
+- The namespace for elements in Inframodel extension schema im.xsd (if used in the file) to be used with prefix "im" shall be set in the root element as "http://buildingsmart.fi/im/420"
 
 **Note: The namespace URI is not meant to be used to look up information. Its sole purpose is to give the namespace a unique name.**
 
 
-The schema locations may be set in an Inframodel transfer file, in which case XML Schema Instance namespace shall be set in the root element: xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+The schema locations may be set in an Inframodel transfer file, in which case XML Schema Instance namespace shall be declared in the root element: xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance", and the following schema locations may be set to access online:
 
-The following schema locations can be set to access online:
+- The schema location for the default namespace as xsi:schemaLocation="http://buildingsmart.fi/inframodel/420 https://github.com/buildingSMART-Finland/InfraModel/releases/download/4.2-release/inframodel.xsd"
+- If elements from im namespace are used in the file, the "im.xsd" schema location as xsi:schemaLocation="http://buildingsmart.fi/inframodel/420 https://github.com/buildingSMART-Finland/InfraModel/releases/download/4.2-release/im.xsd"
 
-- The schema location for the default namespace
-- If elements from im namespace are used in the file, the "im.xsd" schema location
-
-The Inframodel enumerations schema inframodelEnumerations.xsd location is set automatically by being included by the default schema
+**TODO: 1) check version numbers for namespace attributes 2) replace hard coded schema locations by release_path (or such) for automated generation**
 
 
 The root element (\<LandXML\>) of the transfer file is used by software to check the validity of the file structure.
 
-{{xtabulate4 LandXML}}
+{{xtabulate LandXML}}
 
+XML example of \<LandXML\>:
+
+\<LandXML xmlns="http://buildingsmart.fi/inframodel/410" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:im="http://buildingsmart.fi/im/410" xsi:schemaLocation="http://buildingsmart.fi/inframodel/410 inframodel.xsd http://buildingsmart.fi/im/410 im.xsd" date="2024-10-18" time="09:30:47+02:00" version="1.2"\><br/>
+	\<Units\>\</Units\><br/>
+	\<CoordinateSystem\>\</CoordinateSystem\><br/>
+	\<Project\>\</Project\><br/>
+	\<Application\>\</Application\><br/>
+	\<Alignments\>\</Alignments\><br/>
+	\<CgPoints\>\</CgPoints\><br/>
+	\<Parcels\>\</Parcels\><br/>
+	\<PlanFeatures\>\</PlanFeatures\><br/>
+	\<PipeNetworks\>\</PipeNetworks\><br/>
+	\<Roadways\>\</Roadways\><br/>
+	\<Surfaces\>\</Surfaces\><br/>
+	\<Survey\>\</Survey\><br/>
+	\<FeatureDictionary\>\</FeatureDictionary\><br/> 
+	\<im:Metadata\>\</im:Metadata\><br/>
+	\<im:LocalCoordinateTransformation\>\</im:LocalCoordinateTransformation\><br/>
+	\<im:PileGroups\>\</im:PileGroups\><br/>
+\</LandXML\>
 
 ## Units {#sec:units}
 
