@@ -3839,7 +3839,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 				<xs:element ref="stoneType--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="stabilizationMethod--ltProperty--gt" minOccurs="0"/>
 				<xs:element ref="lightweightFillMaterial--ltProperty--gt" minOccurs="0"/>
-				<xs:element ref="lightweightFillMaterialProperty--ltProperty--gt" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="code" type="xs:string" use="required" fixed="IM_structLayer">
 				<xs:annotation>
@@ -5964,25 +5963,6 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="value" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Lightweight fill material</xs:documentation>
-					<xs:documentation>Example:??</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="lightweightFillMaterialProperty--ltProperty--gt">
-		<xs:annotation>
-			<xs:documentation>Lightweight fill material property</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="label" type="xs:string" use="required" fixed="lightweightFillMaterialProperty">
-				<xs:annotation>
-					<xs:documentation>Fixed value,lightweightFillMaterialProperty</xs:documentation>
-					<xs:documentation>Example:lightweightFillMaterialProperty</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="value" type="xs:string" use="required">
-				<xs:annotation>
-					<xs:documentation>Lightweight fill material property</xs:documentation>
 					<xs:documentation>Example:??</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
