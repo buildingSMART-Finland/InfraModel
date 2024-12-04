@@ -3295,7 +3295,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			</xs:attribute>
 			<xs:attribute name="mountHeight" type="xs:double">
 				<xs:annotation>
-					<xs:documentation>Mounting height</xs:documentation>
+					<xs:documentation>Mounting height, from edge of roadway surface to sign lower edge</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
