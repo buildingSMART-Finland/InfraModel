@@ -40,7 +40,7 @@ jobs:
           github_token: ${{ github.token }}
       - name: Print last release info
         run: |
-          echo "last_release_tag_name: ${{  env.release_tag_name }}"
+          echo "last_release_tag_name: ${{  steps.last_release.outputs.release_tag_name }}"
       - name: Copy im.xsd to artefact folder
         run: mkdir ${{github.workspace}}/artefact
       - name: Run the build process with imbuilder docker
