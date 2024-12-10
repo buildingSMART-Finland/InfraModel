@@ -52,7 +52,7 @@ jobs:
       - name: Copy im.xsd to artefact folder
         run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Inframodel (PDF+XSD)
           path: |
