@@ -33,14 +33,14 @@ jobs:
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
       #    key: docker-${{ runner.os }}
-      - name: Fetch latest release (if one exists)
-        id: last_release
-        uses: mvesanen/fetch-latest-release@main
-        with:
-          github_token: ${{ github.token }}
-      - name: Print last release info
-        run: |
-          echo "last_release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
+      #- name: Fetch latest release (if one exists)
+      #  id: last_release
+      #  uses: mvesanen/fetch-latest-release@main
+      #  with:
+      #    github_token: ${{ github.token }}
+      #- name: Print last release info
+      #  run: |
+      #    echo "last_release_tag_name: ${{ steps.last_release.outputs.tag_name }}"
       - name: Copy im.xsd to artefact folder
         run: mkdir ${{github.workspace}}/artefact
       - name: Run the build process with imbuilder docker
