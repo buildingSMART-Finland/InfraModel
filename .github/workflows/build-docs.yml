@@ -35,7 +35,7 @@ jobs:
       #    key: docker-${{ runner.os }}
       - name: Check latest release tag (if one exists)
         id: last_release
-        uses: InsonusK/get-latest-release@v1.1.0
+        uses: mvesanen/get-latest-release@main
         with:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
