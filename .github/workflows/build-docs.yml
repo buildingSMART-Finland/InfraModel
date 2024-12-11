@@ -28,7 +28,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          path: main
+          fetch-depth: 0
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
@@ -40,7 +43,7 @@ jobs:
           github_token: ${{ github.token }}
       - name: Print last release info
         run: |
-          echo "last_release_tag_name: ${{  steps.last_release.outputs.release_tag_name }}"
+          echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
       - name: Copy im.xsd to artefact folder
         run: mkdir ${{github.workspace}}/artefact
       - name: Run the build process with imbuilder docker
