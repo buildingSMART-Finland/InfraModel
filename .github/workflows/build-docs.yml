@@ -35,7 +35,7 @@ jobs:
       #    key: docker-${{ runner.os }}
       - name: Fetch latest release (if one exists)
         id: last_release
-        uses: mvesanen/fetch-latest-release@test2
+        uses: mvesanen/fetch-latest-release@main
         with:
           github_token: ${{ github.token }}
       - name: Print last release info
