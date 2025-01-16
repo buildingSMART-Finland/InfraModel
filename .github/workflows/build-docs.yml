@@ -51,7 +51,7 @@ jobs:
         with:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}:/git
-          run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
+          run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       - name: Copy im.xsd to artefact folder
         run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
