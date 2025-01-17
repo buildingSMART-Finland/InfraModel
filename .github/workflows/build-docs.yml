@@ -43,8 +43,8 @@ jobs:
           ghRef : ${{ github.ref }}
       - name: Print latest release info
         run: |
-          echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
-          echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
+          @echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
+          @echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
       - name: Check out latest release tag
         if: ${{ steps.last_release.outputs.tag_name }}
         uses: actions/checkout@v4
@@ -67,13 +67,13 @@ jobs:
           options: -v ${{ github.workspace }}:/git
           run: |
             echo "Prosessing intermediate markdown ..."
-            python ./docbuild/moustache_handler.py /git/markdown/main.md /git/markdown/staging/main.md ${{steps.last_release.outputs.html_url}}
-            echo "Prosessing intermediate schemas ..."
-            python ./docbuild/schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
-            python ./docbuild/raw-parse.py /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
-            python ./docbuild/raw-parse.py /git/schema/im-raw.xsd ${{steps.last_release.outputs.html_url}}
-            cp ./staging/im-raw.xsd ./artefact/im.xsd
-            cp ./staging/inframodel.xsd ./artefact/inframodel.xsd     
+            python /docbuild/moustache_handler.py /git/markdown/main.md /git/markdown/staging/main.md ${{steps.last_release.outputs.html_url}}
+            echo "Prosessing "raw" schemas ..."
+            python /docbuild/schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
+            python /docbuild/moustache_handler.py /git/schema/inframodel.xsd /git/artefact/inframodel.xsd ${{steps.last_release.outputs.html_url}}
+            python /docbuild/moustache_handler.py /git/schema/im-raw.xsd /git/artefact/im.xsd ${{steps.last_release.outputs.html_url}}
+            echo "Build main pdf document"
+            python /docbuild/pandoc-gen.py /git/staging/main.md /git/artefact/Inframodel.pdf
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       # - name: Copy im.xsd to artefact folder
       #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
@@ -82,7 +82,7 @@ jobs:
         with:
           name: Inframodel (PDF+XSD)
           path: |
-            ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
+            ${{ github.workspace }}/artefact/Inframodel.pdf
             ${{ github.workspace }}/artefact/*.xsd
       - name: Release files
         uses: softprops/action-gh-release@v1
