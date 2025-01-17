@@ -83,7 +83,7 @@ jobs:
             python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
             echo "Process latest release markdown and generate diff document"
             git config --global --add safe.directory /lastrelease
-            python /docbuild/moustache_handler.py /git/lastrelease/markdown/main.md /git/staging/inframodel_lastrelease.md ${{steps.last_release.outputs.html_url}}
+            python /docbuild/moustache_handler.py /lastrelease/markdown/main.md /git/staging/inframodel_lastrelease.md ${{steps.last_release.outputs.html_url}}
             wdiff -n -w "\removed{" -x "}" -y "\added{" -z "}" /git/staging/inframodel_lastrelease.md /git/staging/main.md > /git/staging/rawdiff.md
             python /docbuild/fix_latex_params.py /git/staging/rawdiff.md /git/staging/diff.md /lastrelease /git
             python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/ReleaseDiff.pdf
