@@ -43,8 +43,8 @@ jobs:
           ghRef : ${{ github.ref }}
       - name: Print latest release info
         run: |
-          @echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
-          @echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
+          echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
+          echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
       - name: Check out latest release tag
         if: ${{ steps.last_release.outputs.tag_name }}
         uses: actions/checkout@v4
