@@ -39,28 +39,24 @@ The root element (\<LandXML\>) of the transfer file is used by software to check
 XML example of \<LandXML\>:
 
 ```xml
-\<LandXML xmlns="{{release_directory}}"<br/> 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br/>
-    xmlns:im="{{release_directory}}/im"<br/> 
-    xsi:schemaLocation="{{release_directory}} {{release_directory}}/inframodel.xsd {{release_directory}}/im {{release_directory}}/im.xsd"<br/>
-    date="2025-01-17" time="09:30:47+02:00" version="1.2"\><br/>
-	\<Units\>\</Units\><br/>
-	\<CoordinateSystem\>\</CoordinateSystem\><br/>
-	\<Project\>\</Project\><br/>
-	\<Application\>\</Application\><br/>
-	\<Alignments\>\</Alignments\><br/>
-	\<CgPoints\>\</CgPoints\><br/>
-	\<Parcels\>\</Parcels\><br/>
-	\<PlanFeatures\>\</PlanFeatures\><br/>
-	\<PipeNetworks\>\</PipeNetworks\><br/>
-	\<Roadways\>\</Roadways\><br/>
-	\<Surfaces\>\</Surfaces\><br/>
-	\<Survey\>\</Survey\><br/>
-	\<FeatureDictionary\>\</FeatureDictionary\><br/> 
-	\<im:Metadata\>\</im:Metadata\><br/>
-	\<im:LocalCoordinateTransformation\>\</im:LocalCoordinateTransformation\><br/>
-	\<im:PileGroups\>\</im:PileGroups\><br/>
-\</LandXML\>
+<LandXML xmlns="{{release_directory}}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:im="{{release_directory}}/im" xsi:schemaLocation="{{release_directory}} {{release_directory}}/inframodel.xsd {{release_directory}}/im {{release_directory}}/im.xsd" date="2025-01-17" time="09:30:47+02:00" version="1.2"\>
+    <Units>
+    <CoordinateSystem>
+    <Project>
+    <Application>
+    <Alignments>
+    <CgPoints>
+    <Parcels>
+    <PlanFeatures>
+    <PipeNetworks>
+    <Roadways>
+    <Surfaces>
+    <Survey>
+    <FeatureDictionary>
+    <im:Metadata>
+    <im:LocalCoordinateTransformation>
+    <im:PileGroups>
+</LandXML>
 ```
 
 ## Units {#sec:units}
