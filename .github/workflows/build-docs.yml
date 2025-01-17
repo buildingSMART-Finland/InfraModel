@@ -61,8 +61,8 @@ jobs:
           git checkout -b  ${{ steps.last_release.outputs.tag_name }}
       - name: Make artefact and staging folders
         run: |
-          mkdir ${{github.workspace}}/artefact
-          mkdir ${{github.workspace}}/staging
+          mkdir ${{github.workspace}}/main/artefact
+          mkdir ${{github.workspace}}/main/staging
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
