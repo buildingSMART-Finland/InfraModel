@@ -78,6 +78,11 @@ jobs:
             ln -s /git/figures/ /git/staging/figures
             cp /git/figures/logo/* ./
             python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
+            echo "Process latest release markdown and generate diff document"
+             python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}}
+             wdiff -n -w "\removed{" -x "}" -y "\added{" -z "}" /lastrelease/staging/main.md /git/staging/main.md > /git/staging/rawdiff.md
+             python /docbuild/fix_latex_params.py /git/staging/rawdiff.md /git/staging/diff.md old new
+             python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/ReleaseDiff.pdf
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       # - name: Copy im.xsd to artefact folder
       #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
@@ -87,6 +92,7 @@ jobs:
           name: Inframodel (PDF+XSD)
           path: |
             ${{ github.workspace }}/artefact/Inframodel.pdf
+            ${{ github.workspace }}/artefact/ReleaseDiff.pdf
             ${{ github.workspace }}/artefact/inframodel.xsd
             ${{ github.workspace }}/artefact/im.xsd
       - name: Release files
