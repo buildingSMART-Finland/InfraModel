@@ -37,7 +37,7 @@ The root element (\<LandXML\>) of the transfer file is used by software to check
 XML example of \<LandXML\>:
 
 ```xml
-\<LandXML xmlns="{{release_directory}}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:im="{{release_directory}}" xsi:schemaLocation="{{release_directory}} inframodel.xsd {{release_directory}} im.xsd" date="2024-10-18" time="09:30:47+02:00" version="1.2"\><br/>
+\<LandXML xmlns="{{release_directory}}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:im="{{release_directory}}/im" xsi:schemaLocation="{{release_directory}} {{release_directory}}/inframodel.xsd {{release_directory}}/im {{release_directory}}/im.xsd" date="2025-01-17" time="09:30:47+02:00" version="1.2"\><br/>
 	\<Units\>\</Units\><br/>
 	\<CoordinateSystem\>\</CoordinateSystem\><br/>
 	\<Project\>\</Project\><br/>
