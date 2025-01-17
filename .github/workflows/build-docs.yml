@@ -67,10 +67,10 @@ jobs:
           options: -v ${{ github.workspace }}:/git
           run: |
             echo "Prosessing intermediate markdown ..."
-            python /docbuild/moustache_handler.py /git/markdown/main.md /git/markdown/staging/main.md ${{steps.last_release.outputs.html_url}}
+            python /docbuild/moustache_handler.py /git/markdown/main.md /git/staging/main.md ${{steps.last_release.outputs.html_url}}  
             echo "Prosessing "raw" schemas ..."
-            python /docbuild/schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
-            python /docbuild/moustache_handler.py /git/schema/inframodel.xsd /git/artefact/inframodel.xsd ${{steps.last_release.outputs.html_url}}
+            python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
+            python /docbuild/schemaprocessor.py /git/schema/inframodel.xsd /git/artefact/inframodel.xsd
             python /docbuild/moustache_handler.py /git/schema/im-raw.xsd /git/artefact/im.xsd ${{steps.last_release.outputs.html_url}}
             echo "Build main pdf document"
             python /docbuild/pandoc-gen.py /git/staging/main.md /git/artefact/Inframodel.pdf
