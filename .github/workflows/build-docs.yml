@@ -55,11 +55,11 @@ jobs:
             cp ./staging/figures/logo/* ./
             cp ./staging/figures/logo/* ./staging
             echo "Prosessing intermediate markdown ..."
-            time python ./raw-parse.py /git/markdown/main.md ${{steps.last_release.outputs.html_url}}
+            python ./raw-parse.py /git/markdown/main.md ${{steps.last_release.outputs.html_url}}
             echo "Prosessing intermediate schemas ..."
-            time python ./schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
-            time python ./raw-parse.py /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
-            time python ./raw-parse.py /git/schema/im-raw.xsd ${{steps.last_release.outputs.html_url}}
+            python ./schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
+            python ./raw-parse.py /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
+            python ./raw-parse.py /git/schema/im-raw.xsd ${{steps.last_release.outputs.html_url}}
             cp ./staging/im-raw.xsd ./artefact/im.xsd
             cp ./staging/inframodel.xsd ./artefact/inframodel.xsd     
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
