@@ -1,5 +1,5 @@
 ---
-title: "Inframodel 4.1"
+title: "Inframodel {{github_release}}"
 subtitle: "Finnish Inframodel application documentation for LandXML version 1.2"
 version: "{{draft-version}}"
 author: "RYTV 22003_1 working group"

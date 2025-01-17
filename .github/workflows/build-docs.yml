@@ -28,28 +28,67 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
       #    key: docker-${{ runner.os }}
-      - name: Copy im.xsd to artefact folder
-        run: mkdir ${{github.workspace}}/artefact
+      - name: Check latest release
+        id: last_release
+        uses: mvesanen/get-latest-release@master
+        with:
+          myToken: ${{ github.token }}
+          exclude_types: "prerelease,draft"
+          view_top: 1
+          ghRef : ${{ github.ref }}
+      - name: Print latest release info
+        run: |
+          echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
+          echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
+      - name: Check out latest release tag
+        if: ${{ steps.last_release.outputs.tag_name }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.last_release.outputs.tag_name }}
+          fetch-depth: 0
+          path: lastrelease
+      - name: Switch to latest release tag 
+        run: |
+          cd ${{ github.workspace }}/lastrelease      
+          git checkout -b  ${{ steps.last_release.outputs.tag_name }}
+      - name: Make artefact and staging folders
+        run: |
+          mkdir ${{github.workspace}}/artefact
+          mkdir ${{github.workspace}}/staging
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}:/git
-          run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd
-      - name: Copy im.xsd to artefact folder
-        run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
+          run: |  
+            echo "Prosessing "raw" schemas ..."
+            python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}}
+            python /docbuild/schemaprocessor.py /git/staging/inframodel-raw.xsd /git/artefact/inframodel.xsd
+            python /docbuild/moustache_handler.py /git/schema/im-raw.xsd /git/artefact/im.xsd ${{steps.last_release.outputs.html_url}}
+            echo "Prosessing intermediate markdown ..."
+            cp -rf /git/artefact/im.xsd /git/schema/im.xsd
+            cp -rf /git/staging/inframodel-raw.xsd /git/schema/inframodel-raw.xsd
+            python /docbuild/moustache_handler.py /git/markdown/main.md /git/staging/main.md ${{steps.last_release.outputs.html_url}}
+            echo "Build main pdf document"
+            ln -s /git/figures/ /git/staging/figures
+            cp /git/figures/logo/* ./
+            python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
+      # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
+      # - name: Copy im.xsd to artefact folder
+      #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Inframodel (PDF+XSD)
           path: |
-            ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
-            ${{ github.workspace }}/artefact/*.xsd
+            ${{ github.workspace }}/artefact/Inframodel.pdf
+            ${{ github.workspace }}/artefact/inframodel.xsd
+            ${{ github.workspace }}/artefact/im.xsd
       - name: Release files
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
