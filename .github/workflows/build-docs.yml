@@ -75,7 +75,7 @@ jobs:
             cp -rf /git/staging/inframodel-raw.xsd /git/schema/inframodel-raw.xsd
             python /docbuild/moustache_handler.py /git/markdown/main.md /git/staging/main.md ${{steps.last_release.outputs.html_url}}
             echo "Build main pdf document"
-            python /docbuild/pandoc-gen.py /git/staging/main.md /git/artefact/Inframodel.pdf
+            python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       # - name: Copy im.xsd to artefact folder
       #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
