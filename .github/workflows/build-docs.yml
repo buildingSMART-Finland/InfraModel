@@ -44,16 +44,27 @@ jobs:
         run: |
           echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
           echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
-      - name: Copy im.xsd to artefact folder
+      - name: make artefact folder
         run: mkdir ${{github.workspace}}/artefact
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}:/git
-          run: /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
-      - name: Copy im.xsd to artefact folder
-        run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
+          run: |
+            cp ./staging/figures/logo/* ./
+            cp ./staging/figures/logo/* ./staging
+            echo "Prosessing intermediate markdown ..."
+            time python ./raw-parse.py /git/markdown/main.md ${{steps.last_release.outputs.html_url}}
+            echo "Prosessing intermediate schemas ..."
+            time python ./schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
+            time python ./raw-parse.py /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
+            time python ./raw-parse.py /git/schema/im-raw.xsd ${{steps.last_release.outputs.html_url}}
+            cp ./staging/im-raw.xsd ./artefact/im.xsd
+            cp ./staging/inframodel.xsd ./artefact/inframodel.xsd     
+      # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
+      # - name: Copy im.xsd to artefact folder
+      #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v4
         with:
