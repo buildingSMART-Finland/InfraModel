@@ -29,6 +29,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
         uses: actions/checkout@v4
+        with:
+          path: main
+          fetch-depth: 0
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
@@ -64,7 +67,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
-          options: -v ${{ github.workspace }}:/git
+          options: -v ${{ github.workspace }}/main:/git -v ${{ github.workspace }}/lastrelease:/lastrelease
           run: |  
             echo "Prosessing "raw" schemas ..."
             python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}}
@@ -79,9 +82,10 @@ jobs:
             cp /git/figures/logo/* ./
             python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
             echo "Process latest release markdown and generate diff document"
+            git config --global --add safe.directory /lastrelease
             python /docbuild/moustache_handler.py /git/lastrelease/markdown/main.md /git/staging/inframodel_lastrelease.md ${{steps.last_release.outputs.html_url}}
             wdiff -n -w "\removed{" -x "}" -y "\added{" -z "}" /git/staging/inframodel_lastrelease.md /git/staging/main.md > /git/staging/rawdiff.md
-            python /docbuild/fix_latex_params.py /git/staging/rawdiff.md /git/staging/diff.md old new
+            python /docbuild/fix_latex_params.py /git/staging/rawdiff.md /git/staging/diff.md /lastrelease /git
             python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/ReleaseDiff.pdf
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       # - name: Copy im.xsd to artefact folder
