@@ -33,33 +33,45 @@ jobs:
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
       #    key: docker-${{ runner.os }}
-      - name: Check latest release tag (if one exists)
+      - name: Check latest release
         id: last_release
         uses: mvesanen/get-latest-release@master
         with:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
           view_top: 1
-      - name: Print last release info
+          ghRef : ${{ github.ref }}
+      - name: Print latest release info
         run: |
           echo "last_release_tag_name: ${{  steps.last_release.outputs.tag_name }}"
           echo "last_release_html_url: ${{  steps.last_release.outputs.html_url }}"
-      - name: make artefact folder
-        run: mkdir ${{github.workspace}}/artefact
+      - name: Check out latest release tag
+        if: ${{ steps.last_release.outputs.tag_name }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.last_release.outputs.tag_name }}
+          fetch-depth: 0
+          path: lastrelease
+      - name: Switch to latest release tag 
+        run: |
+          cd ${{ github.workspace }}/lastrelease      
+          git checkout -b  ${{ steps.last_release.outputs.tag_name }}
+      - name: Make artefact and staging folders
+        run: |
+          mkdir ${{github.workspace}}/artefact
+          mkdir ${{github.workspace}}/staging
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
           options: -v ${{ github.workspace }}:/git
           run: |
-            cp ./staging/figures/logo/* ./
-            cp ./staging/figures/logo/* ./staging
             echo "Prosessing intermediate markdown ..."
-            python ./raw-parse.py /git/markdown/main.md ${{steps.last_release.outputs.html_url}}
+            python ./docbuild/moustache_handler.py /git/markdown/main.md /git/markdown/staging/main.md ${{steps.last_release.outputs.html_url}}
             echo "Prosessing intermediate schemas ..."
-            python ./schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
-            python ./raw-parse.py /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
-            python ./raw-parse.py /git/schema/im-raw.xsd ${{steps.last_release.outputs.html_url}}
+            python ./docbuild/schemaprocessor.py /git/schema/inframodel-raw.xsd /git/schema/inframodel.xsd
+            python ./docbuild/raw-parse.py /git/schema/inframodel.xsd ${{steps.last_release.outputs.html_url}}
+            python ./docbuild/raw-parse.py /git/schema/im-raw.xsd ${{steps.last_release.outputs.html_url}}
             cp ./staging/im-raw.xsd ./artefact/im.xsd
             cp ./staging/inframodel.xsd ./artefact/inframodel.xsd     
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
