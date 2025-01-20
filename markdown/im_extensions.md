@@ -446,7 +446,7 @@ Where:
 
 {{xtabulatef equipmentType--ltProperty--gt}}
 
-{{xtabulatef equipmentDesc-ltProperty--gt}}
+{{xtabulatef equipmentDesc--ltProperty--gt}}
 
 {{xtabulatef equipmentCode--ltProperty--gt}}
 
