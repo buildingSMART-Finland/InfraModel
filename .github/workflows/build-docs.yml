@@ -93,7 +93,7 @@ jobs:
             python /docbuild/remtrailing.py /git/staging/main.md /git/staging/current.md
             wdiff -n -w "\removed{" -x "}" -y "\added{" -z "}" /git/staging/last.md /git/staging/current.md > /git/staging/rawdiff.md
             python /docbuild/fix_diff.py /git/staging/rawdiff.md /git/staging/diff.md /lastrelease /git
-            python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/ReleaseDiff.pdf
+            python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/Differences.pdf
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       # - name: Copy im.xsd to artefact folder
       #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
@@ -103,7 +103,7 @@ jobs:
           name: Inframodel package (PDF+XSD)
           path: |
             ${{ github.workspace }}/main/artefact/Inframodel.pdf
-            ${{ github.workspace }}/main/artefact/ReleaseDiff.pdf
+            ${{ github.workspace }}/main/artefact/Differences.pdf
             ${{ github.workspace }}/main/artefact/inframodel.xsd
             ${{ github.workspace }}/main/artefact/im.xsd
       - name: Release files
@@ -112,7 +112,7 @@ jobs:
         with:
           files: |
             ${{ github.workspace }}/main/artefact/Inframodel.pdf
-            ${{ github.workspace }}/main/artefact/ReleaseDiff.pdf
+            ${{ github.workspace }}/main/artefact/Differences.pdf
             ${{ github.workspace }}/main/artefact/inframodel.xsd
             ${{ github.workspace }}/main/artefact/im.xsd
         
