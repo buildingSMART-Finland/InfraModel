@@ -42,7 +42,7 @@ jobs:
         with:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
-          view_top: 1
+          view_top: 100
           ghRef : ${{ github.ref }}
       - name: Print latest release info
         run: |
