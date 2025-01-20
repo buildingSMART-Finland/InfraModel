@@ -333,8 +333,6 @@ Where:
 
 {{xtabulatef lightweightFillMaterial--ltProperty--gt}}
 
-{{xtabulatef lightweightFillMaterialProperty--ltProperty--gt}}
-
 **Details:**  
 
 {{refsec roadsandstreetsstructurallayers}}
