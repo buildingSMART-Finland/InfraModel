@@ -333,8 +333,6 @@ Where:
 
 {{xtabulatef lightweightFillMaterial--ltProperty--gt}}
 
-{{xtabulatef lightweightFillMaterialProperty--ltProperty--gt}}
-
 **Details:**  
 
 {{refsec roadsandstreetsstructurallayers}}
@@ -448,7 +446,7 @@ Where:
 
 {{xtabulatef equipmentType--ltProperty--gt}}
 
-{{xtabulatef equipmentDesc-ltProperty--gt}}
+{{xtabulatef equipmentDesc--ltProperty--gt}}
 
 {{xtabulatef equipmentCode--ltProperty--gt}}
 

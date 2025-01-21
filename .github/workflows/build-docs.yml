@@ -29,6 +29,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
         uses: actions/checkout@v4
+        with:
+          path: main
+          fetch-depth: 0
       #- name: Cache Docker images.
       #  uses: ScribeMD/docker-cache@0.3.3
       #  with:
@@ -39,7 +42,7 @@ jobs:
         with:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
-          view_top: 1
+          view_top: 100
           ghRef : ${{ github.ref }}
       - name: Print latest release info
         run: |
@@ -58,13 +61,13 @@ jobs:
           git checkout -b  ${{ steps.last_release.outputs.tag_name }}
       - name: Make artefact and staging folders
         run: |
-          mkdir ${{github.workspace}}/artefact
-          mkdir ${{github.workspace}}/staging
+          mkdir ${{github.workspace}}/main/artefact
+          mkdir ${{github.workspace}}/main/staging
       - name: Run the build process with imbuilder docker
         uses: addnab/docker-run-action@v3
         with:
           image: mvesanen/imbuilder:latest
-          options: -v ${{ github.workspace }}:/git
+          options: -v ${{ github.workspace }}/main:/git -v ${{ github.workspace }}/lastrelease:/lastrelease
           run: |  
             echo "Prosessing "raw" schemas ..."
             python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}}
@@ -78,23 +81,38 @@ jobs:
             ln -s /git/figures/ /git/staging/figures
             cp /git/figures/logo/* ./
             python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
+            echo "Process latest release markdown and generate diff document"
+            git config --global --add safe.directory /lastrelease
+            python /docbuild/moustache_handler.py /lastrelease/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}}
+            python /docbuild/moustache_handler.py /lastrelease/schema/im-raw.xsd /git/staging/im.xsd ${{steps.last_release.outputs.html_url}}
+            echo "Prosessing intermediate markdown ..."
+            cp -rf /git/staging/im.xsd /lastrelease/schema/im.xsd
+            cp -rf /git/staging/inframodel-raw.xsd /lastrelease/schema/inframodel-raw.xsd
+            python /docbuild/moustache_handler.py /lastrelease/markdown/main.md /git/staging/inframodel_lastrelease.md ${{steps.last_release.outputs.html_url}}
+            python /docbuild/remtrailing.py /git/staging/inframodel_lastrelease.md /git/staging/last.md 
+            python /docbuild/remtrailing.py /git/staging/main.md /git/staging/current.md
+            wdiff -n -w "\removed{" -x "}" -y "\added{" -z "}" /git/staging/last.md /git/staging/current.md > /git/staging/rawdiff.md
+            python /docbuild/fix_diff.py /git/staging/rawdiff.md /git/staging/diff.md /lastrelease /git
+            python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/Differences.pdf
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
       # - name: Copy im.xsd to artefact folder
       #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
         uses: actions/upload-artifact@v4
         with:
-          name: Inframodel (PDF+XSD)
+          name: Inframodel package (PDF+XSD)
           path: |
-            ${{ github.workspace }}/artefact/Inframodel.pdf
-            ${{ github.workspace }}/artefact/inframodel.xsd
-            ${{ github.workspace }}/artefact/im.xsd
+            ${{ github.workspace }}/main/artefact/Inframodel.pdf
+            ${{ github.workspace }}/main/artefact/Differences.pdf
+            ${{ github.workspace }}/main/artefact/inframodel.xsd
+            ${{ github.workspace }}/main/artefact/im.xsd
       - name: Release files
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ${{ github.workspace }}/artefact/Inframodel_DRAFT.pdf
-            ${{ github.workspace }}/artefact/inframodel.xsd
-            ${{ github.workspace }}/artefact/im.xsd
+            ${{ github.workspace }}/main/artefact/Inframodel.pdf
+            ${{ github.workspace }}/main/artefact/Differences.pdf
+            ${{ github.workspace }}/main/artefact/inframodel.xsd
+            ${{ github.workspace }}/main/artefact/im.xsd
         
