@@ -38,7 +38,7 @@ jobs:
       #    key: docker-${{ runner.os }}
       - name: Check latest release
         id: last_release
-        uses: mvesanen/get-latest-release@test
+        uses: mvesanen/get-latest-release@master
         with:
           myToken: ${{ github.token }}
           exclude_types: "prerelease,draft"
