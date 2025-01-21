@@ -70,31 +70,31 @@ jobs:
           options: -v ${{ github.workspace }}/main:/git -v ${{ github.workspace }}/lastrelease:/lastrelease
           run: |  
             echo "Prosessing "raw" schemas ..."
-            python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.assets_url}}
+            python /docbuild/moustache_handler.py /git/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
             python /docbuild/schemaprocessor.py /git/staging/inframodel-raw.xsd /git/artefact/inframodel.xsd
-            python /docbuild/moustache_handler.py /git/schema/im-raw.xsd /git/artefact/im.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.assets_url}}
+            python /docbuild/moustache_handler.py /git/schema/im-raw.xsd /git/artefact/im.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
             echo "Prosessing intermediate markdown ..."
             cp -rf /git/artefact/im.xsd /git/schema/im.xsd
             cp -rf /git/staging/inframodel-raw.xsd /git/schema/inframodel-raw.xsd
-            python /docbuild/moustache_handler.py /git/markdown/main.md /git/staging/main.md ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.assets_url}}
+            python /docbuild/moustache_handler.py /git/markdown/main.md /git/staging/main.md ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
             echo "Build main pdf document"
             ln -s /git/figures/ /git/staging/figures
             cp /git/figures/logo/* ./
             python /docbuild/make-pdf.py /git/staging/main.md /git/artefact/Inframodel.pdf
             echo "Process latest release markdown and generate diff document"
             git config --global --add safe.directory /lastrelease
-            python /docbuild/moustache_handler.py /lastrelease/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.assets_url}}
+            python /docbuild/moustache_handler.py /lastrelease/schema/inframodel-raw.xsd /git/staging/inframodel-raw.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
             python /docbuild/moustache_handler.py /lastrelease/schema/im-raw.xsd /git/staging/im.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.assets_url}}
             echo "Prosessing intermediate markdown ..."
             cp -rf /git/staging/im.xsd /lastrelease/schema/im.xsd
             cp -rf /git/staging/inframodel-raw.xsd /lastrelease/schema/inframodel-raw.xsd
-            python /docbuild/moustache_handler.py /lastrelease/markdown/main.md /git/staging/inframodel_lastrelease.md ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.assets_url}}
+            python /docbuild/moustache_handler.py /lastrelease/markdown/main.md /git/staging/inframodel_lastrelease.md ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
             python /docbuild/remtrailing.py /git/staging/inframodel_lastrelease.md /git/staging/last.md 
             python /docbuild/remtrailing.py /git/staging/main.md /git/staging/current.md
             wdiff -n -w "\removed{" -x "}" -y "\added{" -z "}" /git/staging/last.md /git/staging/current.md > /git/staging/rawdiff.md
             python /docbuild/fix_diff.py /git/staging/rawdiff.md /git/staging/diff.md /lastrelease /git
             python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/Differences.pdf
-      # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}}
+      # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
       # - name: Copy im.xsd to artefact folder
       #   run: cp ${{github.workspace}}/schema/im.xsd ${{github.workspace}}/artefact/im.xsd
       - name: Collect  artefacts 
