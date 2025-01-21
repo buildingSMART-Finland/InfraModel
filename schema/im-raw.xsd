@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
-<!-- 4.1 Release Candidate WORKING DRAFT -->
-<!-- Date Posted: 01/04/2023 -->
 <xs:schema xmlns:im="{{release_directory}}/im" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="{{release_directory}}/im" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
 	<xs:element name="PileGroups">
 		<xs:complexType>

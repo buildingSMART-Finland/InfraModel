@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Mikko Vesanen (Novatron Oy) -->
-<!-- Inframodel 4.1 Release Candidate -->
 <xs:schema xmlns="{{release_directory}}" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="{{release_directory}}" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.1.0">
 	<xs:element name="LandXML">
 		<xs:annotation>
