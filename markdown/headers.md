@@ -26,10 +26,10 @@ The namespaces in Inframodel file shall be the following:
 
 The schema locations may be set in an Inframodel transfer file, in which case XML Schema Instance namespace shall be declared in the root element: xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance", and the following schema locations may be set to access online:
 
-- The schema location (xsi:schemaLocation) for the default namespace as 
-  "{{release_directory}} {{release_directory}}/inframodel.xsd"
-- If elements from im namespace are used in the file, the "im.xsd" schema location (xsi:schemaLocation) as 
-  "{{release_directory}}/im {{release_directory}}/im.xsd"
+- The schema location (xsi:schemaLocation) for the default namespace {{release_directory}} as 
+  {{release_download_directory}}/inframodel.xsd
+- If elements from im namespace {{release_directory}}/im are used in the file, the "im.xsd" schema location (xsi:schemaLocation) as 
+  {{release_directory}}/im {{release_download_directory}}/im.xsd
 
 
 The root element (\<LandXML\>) of the transfer file is used by software to check the validity of the file structure.
