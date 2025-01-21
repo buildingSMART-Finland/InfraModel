@@ -40,22 +40,22 @@ XML example of \<LandXML\>:
 
 ```xml
 <LandXML xmlns="{{release_directory}}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:im="{{release_directory}}/im" xsi:schemaLocation="{{release_directory}} {{release_directory}}/inframodel.xsd {{release_directory}}/im {{release_directory}}/im.xsd" date="2025-01-17" time="09:30:47+02:00" version="1.2"\>
-    <Units>
-    <CoordinateSystem>
-    <Project>
-    <Application>
-    <Alignments>
-    <CgPoints>
-    <Parcels>
-    <PlanFeatures>
-    <PipeNetworks>
-    <Roadways>
-    <Surfaces>
-    <Survey>
-    <FeatureDictionary>
-    <im:Metadata>
-    <im:LocalCoordinateTransformation>
-    <im:PileGroups>
+    <Units></Units>
+    <CoordinateSystem></CoordinateSystem>
+    <Project></Project>
+    <Application></Application>
+    <Alignments></Alignments>
+    <CgPoints></CgPoints>
+    <Parcels></Parcels>
+    <PlanFeatures></PlanFeatures>
+    <PipeNetworks></PipeNetworks>
+    <Roadways></Roadways>
+    <Surfaces></Surfaces>
+    <Survey></Survey>
+    <FeatureDictionary></FeatureDictionary>
+    <im:Metadata></im:Metadata>
+    <im:LocalCoordinateTransformation></im:LocalCoordinateTransformation>
+    <im:PileGroups></im:PileGroups>
 </LandXML>
 ```
 
