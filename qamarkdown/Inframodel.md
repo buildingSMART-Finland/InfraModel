@@ -18,9 +18,9 @@ Inframodel-tiedonsiirtoformaatti tukeutuu Yleisiin inframallivaatimuksiin ja Inf
 
 Inframodel tiedonsiirron vähimmäisvaatimukset on kuvattu hankevaiheittain Yleisten inframallivaatimusten liitteessä: Luovutusaineiston tiedonsiirron vaatimukset.
 
-![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää]({{figure previousinframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio 4.1 täydentää"){{figst previous_inframodel}}
+![Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio {{github_release}} täydentää]({{figure previousinframodel.png}} "Aiempien Inframodel versioiden tiedonsiirtomahdollisuudet, joita versio {{github_release}} täydentää"){{figst previous_inframodel}}
 
-**Inframodel 4.1 tiedonsiirron uusia ominaisuuksia ovat**
+**Inframodel {{github_release}} tiedonsiirron uusia ominaisuuksia ovat**
 
 - Vapaamuotoiset ominaisuustiedot – Mahdollistavat entistä laajemman kohdekohtaisen ominaisuustiedon siirtämisen standardin avulla
 - Metadatan laajempi hyödyntäminen – esim. Tiedostokohtaisesti voidaan osoittaa kuka on tiedon omistaja
@@ -259,7 +259,7 @@ Linkki dokumentaatioon {{refsec cable}}
 
 Kaapelirakenteet on kuvattu Inframodelissa PlanFeature objekteina. Kaapeli on murtoviivaa, jolla on InfraBIM-luokitus. Kaapelin muita ominaisuuksia ovat omistaja, kaapelin tyyppi, tunnus ja tilavaraus. Tilavaraus kuvataan metatietona säteenä tai suorakulmion nurkkapisteinä suhteessa kaapelin keskipisteeseen.
 
-Inframodel 4.1 versiossa johdot ja kaapelit voidaan kuvata myös putkiverkkona. {{refsec pipes}}
+Inframodel {{github_release}} versiossa johdot ja kaapelit voidaan kuvata myös putkiverkkona. {{refsec pipes}}
 
 #### Kaiteiden ja aitojen ominaisuudet
 
