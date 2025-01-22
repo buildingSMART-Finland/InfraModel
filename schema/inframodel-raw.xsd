@@ -45,7 +45,7 @@
 				</xs:element>
 				<xs:element ref="Survey" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="FeatureDictionary" maxOccurs="unbounded"/>
-				<xs:any namespace="im" processContents="strict" minOccurs="0">
+				<xs:any namespace="{{release_directory}}/im" processContents="strict" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Objects in "im" namespace as  Metadata, Local Coordinate Transformations and Pile groups can be transfered in this section</xs:documentation>
 					</xs:annotation>
@@ -1247,7 +1247,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 				<xs:element ref="IM_codings--ltFeature--gt"/>
 				<xs:element ref="IM_proprietaryCodings--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="IM_userDefinedProperties--ltFeature--gt" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
 			</xs:choice>
 			<xs:attribute name="name" type="nameType" use="required">
 				<xs:annotation>
@@ -1503,9 +1502,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 			<xs:documentation>Optional element to identify the source of the file.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType mixed="true">
-			<xs:sequence>
-				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
-			</xs:sequence>
 			<xs:attribute name="createdBy" type="xs:string" use="required">
 				<xs:annotation>
 					<xs:documentation>Author name</xs:documentation>
@@ -1611,18 +1607,6 @@ Example, "1632.546 2391.045 240.30"</xs:documentation>
 	<xs:element name="PurposeOfSurvey">
 		<xs:complexType>
 			<xs:attribute name="name" type="nameType" use="required"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="FieldNote">
-		<xs:annotation>
-			<xs:documentation>Place the note as a text value between the FieldNote element tags.
-You may also place any valid XML structure inside this tag.</xs:documentation>
-			<xs:documentation>Example:Mynote</xs:documentation>
-		</xs:annotation>
-		<xs:complexType mixed="true">
-			<xs:choice maxOccurs="unbounded">
-				<xs:any namespace="##other" processContents="skip" minOccurs="0"/>
-			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Equipment">
@@ -5320,7 +5304,7 @@ The "staInternal" value identifies the location of the station equation. It is t
 			<xs:attribute name="label" type="xs:string" use="required" fixed="proprietaryInfraCodingSourceRef">
 				<xs:annotation>
 					<xs:documentation>Fixed value,proprietaryInfraCodingSourceRef</xs:documentation>
-					<xs:documentation>Example:value,proprietaryInfraCodingSourceRef</xs:documentation>
+					<xs:documentation>Example:proprietaryInfraCodingSourceRef</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:string" use="required">
